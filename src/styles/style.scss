@@ -1,0 +1,60 @@
+@use "./reset";
+@use "./globals"as g;
+
+// html
+html {
+    font-size                 : 10px;
+    overscroll-behavior-y     : contain;
+    -webkit-overflow-scrolling: touch;
+
+    * {
+        box-sizing: border-box;
+        word-break: break-all;
+        line-break: strict;
+    }
+}
+
+// body
+body {
+    color                      : g.$theme_color_text;
+    font-family                : g.$font;
+    font-size                  : g.$font_size_base;
+    font-weight                : g.$font_weight;
+    line-height                : g.$line_height;
+    letter-spacing             : g.$letter_spacing;
+    -webkit-text-size-adjust   : 100%;
+    -webkit-font-smoothing     : antialiased;
+    -moz-osx-font-smoothing    : grayscale;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+// a
+a:not([class]) {
+    color: g.$theme_color_main;
+}
+
+// lang=en
+[lang="en"] {
+    font-family: g.$font-en;
+}
+
+// lg - 1600px ~ n
+@include g.media(lg, min) {
+    html {
+        font-size: 12px;
+    }
+}
+
+// xl - 1920px ~ n
+@include g.media(xl, min) {
+    html {
+        font-size: 13px;
+    }
+}
+
+// SP(md) - n ~ 1024px
+@include g.media(md) {
+    html {
+        @include g.font-vw();
+    }
+}

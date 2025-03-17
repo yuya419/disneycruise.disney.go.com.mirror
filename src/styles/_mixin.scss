@@ -1,0 +1,63 @@
+@use 'sass:map';
+
+// ホバー
+@mixin hover {
+
+    @media screen and (min-width: 1025px) and (hover: hover),
+    screen and (min-width: 1025px) and (pointer: fine) {
+        &:hover {
+            @content;
+        }
+    }
+}
+
+/* pxをvwに変換 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+//pxをvwに変換
+@function _get_vw($size, $viewport: 390) {
+    $rate: calc(100 / $viewport);
+    @return $rate * $size * 1vw;
+}
+
+//pxをvwに変換 - フォントサイズ
+@mixin font-vw($font_size: 10, $viewsize: 390) {
+    font-size: $font_size * 1px;
+    font-size: _get_vw($font_size, $viewsize);
+}
+
+//pxをvwに変換 - フリースタイル
+@mixin free-vw($property, $size, $viewsize: 390) {
+    #{$property}: $size * 1px;
+    #{$property}: _get_vw($size, $viewsize);
+}
+
+/* pxをvhに変換 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+//pxをvhに変換
+@function _get_vh($size, $viewport: 663) {
+    $rate: calc(100 / $viewport);
+    @return $rate * $size * 1vh;
+}
+
+//pxをvhに変換 - フォントサイズ
+@mixin font-vh($font_size: 10, $viewsize: 663) {
+    font-size: $font_size * 1px;
+    font-size: _get_vh($font_size, $viewsize);
+}
+
+//pxをvhに変換 - フリースタイル
+@mixin free-vh($property, $size, $viewsize: 663) {
+    #{$property}: $size * 1px;
+    #{$property}: _get_vh($size, $viewsize);
+}
+
+/* メディアクエリ */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+$breakpoints: ('sm': 640px, 'md': 1024px, 'lg': 1600px, 'xl': 1920px);
+$minmax     : ('min': min, 'max': max);
+
+@mixin media($size, $width: 'max') {
+    @media screen and (#{map.get($minmax, $width)}-width: #{map.get($breakpoints, $size)}) {
+        @content;
+    }
+}

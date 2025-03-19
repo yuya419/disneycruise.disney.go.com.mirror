@@ -4,9 +4,14 @@
  */
 import type { Metadata } from "next";
 import metaArray from "@/libs/meta";
-import Link from "next/link";
 import { NotoSansJP, PhilosopherFont } from "@/libs/font";
-import "@/styles/style.scss";
+import "@/assets/styles/style.scss";
+
+import Header from "@/components/utils/header";
+import Footer from "@/components/utils/footer";
+import DrawerButton from "@/components/modules/buttons/drawerButton";
+import RequestButton from "@/components/modules/buttons/requestButton";
+import { Symbol } from "@/libs/symbol";
 
 // メタデータ
 export const metadata: Metadata = metaArray["index"];
@@ -15,19 +20,12 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
   return (
     <html lang="ja">
       <body className={`${NotoSansJP.variable} ${PhilosopherFont.variable}`} >
-        <header>
-          <nav>
-            <ul>
-              <li>
-                <Link href="/" lang="en">TOP</Link>
-              </li>
-              <li>
-                <Link href="/themed-areas" lang="en">Themed Areas</Link>
-              </li>
-            </ul>
-          </nav>
-        </header>
+        <Header />
         {children}
+        <Footer />
+        <DrawerButton />
+        <RequestButton />
+        <Symbol />
       </body>
     </html>
   );

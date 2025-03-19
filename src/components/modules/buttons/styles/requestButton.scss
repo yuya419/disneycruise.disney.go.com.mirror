@@ -1,0 +1,92 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* requestButton */
+
+/* 目次 */
+/* __10: 共通設定 */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.requestButton {
+    width          : 8rem;
+    position       : fixed;
+    top            : 12.4rem;
+    right          : 0;
+    z-index        : 88;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+
+    a {
+        width           : 4.2rem;
+        max-height      : 17.4rem;
+        display         : flex;
+        flex-direction  : column;
+        align-items     : center;
+        row-gap         : 1.2rem;
+        padding         : 1.8rem 0 1.2rem;
+        border-radius   : 0.3rem;
+        text-decoration : none;
+        background-color: var(--color_white);
+        position        : relative;
+
+        &::before {
+            content         : "";
+            width           : 1.4rem;
+            height          : 0.2rem;
+            background-color: var(--theme_color_main);
+            position        : absolute;
+            top             : 0;
+            left            : 0;
+            right           : 0;
+            margin-inline   : auto;
+        }
+    }
+
+    .label {
+        display       : block;
+        font-size     : 1.4rem;
+        writing-mode  : vertical-lr;
+        letter-spacing: 0.1em;
+        white-space   : nowrap;
+
+        span {}
+    }
+
+    .icon {
+        display: block;
+        width  : 1.3rem;
+        height : 1.3rem;
+
+        .i-calendar {
+            color: var(--theme_color_main);
+        }
+    }
+}
+
+// sp
+@include g.media(md) {
+    .requestButton {
+
+        a {
+
+            &::before {}
+        }
+
+        .label {
+            font-size   : 1.2rem;
+            writing-mode: horizontal-tb;
+
+            span {
+                display: none;
+            }
+        }
+
+        .icon {
+            .i-calendar {}
+        }
+    }
+}

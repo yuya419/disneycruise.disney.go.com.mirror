@@ -6,8 +6,10 @@
 
 export default function Page() {
     return (
-        <>
-            <h1>7つのテーマエリア</h1>
-        </>
+        <main>
+            <article>
+                <h1>7つのテーマエリア</h1>
+            </article>
+        </main>
     );
 }

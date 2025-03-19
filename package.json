@@ -4,7 +4,7 @@
   "author": "yuya",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "node ./task/server.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -16,6 +16,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

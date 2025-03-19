@@ -16,12 +16,12 @@ html {
 
 // body
 body {
-    color                      : g.$theme_color_text;
-    font-family                : g.$font;
-    font-size                  : g.$font_size_base;
-    font-weight                : g.$font_weight;
-    line-height                : g.$line_height;
-    letter-spacing             : g.$letter_spacing;
+    color                      : var(--theme_color_text);
+    font-family                : var(--noto-sans-jp);
+    font-size                  : var(--font_size_base);
+    font-weight                : var(--font_weight);
+    line-height                : var(--line_height);
+    letter-spacing             : var(--letter_spacing);
     -webkit-text-size-adjust   : 100%;
     -webkit-font-smoothing     : antialiased;
     -moz-osx-font-smoothing    : grayscale;
@@ -30,12 +30,28 @@ body {
 
 // a
 a:not([class]) {
-    color: g.$theme_color_main;
+    color: var(--theme_color_main);
 }
 
 // lang=en
 [lang="en"] {
-    font-family: g.$font-en;
+    font-family: var(--philosopher);
+}
+
+//sp時非表示
+.nosp {
+	@include g.media(md) {
+		display: none !important;
+	}
+}
+
+//pc時非表示
+.nopc {
+	display: none;
+
+	@include g.media(md) {
+		display: block;
+	}
 }
 
 // lg - 1600px ~ n

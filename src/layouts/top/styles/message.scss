@@ -1,0 +1,86 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* message */
+
+/* 目次 */
+/* __10: 共通設定 */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.t-message {
+    color           : var(--color_white);
+    background-color: var(--theme_color_main);
+
+    .container {
+        width        : calc(100% - 50px);
+        margin-inline: auto;
+        padding      : 18rem 0 9.5rem;
+    }
+
+    // &__head
+    &__head {
+
+        .logo {
+            width        : 47rem;
+            margin-inline: auto;
+        }
+
+        h2 {
+            font-size     : 2.4rem;
+            font-weight   : 700;
+            line-height   : calc(39/24);
+            letter-spacing: 0.03em;
+            text-align    : center;
+            margin-top    : 9rem;
+            @include g.leadingTrim(calc(39/24));
+        }
+    }
+
+    // &__body
+    &__body {
+        margin-top: 7.2rem;
+
+        p {
+            font-size     : 1.8rem;
+            line-height   : calc(35/18);
+            letter-spacing: 0.03em;
+            text-align    : center;
+            @include g.leadingTrim(calc(35/18));
+        }
+    }
+}
+
+// sp
+@include g.media(md) {
+    .t-message {
+        .container {
+            padding-block: 8rem;
+        }
+
+        // &__head
+        &__head {
+            .logo {
+                width: 25rem;
+            }
+
+            h2 {
+                font-size  : 1.8rem;
+                line-height: calc(27/18);
+                margin-top : 5rem;
+            }
+        }
+
+        // &__body
+        &__body {
+            margin-top: 4rem;
+
+            p {
+                font-size  : 1.5rem;
+                line-height: calc(26/15);
+            }
+        }
+    }
+}

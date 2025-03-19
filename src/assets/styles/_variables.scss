@@ -1,0 +1,33 @@
+:root {
+    // font
+    --font_weight   : 500;
+    --line_height   : 1.66666;
+    --letter_spacing: 0;
+    --font_size_base: 1rem;
+
+    // color
+    --color_black: #272833;
+    --color_white: white;
+
+    --color_bg_gray : #F4F4F4;
+    --color_bg_beige: #F7F1E5;
+
+    --color_bdr: #D5D7E6;
+
+    --color_blue: #002D74;
+    --color_gold: #FFD900;
+
+    // theme color
+    --theme_color_text  : var(--color_black);
+    --theme_color_bg    : var(--color_bg_gray);
+    --theme_color_bg_sub: var(--color_bg_beige);
+    --theme_color_border: var(--color_bdr);
+    --theme_color_main  : var(--color_blue);
+    --theme_color_sub   : var(--color_gold);
+
+    // easing
+    --customEasingIn : ease-in;
+    --customEasingOut: ease-out;
+
+    // font size
+}

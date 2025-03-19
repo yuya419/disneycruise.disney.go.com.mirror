@@ -3,18 +3,14 @@
  * @description TOPページ
  */
 "use client";
-import Link from "next/link";
+import { Hero, Message } from "@/layouts/top/top";
 
 export default function Home() {
+
   return (
-    <div>
-      <main>
-        <div>
-          <Link href="/themed-areas">
-            客船紹介・7つのテーマエリアを見る
-          </Link>
-        </div>
-      </main>
-    </div>
+    <main className="top">
+      <Hero />
+      <Message />
+    </main>
   );
 }

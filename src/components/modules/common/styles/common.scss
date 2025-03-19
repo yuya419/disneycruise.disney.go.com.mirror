@@ -1,0 +1,27 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* common */
+
+/* 目次 */
+/* __10: 共通設定 */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.divider {
+    display    : block;
+    flex-shrink: 0;
+
+    &.is-vert {}
+
+    &.is-hrzn {
+        background-image   : linear-gradient(to right, var(--divider-color) 2px, transparent 2px);
+        background-position: left top;
+        background-size    : 3px 2px;
+    }
+}
+
+// sp
+@include g.media(md) {}

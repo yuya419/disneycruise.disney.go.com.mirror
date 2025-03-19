@@ -1,0 +1,52 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* common */
+
+/* 目次 */
+/* __10: uline */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: uline */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.uline,
+.uline-r {
+    text-decoration: none;
+
+    .line {
+        background-image : linear-gradient(currentcolor, currentcolor);
+        background-repeat: no-repeat;
+        transition       : background-size 0.5s var(--customEasingOut);
+    }
+}
+
+// hideen→show
+.uline {
+    @include g.hover {
+        .line {
+            background-size    : 100% 0.1rem;
+            background-position: bottom left;
+        }
+    }
+
+    .line {
+        background-size    : 0% 0.1rem;
+        background-position: bottom right;
+    }
+}
+
+// show→hidden
+.uline-r {
+    @include g.hover {
+        .line {
+            background-size    : 0% 0.1rem;
+            background-position: bottom right;
+        }
+    }
+
+    .line {
+        background-size    : 100% 0.1rem;
+        background-position: bottom left;
+    }
+}

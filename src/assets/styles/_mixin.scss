@@ -11,6 +11,43 @@
     }
 }
 
+// スクリーンリーダーテキスト
+$vi-screen-reader-text: "screen-reader-text";
+
+@if $vi-screen-reader-text {
+  %#{$vi-screen-reader-text} {
+    clip    : rect(1px, 1px, 1px, 1px);
+    position: absolute;
+    left    : 0;
+    top     : 0;
+  }
+
+  .#{$vi-screen-reader-text} {
+    @extend %#{$vi-screen-reader-text};
+  }
+}
+
+/* line-heightのハーフ・レディングを打ち消す */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@mixin leadingTrim($lh) {
+
+	&::before,
+	&::after {
+		content    : '';
+		display    : block;
+		inline-size: 0;
+		block-size : 1px;
+	}
+
+	&::before {
+		margin-block-end: calc((1 - #{$lh}) * 0.5em);
+	}
+
+	&::after {
+		margin-block-start: calc((1 - #{$lh}) * 0.5em);
+	}
+}
+
 /* pxをvwに変換 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 //pxをvwに変換

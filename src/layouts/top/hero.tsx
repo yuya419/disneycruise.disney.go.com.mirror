@@ -3,6 +3,7 @@
  * @description ヒーローセクション
  */
 import Image from "next/image";
+import Pickup from "@/layouts/post/pickup";
 import helper from "@/libs/helper";
 import "./styles/hero.scss";
 
@@ -13,11 +14,10 @@ export default function Hero() {
         <div className="t-hero">
             <div className="t-hero__logo">
                 <Image
-                    src={getImagePath("/common/logo.svg")}
+                    src={getImagePath("common/logo.svg")}
                     alt="サイト名"
                     width={290}
                     height={158}
-                    layout={"responsive"}
                     priority
                 />
             </div>
@@ -30,6 +30,7 @@ export default function Hero() {
                     <span className="circle"></span>
                 </p>
             </div>
+            <Pickup className="t-hero" hlLevel="h2" />
         </div>
     )
 }

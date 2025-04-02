@@ -1,0 +1,296 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* feature */
+
+/* 目次 */
+/* __10: 共通設定 */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.t-feature {
+    overflow: clip;
+
+    .container {
+        padding-block: 15rem;
+    }
+
+    &__head {
+        width        : calc(100% - 50px);
+        max-width    : 106rem;
+        margin-inline: auto;
+
+        .en {
+            font-size     : 4.3rem;
+            color         : var(--color_white);
+            letter-spacing: 0.03em;
+            line-height   : calc(28/43);
+            @include g.leadingTrim(calc(28/43));
+        }
+
+        h2 {
+            font-size     : 1.6rem;
+            color         : var(--theme_color_sub);
+            letter-spacing: 0.03em;
+            line-height   : calc(12/16);
+            @include g.leadingTrim(calc(12/16));
+            margin-top: 1rem;
+        }
+    }
+
+    &__body {
+        $h: 56rem;
+        $s: 7rem;
+
+        .feature {
+            display: grid;
+        }
+
+        .post-thumbnail {
+            &-list {
+                grid-column   : 1;
+                grid-row      : 1;
+                width         : calc(100% - 50px);
+                max-width     : 106rem;
+                height        : $h;
+                margin        : calc(#{$s} * -1) auto 0;
+                position      : sticky;
+                top           : 6rem;
+                pointer-events: none;
+                z-index       : 2;
+            }
+
+            &-item {
+                position      : absolute;
+                width         : 40rem;
+                height        : 100%;
+                top           : 0;
+                right         : 0;
+                margin        : auto;
+                pointer-events: all;
+                z-index       : 1;
+
+                &::before {
+                    content       : "";
+                    position      : absolute;
+                    z-index       : -1;
+                    width         : 78.5rem;
+                    height        : 66.9rem;
+                    top           : 50%;
+                    left          : 50%;
+                    translate     : -50% -50%;
+                    border-radius : 100vmax;
+                    opacity       : 0.6;
+                    background    : radial-gradient(70.61% 50% at 50% 50%, #95DCFF 0%, #55B4E6 58.5%, #405D9E 100%);
+                    filter        : blur(60px);
+                    pointer-events: none;
+                }
+
+                &:not(:first-child) {
+                    opacity: 0;
+                }
+
+                img {
+                    display   : block;
+                    width     : 100%;
+                    height    : 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        .post-special-feature {
+            grid-column: 1;
+            grid-row   : 2;
+            position   : relative;
+            z-index    : 3;
+            margin-top : calc((#{$h} - #{$s} - 6rem) * -1);
+
+            .post {
+                &-list {}
+
+                &-item {
+                    pointer-events: none;
+                    border-top    : 1px solid transparent;
+
+                    &:last-child {
+                        border-bottom: 1px solid transparent;
+                    }
+                }
+
+                &-link {
+                    color         : var(--color_white);
+                    padding-block : 4.6rem;
+                    pointer-events: all;
+                }
+
+                &-content {
+                    width        : calc(100% - 50px);
+                    max-width    : 106rem;
+                    margin-inline: auto;
+                    column-gap   : 4rem;
+                }
+            }
+
+            .arrow {
+                flex-shrink: 0;
+            }
+
+            .thumbnail {
+                display: none;
+            }
+
+            .meta {
+                width  : 51.9rem;
+                row-gap: 2rem;
+
+                .title {
+                    font-size  : 1.7rem;
+                    line-height: calc(24/17);
+                    @include g.leadingTrim(calc(24/17));
+                }
+
+                .date {}
+
+                .cats {
+                    .cat {
+                        border-color: var(--color_white);
+                        color       : var(--color_white);
+                    }
+                }
+            }
+        }
+
+        .divider-list {
+            grid-column: 1;
+            grid-row   : 2;
+            position   : relative;
+            z-index    : 1;
+            margin-top : calc((#{$h} - #{$s} - 6rem) * -1);
+
+            .divider {
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+                &:last-child {
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                }
+            }
+        }
+
+        .button {
+            margin-top: 6rem;
+        }
+    }
+}
+
+// sp
+@include g.media(md) {
+    .t-feature {
+        .container {
+            width        : calc(100% - 50px);
+            margin-inline: auto;
+            padding-block: 7rem;
+        }
+
+        &__head {
+            width     : 100%;
+            text-align: center;
+
+            .en {
+                font-size: 3.4rem;
+            }
+
+            h2 {
+                font-size : 1.4rem;
+                margin-top: 0.8rem;
+            }
+        }
+
+        &__body {
+            margin-top: 4rem;
+
+            .feature {
+                display: block;
+            }
+
+            .post-thumbnail-list {
+                display: none;
+            }
+
+            .post-special-feature {
+                margin-top    : 0;
+                padding-bottom: 3rem;
+                border-bottom : 1px solid rgba(255, 255, 255, 0.2);
+
+                .post {
+                    &-list {
+                        display       : flex;
+                        column-gap    : 3rem;
+                        overflow-x    : auto;
+                        padding-bottom: 1.5rem;
+                        margin-bottom : -1.5rem;
+                        margin-left   : -25px;
+                        padding-inline: 25px;
+                        width         : calc(100% + 50px);
+                    }
+
+                    &-item {
+                        width      : 22rem;
+                        flex-shrink: 0;
+                        border-top : none;
+
+                        &:last-child {
+                            border-bottom: none;
+                        }
+                    }
+
+                    &-link {
+                        padding-block: 0;
+                    }
+
+                    &-content {
+                        display: block;
+                        width  : 100%;
+                    }
+                }
+
+                .arrow {
+                    display: none;
+                }
+
+                .thumbnail {
+                    display: block;
+                    height : 30.8rem;
+                }
+
+                .meta {
+                    width     : 100%;
+                    row-gap   : 1.5rem;
+                    margin-top: 2.4rem;
+
+                    .title {
+                        font-size  : 1.4rem;
+                        line-height: calc(22/14);
+                        @include g.leadingTrim(calc(22/14));
+                    }
+
+                    .date {
+                        margin-right: auto;
+                    }
+
+                    .cats {}
+                }
+            }
+
+            .divider-list {
+                display: none;
+            }
+
+            .button {
+                margin-top: 3rem;
+            }
+        }
+    }
+}

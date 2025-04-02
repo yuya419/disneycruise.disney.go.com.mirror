@@ -70,23 +70,49 @@
 // sp
 @include g.media(md) {
     .requestButton {
+        width : 7rem;
+        height: 7rem;
+        top   : inherit;
+        right : 1.3rem;
+        bottom: 1.3rem;
 
         a {
+            width           : 100%;
+            height          : 100%;
+            flex-direction  : column-reverse;
+            justify-content : center;
+            row-gap         : 1rem;
+            padding         : 0;
+            background-color: var(--theme_color_main);
+            border-radius   : 50%;
 
-            &::before {}
+            &::before {
+                content: none;
+            }
         }
 
         .label {
             font-size   : 1.2rem;
+            line-height : 1;
             writing-mode: horizontal-tb;
+            color       : var(--color_white);
 
             span {
                 display: none;
             }
         }
 
+        .divider {
+            display: none;
+        }
+
         .icon {
-            .i-calendar {}
+            width : 1.7rem;
+            height: 1.7rem;
+
+            .i-calendar {
+                color: var(--theme_color_sub);
+            }
         }
     }
 }

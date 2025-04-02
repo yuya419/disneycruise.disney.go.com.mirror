@@ -45,11 +45,12 @@
         font-size          : 1.3rem;
         font-weight        : 700;
         letter-spacing     : 0.03em;
-        line-height        : 1;
+        line-height        : 0.8;
         color              : var(--color_white);
         display            : grid;
         grid-template-areas: "text";
         overflow           : hidden;
+        text-align         : center;
 
         &-open {
             grid-area: text;
@@ -66,16 +67,29 @@
 // sp
 @include g.media(md) {
     .drawerButton {
+        width           : 6.3rem;
+        height          : 7.2rem;
+        right           : 1rem;
+        border-bottom   : none;
+        border-radius   : 0 0 0.5rem 0.5rem;
+        background-color: var(--color_white);
 
-        &-inner {}
+        &-inner {
+            justify-content: center;
+            padding-top    : 0;
+            row-gap        : 0.6rem;
+        }
 
         .icon {
+            width : 3.6rem;
+            height: 3.6rem;
 
             .i-menu {}
         }
 
         .text {
             font-size: 1.2rem;
+            color    : var(--theme_color_text);
 
             &-open {}
 

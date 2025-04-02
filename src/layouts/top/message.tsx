@@ -4,10 +4,38 @@
  */
 import Image from "next/image";
 import helper from "@/libs/helper";
+import { GallerySlider } from "@/components/modules/common/common";
 import "./styles/message.scss";
 
 export default function Hero() {
     const { getImagePath } = helper();
+
+    const images = {
+        "img01": {
+            src: "top/gallery/img01.jpg",
+            alt: "",
+            w: 390,
+            h: 260,
+        },
+        "img02": {
+            src: "top/gallery/img02.jpg",
+            alt: "",
+            w: 390,
+            h: 260,
+        },
+        "img03": {
+            src: "top/gallery/img03.jpg",
+            alt: "",
+            w: 390,
+            h: 260,
+        },
+        "img04": {
+            src: "top/gallery/img04.jpg",
+            alt: "",
+            w: 390,
+            h: 260,
+        },
+    }
 
     return (
         <section className="t-message">
@@ -19,7 +47,6 @@ export default function Hero() {
                             alt="サイト名"
                             width={470}
                             height={256}
-                            layout={"responsive"}
                             priority
                         />
                     </p>
@@ -36,6 +63,7 @@ export default function Hero() {
                         洋上で魔法のような日々をお過ごしください。</p>
                 </div>
             </div>
+            <GallerySlider to="left" images={images} />
         </section>
     )
 }

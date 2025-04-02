@@ -11,13 +11,12 @@
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .t-message {
-    color           : var(--color_white);
-    background-color: var(--theme_color_main);
+    color: var(--color_white);
 
     .container {
         width        : calc(100% - 50px);
         margin-inline: auto;
-        padding      : 18rem 0 9.5rem;
+        padding      : 18rem 0 25.6em;
     }
 
     // &__head
@@ -26,6 +25,11 @@
         .logo {
             width        : 47rem;
             margin-inline: auto;
+
+            img {
+                display: block;
+                width  : 100%;
+            }
         }
 
         h2 {
@@ -57,7 +61,7 @@
 @include g.media(md) {
     .t-message {
         .container {
-            padding-block: 8rem;
+            padding: 8rem 0 14.6rem;
         }
 
         // &__head

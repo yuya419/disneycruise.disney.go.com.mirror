@@ -4,5 +4,6 @@
  */
 import Hero from "./hero";
 import Message from "./message";
+import Feature from "./feature";
 
-export { Hero, Message };
+export { Hero, Message, Feature };

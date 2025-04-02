@@ -1,0 +1,80 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* button */
+
+/* 目次 */
+/* __10: 共通設定 */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.button {
+    &-el {
+        display        : flex;
+        align-items    : center;
+        justify-content: space-between;
+        width          : fit-content;
+        min-width      : 20.5rem;
+        height         : 5.8rem;
+        border-radius  : 0.7rem;
+        padding-left   : 2.2rem;
+        padding-right  : 1.8rem;
+        text-decoration: none;
+
+        .label {
+            font-size  : 1.8rem;
+            line-height: calc(26/18);
+            @include g.leadingTrim(calc(26/18));
+        }
+
+        .arrow {}
+    }
+
+    // 中央揃え
+    &[data-align="center"] {
+        .button-el {
+            margin-inline: auto;
+        }
+    }
+
+    // 右寄せ
+    &[data-align="right"] {
+        .button-el {
+            margin-left: auto;
+        }
+    }
+
+    // 青ベタ、白文字
+    [data-type="primary"] {
+        background-color: var(--theme_color_main);
+
+        .label {
+            color: var(--color_white);
+        }
+    }
+
+    // 白ベタ、青文字
+    [data-type="secondary"] {
+        background-color: var(--color_white);
+
+        .label {
+            color: var(--theme_color_main);
+        }
+    }
+
+    // 金ベタ、白文字
+    [data-type="tertiary"] {
+        background-color: var(--theme_color_sub);
+
+        .label {
+            color: var(--color_white);
+        }
+    }
+}
+
+// sp
+@include g.media(md) {
+    .button {}
+}

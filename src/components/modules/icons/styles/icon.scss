@@ -1,0 +1,68 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* icon */
+
+/* 目次 */
+/* __10: 共通設定 */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.arrow {
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    border-radius  : 100vmax;
+
+    svg {
+        display     : block;
+        aspect-ratio: 1;
+    }
+
+    // サイズ
+    &[data-size="s"] {
+        width : 3.1rem;
+        height: 1.8rem;
+
+        .i-arw-r {
+            width: 0.9rem;
+        }
+    }
+
+    &[data-size="m"] {
+        width : 3.6rem;
+        height: 2.1rem;
+
+        .i-arw-r {
+            width: 1.1rem;
+        }
+    }
+
+    // 背景色
+    &[data-bg="blue"] {
+        background-color: #174395;
+    }
+
+    &[data-bg="white"] {
+        background-color: var(--color_white);
+    }
+
+    &[data-bg="gold"] {
+        background-color: var(--theme_color_sub);
+    }
+
+    // 矢印の色
+    &[data-color="blue"] {
+        color: #174395;
+    }
+
+    &[data-color="white"] {
+        color: var(--color_white);
+    }
+
+    &[data-color="gold"] {
+        color: var(--theme_color_sub);
+    }
+}

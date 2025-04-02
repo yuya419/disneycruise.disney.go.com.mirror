@@ -3,12 +3,15 @@
 /* common */
 
 /* 目次 */
-/* __10: 共通設定 */
+/* __10: divider */
+/* __20: gallery-slider */
+/* __30: bg */
+/* __40: post-thumbnail-list */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 @use "@/assets/styles/_mixin"as g;
 
-/* __10: 共通設定 */
+/* __10: divider */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .divider {
     display    : block;
@@ -23,5 +26,117 @@
     }
 }
 
+/* __20: gallery-slider */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.gallery-slider {
+    overflow: hidden;
+    display : flex;
+
+    &-list {
+        display    : flex;
+        flex-shrink: 0;
+        animation  : gallerySlider 20s linear infinite forwards;
+    }
+
+    &-item {
+        flex-shrink: 0;
+
+        img {
+            display: block;
+            width  : 100%;
+            height : 100%;
+        }
+    }
+
+    &[data-slide-to="left"] {
+        .gallery-slider-list {}
+    }
+
+    &[data-slide-to="right"] {
+        .gallery-slider-list {}
+    }
+
+    @keyframes gallerySlider {
+        to {
+            translate: -100% 0;
+        }
+    }
+}
+
+/* __30: bg */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.bg {
+    position  : sticky;
+    bottom    : 0;
+    width     : 100%;
+    height    : 100lvh;
+    margin-top: -100lvh;
+    z-index   : -1;
+
+    .color,
+    .video {
+        position: absolute;
+        inset   : 0;
+        margin  : auto;
+    }
+
+    .color {
+        z-index         : 2;
+        background-color: #000846;
+        opacity         : 0.7;
+    }
+
+    .video {
+        z-index: 1;
+        opacity: 0;
+
+        &::before {
+            content         : "";
+            position        : absolute;
+            inset           : 0;
+            margin          : auto;
+            background-color: black;
+            opacity         : 0.15;
+            z-index         : 3;
+        }
+
+        .hero,
+        .water {
+            position: absolute;
+            width   : 100%;
+            height  : 100%;
+            top     : 0;
+            left    : 0;
+        }
+
+        .hero {
+            z-index: 2;
+        }
+
+        .water {
+            z-index: 2;
+        }
+
+        video {
+            display   : block;
+            width     : 100%;
+            height    : 100%;
+            object-fit: cover;
+        }
+    }
+}
+
 // sp
-@include g.media(md) {}
+@include g.media(md) {
+    .bg {
+        .video {
+            .hero {
+                height: 70.2rem;
+
+                video {
+                    object-position: center -3.9rem;
+                }
+            }
+        }
+    }
+}

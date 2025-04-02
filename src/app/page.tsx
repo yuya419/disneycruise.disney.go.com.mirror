@@ -3,7 +3,8 @@
  * @description TOPページ
  */
 "use client";
-import { Hero, Message } from "@/layouts/top/top";
+import { Hero, Message, Feature } from "@/layouts/top/top";
+import { Bg } from "@/components/modules/common/common";
 
 export default function Home() {
 
@@ -11,6 +12,8 @@ export default function Home() {
     <main className="top">
       <Hero />
       <Message />
+      <Feature />
+      <Bg state={false} />
     </main>
   );
 }

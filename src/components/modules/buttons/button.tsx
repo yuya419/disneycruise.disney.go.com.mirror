@@ -20,7 +20,6 @@ const Button = (props: {
             <Link href={props.link} className="button-el" target={props.blank ? "_blank" : "_self"} data-type={props.type}>
                 <span className="label" lang={props.lang}>{props.label}</span>
                 {arrow({
-                    size: "s",
                     bg: props.type === "primary" ? "white" : (props.type === "secondary" ? "blue" : "gold"),
                     color: props.type === "primary" ? "blue" : (props.type === "secondary" ? "white" : "white"),
                 })}

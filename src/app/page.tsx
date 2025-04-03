@@ -3,7 +3,15 @@
  * @description TOPページ
  */
 "use client";
-import { Hero, Message, Feature } from "@/layouts/top/top";
+import {
+  Hero,
+  Message,
+  Feature,
+  ThemedAreas,
+  Entertainment,
+  Dining,
+  Accommodations
+} from "@/layouts/top/top";
 import { Bg } from "@/components/modules/common/common";
 
 export default function Home() {
@@ -13,6 +21,10 @@ export default function Home() {
       <Hero />
       <Message />
       <Feature />
+      <ThemedAreas />
+      <Entertainment />
+      <Dining />
+      <Accommodations />
       <Bg state={false} />
     </main>
   );

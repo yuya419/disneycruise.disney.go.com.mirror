@@ -46,7 +46,7 @@ const Feature = (props: {
             <article className="post-item" key={key}>
                 <Link href={'/feature/' + posts[key].link} className="post-link">
                     <div className="post-content">
-                        {props.arrow && arrow({ size: "s", bg: "white", color: "blue" })}
+                        {props.arrow && arrow({ bg: "white", color: "blue" })}
                         <div className="thumbnail">
                             <Image
                                 src={posts[key].thumbnail.src}

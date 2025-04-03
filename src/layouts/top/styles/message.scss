@@ -86,5 +86,12 @@
                 line-height: calc(26/15);
             }
         }
+
+        .gallery-slider {
+
+            &-item {
+                height: 13rem;
+            }
+        }
     }
 }

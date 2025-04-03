@@ -7,7 +7,6 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import helper from "@/libs/helper";
 import "./styles/common.scss";
-import { disconnect } from "process";
 
 /**
  * @name Divider
@@ -20,10 +19,10 @@ import { disconnect } from "process";
 const Divider = (props: { dir: "vert" | "hrzn", w: string, h: string, color: "white" | "blue" }) => {
 
     let style = {
-        width: props.w + "px",
-        height: props.h + "px",
+        "--w": props.w,
+        "--h": props.h,
         "--divider-color": props.color === "white" ? "#fff" : "#002D74",
-    }
+    } as React.CSSProperties;
 
     return (
         <span className={{ vert: "divider is-vert", hrzn: "divider is-hrzn" }[props.dir]} style={style}></span>
@@ -55,7 +54,7 @@ const GallerySlider = (props: {
                 {
                     Object.keys(props.images).map((key) => {
                         return (
-                            <div className="gallery-slider-item" key={key}>
+                            <div key={key} className="gallery-slider-item">
                                 <Image
                                     src={getImagePath(props.images[key].src)}
                                     alt={props.images[key].alt}
@@ -79,6 +78,49 @@ const GallerySlider = (props: {
         </div>
     )
 }
+
+/**
+ * @name GalleryParallax
+ * @description ギャラリーパララックス
+ * @param props.images 画像の情報
+ */
+const GalleryParallax = (props: {
+    images: {
+        [key: string]: {
+            src: string,
+            alt: string,
+            w: number,
+            h: number,
+        }
+    }
+}) => {
+    const { getImagePath } = helper();
+
+    const galleryParallaxItems = () => {
+        return (
+            Object.keys(props.images).map((key) => {
+                return (
+                    <div key={key} className={`gallery-parallax-item is-item-${key}`}>
+                        <Image
+                            src={getImagePath(props.images[key].src)}
+                            alt={props.images[key].alt}
+                            width={props.images[key].w}
+                            height={props.images[key].h}
+                            priority
+                        />
+                    </div>
+                );
+            })
+        )
+    }
+
+    return (
+        <div className="gallery-parallax">
+            {galleryParallaxItems()}
+        </div>
+    )
+}
+
 
 /**
  * @name Bg
@@ -173,6 +215,7 @@ const PostThumbnailList = (props: {
 export {
     Divider,
     GallerySlider,
+    GalleryParallax,
     Bg,
     PostThumbnailList,
 }

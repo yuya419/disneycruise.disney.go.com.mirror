@@ -6,7 +6,6 @@
 /* __10: divider */
 /* __20: gallery-slider */
 /* __30: bg */
-/* __40: post-thumbnail-list */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 @use "@/assets/styles/_mixin"as g;
@@ -16,13 +15,19 @@
 .divider {
     display    : block;
     flex-shrink: 0;
+    width      : calc(var(--w)*1px);
+    height     : calc(var(--h)*1px);
 
-    &.is-vert {}
+    &.is-vert {
+        background-image   : linear-gradient(to top, var(--divider-color) 2px, transparent 2px);
+        background-position: center top;
+        background-size    : 1px calc(var(--h) * 1px / 5);
+    }
 
     &.is-hrzn {
         background-image   : linear-gradient(to right, var(--divider-color) 2px, transparent 2px);
         background-position: left top;
-        background-size    : 3px 2px;
+        background-size    : calc(var(--w) * 1px / 5) 1px;
     }
 }
 
@@ -42,9 +47,10 @@
         flex-shrink: 0;
 
         img {
-            display: block;
-            width  : 100%;
-            height : 100%;
+            display   : block;
+            width     : 100%;
+            height    : 100%;
+            object-fit: cover;
         }
     }
 
@@ -81,9 +87,9 @@
     }
 
     .color {
-        z-index         : 2;
-        background-color: #000846;
-        opacity         : 0.7;
+        z-index            : 2;
+        background-color   : var(--color_white);
+        // opacity         : 0.7;
     }
 
     .video {

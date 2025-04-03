@@ -1,5 +1,5 @@
 /**
- * @name Feature.tsx
+ * @name feature.tsx
  * @description 特集記事
  */
 'use client';
@@ -101,7 +101,7 @@ export default function Feature() {
         <section className="t-feature" ref={wrapRef}>
             <div className="container">
                 <hgroup className="t-feature__head">
-                    <p className="en" lang="en">Special Feature</p>
+                    <p lang="en">Special Feature</p>
                     <h2>特集記事</h2>
                 </hgroup>
                 <div className="t-feature__body">
@@ -113,14 +113,7 @@ export default function Feature() {
                         </div>
                     </div>
                     {
-                        posts && Button({
-                            type: "secondary",
-                            label: "View More",
-                            lang: "en",
-                            link: "/feature",
-                            blank: false,
-                            align: "center",
-                        })
+                        posts && <Button type="secondary" label="View More" lang="en" link="/feature/" align="center"/>
                     }
                 </div>
             </div>

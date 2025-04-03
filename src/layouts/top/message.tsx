@@ -1,6 +1,6 @@
 /**
- * @name Hero.tsx
- * @description ヒーローセクション
+ * @name message.tsx
+ * @description メッセージ
  */
 import Image from "next/image";
 import helper from "@/libs/helper";

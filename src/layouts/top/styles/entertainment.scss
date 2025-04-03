@@ -1,0 +1,265 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* entertainment */
+
+/* 目次 */
+/* __10: 共通設定 */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.t-entertainment {
+    position        : relative;
+    z-index         : 1;
+    background-color: var(--theme_color_bg_sub);
+
+    .container {
+        padding-top   : 14.2rem;
+        padding-bottom: 17rem;
+    }
+
+    // &__head
+    &__head {
+        text-align: center;
+
+        p {
+            font-size     : 1.5rem;
+            line-height   : 1;
+            letter-spacing: 0.03em;
+        }
+
+        h2 {
+            font-size     : 6.4rem;
+            line-height   : calc(67/64);
+            letter-spacing: 0.03em;
+            color         : var(--theme_color_sub);
+            margin-top    : 2.2rem;
+        }
+    }
+
+    // &__detail
+    &__detail {
+        margin-top: 8rem;
+
+        .detail {
+            margin-inline: auto;
+            width        : calc(100% - 70px);
+            max-width    : 42.7rem;
+
+            .accent {
+                display              : grid;
+                grid-template-columns: 1fr auto 1fr;
+                column-gap           : 1.3rem;
+
+                &.is-top {
+                    align-items: flex-end;
+
+                    .bar {
+                        margin-bottom: 0.2rem;
+                    }
+                }
+
+                &.is-bottom {
+                    align-items: flex-start;
+
+                    .onm {
+                        scale: 1 -1;
+                    }
+
+                    .bar {
+                        margin-top: 0.2rem;
+                    }
+                }
+
+                .bar {
+                    height          : 1px;
+                    background-color: #DED1B8;
+                }
+
+                .onm {
+                    display: block;
+                    width  : 2.3rem;
+                    height : 1.8rem;
+                }
+            }
+
+            .text-box {
+                padding-block   : 10rem;
+                margin-block    : 1.6rem;
+                text-align      : center;
+                border-radius   : 0.6rem;
+                background-color: var(--color_white);
+
+                h3 {
+                    font-size     : 2rem;
+                    letter-spacing: 0.03em;
+                    line-height   : calc(31/20);
+                    @include g.leadingTrim(calc(31/20));
+                }
+
+                p {
+                    font-size     : 1.5rem;
+                    letter-spacing: 0.03em;
+                    line-height   : calc(29/15);
+                    @include g.leadingTrim(calc(29/15));
+                    margin-top: 4rem;
+                }
+
+                .button {
+                    margin-top: 4.8rem;
+                }
+            }
+        }
+
+        .en {
+            font-size     : 3.2rem;
+            line-height   : 1.2;
+            letter-spacing: 0.03em;
+            text-align    : center;
+            color         : var(--theme_color_sub);
+            margin-top    : 7.3rem;
+        }
+    }
+
+    // .gallery-slider
+    .gallery-slider {
+        display: none;
+
+        &-list {
+            animation-play-state: paused;
+        }
+    }
+
+    // .gallery-parallax
+    .gallery-parallax {
+        position : absolute;
+        max-width: 130rem;
+        height   : 100%;
+        inset    : 0;
+        margin   : auto;
+        z-index  : -1;
+
+        &-item {
+            position: absolute;
+
+            &.is-item-img01 {
+                top : 30.6rem;
+                left: 0;
+            }
+
+            &.is-item-img02 {
+                top : 45.9rem;
+                left: 7.4rem;
+            }
+
+            &.is-item-img03 {
+                top    : 80.9rem;
+                left   : 4.6rem;
+                z-index: 2;
+            }
+
+            &.is-item-img04 {
+                top : 84.2rem;
+                left: 12.8rem;
+            }
+
+            &.is-item-img05 {
+                top  : 29.8rem;
+                right: 4.3rem;
+            }
+
+            &.is-item-img06 {
+                top  : 57.8rem;
+                right: 0;
+            }
+
+            &.is-item-img07 {
+                top  : 80.9rem;
+                right: 21rem;
+            }
+        }
+    }
+}
+
+// sp
+@include g.media(md) {
+    .t-entertainment {
+        .container {
+            padding-block: 6rem;
+        }
+
+        // &__head
+        &__head {
+            p {
+                font-size: 1.3rem;
+            }
+
+            h2 {
+                font-size : 3.4rem;
+                margin-top: 1.3rem;
+            }
+        }
+
+        // &__detail
+        &__detail {
+            margin-top: 2.6rem;
+
+            .detail {
+
+                .accent {
+                    column-gap: 0;
+
+                    .onm {
+                        width : 3.6rem;
+                        height: 1.7rem;
+                    }
+                }
+
+                .text-box {
+                    padding-block: 4.8rem;
+                    margin-block : 1.2rem;
+
+                    h3 {
+                        font-size  : 1.7rem;
+                        line-height: calc(28/17);
+                        @include g.leadingTrim(calc(28/17));
+                    }
+
+                    p {
+                        font-size  : 1.4rem;
+                        line-height: calc(24/14);
+                        @include g.leadingTrim(calc(24/14));
+                        margin-top: 3rem;
+                    }
+
+                    .button {
+                        margin-top: 3rem;
+                    }
+                }
+            }
+
+            .en {
+                font-size : 1.9rem;
+                margin-top: 2.3rem;
+            }
+        }
+
+        .gallery-slider {
+            display: flex;
+
+            &-list {
+                animation-play-state: running;
+            }
+
+            &-item {
+                height: 13rem;
+            }
+        }
+
+        .gallery-parallax {
+            display: none;
+        }
+    }
+}

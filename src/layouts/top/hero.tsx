@@ -1,6 +1,6 @@
 /**
- * @name Hero.tsx
- * @description ヒーローセクション
+ * @name hero.tsx
+ * @description ヒーロー
  */
 import Image from "next/image";
 import Pickup from "@/layouts/post/pickup";

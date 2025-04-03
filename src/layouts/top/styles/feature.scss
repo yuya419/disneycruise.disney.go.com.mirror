@@ -22,7 +22,7 @@
         max-width    : 106rem;
         margin-inline: auto;
 
-        .en {
+        p {
             font-size     : 4.3rem;
             color         : var(--color_white);
             letter-spacing: 0.03em;
@@ -196,6 +196,7 @@
 
         &__head {
             width     : 100%;
+            max-width : inherit;
             text-align: center;
 
             .en {
@@ -251,8 +252,9 @@
                     }
 
                     &-content {
-                        display: block;
-                        width  : 100%;
+                        display  : block;
+                        width    : 100%;
+                        max-width: inherit;
                     }
                 }
 

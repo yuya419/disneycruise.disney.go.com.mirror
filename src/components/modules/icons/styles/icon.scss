@@ -15,29 +15,13 @@
     align-items    : center;
     justify-content: center;
     border-radius  : 100vmax;
+    width          : 3.1rem;
+    height         : 1.8rem;
 
-    svg {
+    .i-arw-r {
         display     : block;
+        width       : 0.9rem;
         aspect-ratio: 1;
-    }
-
-    // サイズ
-    &[data-size="s"] {
-        width : 3.1rem;
-        height: 1.8rem;
-
-        .i-arw-r {
-            width: 0.9rem;
-        }
-    }
-
-    &[data-size="m"] {
-        width : 3.6rem;
-        height: 2.1rem;
-
-        .i-arw-r {
-            width: 1.1rem;
-        }
     }
 
     // 背景色
@@ -64,5 +48,17 @@
 
     &[data-color="gold"] {
         color: var(--theme_color_sub);
+    }
+}
+
+// sp
+@include g.media(md) {
+    .arrow {
+        width : 2.7rem;
+        height: 1.6rem;
+
+        .i-arw-r {
+            width: 0.8rem;
+        }
     }
 }

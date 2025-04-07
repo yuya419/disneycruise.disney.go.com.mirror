@@ -9,5 +9,19 @@ import ThemedAreas from "./themedAreas";
 import Entertainment from "./entertainment";
 import Dining from "./dining";
 import Accommodations from "./accommodations";
+import KidsClubs from "./kidsClubs";
+import Adults from "./adults";
+import Concierge from "./concierge";
 
-export { Hero, Message, Feature, ThemedAreas, Entertainment, Dining, Accommodations };
+export {
+    Hero,
+    Message,
+    Feature,
+    ThemedAreas,
+    Entertainment,
+    Dining,
+    Accommodations,
+    KidsClubs,
+    Adults,
+    Concierge
+};

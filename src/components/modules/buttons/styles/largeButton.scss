@@ -1,0 +1,53 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* large-button */
+
+/* 目次 */
+/* __10: 共通設定 */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.large-button {
+    &-el {
+        width           : 100%;
+        height          : 11rem;
+        display         : flex;
+        align-items     : center;
+        justify-content : space-between;
+        background-color: var(--color_white);
+        border          : 1px solid var(--theme_color_border);
+        border-radius   : 0.7rem;
+        text-decoration : none;
+
+        .en-label {
+            flex-shrink : 0;
+            font-size   : 2.2rem;
+            line-height : calc(23/22);
+            color       : var(--theme_color_main);
+            border-left : 3px solid var(--theme_color_sub);
+            padding-left: 3rem;
+        }
+
+        .ja-label {
+            flex-shrink  : 0;
+            display      : flex;
+            align-items  : center;
+            padding-right: 3rem;
+
+            .divider {}
+
+            .label {
+                font-size     : 1.5rem;
+                letter-spacing: 0.03em;
+                color         : var(--theme_color_text);
+                margin-left   : 2.6rem;
+                margin-right  : 1rem;
+            }
+
+            .arrow {}
+        }
+    }
+}

@@ -66,10 +66,10 @@
 
     // 金ベタ、白文字
     [data-type="tertiary"] {
-        background-color: var(--theme_color_sub);
+        background-color: var(--color_white);
 
         .label {
-            color: var(--color_white);
+            color: #866B0E;
         }
     }
 }

@@ -1,0 +1,196 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* kidsClubs */
+
+/* 目次 */
+/* __10: 共通設定 */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.t-kids-clubs {
+    padding-top     : 43.1rem;
+    background-color: var(--color_white);
+    overflow        : hidden;
+
+    .container {
+        width           : calc(100% - 100px);
+        max-width       : 120rem;
+        margin-inline   : auto;
+        background-color: var(--theme_color_bg_sub);
+        padding         : max(18.8rem, calc(100vw/(1300/188))) 0 12.2rem;
+        position        : relative;
+    }
+
+    // &__circle-slider
+    &__circle-slider {
+        position     : absolute;
+        top          : -25.1rem;
+        left         : 0;
+        right        : 0;
+        margin-inline: auto;
+
+        .circle-slider {}
+
+        .circle-slide-list {
+            display            : grid;
+            grid-template-areas: "slide";
+            width              : max(52rem, calc(100vw/(1300/520)));
+            height             : max(34.7rem, calc(100vw/(1300/347)));
+            margin-inline      : auto;
+            transform-origin   : center 225vw;
+        }
+
+        .circle-slide-item {
+            grid-area       : slide;
+            transform-origin: center 225vw;
+            position        : relative;
+
+            &:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
+                display: none;
+            }
+
+            &:nth-child(1) {
+                rotate : calc(-12deg * var(--val, 1));
+                z-index: 1;
+            }
+
+            &:nth-child(2) {
+                z-index: 2;
+            }
+
+            &:nth-child(3) {
+                rotate : calc(12deg * var(--val, 1));
+                z-index: 1;
+            }
+
+            img {
+                display   : block;
+                width     : 100%;
+                height    : 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    // &__head
+    &__head {
+        text-align: center;
+
+        p {
+            font-size     : 4.3rem;
+            letter-spacing: 0.03em;
+            line-height   : calc(28/43);
+            color         : var(--theme_color_main);
+        }
+
+        h2 {
+            font-size     : 1.6rem;
+            letter-spacing: 0.03em;
+            line-height   : calc(12/16);
+            color         : var(--theme_color_sub);
+            margin-top    : 2rem;
+        }
+    }
+
+    // &__text
+    &__text {
+        margin-top: 5rem;
+        text-align: center;
+
+        h3 {
+            font-size     : 2rem;
+            letter-spacing: 0.03em;
+            line-height   : calc(34/20);
+            @include g.leadingTrim(calc(34/20));
+        }
+
+        p {
+            font-size     : 1.5rem;
+            letter-spacing: 0.03em;
+            line-height   : calc(29/15);
+            @include g.leadingTrim(calc(29/15));
+            margin-top: 4rem;
+        }
+
+        .button {
+            margin-top: 4rem;
+        }
+    }
+}
+
+// sp
+@include g.media(md) {
+    .t-kids-clubs {
+        padding-top: 19.7rem;
+
+        .container {
+            width    : calc(100% - 30px);
+            max-width: inherit;
+            padding  : 14rem 0 6rem;
+        }
+
+        // &__head
+        &__head {
+            p {
+                font-size  : 3.4rem;
+                line-height: calc(22/34);
+            }
+
+            h2 {
+                font-size  : 1.4rem;
+                line-height: calc(10/14);
+                margin-top : 1.6rem;
+            }
+        }
+
+        // &__circle-slider
+        &__circle-slider {
+            top: -11.6rem;
+
+            .circle-slider {}
+
+            .circle-slide-list {
+                width           : 30rem;
+                height          : 20rem;
+                transform-origin: 50% 167rem;
+                rotate          : calc(-12deg * 5); // 2,8 → 5リセット
+            }
+
+            .circle-slide-item {
+                transform-origin: 50% 167rem;
+                z-index         : 1;
+
+                &:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
+                    display: block;
+                }
+
+                @for $i from 1 to 12 {
+                    &:nth-child(#{$i}) {
+                        rotate: calc(12deg * #{$i});
+                    }
+                }
+            }
+        }
+
+        // &__text
+        &__text {
+            margin-top: 4.2rem;
+
+            h3 {
+                font-size  : 1.7rem;
+                line-height: calc(28/17);
+                @include g.leadingTrim(calc(28/17));
+            }
+
+            p {
+                font-size  : 1.4rem;
+                line-height: calc(26/14);
+                @include g.leadingTrim(calc(26/14));
+                margin-top: 3rem;
+            }
+        }
+    }
+}

@@ -45,6 +45,11 @@ const Symbol = () => {
             viewBox: "0 0 13 8",
             path: '<path d="m1.5 2.59766 3.5 3.5 7-5.500004" stroke="#897630" stroke-width="1.5" />',
         },
+        {
+            id: "i-target",
+            viewBox: "0 0 16 16",
+            path: '<g stroke="currentColor" stroke-linecap="square" stroke-width="1.28267"><path d="m11.3932 8.71112v3.38628h-7.52406v-7.50365h3.39548" stroke-linejoin="round"/><path d="m13.0914 6.78492v-3.88648h-3.89706" stroke-linejoin="round"/><path d="m7.5542 8.41916 5.1833-5.16916" stroke-miterlimit="10"/></g>',
+        },
     ];
 
     const symbol = paths.map((path, key) => {

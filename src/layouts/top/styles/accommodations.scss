@@ -409,8 +409,9 @@
 
     .icon {
         .arrow {
-            clip-path : inset(calc(50% - 4px) round 100vmax);
-            transition: clip-path 0.3s var(--customEasingOut);
+            border-radius: 100vmax;
+            clip-path    : inset(calc(50% - 4px) round 100vmax);
+            transition   : clip-path 0.3s var(--customEasingOut);
 
             .i-arw-r {
                 translate : -100% 0;
@@ -456,8 +457,9 @@
     &.isSelect {
         .icon {
             .arrow {
-                clip-path : inset(0 round 100vmax);
-                transition: clip-path 0.3s var(--customEasingOut);
+                border-radius: 100vmax;
+                clip-path    : inset(0 round 100vmax);
+                transition   : clip-path 0.3s var(--customEasingOut);
 
                 .i-arw-r {
                     translate : 0 0;

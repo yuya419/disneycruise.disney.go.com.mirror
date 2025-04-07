@@ -6,9 +6,252 @@
 /* __10: 共通設定 */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.footer {
+    background-color: ragb(0, 8, 70, 0.6);
+
+    &-inner {
+        width                : calc(100% - 100px);
+        max-width            : 120rem;
+        margin-inline        : auto;
+        padding-block        : 12rem;
+        display              : grid;
+        grid-template-columns: repeat(2, auto);
+    }
+
+    // .cvNav
+    .cvNav {
+        grid-column: 1/3;
+    }
+
+    // .sitemap
+    .sitemap {
+        grid-column: 1/3;
+    }
+
+    // .guideline
+    .guideline {
+        max-width: 58rem;
+        color    : var(--color_white);
+
+        // &__miki-tourist
+        &__miki-tourist {
+            margin-top: 3.6rem;
+        }
+
+        // &__image
+        &__image {
+            margin-top       : 2.8rem;
+            padding-top      : 2.8rem;
+            background-image : url("/ships/adventure/common/icon/i-dot.svg");
+            background-size  : 0.6rem 0.2rem;
+            background-repeat: repeat-X;
+        }
+
+        p {
+            font-size  : 1.2rem;
+            line-height: calc(18/12);
+            left       : 0.03em;
+
+            &+p {
+                margin-top: 1.5rem;
+            }
+
+            &.logo {
+                width: 18.2rem;
+            }
+
+            &.ttl {
+                font-weight: 700;
+            }
+
+            a {
+                text-decoration: none;
+                color          : var(--color_white);
+            }
+        }
+
+        .accent {
+            display: none;
+        }
+    }
+
+    // .company
+    .company {
+        margin-top : 3.6rem;
+        margin-left: auto;
+
+        // .logo
+        .logo {
+            width: 41.4rem;
+
+            a {
+                display: block;
+            }
+
+            img {
+                display: block;
+                width  : 100%;
+                height : 100%;
+            }
+        }
+
+        // .sub-nav
+        .sub-nav {
+            margin-top: 7rem;
+
+            .nav {
+                &-menu {
+                    display        : flex;
+                    justify-content: flex-end;
+                    column-gap     : 2rem;
+                }
+
+                .menu-item {
+                    margin-block: -1rem;
+                }
+
+                .menu-item-link {
+                    display       : flex;
+                    align-items   : center;
+                    column-gap    : 0.5em;
+                    font-size     : 1.3rem;
+                    line-height   : 1.2;
+                    letter-spacing: 0.03em;
+                    color         : var(--color_white);
+                    padding-block : 1rem;
+
+                    .i-target {
+                        display: block;
+                        width  : 1.6rem;
+                        height : 1.6rem;
+                    }
+                }
+            }
+        }
+
+        // .copyright
+        .copyright {
+            font-size     : 1.2rem;
+            letter-spacing: 0.03em;
+            line-height   : calc(20/12);
+            text-align    : right;
+            color         : var(--color_white);
+            margin-top    : 2.7rem;
+        }
+    }
+
+    // .accent
+    .accent {
+        display              : grid;
+        grid-template-columns: auto 1fr auto;
+        align-items          : center;
+
+        .onm {
+            display: block;
+            width  : 3rem;
+            height : 1.8rem;
+
+            &.is-left {
+                scale: -1 1;
+            }
+        }
+
+        .bar {
+            height          : 1px;
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+    }
+}
 
 // sp
-@include g.media(md) {}
+@include g.media(md) {
+    .footer {
+        &-inner {
+            width        : calc(100% - 20px);
+            max-width    : inherit;
+            padding-block: 5rem;
+            display      : block;
+        }
+
+        .cvNav {
+            max-width    : 32rem;
+            margin-inline: auto;
+        }
+
+        // .guideline
+        .guideline {
+            max-width: inherit;
+
+            // &__miki-tourist
+            // &__image
+            &__miki-tourist,
+            &__image {
+                max-width: 32rem;
+                margin   : 2.8rem auto;
+            }
+
+            &__miki-tourist {}
+
+            // &__image
+            &__image {}
+
+            .accent {
+                display: grid;
+            }
+        }
+
+        // .company
+        .company {
+            margin-top : 3.2rem;
+            margin-left: auto;
+
+            // .logo
+            .logo {
+                width        : 18rem;
+                margin-inline: auto;
+            }
+
+            // .sub-nav
+            .sub-nav {
+                margin-top: 3.5rem;
+
+                .nav {
+                    &-menu {
+                        justify-content: center;
+                        column-gap     : 3rem;
+                    }
+
+                    .menu-item-link {
+                        font-size    : 1.2rem;
+                        padding-block: 1rem;
+
+                        .i-target {
+                            width : 1.4rem;
+                            height: 1.4rem;
+                        }
+                    }
+                }
+            }
+
+            // .copyright
+            .copyright {
+                font-size : 1.1rem;
+                text-align: center;
+                margin-top: 2rem;
+            }
+        }
+
+
+        // .accent
+        .accent {
+            .onm {
+                width : 2.2rem;
+                height: 1.4rem;
+            }
+        }
+    }
+}

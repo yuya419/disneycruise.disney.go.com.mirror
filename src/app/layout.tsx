@@ -11,6 +11,7 @@ import Header from "@/components/utils/header";
 import Footer from "@/components/utils/footer";
 import DrawerButton from "@/components/modules/buttons/drawerButton";
 import RequestButton from "@/components/modules/buttons/requestButton";
+import { Bg } from "@/components/modules/common/common";
 import { Symbol } from "@/libs/symbol";
 
 // メタデータ
@@ -23,6 +24,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
         <Header />
         {children}
         <Footer />
+        <Bg state={false} />
         <DrawerButton />
         <RequestButton />
         <Symbol />

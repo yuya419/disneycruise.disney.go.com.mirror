@@ -1,0 +1,252 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* sitemap */
+
+/* 目次 */
+/* __10: 共通設定 */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.sitemap {
+    margin-top: 7rem;
+
+    .nav {
+        display              : grid;
+        grid-template-columns: repeat(3, auto);
+        column-gap           : 8rem;
+        padding              : 5.3rem 3rem;
+
+        &-menu {
+            margin-block: -1.5rem;
+
+            .menu-item {}
+
+            .menu-item-link {
+                width          : 100%;
+                display        : flex;
+                align-items    : center;
+                text-decoration: none;
+                padding-block  : 1.5rem;
+
+                .label {
+                    display       : flex;
+                    flex-wrap     : wrap;
+                    align-items   : center;
+                    gap           : 0.8rem 1.7rem;
+                    padding-left  : 2rem;
+                    border-left   : 2px solid #E5C35C;
+                    line-height   : 1;
+                    letter-spacing: 0.03em;
+                }
+
+                .en {
+                    font-size: 2.3rem;
+                    color    : var(--color_white);
+                }
+
+                .jp {
+                    font-size: 1.3rem;
+                    color    : rgba(255, 255, 255, 0.7);
+                }
+            }
+        }
+    }
+
+    // .child-nav-menu
+    .child-nav-menu {
+        margin-block     : 1.5rem;
+        padding-left     : 2rem;
+        background-image : url("/ships/adventure/common/icon/i-dot.svg");
+        background-size  : 0.2rem 0.6rem;
+        background-repeat: repeat-y;
+
+        .child-menu-item {
+            &:not(:first-child) {
+                .child-menu-item-link {
+                    padding-top: 0.5rem;
+                }
+            }
+
+            &:not(:last-child) {
+                .child-menu-item-link {
+                    padding-bottom: 0.5rem;
+                }
+            }
+        }
+
+        .child-menu-item-link {
+            display        : block;
+            font-size      : 1.4rem;
+            line-height    : 1.4;
+            letter-spacing : 0.03em;
+            text-decoration: none;
+            color          : var(--color_white);
+        }
+    }
+
+    // .acdn
+    .acdn {
+
+        &-content,
+        &-inner {
+            display: contents;
+        }
+    }
+
+    // .toggle
+    .toggle {
+        &-label {
+            display: flex;
+        }
+
+        &-icon {
+            display: none;
+        }
+    }
+}
+
+// sp
+@include g.media(md) {
+    .sitemap {
+        margin-top: 3.5rem;
+
+        .nav {
+            display      : block;
+            max-width    : 32rem;
+            margin-inline: auto;
+            padding      : 1rem 0 2.7rem;
+
+            &-menu {
+                display     : grid;
+                column-gap  : 1.5rem;
+                margin-block: 0;
+
+                .menu-item {
+                    border-top: 1px solid rgba(255, 255, 255, 0.3);
+                }
+
+                .menu-item-link {
+                    padding-block: 1.8rem;
+
+                    .label {
+                        padding-left: 0;
+                        row-gap     : 1rem;
+                        border-left : none
+                    }
+
+                    .en {
+                        width    : 100%;
+                        font-size: 1.9rem;
+                    }
+
+                    .jp {
+                        width    : 100%;
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+
+            &-menu:nth-child(1) {
+                .menu-item:first-child {
+                    border-top: none;
+                }
+            }
+
+            &-menu:nth-child(2) {
+                grid-template-columns: repeat(2, 1fr);
+
+                .menu-item:first-child {
+                    grid-column: 1/3;
+                }
+            }
+
+            &-menu:nth-child(3) {
+                grid-template-columns: repeat(2, 1fr);
+
+                .menu-item:nth-last-child(1),
+                .menu-item:nth-last-child(2) {
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+                }
+            }
+        }
+
+        // .child-nav-menu
+        .child-nav-menu {
+            margin         : 0 0 1.8rem 1rem;
+
+            .child-menu-item-link {
+                font-size: 1.3rem;
+            }
+        }
+
+        // .acdn
+        .acdn {
+            &-content {
+                display           : grid;
+                grid-template-rows: 0fr;
+                transition        : grid-template-rows .2s ease-out;
+
+                &[data-hidden=false] {
+                    grid-template-rows: 1fr;
+                }
+            }
+
+            &-inner {
+                display : block;
+                overflow: hidden;
+            }
+        }
+
+        // .toggle
+        .toggle {
+            &-label {}
+
+            &-icon {
+                flex-shrink: 0;
+                display    : block;
+                width      : 40%;
+                position   : relative;
+
+                .icon {
+                    display      : block;
+                    width        : 1.9rem;
+                    height       : 1.9rem;
+                    position     : absolute;
+                    right        : 0;
+                    top          : 0;
+                    bottom       : 0;
+                    margin-block : auto;
+                    border       : 1px solid var(--color_white);
+                    border-radius: 50%;
+
+                    &::before,
+                    &::after {
+                        content         : "";
+                        position        : absolute;
+                        inset           : 0;
+                        margin          : auto;
+                        width           : 0.8rem;
+                        height          : 1px;
+                        background-color: var(--color_white);
+                    }
+
+                    &::after {
+                        rotate    : 90deg;
+                        transition: rotate 0.2s var(--customEasingOut);
+                    }
+                }
+
+                &[data-expanded="true"] {
+                    .icon {
+                        &::after {
+                            rotate: 0deg;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

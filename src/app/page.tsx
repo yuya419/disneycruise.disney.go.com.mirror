@@ -15,7 +15,6 @@ import {
   Adults,
   Concierge,
 } from "@/layouts/top/top";
-import { Bg } from "@/components/modules/common/common";
 
 export default function Home() {
 
@@ -31,7 +30,6 @@ export default function Home() {
       <KidsClubs />
       <Adults />
       <Concierge />
-      <Bg state={false} />
     </main>
   );
 }

@@ -14,6 +14,7 @@
     background-color: var(--color_white);
     position        : relative;
     z-index         : 1;
+    overflow        : clip;
 
     .container {
         width        : 100%;
@@ -34,8 +35,8 @@
 
             .onm {
                 display: block;
-                width : 4.3rem;
-                height: 1.8rem;
+                width  : 4.3rem;
+                height : 1.8rem;
             }
 
             &.is-top {

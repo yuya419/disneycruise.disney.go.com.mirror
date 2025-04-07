@@ -1,0 +1,207 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* cvNav */
+
+/* 目次 */
+/* __10: 共通設定 */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.cvNav {
+    background-color: rgba($color: #3DA8C3, $alpha: 0.7);
+    border-radius   : 1rem;
+    padding         : 2rem 5rem 2rem 2rem;
+
+    .nav {
+        &-menu {
+            display              : grid;
+            grid-template-columns: auto 1fr;
+            grid-template-areas  :
+                "reservation magazine"
+                "reservation contact";
+            column-gap: 5rem;
+        }
+
+        .menu-item {
+            &-link {
+                width          : 100%;
+                height         : 100%;
+                display        : flex;
+                align-items    : center;
+                justify-content: space-between;
+                text-decoration: none;
+
+                .label {
+
+                    .en,
+                    .jp {
+                        display       : block;
+                        letter-spacing: 0.03em;
+                        line-height   : 0.7;
+                    }
+                }
+            }
+        }
+
+        .is-reservation {
+            grid-area: reservation;
+            width    : calc(100vw/(1300/710));
+            max-width: 71rem;
+
+            .menu-item-link {
+                height          : 23rem;
+                padding-right   : 6rem;
+                border-radius   : 1rem;
+                background-color: var(--theme_color_main);
+            }
+
+            .label {
+                display       : flex;
+                flex-direction: column;
+                padding-left  : 5.7rem;
+                border-left   : 3px solid #E5C35C;
+
+                .en {
+                    font-size: 3.9rem;
+                    color    : #E5C35C;
+                }
+
+                .jp {
+                    font-size: 1.6rem;
+                    color    : var(--color_white);
+                    margin   : 2rem 0 0.2rem;
+                }
+            }
+
+            .icon {
+                display    : flex;
+                align-items: center;
+                column-gap : 6rem;
+
+                .divider {
+                    width              : 2px;
+                    height             : 64px;
+                    background-image   : linear-gradient(to top, rgba(255, 255, 255, 0.8) 2px, transparent 2px);
+                    background-position: center top;
+                    background-size    : 1px 4.5px;
+                }
+
+                .i-calendar {
+                    display: block;
+                    width  : 2rem;
+                    height : 2rem;
+                    color  : #E5C35C;
+                }
+            }
+        }
+
+        .is-mail-magazine,
+        .is-contact {
+            .label {
+                .en {
+                    font-size: 2.7rem;
+                    color    : var(--color_white);
+                }
+
+                .jp {
+                    font-size : 1.4rem;
+                    color     : rgba(255, 255, 255, 0.6);
+                    margin-top: 1.5rem;
+                }
+            }
+        }
+
+        .is-mail-magazine {
+            grid-area: magazine;
+        }
+
+        .is-contact {
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            grid-area : contact;
+        }
+    }
+}
+
+// sp
+@include g.media(md) {
+    .cvNav {
+        padding: 2.5rem 2.5rem 3rem 2.5rem;
+
+        .nav {
+            &-menu {
+                display: block;
+            }
+
+            .is-reservation {
+                width    : 100%;
+                max-width: inherit;
+
+                .menu-item-link {
+                    height       : 10rem;
+                    padding-right: 2.5rem;
+                    border-radius: 0.6rem;
+                }
+
+                .label {
+                    padding-left     : 2.5rem;
+                    border-left-width: 2px;
+
+                    .en {
+                        font-size: 2.4rem;
+                    }
+
+                    .jp {
+                        font-size: 1.4rem;
+                        margin   : 1.9rem 0 0.2rem;
+                    }
+                }
+
+                .icon {
+                    column-gap: 2.5rem;
+
+                    .divider {
+                        width          : 2px;
+                        height         : 43px;
+                        background-size: 1px 4.5px;
+                    }
+
+                    .i-calendar {
+                        width : 1.6rem;
+                        height: 1.6rem;
+                    }
+                }
+            }
+
+            .is-mail-magazine,
+            .is-contact {
+                .label {
+                    .en {
+                        font-size: 2.1rem;
+                    }
+
+                    .jp {
+                        font-size : 1.2rem;
+                        margin-top: 1.2rem;
+                    }
+                }
+            }
+
+            .is-mail-magazine {
+                .menu-item-link {
+                    padding-block: 2.3rem;
+                }
+            }
+
+            .is-contact {
+                border-top: 1px solid rgba(255, 255, 255, 0.3);
+
+                .menu-item-link {
+                    padding-top: 2.3rem;
+                }
+            }
+        }
+    }
+}

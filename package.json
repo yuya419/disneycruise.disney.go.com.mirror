@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "node ./task/server.js",
-    "build": "next build && prettier --write out/**/*.html",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },

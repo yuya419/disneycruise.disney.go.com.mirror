@@ -10,10 +10,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@vercel/edge": "^1.2.1",
+    "basic-auth": "^2.0.1",
     "gsap": "^3.12.7",
     "next": "15.2.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "static-auth": "^2.1.2"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",

@@ -4,7 +4,6 @@ const nextConfig: NextConfig = {
   /* config options here */
   trailingSlash: true,
   basePath: "/ships/adventure",
-  output: "export",
   webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/,
@@ -21,7 +20,6 @@ const nextConfig: NextConfig = {
   },
   images: {
     disableStaticImages: true, // importした画像の型定義設定を無効にする
-    unoptimized: true, // 画像の最適化を無効にする
   },
 };
 

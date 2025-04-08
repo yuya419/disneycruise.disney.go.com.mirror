@@ -1,5 +1,5 @@
 /**
- * @file cvNav.tsx
+ * @name cvNav.tsx
  * @description コンバージョンナビゲーション
  */
 'use client';

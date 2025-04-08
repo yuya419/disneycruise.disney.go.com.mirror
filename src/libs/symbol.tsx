@@ -1,5 +1,5 @@
 /**
- * @file symbol.tsx
+ * @name symbol.tsx
  * @description svgデータをコンポーネントとして扱う
  */
 

@@ -1,5 +1,5 @@
 /**
- * @file header.tsx
+ * @name header.tsx
  * @description 共通ヘッダー
  */
 "use client";

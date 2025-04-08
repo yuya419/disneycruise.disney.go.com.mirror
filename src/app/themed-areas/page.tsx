@@ -1,5 +1,5 @@
 /**
- * @file page.tsx
+ * @name page.tsx
  * @description 7つのテーマエリアを表示するページ
  */
 "use client";

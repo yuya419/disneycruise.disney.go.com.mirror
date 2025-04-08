@@ -1,5 +1,5 @@
 /**
- * @file font.ts
+ * @name font.ts
  * @description google fontを読み込む
  */
 import { Noto_Sans_JP, Philosopher } from "next/font/google";

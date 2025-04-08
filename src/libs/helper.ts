@@ -1,5 +1,5 @@
 /**
- * @file helper.ts
+ * @name helper.ts
  * @description ヘルパー関数
  */
 

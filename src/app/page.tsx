@@ -1,5 +1,5 @@
 /**
- * @file page.tsx
+ * @name page.tsx
  * @description TOPページ
  */
 "use client";

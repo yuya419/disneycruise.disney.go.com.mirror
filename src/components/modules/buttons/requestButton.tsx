@@ -1,5 +1,5 @@
 /**
- * @file requestButton.tsx
+ * @name requestButton.tsx
  * @description 「ご予約はこちら」ボタン
  */
 import Link from "next/link";

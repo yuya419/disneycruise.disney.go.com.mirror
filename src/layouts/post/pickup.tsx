@@ -1,5 +1,5 @@
 /**
- * @file pickup.tsx
+ * @name pickup.tsx
  * @description お知らせ - ピックアップ
  */
 'use client';

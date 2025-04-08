@@ -1,5 +1,5 @@
 /**
- * @file footer.tsx
+ * @name footer.tsx
  * @description 共通フッター
  */
 import Link from "next/link";

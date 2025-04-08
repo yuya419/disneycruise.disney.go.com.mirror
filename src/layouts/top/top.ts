@@ -1,5 +1,5 @@
 /**
- * @file top.ts
+ * @name top.ts
  * @description TOP用レイアウトをまとめる
  */
 import Hero from "./hero";

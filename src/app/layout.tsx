@@ -1,5 +1,5 @@
 /**
- * @file layout.tsx
+ * @name layout.tsx
  * @description 共通レイアウト
  */
 import type { Metadata } from "next";

@@ -1,5 +1,5 @@
 /**
- * @file drawerButton.tsx
+ * @name drawerButton.tsx
  * @description ドロワーボタン
  */
 "use client";

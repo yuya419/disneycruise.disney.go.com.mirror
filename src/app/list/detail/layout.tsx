@@ -1,12 +1,12 @@
 /**
  * @name layout.tsx
- * @description 7つのテーマエリアを表示するページのレイアウト
+ * @description コース詳細のレイアウト
  */
 import type { Metadata } from "next";
 import metaArray from "@/libs/meta";
 import Page from "./page";
 
-export const metadata: Metadata = metaArray["themed-areas"];
+export const metadata: Metadata = metaArray["detail"];
 
 export default function Layout() {
     return (

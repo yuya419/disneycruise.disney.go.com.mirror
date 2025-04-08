@@ -1,5 +1,5 @@
 /**
- * @file meta.ts
+ * @name meta.ts
  * @description メタ情報
  */
 
@@ -28,6 +28,26 @@ const metaArray = {
             siteName: siteInfo.siteName,
             description: "7つのテーマエリアを表示するページ",
             url: `${siteInfo.url}themed-areas/`,
+        },
+    },
+    "list": {
+        title: "コース一覧	" + " | " + siteInfo.siteName,
+        description: "コース一覧	を表示するページ",
+        openGraph: {
+            title: "コース一覧	" + " | " + siteInfo.siteName,
+            siteName: siteInfo.siteName,
+            description: "コース一覧	を表示するページ",
+            url: `${siteInfo.url}list/`,
+        },
+    },
+    "detail": {
+        title: "コース詳細	" + " | " + siteInfo.siteName,
+        description: "コース詳細	を表示するページ",
+        openGraph: {
+            title: "コース詳細	" + " | " + siteInfo.siteName,
+            siteName: siteInfo.siteName,
+            description: "コース詳細	を表示するページ",
+            url: `${siteInfo.url}list//detail/`,
         },
     },
 }

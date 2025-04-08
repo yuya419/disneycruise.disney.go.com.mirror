@@ -72,12 +72,12 @@
 /* __30: bg */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .bg {
-    position  : sticky;
-    bottom    : 0;
-    width     : 100%;
-    height    : 100lvh;
-    margin-top: -100lvh;
-    z-index   : -1;
+    position     : fixed;
+    top          : 0;
+    width        : 100%;
+    height       : 100lvh;
+    // margin-top: -100lvh;
+    z-index      : -1;
 
     .color,
     .video {
@@ -87,26 +87,16 @@
     }
 
     .color {
-        z-index         : 2;
-        background-color: var(--color_white);
-        // background-color: rgba($color: #000846, $alpha: 0.7);
-        // background-color: transparent;
-        background-color: rgba($color: #000846, $alpha: 0.6);
+        z-index            : 2;
+        background-color   : var(--color_white);
+        background-color   : rgba($color: #000846, $alpha: 0.7);
+        background-color   : transparent;
+        // background-color: rgba($color: #000846, $alpha: 0.6);
     }
 
     .video {
-        z-index: 1;
+        z-index   : 1;
         // opacity: 0;
-
-        &::before {
-            content         : "";
-            position        : absolute;
-            inset           : 0;
-            margin          : auto;
-            background-color: black;
-            opacity         : 0.15;
-            z-index         : 3;
-        }
 
         .hero,
         .water {
@@ -119,10 +109,21 @@
 
         .hero {
             z-index: 2;
+
+            &::before {
+                content         : "";
+                position        : absolute;
+                inset           : 0;
+                margin          : auto;
+                background-color: black;
+                opacity         : 0.15;
+                z-index         : 3;
+            }
         }
 
         .water {
             z-index: 2;
+            opacity: 0;
         }
 
         video {
@@ -138,13 +139,19 @@
 @include g.media(md) {
     .bg {
         .video {
-            .hero {
-                height: 70.2rem;
+            display: contents;
 
-                video {
-                    object-position: center -3.9rem;
-                }
+            .hero {
+                position: relative;
+                top     : -3.9rem;
+                height  : 70.3rem;
+
+                // video {
+                //     object-position: center -3.9rem;
+                // }
             }
+
+            .water {}
         }
     }
 }

@@ -1,0 +1,64 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* subNav */
+
+/* 目次 */
+/* __10: 共通設定 */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.subNav {
+    .nav {
+        &-menu {
+            display        : flex;
+            justify-content: flex-end;
+            column-gap     : 2rem;
+        }
+
+        .menu-item {
+            margin-block: -1rem;
+        }
+
+        .menu-item-link {
+            display       : flex;
+            align-items   : center;
+            column-gap    : 0.5em;
+            font-size     : 1.3rem;
+            line-height   : 1.2;
+            letter-spacing: 0.03em;
+            color         : var(--color_white);
+            padding-block : 1rem;
+
+            .i-target {
+                display: block;
+                width  : 1.6rem;
+                height : 1.6rem;
+            }
+        }
+    }
+}
+
+// sp
+@include g.media(md) {
+    .subNav {
+        .nav {
+            &-menu {
+                justify-content: center;
+                column-gap     : 3rem;
+            }
+
+            .menu-item-link {
+                font-size    : 1.2rem;
+                padding-block: 1rem;
+
+                .i-target {
+                    width : 1.4rem;
+                    height: 1.4rem;
+                }
+            }
+        }
+    }
+}

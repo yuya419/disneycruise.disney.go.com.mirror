@@ -28,6 +28,11 @@ body {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+main {
+    position: relative;
+    z-index : 2;
+}
+
 // a
 a:not([class]) {
     color: var(--theme_color_main);
@@ -40,18 +45,18 @@ a:not([class]) {
 
 //sp時非表示
 .nosp {
-	@include g.media(md) {
-		display: none !important;
-	}
+    @include g.media(md) {
+        display: none !important;
+    }
 }
 
 //pc時非表示
 .nopc {
-	display: none;
+    display: none;
 
-	@include g.media(md) {
-		display: block;
-	}
+    @include g.media(md) {
+        display: block;
+    }
 }
 
 // lg - 1600px ~ n

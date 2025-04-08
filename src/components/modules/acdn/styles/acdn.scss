@@ -1,0 +1,79 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* acdn */
+
+/* 目次 */
+/* __10: 共通設定 */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.acdn {
+    &-label {
+        display    : flex;
+        align-items: center;
+    }
+
+    &-icon {
+        flex-shrink: 0;
+        display    : block;
+        width      : 40%;
+        position   : relative;
+
+        .icon {
+            display      : block;
+            width        : 1.9rem;
+            height       : 1.9rem;
+            position     : absolute;
+            right        : 0;
+            top          : 0;
+            bottom       : 0;
+            margin-block : auto;
+            border       : 1px solid var(--color_white);
+            border-radius: 50%;
+
+            &::before,
+            &::after {
+                content         : "";
+                position        : absolute;
+                inset           : 0;
+                margin          : auto;
+                width           : 0.8rem;
+                height          : 1px;
+                background-color: var(--color_white);
+            }
+
+            &::after {
+                rotate    : 90deg;
+                transition: rotate 0.2s var(--customEasingOut);
+            }
+        }
+
+        &[data-expanded="true"] {
+            .icon {
+                &::after {
+                    rotate: 0deg;
+                }
+            }
+        }
+    }
+
+    &-content {
+        display           : grid;
+        grid-template-rows: 0fr;
+        transition        : grid-template-rows .2s ease-out;
+
+        &[data-hidden=false] {
+            grid-template-rows: 1fr;
+        }
+    }
+
+    &-inner {
+        overflow: hidden;
+    }
+}
+
+// sp
+@include g.media(md) {}

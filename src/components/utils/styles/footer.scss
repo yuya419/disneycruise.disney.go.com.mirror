@@ -11,7 +11,32 @@
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .footer {
-    background-color: ragb(0, 8, 70, 0.6);
+    position: relative;
+    z-index : 1;
+
+    // position: sticky;
+    // bottom: 0;
+    // translate: 0 calc(100% - 100svh);
+
+    &::before,
+    &::after {
+        content : "";
+        position: absolute;
+        inset   : 0;
+        margin  : auto;
+    }
+
+    &::before {
+        background-color: #000846;
+        opacity         : 0.7;
+        z-index         : 2;
+    }
+
+    &::after {
+        background-color: #0099B4;
+        opacity         : 0.5;
+        z-index         : 1;
+    }
 
     &-inner {
         width                : calc(100% - 100px);
@@ -20,6 +45,24 @@
         padding-block        : 12rem;
         display              : grid;
         grid-template-columns: repeat(2, auto);
+        position             : relative;
+        z-index              : 3;
+    }
+
+    // .video
+    .f-bg {
+        position: absolute;
+        inset   : 0;
+        z-index : -1;
+        width   : 100%;
+        height  : 100%;
+
+        video {
+            display   : block;
+            width     : 100%;
+            height    : 100%;
+            object-fit: cover;
+        }
     }
 
     // .cvNav
@@ -99,38 +142,9 @@
             }
         }
 
-        // .sub-nav
-        .sub-nav {
+        // .subNav
+        .subNav {
             margin-top: 7rem;
-
-            .nav {
-                &-menu {
-                    display        : flex;
-                    justify-content: flex-end;
-                    column-gap     : 2rem;
-                }
-
-                .menu-item {
-                    margin-block: -1rem;
-                }
-
-                .menu-item-link {
-                    display       : flex;
-                    align-items   : center;
-                    column-gap    : 0.5em;
-                    font-size     : 1.3rem;
-                    line-height   : 1.2;
-                    letter-spacing: 0.03em;
-                    color         : var(--color_white);
-                    padding-block : 1rem;
-
-                    .i-target {
-                        display: block;
-                        width  : 1.6rem;
-                        height : 1.6rem;
-                    }
-                }
-            }
         }
 
         // .copyright
@@ -215,26 +229,9 @@
                 margin-inline: auto;
             }
 
-            // .sub-nav
-            .sub-nav {
+            // .subNav
+            .subNav {
                 margin-top: 3.5rem;
-
-                .nav {
-                    &-menu {
-                        justify-content: center;
-                        column-gap     : 3rem;
-                    }
-
-                    .menu-item-link {
-                        font-size    : 1.2rem;
-                        padding-block: 1rem;
-
-                        .i-target {
-                            width : 1.4rem;
-                            height: 1.4rem;
-                        }
-                    }
-                }
             }
 
             // .copyright

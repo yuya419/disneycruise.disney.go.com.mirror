@@ -5,8 +5,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import helper from "@/libs/helper";
-import CvNav from "../modules/nav/cvNav"
-import Sitemap from "../modules/nav/sitemap";
+import CvNav from "@/components/modules/nav/cvNav";
+import Sitemap from "@/components/modules/nav/sitemap";
+import SubNav from "@/components/modules/nav/subNav";
 import "./styles/footer.scss";
 
 export default function Footer() {
@@ -44,30 +45,14 @@ export default function Footer() {
                             </picture>
                         </Link>
                     </p>
-                    <div className="sub-nav">
-                        <nav className="nav">
-                            <ul className="nav-menu">
-                                <li className="menu-item">
-                                    <Link href="/" target="_blank" className="menu-item-link uline-r">
-                                        <span className="line">約款</span>
-                                        <svg className="i-target">
-                                            <use href="#i-target"></use>
-                                        </svg>
-                                    </Link>
-                                </li>
-                                <li className="menu-item">
-                                    <Link href="/" target="_blank" className="menu-item-link uline-r">
-                                        <span className="line">プライバシーポリシー</span>
-                                        <svg className="i-target">
-                                            <use href="#i-target"></use>
-                                        </svg>
-                                    </Link>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+                    <SubNav />
                     <p className="copyright" translate="no">Copyright &copy; KK Miki Tourist, All Rights Reserved.</p>
                 </div>
+            </div>
+            <div className="f-bg">
+                <video autoPlay muted loop playsInline preload="metadata">
+                    <source src={getImagePath("movie/water.mp4")} type="video/mp4" />
+                </video>
             </div>
         </footer>
     )

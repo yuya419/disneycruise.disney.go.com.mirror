@@ -11,8 +11,12 @@
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .t-themed-areas {
+    background-color: var(--color_white);
+
     .container {
         padding-top: 15rem;
+        
+        padding-bottom: 15rem;
     }
 
     // &__head
@@ -83,7 +87,7 @@
     &__detail {
         width     : calc(100% - 30px);
         max-width : 106rem;
-        margin    : 9rem auto 11rem;
+        margin    : 9rem auto 0;
         text-align: center;
 
         h3 {

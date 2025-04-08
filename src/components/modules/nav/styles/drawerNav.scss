@@ -1,0 +1,634 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* drawerNav */
+
+/* 目次 */
+/* __10: drawerNav */
+/* __20: drawerButton */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: drawerNav */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.drawerNav {
+    width         : 100%;
+    height        : 100dvh;
+    position      : fixed;
+    z-index       : 88;
+    top           : 0;
+    left          : 0;
+    opacity       : 0;
+    pointer-events: none;
+
+
+    [data-state="navOpen"] & {
+        opacity       : 1;
+        pointer-events: all;
+    }
+
+    &-scrollarea {
+        height    : 100%;
+        overflow-y: auto;
+    }
+
+    &-inner {
+        display: grid;
+        grid-template-areas:
+            "logo cvNav"
+            "logo mainNav"
+            "subNav mainNav";
+        grid-template-columns: auto 71rem;
+        grid-template-rows   : auto 1fr;
+        column-gap           : 10rem;
+        padding              : 5.7rem 8rem;
+        height               : 100%;
+        overflow-y           : auto;
+    }
+
+    &-bg {
+        position: absolute;
+        inset   : 0;
+        margin  : auto;
+        z-index : -1;
+
+        &::before,
+        &::after {
+            content : "";
+            position: absolute;
+            inset   : 0;
+            margin  : auto;
+        }
+
+        &::before {
+            background-color: #000846;
+            opacity         : 0.7;
+            z-index         : 2;
+        }
+
+        &::after {
+            background-color: #0099B4;
+            opacity         : 0.5;
+            z-index         : 1;
+        }
+
+        video {
+            display   : block;
+            width     : 100%;
+            height    : 100%;
+            object-fit: cover;
+        }
+    }
+
+    // .logo
+    .logo {
+        width    : 33rem;
+        grid-area: logo;
+
+        margin: auto;
+
+        a {
+            display: block;
+        }
+
+        img {
+            display: block;
+            width  : 100%;
+            height : 100%;
+        }
+    }
+
+    // .cvNav
+    .cvNav {
+        grid-area: cvNav;
+        padding  : 3rem;
+
+        .nav {
+            &-menu {
+                column-gap: 4rem;
+            }
+
+            .is-reservation {
+                width    : calc(100vw/(1300/330));
+                max-width: 33rem;
+
+                .menu-item-link {
+                    height       : 12.6rem;
+                    padding-right: 2.5rem;
+                    border-radius: 0.6rem;
+                }
+
+                .label {
+                    padding-left     : 2.5rem;
+                    border-left-width: 2px;
+
+                    .en {
+                        font-size: 2.6rem;
+                    }
+
+                    .jp {
+                        font-size: 1.3rem;
+                        margin   : 1.4rem 0 0.2rem;
+                    }
+                }
+
+                .icon {
+                    column-gap: 2.5rem;
+
+                    .divider {
+                        height: 47px;
+                    }
+
+                    .i-calendar {
+                        width : 1.6rem;
+                        height: 1.6rem;
+                    }
+                }
+            }
+
+            .is-mail-magazine,
+            .is-contact {
+                .label {
+                    .en {
+                        font-size: 2.3rem;
+                    }
+
+                    .jp {
+                        font-size : 1.2rem;
+                        margin-top: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+
+    // .mainNav
+    .mainNav {
+        grid-area: mainNav;
+
+        .nav {
+            display              : grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap           : 7rem;
+
+            &-menu {
+
+                .menu-item {
+                    &:not(:first-child) {
+                        border-top: 1px solid rgba(255, 255, 255, 0.3);
+                    }
+
+                    .isOpen {
+                        .en {
+                            color: var(--theme_color_sub);
+                        }
+                    }
+                }
+
+                .menu-item-link {
+                    width          : 100%;
+                    display        : block;
+                    text-decoration: none;
+                    line-height    : 0.92125;
+                    padding-block  : 2.2rem;
+
+                    .en {
+                        display  : block;
+                        font-size: 2.5rem;
+                        color    : var(--color_white);
+                    }
+
+                    .jp {
+                        display   : block;
+                        font-size : 1.3rem;
+                        color     : rgba(255, 255, 255, 0.7);
+                        margin-top: 1.5rem;
+                    }
+
+                    @include g.hover() {
+                        .en {
+                            color: var(--theme_color_sub);
+                        }
+                    }
+                }
+            }
+        }
+
+        // .child-nav-menu
+        .child-nav-menu {
+            padding-left     : 2rem;
+            background-image : url("/ships/adventure/common/icon/i-dot.svg");
+            background-size  : 0.2rem 0.6rem;
+            background-repeat: repeat-y;
+            margin-bottom    : 2.2rem;
+
+            .child-menu-item-link {
+                display        : block;
+                font-size      : 1.5rem;
+                line-height    : 0.715;
+                letter-spacing : 0.03em;
+                padding-block  : 1rem;
+                text-decoration: none;
+                color          : var(--color_white);
+            }
+        }
+
+        // .acdn
+        .acdn {
+            &-content {
+                display           : grid;
+                grid-template-rows: 0fr;
+                transition        : grid-template-rows .2s ease-out;
+
+                &[data-hidden=false] {
+                    grid-template-rows: 1fr;
+                }
+            }
+
+            &-inner {
+                overflow: hidden;
+            }
+        }
+
+        // .toggle
+        .toggle {
+            &-label {
+                display    : flex;
+                align-items: center;
+            }
+
+            &-icon {
+                flex-shrink: 0;
+                display    : block;
+                width      : 40%;
+                position   : relative;
+
+                .icon {
+                    display         : block;
+                    width           : 1.9rem;
+                    height          : 1.9rem;
+                    position        : absolute;
+                    right           : 0;
+                    top             : 0;
+                    bottom          : 0;
+                    margin-block    : auto;
+                    background-color: transparent;
+                    border          : 1px solid var(--color_white);
+                    border-radius   : 50%;
+                    transition      : background-color 0.2s var(--customEasingOut);
+
+                    &::before,
+                    &::after {
+                        content         : "";
+                        position        : absolute;
+                        inset           : 0;
+                        margin          : auto;
+                        width           : 0.8rem;
+                        height          : 1px;
+                        background-color: var(--color_white);
+                        transition      : rotate 0.2s var(--customEasingOut), border-color 0.2s var(--customEasingOut);
+                    }
+
+                    &::after {
+                        rotate: 90deg;
+                    }
+                }
+
+                &[data-expanded="true"] {
+                    .icon {
+                        background-color: var(--color_white);
+
+                        &::before,
+                        &::after {
+                            background-color: var(--theme_color_main);
+                        }
+
+                        &::after {
+                            rotate: 0deg;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // .subNav
+    .subNav {
+        grid-area : subNav;
+        margin-top: auto;
+
+        .nav {
+            &-menu {
+                justify-content: flex-start;
+            }
+        }
+    }
+
+    // .accent
+    .accent {
+        display: none;
+    }
+}
+
+// sp
+@include g.media(md) {
+    .drawerNav {
+        &-scrollarea {}
+
+        &-inner {
+            display: block;
+            padding: 7.4rem 0;
+        }
+
+        // .logo
+        .logo {
+            position: absolute;
+            top     : 2.2rem;
+            left    : 1.5rem;
+            width   : 24.8rem;
+        }
+
+        // .cvNav
+        .cvNav {
+            padding      : 2.5rem;
+            border-radius: 0;
+
+            .nav {
+                &-menu {
+                    display              : grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap                  : 2rem 0.7rem;
+                }
+
+                .is-reservation {
+                    width      : 100%;
+                    max-width  : inherit;
+                    grid-column: 1/3;
+                    grid-row   : 1;
+
+                    .menu-item-link {
+                        height: 9rem;
+                    }
+
+                    .label {
+                        .en {
+                            font-size: 2.4rem;
+                        }
+
+                        .jp {
+                            font-size: 1.3rem;
+                            margin   : 1.2rem 0 0.2rem;
+                        }
+                    }
+
+                    .icon {
+                        .divider {
+                            height: 30px;
+                        }
+                    }
+                }
+
+                .is-mail-magazine,
+                .is-contact {
+                    border: none;
+
+                    .menu-item-link {
+                        justify-content: center;
+                        height         : 6.4rem;
+                        padding        : 0;
+                        text-align     : center;
+                        border         : 1px solid var(--color_white);
+                        border-radius  : 0.5rem;
+                    }
+
+                    .label {
+                        .en {
+                            font-size: 1.8rem;
+                        }
+
+                        .jp {
+                            font-size : 1.2rem;
+                            margin-top: 1.1rem;
+                        }
+                    }
+
+                    .arrow {
+                        display: none;
+                    }
+                }
+
+                .is-mail-magazine {
+                    grid-column: 1;
+                    grid-row   : 2;
+                }
+
+                .is-contact {
+                    grid-column: 2;
+                    grid-row   : 2;
+                }
+            }
+        }
+
+        // .mainNav
+        .mainNav {
+            padding: 1rem 3.5rem;
+
+            .nav {
+                display: block;
+
+                &-menu {
+                    &:last-child {
+                        .menu-item:first-child {
+                            border-top: 1px solid rgba(255, 255, 255, 0.3);
+                        }
+                    }
+
+                    .menu-item-link {
+                        line-height  : 0.92125;
+                        padding-block: 2.5rem;
+
+                        .en {
+                            font-size: 2.3rem;
+                        }
+
+                        .jp {
+                            font-size : 1.2rem;
+                            margin-top: 1.3rem;
+                        }
+                    }
+                }
+            }
+
+            // .child-nav-menu
+            .child-nav-menu {
+                margin-left  : 1rem;
+                margin-bottom: 2.5rem;
+
+                .child-menu-item-link {
+                    font-size    : 1.4rem;
+                    line-height  : 1.05;
+                    padding-block: 1rem;
+                }
+            }
+        }
+
+        // .subNav
+        .subNav {
+            margin-top    : 2.8rem;
+            padding-inline: 3.5rem;
+        }
+
+        // .accent
+        .accent {
+            display              : grid;
+            grid-template-columns: auto 1fr auto;
+            align-items          : center;
+            padding-inline       : 1rem;
+
+            .onm {
+                display: block;
+                width  : 2.5rem;
+                height : 1.8rem;
+
+                &.is-left {
+                    scale: -1 1;
+                }
+            }
+
+            .bar {
+                height          : 1px;
+                background-color: rgba(255, 255, 255, 0.25);
+            }
+        }
+    }
+}
+
+/* __20: drawerButton */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+// .drawerButton {
+//     position     : fixed;
+//     right        : 0;
+//     top          : 0;
+//     z-index      : 99;
+//     width        : 8rem;
+//     height       : 9.8rem;
+//     border-bottom: 0.2rem solid rgba(255, 255, 255, 0.4);
+//     transition   : border-bottom-color 0.3s var(--customEasingOut);
+
+//     [data-state="navOpen"] & {
+//         border-bottom-color: transparent;
+//     }
+
+//     &-inner {
+//         width         : 100%;
+//         height        : 100%;
+//         display       : flex;
+//         flex-direction: column;
+//         align-items   : center;
+//         padding-top   : 1.7rem;
+//         row-gap       : 0.7rem;
+//     }
+
+//     .icon {
+//         display    : block;
+//         width      : 4.2rem;
+//         height     : 4.2rem;
+//         will-change: rotate;
+//         transition : rotate 0.3s var(--customEasingOut), opacity 0.3s var(--customEasingOut);
+
+//         [data-state="navOpen"] & {
+//             rotate : 180deg;
+//             opacity: 0;
+//         }
+
+//         .i-menu {
+//             display: block;
+//             width  : 100%;
+//             height : 100%;
+//         }
+//     }
+
+//     .text {
+//         font-size     : 1.3rem;
+//         font-weight   : 700;
+//         letter-spacing: 0.03em;
+//         line-height   : 0.8;
+//         color         : var(--color_white);
+//         overflow      : hidden;
+//         text-align    : center;
+//         transition    : opacity 0.3s var(--customEasingOut);
+
+//         [data-state="navOpen"] & {
+//             opacity: 0;
+//         }
+//     }
+
+//     .close {
+//         position        : absolute;
+//         inset           : 0;
+//         margin          : auto;
+//         width           : 5rem;
+//         aspect-ratio    : 1;
+//         background-color: var(--color_white);
+//         clip-path       : inset(100% round 50%);
+//         transition      : clip-path 0.3s var(--customEasingOut);
+
+//         [data-state="navOpen"] & {
+//             clip-path: inset(0% round 50%);
+//         }
+
+//         &::before,
+//         &::after {
+//             content         : "";
+//             position        : absolute;
+//             inset           : 0;
+//             margin          : auto;
+//             width           : 45%;
+//             height          : 1px;
+//             background-color: var(--theme_color_main);
+//         }
+
+//         &::before {
+//             rotate: 45deg;
+//         }
+
+//         &::after {
+//             rotate: -45deg;
+//         }
+//     }
+// }
+
+// // sp
+// @include g.media(md) {
+//     .drawerButton {
+//         width           : 6.3rem;
+//         height          : 7.2rem;
+//         right           : 1rem;
+//         border-bottom   : none;
+//         border-radius   : 0 0 0.5rem 0.5rem;
+//         background-color: var(--color_white);
+//         transition      : background-color 0.3s var(--customEasingOut);
+
+//         [data-state="navOpen"] & {
+//             background-color: transparent;
+//         }
+
+//         &-inner {
+//             justify-content: center;
+//             padding-top    : 0;
+//             row-gap        : 0.6rem;
+//         }
+
+//         .icon {
+//             width : 3.6rem;
+//             height: 3.6rem;
+
+//             .i-menu {}
+//         }
+
+//         .text {
+//             font-size: 1.2rem;
+//             color    : var(--theme_color_text);
+//         }
+//     }
+// }

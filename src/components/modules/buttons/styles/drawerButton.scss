@@ -18,6 +18,11 @@
     width        : 8rem;
     height       : 9.8rem;
     border-bottom: 0.2rem solid rgba(255, 255, 255, 0.4);
+    transition   : border-bottom-color 0.3s var(--customEasingOut);
+
+    [data-state="navOpen"] & {
+        border-bottom-color: transparent;
+    }
 
     &-inner {
         width         : 100%;
@@ -30,9 +35,16 @@
     }
 
     .icon {
-        display: block;
-        width  : 4.2rem;
-        height : 4.2rem;
+        display   : block;
+        width     : 4.2rem;
+        height    : 4.2rem;
+        will-change: rotate;
+        transition: rotate 0.3s var(--customEasingOut), opacity 0.3s var(--customEasingOut);
+
+        [data-state="navOpen"] & {
+            rotate : 180deg;
+            opacity: 0;
+        }
 
         .i-menu {
             display: block;
@@ -42,23 +54,51 @@
     }
 
     .text {
-        font-size          : 1.3rem;
-        font-weight        : 700;
-        letter-spacing     : 0.03em;
-        line-height        : 0.8;
-        color              : var(--color_white);
-        display            : grid;
-        grid-template-areas: "text";
-        overflow           : hidden;
-        text-align         : center;
+        font-size     : 1.3rem;
+        font-weight   : 700;
+        letter-spacing: 0.03em;
+        line-height   : 0.8;
+        color         : var(--color_white);
+        overflow      : hidden;
+        text-align    : center;
+        transition    : opacity 0.3s var(--customEasingOut);
 
-        &-open {
-            grid-area: text;
+        [data-state="navOpen"] & {
+            opacity: 0;
+        }
+    }
+
+    .close {
+        position        : absolute;
+        inset           : 0;
+        margin          : auto;
+        width           : 5rem;
+        aspect-ratio    : 1;
+        background-color: var(--color_white);
+        clip-path       : inset(100% round 50%);
+        transition      : clip-path 0.3s var(--customEasingOut);
+
+        [data-state="navOpen"] & {
+            clip-path: inset(0% round 50%);
         }
 
-        &-close {
-            grid-area: text;
-            translate: 0 100%;
+        &::before,
+        &::after {
+            content         : "";
+            position        : absolute;
+            inset           : 0;
+            margin          : auto;
+            width           : 45%;
+            height          : 1px;
+            background-color: var(--theme_color_main);
+        }
+
+        &::before {
+            rotate: 45deg;
+        }
+
+        &::after {
+            rotate: -45deg;
         }
     }
 }
@@ -73,6 +113,11 @@
         border-bottom   : none;
         border-radius   : 0 0 0.5rem 0.5rem;
         background-color: var(--color_white);
+        transition      : background-color 0.3s var(--customEasingOut);
+
+        [data-state="navOpen"] & {
+            background-color: transparent;
+        }
 
         &-inner {
             justify-content: center;
@@ -90,10 +135,6 @@
         .text {
             font-size: 1.2rem;
             color    : var(--theme_color_text);
-
-            &-open {}
-
-            &-close {}
         }
     }
 }

@@ -3,19 +3,47 @@
  * @description ドロワーボタン
  */
 "use client";
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import "./styles/drawerButton.scss";
 
-export default function DrawerButton() {
+interface DrawerNavProps {
+    isOpenDefault?: boolean;
+}
+
+export default function DrawerButton({ isOpenDefault }: DrawerNavProps) {
+    const [isOpen, setIsOpen] = useState(isOpenDefault);
+    const pathName = usePathname();
+
+    const toggleDrawer = () => {
+        setIsOpen(!isOpen);
+    }
+
+    useEffect(() => {
+        const html = document.documentElement;
+        if (isOpen) {
+            html.dataset.state = "navOpen";
+        } else {
+            html.dataset.state = "";
+        }
+
+        return () => {
+            html.dataset.state = "";
+        }
+    }, [isOpen]);
+
+    useEffect(() => {
+        setIsOpen(false);
+    }, [pathName]);
+
     return (
-        <button type="button" className="drawerButton">
+        <button type="button" className="drawerButton" onClick={toggleDrawer} data-open={isOpen}>
             <div className="drawerButton-inner">
                 <span className="icon">
                     <svg className="i-menu"><use xlinkHref="#i-menu" /></svg>
                 </span>
-                <span className="text">
-                    <span className="text-open" lang="en">MENU</span>
-                    <span className="text-close" lang="en">CLOSE</span>
-                </span>
+                <span className="text" lang="en">MENU</span>
+                <span className="close"></span>
             </div>
         </button>
     )

@@ -9,7 +9,7 @@ import "@/assets/styles/style.scss";
 
 import Header from "@/components/utils/header";
 import Footer from "@/components/utils/footer";
-import DrawerButton from "@/components/modules/buttons/drawerButton";
+import DrawerNav from "@/components/modules/nav/drawerNav";
 import RequestButton from "@/components/modules/buttons/requestButton";
 import { Bg } from "@/components/modules/common/common";
 import { Symbol } from "@/libs/symbol";
@@ -24,8 +24,8 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
         <Header />
         {children}
         <Footer />
-        <Bg state={false} />
-        <DrawerButton />
+        <Bg state={true} />
+        <DrawerNav />
         <RequestButton />
         <Symbol />
       </body>

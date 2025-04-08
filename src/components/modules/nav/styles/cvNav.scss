@@ -47,9 +47,10 @@
         }
 
         .is-reservation {
-            grid-area: reservation;
-            width    : calc(100vw/(1300/710));
-            max-width: 71rem;
+            grid-area : reservation;
+            width     : calc(100vw/(1300/710));
+            max-width : 71rem;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
 
             .menu-item-link {
                 height          : 23rem;

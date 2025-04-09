@@ -51,6 +51,7 @@ export default function Footer() {
             </div>
             <div className="f-bg">
                 <video autoPlay muted loop playsInline preload="metadata">
+                    <source src={getImagePath("movie/water.webm")} type="video/webm" />
                     <source src={getImagePath("movie/water.mp4")} type="video/mp4" />
                 </video>
             </div>

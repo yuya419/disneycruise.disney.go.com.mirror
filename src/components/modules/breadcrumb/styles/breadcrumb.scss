@@ -10,13 +10,61 @@
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-.breadcrumb {
-    position: absolute;
+.m-breadcrumb {
+    position     : absolute;
+    top          : 2.3rem;
+    left         : 0;
+    right        : 0;
+    margin-inline: auto;
+    width        : 100%;
 
     ol {
-        li {}
+        display       : flex;
+        align-items   : center;
+        flex-direction: row-reverse;
+        margin        : -1rem -1.8rem;
+
+        li {
+            font-size  : 1.2rem;
+            display    : flex;
+            align-items: center;
+
+            &:not(:last-child) {
+                margin-left: 1.8rem;
+
+                &::before {
+                    content         : "";
+                    width           : 1px;
+                    height          : 1.2rem;
+                    background-color: var(--color_bdr);
+                }
+            }
+
+            a {
+                display  : block;
+                font-size: 1em;
+                color    : rgba(39, 40, 51, 0.5);
+                padding  : 1rem 1.8rem;
+            }
+
+            .label {
+                font-size: 1em;
+            }
+
+            >.label {
+                background-image   : linear-gradient(currentcolor, currentcolor);
+                background-repeat  : no-repeat;
+                background-size    : 100% 0.1rem;
+                background-position: bottom left;
+            }
+        }
     }
 }
 
 // sp
-@include g.media(md) {}
+@include g.media(md) {
+    .m-breadcrumb {
+        position: relative;
+        top     : 0;
+    }
+}

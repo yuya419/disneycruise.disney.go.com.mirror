@@ -5,6 +5,7 @@
 /* 目次 */
 /* __10: 共通設定 */
 /* __20: post-special-feature */
+/* __30: post-course */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 @use "@/assets/styles/_mixin"as g;
@@ -72,6 +73,68 @@
     }
 }
 
+/* __30: post-course */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.post-course {
+    .post {
+        &-list {}
+
+        &-item {
+            position     : relative;
+            display      : flex;
+            column-gap   : 4rem;
+            padding-block: 3.2rem;
+
+            &+.post-item {
+                border-top: 1px solid var(--color_bdr);
+            }
+
+            .thumbnail {
+                flex-shrink : 0;
+                width       : 26rem;
+                height      : 16rem;
+                margin-block: auto;
+
+                img {
+                    display   : block;
+                    width     : 100%;
+                    height    : 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .title {
+                font-size   : 1.8rem;
+                line-height : calc(28/18);
+                color       : var(--theme_color_main);
+                margin-block: auto;
+            }
+
+            .button {
+                flex-shrink      : 0;
+                display          : flex;
+                align-items      : center;
+                margin-left      : auto;
+                padding-left     : 5rem;
+                background-image : url("/ships/adventure/common/icon/i-dot-b.svg");
+                background-size  : 0.3rem 0.5rem;
+                background-repeat: repeat-Y;
+            }
+
+            >.arrow {
+                display: none;
+            }
+        }
+
+        &-link-area {
+            position: absolute;
+            inset   : 0;
+            margin  : auto;
+            display : none;
+        }
+    }
+}
+
 // sp
 @include g.media(md) {
     .post-special-feature {
@@ -92,6 +155,54 @@
             .cats {
 
                 .cat {}
+            }
+        }
+    }
+
+    .post-course {
+        .post {
+            &-list {
+                display              : grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap                  : 3.5rem 2rem;
+            }
+
+            &-item {
+                flex-direction     : column;
+                padding-block      : 2.4rem;
+                background-image   : url("/ships/adventure/common/icon/i-dot-b.svg");
+                background-position: left bottom;
+                background-size    : 0.4rem 0.2rem;
+                background-repeat  : repeat-x;
+
+                &+.post-item {
+                    border-top: none;
+                }
+
+                .thumbnail {
+                    width : 100%;
+                    height: 10.6rem;
+                }
+
+                .title {
+                    font-size  : 1.4rem;
+                    line-height: calc(24/14);
+                    margin-top : 2rem;
+                }
+
+                .button {
+                    display: none;
+                }
+
+                >.arrow {
+                    display    : flex;
+                    margin-left: auto;
+                    margin-top : 0.8rem;
+                }
+            }
+
+            &-link-area {
+                display: block;
             }
         }
     }

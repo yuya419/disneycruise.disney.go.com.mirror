@@ -15,37 +15,61 @@
 $vi-screen-reader-text: "screen-reader-text";
 
 @if $vi-screen-reader-text {
-  %#{$vi-screen-reader-text} {
-    clip    : rect(1px, 1px, 1px, 1px);
-    position: absolute;
-    left    : 0;
-    top     : 0;
-  }
+    %#{$vi-screen-reader-text} {
+        clip    : rect(1px, 1px, 1px, 1px);
+        position: absolute;
+        left    : 0;
+        top     : 0;
+    }
 
-  .#{$vi-screen-reader-text} {
-    @extend %#{$vi-screen-reader-text};
-  }
+    .#{$vi-screen-reader-text} {
+        @extend %#{$vi-screen-reader-text};
+    }
+}
+
+// ベースコンテナ
+@mixin container($padding: "true") {
+    width        : calc(100% - 100px);
+    max-width    : 106rem;
+    margin-inline: auto;
+
+    @if $padding=="true" {
+        padding-top   : 8.2rem;
+        padding-bottom: 12rem;
+    }
+
+    @include media(md) {
+        width    : calc(100% - 50px);
+        max-width: inherit;
+
+
+        @if $padding=="true" {
+            padding-top   : 10.4rem;
+            padding-bottom: 8rem;
+        }
+
+    }
 }
 
 /* line-heightのハーフ・レディングを打ち消す */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 @mixin leadingTrim($lh) {
 
-	&::before,
-	&::after {
-		content    : '';
-		display    : block;
-		inline-size: 0;
-		block-size : 1px;
-	}
+    &::before,
+    &::after {
+        content    : '';
+        display    : block;
+        inline-size: 0;
+        block-size : 1px;
+    }
 
-	&::before {
-		margin-block-end: calc((1 - #{$lh}) * 0.5em);
-	}
+    &::before {
+        margin-block-end: calc((1 - #{$lh}) * 0.5em);
+    }
 
-	&::after {
-		margin-block-start: calc((1 - #{$lh}) * 0.5em);
-	}
+    &::after {
+        margin-block-start: calc((1 - #{$lh}) * 0.5em);
+    }
 }
 
 /* pxをvwに変換 */

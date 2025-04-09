@@ -3,16 +3,12 @@
  * @description コース一覧を表示するページ
  */
 "use client";
-import Breadcrumb from "@/components/modules/breadcrumb/breadcrumb";
+import { Archive } from "@/layouts/course/course";
 
 export default function Page() {
-    const breadcrumbItems = [
-        { label: "コース一覧", href: "/list/" },
-    ];
-
     return (
         <main className="archive">
-            <Breadcrumb items={breadcrumbItems} />
+            <Archive />
         </main>
     );
 }

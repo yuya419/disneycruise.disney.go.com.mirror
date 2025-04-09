@@ -29,21 +29,21 @@ export default function Accommodations() {
             en: "Verandah Stateroom",
             desp: "テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。",
             link: "/accommodations/",
-            image: "top/entertainment/img01.jpg",
+            image: "top/accommodations/room01.jpg",
         },
         "room03": {
             name: "オーシャンビュー客室",
             en: "Oceanview Stateroom",
             desp: "テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。",
             link: "/accommodations/",
-            image: "top/entertainment/img02.jpg",
+            image: "top/accommodations/room01.jpg",
         },
         "room04": {
             name: "内側​​​客室",
             en: "Inside Stateroom",
             desp: "テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。",
             link: "/accommodations/",
-            image: "top/entertainment/img03.jpg",
+            image: "top/accommodations/room01.jpg",
         },
     }
 

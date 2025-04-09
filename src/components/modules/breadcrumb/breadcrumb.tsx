@@ -19,7 +19,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
     const pathname = usePathname();
 
     return (
-        <nav className="breadcrumb">
+        <nav className="m-breadcrumb">
             <ol>
                 <li>
                     <Link href="/" className="uline"><span className="label line">TOP</span></Link>

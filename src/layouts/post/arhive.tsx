@@ -5,6 +5,7 @@
 'use client';
 import Link from "next/link";
 import Image from "next/image";
+import Button from "@/components/modules/buttons/button";
 import { arrow } from "@/components/modules/icons/icon";
 import "./styles/archive.scss";
 
@@ -82,6 +83,57 @@ const Feature = (props: {
     );
 }
 
+/**
+ * @name Course
+ * @description コース一覧
+ * @returns 
+ */
+const Course = (props: {
+    posts: {
+        [key: string]: {
+            link: string,
+            title: string,
+            thumbnail: {
+                src: string,
+                w: number,
+                h: number,
+            }
+        }
+    },
+    hlLevel?: "h2" | "h3",
+},) => {
+    const { posts } = props;
+    const Tag = props.hlLevel === "h2" ? "h2" : "h3";
+
+    const postItems = Object.keys(posts).map((key) => {
+        return (
+            <article className="post-item" key={key}>
+                <div className="thumbnail">
+                    <Image
+                        src={posts[key].thumbnail.src}
+                        alt={posts[key].title + "のサムネイル"}
+                        width={posts[key].thumbnail.w}
+                        height={posts[key].thumbnail.h}
+                    />
+                </div>
+                <Tag className="title">{posts[key].title}</Tag>
+                <Button type="primary" label="View More" lang="en" link={posts[key].link} align="left" />
+                {arrow({ bg: "blue", color: "white" })}
+                <Link href={'/list/' + posts[key].link} className="post-link-area"></Link>
+            </article>
+        )
+    });
+
+    return (
+        <div className="post-course">
+            <div className="post-list">
+                {postItems}
+            </div>
+        </div>
+    );
+}
+
 export {
-    Feature
+    Feature,
+    Course,
 };

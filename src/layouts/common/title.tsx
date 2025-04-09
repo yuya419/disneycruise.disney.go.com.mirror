@@ -9,11 +9,10 @@ import "./styles/title.scss";
 type TitleProps = {
     title: string;
     en?: string;
-    slider?: boolean;
-    images?: string[];
+    slider?: string[];
 }
 
-export default function Title({ title, en, slider, images }: TitleProps) {
+export default function Title({ title, en, slider }: TitleProps) {
     const { getImagePath } = helper();
 
     // スライダーなし

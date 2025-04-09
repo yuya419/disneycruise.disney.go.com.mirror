@@ -155,6 +155,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                 </div>
                 <div className="drawerNav-bg">
                     <video autoPlay muted loop playsInline preload="metadata">
+                        <source src={getImagePath("movie/water.webm")} type="video/webm" />
                         <source src={getImagePath("movie/water.mp4")} type="video/mp4" />
                     </video>
                 </div>

@@ -159,12 +159,15 @@ const Bg = (props: { state: boolean }) => {
                             videoRef.current.play();
                         }
                     }}>
+                        <source src={getImagePath("movie/dcl_da_sp.webm")} media="(max-width: 1024px)" type="video/webm" />
                         <source src={getImagePath("movie/dcl_da_sp.mp4")} media="(max-width: 1024px)" type="video/mp4" />
+                        <source src={getImagePath("movie/dcl_da_pc.webm")} type="video/webm" />
                         <source src={getImagePath("movie/dcl_da_pc.mp4")} type="video/mp4" />
                     </video>
                 </div>
                 <div className="water">
                     <video autoPlay muted loop playsInline preload="metadata">
+                        <source src={getImagePath("movie/water.webm")} type="video/webm" />
                         <source src={getImagePath("movie/water.mp4")} type="video/mp4" />
                     </video>
                 </div>

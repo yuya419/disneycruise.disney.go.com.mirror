@@ -1,6 +1,6 @@
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 
-/* container */
+/* headline */
 
 /* 目次 */
 /* __10: 共通設定 */
@@ -10,28 +10,26 @@
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-.l-has-aside-container {
-    display              : grid;
-    grid-template-areas  : "main aside";
-    grid-template-columns: 1fr auto;
-    column-gap           : 6rem;
-
-    main {
-        grid-area: main;
-    }
-
-    aside {
-        grid-area: aside;
+.m-headline {
+    &.is-design-01 {
+        display       : flex;
+        align-items   : center;
+        min-height    : 3.6rem;
+        font-size     : 2.1rem;
+        line-height   : 1.2;
+        border-left   : 3px solid var(--theme_color_sub);
+        padding-left  : 1.6rem;
+        padding-bottom: 0.1em;
     }
 }
 
 // sp
 @include g.media(md) {
-    .l-has-aside-container {
-        grid-template-areas:
-            "aside"
-            "main";
-        grid-template-columns: 1fr;
-        row-gap              : 4.8rem;
+    .m-headline {
+        &.is-design-01 {
+            min-height  : 3.2rem;
+            font-size   : 1.7rem;
+            padding-left: 1.2rem;
+        }
     }
 }

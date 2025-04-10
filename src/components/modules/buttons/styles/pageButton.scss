@@ -1,0 +1,94 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* xxx */
+
+/* 目次 */
+/* __10: 共通設定 */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.m-page-button {
+    display              : grid;
+    grid-template-columns: repeat(var(--length, 1), 1fr);
+    gap                  : 2rem;
+
+    .page-button {
+        &-el {
+            display         : flex;
+            align-items     : center;
+            justify-content : center;
+            width           : 100%;
+            height          : 4.7rem;
+            border          : 1px solid var(--theme_color_main);
+            border-radius   : 0.7rem;
+            background-color: var(--color_white);
+            text-decoration : none;
+            padding-inline  : 1.3rem;
+
+            @include g.hover() {
+                background-color: var(--theme_color_main);
+
+                .label {
+                    color: var(--color_white);
+                }
+
+                .icon {
+                    background-color: var(--color_white);
+
+                    .i-arw-r {
+                        color: var(--theme_color_main);
+                    }
+                }
+            }
+        }
+
+        .label {
+            font-size    : 1.5rem;
+            line-height  : 1.2;
+            text-align   : center;
+            color        : var(--theme_color_main);
+            margin-inline: auto;
+        }
+
+        .icon {
+            flex-shrink     : 0;
+            display         : flex;
+            align-items     : center;
+            justify-content : center;
+            width           : 1.9rem;
+            height          : 1.9rem;
+            background-color: var(--theme_color_main);
+            border-radius   : 100%;
+
+            .i-arw-r {
+                display     : block;
+                width       : 0.9rem;
+                aspect-ratio: 1;
+                color       : var(--color_white);
+                rotate      : 90deg;
+            }
+        }
+    }
+}
+
+// sp
+@include g.media(md) {
+    .m-page-button {
+        grid-template-columns: repeat(2, 1fr);
+        gap                  : 1rem;
+
+        .page-button {
+            &-el {
+                border-radius : 0.5rem;
+                padding-inline: 1rem;
+            }
+
+            .label {
+                font-size: 1.4rem;
+            }
+        }
+    }
+}

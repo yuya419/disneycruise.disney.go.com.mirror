@@ -1,6 +1,6 @@
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 
-/* container */
+/* xxx */
 
 /* 目次 */
 /* __10: 共通設定 */
@@ -10,28 +10,6 @@
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-.l-has-aside-container {
-    display              : grid;
-    grid-template-areas  : "main aside";
-    grid-template-columns: 1fr auto;
-    column-gap           : 6rem;
-
-    main {
-        grid-area: main;
-    }
-
-    aside {
-        grid-area: aside;
-    }
-}
 
 // sp
-@include g.media(md) {
-    .l-has-aside-container {
-        grid-template-areas:
-            "aside"
-            "main";
-        grid-template-columns: 1fr;
-        row-gap              : 4.8rem;
-    }
-}
+@include g.media(md) {}

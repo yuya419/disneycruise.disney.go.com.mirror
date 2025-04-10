@@ -2,6 +2,7 @@
  * @name breadcrumb.tsx
  * @description パンくずリスト
  */
+"use client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import "./styles/breadcrumb.scss";

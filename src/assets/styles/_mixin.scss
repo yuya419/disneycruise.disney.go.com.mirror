@@ -11,6 +11,15 @@
     }
 }
 
+//固定化
+@mixin isFixed {
+    touch-action              : none;
+    -webkit-overflow-scrolling: none;
+    overflow                  : hidden;
+    overscroll-behavior       : none;
+    scrollbar-gutter          : stable
+}
+
 // スクリーンリーダーテキスト
 $vi-screen-reader-text: "screen-reader-text";
 
@@ -48,6 +57,41 @@ $vi-screen-reader-text: "screen-reader-text";
             padding-bottom: 8rem;
         }
 
+    }
+}
+
+//リストタグ初期化
+@mixin listInit($type) {
+    @if $type=="ul" {
+        li {
+            padding-left: 1.3em;
+            text-indent : -0.85em;
+
+            &::before {
+                content     : '・';
+                display     : inline-block;
+                margin-right: 1rem;
+                color       : var(--theme_color_main);
+                font-weight : 700;
+            }
+        }
+    }
+
+    @if $type=="ol" {
+        counter-reset: list-counter;
+
+        li {
+            padding-left     : 1.2em;
+            text-indent      : -1.5em;
+            counter-increment: list-counter;
+
+            &::before {
+                content   : counter(list-counter) ". ";
+                display   : inline-block;
+                width     : 1.5em;
+                text-align: right;
+            }
+        }
     }
 }
 

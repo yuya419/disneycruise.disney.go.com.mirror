@@ -22,6 +22,7 @@
         display       : flex;
         align-items   : center;
         flex-direction: row-reverse;
+        flex-wrap     : wrap;
         margin        : -1rem -1.8rem;
 
         li {
@@ -30,8 +31,6 @@
             align-items: center;
 
             &:not(:last-child) {
-                margin-left: 1.8rem;
-
                 &::before {
                     content         : "";
                     width           : 1px;
@@ -52,6 +51,7 @@
             }
 
             >.label {
+                margin-inline      : 1.8rem;
                 background-image   : linear-gradient(currentcolor, currentcolor);
                 background-repeat  : no-repeat;
                 background-size    : 100% 0.1rem;
@@ -66,5 +66,21 @@
     .m-breadcrumb {
         position: relative;
         top     : 0;
+
+        ol {
+            margin: -0.5rem -1.2rem;
+
+            li {
+                font-size: 1.1rem;
+
+                a {
+                    padding: 0.5rem 1.2rem;
+                }
+
+                >.label {
+                    margin-inline: 1.2rem;
+                }
+            }
+        }
     }
 }

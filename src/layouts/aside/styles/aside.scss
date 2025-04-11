@@ -1,0 +1,121 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* xxx */
+
+/* 目次 */
+/* __10: 共通設定 */
+/* __20: s-course-aside */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.l-aside {
+    position: sticky;
+    top     : 9.8rem;
+
+}
+
+/* __20: s-course-aside */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.s-course-aside {
+    .acdn {
+        &-toggle {
+            width          : 100%;
+            display        : flex;
+            align-items    : center;
+            justify-content: center;
+            column-gap     : 0.8rem;
+            padding-block  : 3rem;
+            pointer-events : none;
+            position       : relative;
+            font-size      : 1.6rem;
+
+            .icon {
+                svg {
+                    display: block;
+                    width  : 100%;
+                    height : 100%;
+                }
+            }
+
+            .icon:has(.i-search) {
+                display: block;
+                width  : 1em;
+                height : 1em;
+
+                .i-search {
+                    color: var(--theme_color_sub);
+                }
+            }
+
+            .icon:has(.i-arw-t-tri) {
+                width         : 1rem;
+                height        : 1rem;
+                position      : absolute;
+                right         : 2.4rem;
+                top           : 0;
+                bottom        : 0;
+                margin-block  : auto;
+                pointer-events: none;
+                display       : none;
+
+                .i-arw-t-tri {
+                    color     : rgba(39, 40, 51, 0.4);
+                    rotate    : 0deg;
+                    transition: rotate 0.2s var(--customEasingOut);
+                }
+            }
+        }
+
+        &-content,
+        &-inner {
+            display: contents;
+        }
+    }
+}
+
+// sp
+@include g.media(md) {
+    .l-aside {
+        position: static;
+        top     : inherit;
+    }
+
+    .s-course-aside {
+        .acdn {
+            &-toggle {
+                font-size     : 1.5rem;
+                padding-block : 2rem;
+                min-height    : 6.7rem;
+                pointer-events: all;
+
+                .icon:has(.i-arw-t-tri) {
+                    display: block;
+                }
+
+                &[data-expanded="false"] {
+                    .icon:has(.i-arw-t-tri) {
+                        .i-arw-t-tri {
+                            rotate: 180deg;
+                        }
+                    }
+                }
+            }
+
+            &-content {
+                display: grid;
+            }
+
+            &-inner {
+                display: block;
+            }
+        }
+
+        .c-filter__form {
+            padding-top: 2rem;
+            border-top : 1px solid #DED1B8;
+        }
+    }
+}

@@ -13,7 +13,7 @@ export default function CvNav() {
             <nav className="nav">
                 <ul className="nav-menu">
                     <li className="menu-item is-reservation">
-                        <Link href="/" className="menu-item-link">
+                        <Link href="/list/" className="menu-item-link">
                             <span className="label">
                                 <span className="en" lang="en">Reservation</span>
                                 <span className="jp">ご予約はこちら</span>

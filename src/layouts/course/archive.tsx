@@ -51,7 +51,7 @@ export default function Archive() {
     return (
         <div className="arc-course">
             <Breadcrumb items={breadcrumbItems} />
-            <Title title="コース" en="Cource" />
+            <Title type="onm" title="コース" en="Cource" />
             <section className="arc-course-post">
                 <div className="container">
                     <div className="arc-course-post__head">

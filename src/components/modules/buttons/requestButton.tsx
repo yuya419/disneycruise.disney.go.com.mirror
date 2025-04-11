@@ -9,7 +9,7 @@ import "./styles/requestButton.scss";
 export default function RequestButton() {
     return (
         <div className="requestButton">
-            <Link href="/">
+            <Link href="/list/">
                 <span className="label">ご予約<span>はこちら</span></span>
                 <Divider dir="hrzn" w="18" h="2" color="blue"/>
                 <span className="icon">

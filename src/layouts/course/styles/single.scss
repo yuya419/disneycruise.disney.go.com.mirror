@@ -1,0 +1,247 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* single */
+
+/* 目次 */
+/* __10: 共通設定 */
+/* __20: s-course-type */
+/* __30: s-schedule-type */
+/* __40: s-notice-type */
+/* __50: s-cancel-type */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.single {
+    width         : calc(100% - 180px);
+    max-width     : 112rem;
+    padding-top   : 9.7rem;
+    padding-bottom: 12rem;
+    margin-inline : auto;
+    position      : relative;
+    z-index       : 1;
+    left          : -30px;
+
+    .l-has-aside-container {
+
+        .l-main {}
+
+        .l-aside {
+            width           : 26rem;
+            height          : fit-content;
+            background-color: var(--color_bg_beige);
+            border-radius   : 0.6rem;
+        }
+    }
+}
+
+.s-course {
+
+    // .m-page-button
+    .m-page-button {
+        margin-top: 4rem;
+    }
+
+    // section+section
+    section+section {
+        margin-top: 10rem;
+    }
+
+    /* __20: s-course-type */
+    /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+    .s-course-type {
+        margin-top: 8rem;
+
+        &__head {
+            display    : flex;
+            flex-wrap  : wrap;
+            align-items: center;
+            row-gap    : 1.6rem;
+
+            .m-headline {
+                margin-right: auto;
+            }
+        }
+
+        &__detail {
+            margin-top: 3rem;
+        }
+    }
+
+    /* __30: s-schedule-type */
+    /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+    .s-schedule-type {
+
+        &__detail {
+            margin-top: 3rem;
+        }
+    }
+
+    /* __40: s-notice-type */
+    /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+    .s-notice-type {
+
+        &__detail {
+            margin-top: 3rem;
+
+            .detail {
+                ul {
+                    li {
+                        font-size     : 1.5rem;
+                        letter-spacing: 0;
+
+                        &+li {
+                            margin-top: 3.2rem;
+                        }
+                    }
+
+                    @include g.listInit('ul');
+
+                }
+            }
+        }
+    }
+
+    /* __50: s-cancel-type */
+    /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+    .s-cancel-type {
+
+        &__detail {
+            margin-top: 3rem;
+
+            table {
+                width : 100%;
+                border: 1px solid var(--theme_color_border);
+
+                th,
+                td {
+                    font-size  : 1.5rem;
+                    font-weight: 500;
+                    border     : 1px solid var(--theme_color_border);
+                }
+
+                th {
+                    width           : 50%;
+                    text-align      : center;
+                    background-color: var(--theme_color_bg_sub);
+                    line-height     : calc(11/15);
+                    padding         : 1.4rem;
+                }
+
+                td {
+                    padding: 2.4rem 1.95rem;
+                }
+            }
+        }
+    }
+
+}
+
+// sp
+@include g.media(md) {
+    .single {
+        width         : calc(100% - 50px);
+        max-width     : inherit;
+        padding-top   : 10.4rem;
+        padding-bottom: 8rem;
+        left          : 0;
+
+        .l-has-aside-container {
+            .l-main {}
+
+            .l-aside {
+                width     : 100%;
+                margin-top: 2.4rem;
+            }
+        }
+
+        &:has(.booking-form[data-open="true"]),
+        &:has(.filterModal[data-open="true"]) {
+            position: static;
+            z-index : unset;
+
+            .l-main {
+                position: static;
+                z-index : unset;
+            }
+        }
+    }
+
+    .s-course {
+
+        .m-page-button {
+            margin-top: 2.4rem;
+
+            &__head {
+                display: block;
+            }
+
+            &__detail {
+                margin-top: 2rem;
+            }
+        }
+
+        .s-course-type {
+            margin-top: 4.8rem;
+
+            &__detail {
+                margin-top: 2rem;
+            }
+        }
+
+        .s-schedule-type {
+            margin-top: 5.6rem;
+
+            &__detail {
+                margin-top: 2rem;
+            }
+        }
+
+        .s-notice-type {
+            margin-top: 5.6rem;
+
+            &__detail {
+                margin-top: 2rem;
+
+                .detail {
+                    ul {
+                        li {
+                            font-size: 1.4rem;
+
+                            &+li {
+                                margin-top: 2.8rem;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+
+        .s-cancel-type {
+            margin-top: 5.6rem;
+
+            &__detail {
+                margin-top: 2rem;
+
+                table {
+
+                    th,
+                    td {
+                        font-size: 1.4rem;
+                    }
+
+                    th {
+                        line-height: calc(11/14);
+                    }
+
+                    td {
+                        padding: 2rem 1.6rem;
+                    }
+                }
+            }
+        }
+    }
+}

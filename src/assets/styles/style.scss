@@ -12,6 +12,16 @@ html {
         word-break: break-all;
         line-break: strict;
     }
+
+    //ドロワーナビオープン時
+    &[data-state="navOpen"] {
+        @include g.isFixed();
+    }
+
+    //モーダルオープン時
+    &[data-state="modalOpen"] {
+        @include g.isFixed();
+    }
 }
 
 // body

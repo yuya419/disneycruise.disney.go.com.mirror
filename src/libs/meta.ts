@@ -41,10 +41,10 @@ const metaArray = {
         },
     },
     "detail": {
-        title: "コース詳細	" + " | " + siteInfo.siteName,
+        title: "シンガポール発着　3泊クルーズ	" + " | " + siteInfo.siteName,
         description: "コース詳細	を表示するページ",
         openGraph: {
-            title: "コース詳細	" + " | " + siteInfo.siteName,
+            title: "シンガポール発着　3泊クルーズ	" + " | " + siteInfo.siteName,
             siteName: siteInfo.siteName,
             description: "コース詳細	を表示するページ",
             url: `${siteInfo.url}list//detail/`,

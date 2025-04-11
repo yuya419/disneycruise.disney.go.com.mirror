@@ -2,7 +2,11 @@
  * @name page.tsx
  * @description 7つのテーマエリアを表示するページ
  */
-"use client";
+import type { Metadata } from "next";
+import metaArray from "@/libs/meta";
+
+// メタデータ
+export const metadata: Metadata = metaArray["themed-areas"];
 
 export default function Page() {
     return (

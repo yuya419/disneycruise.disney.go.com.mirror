@@ -2,6 +2,7 @@
  * @name adults.tsx
  * @description 大人のための施設
  */
+"use client";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import helper from "@/libs/helper";

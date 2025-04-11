@@ -5,13 +5,14 @@
 
 import "./styles/container.scss";
 
-export default function Container(props: { propaty: string }, { children }: { children: React.ReactNode }) {
-
-    let style = {}
-
+function HasAsideContainer({ children }: { children: React.ReactNode }) {
     return (
-        <div className="container">
+        <div className="l-has-aside-container">
             {children}
         </div>
     )
+}
+
+export {
+    HasAsideContainer
 }

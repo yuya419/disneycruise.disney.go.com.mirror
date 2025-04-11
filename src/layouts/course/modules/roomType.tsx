@@ -7,9 +7,29 @@ import Image from "next/image";
 import { useState, useEffect } from 'react';
 import { AccordionType02, AccordionType03 } from "@/components/modules/acdn/acdn";
 import Headline from "@/components/modules/headline/headline";
+import BookingCalendar from "@/components/modules/calendar/calendar";
 import "./styles/roomType.scss";
 
 export default function RoomType({ typesArray }: { typesArray: any[] }) {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia("(max-width: 1024px)");
+
+        // 初期値を設定
+        setIsMobile(mediaQuery.matches);
+
+        // リスナーを追加して画面幅の変更を監視
+        const handleResize = (e: MediaQueryListEvent) => {
+            setIsMobile(e.matches);
+        };
+        mediaQuery.addEventListener("change", handleResize);
+
+        // クリーンアップ
+        return () => {
+            mediaQuery.removeEventListener("change", handleResize);
+        };
+    }, []);
 
     useEffect(() => {
         const html = document.documentElement;
@@ -52,6 +72,8 @@ export default function RoomType({ typesArray }: { typesArray: any[] }) {
                                     };
 
                                     useEffect(() => {
+                                        if (!isMobile) return; // モバイル時のみ実行
+
                                         const html = document.documentElement;
                                         if (isModalOpen) {
                                             html.dataset.state = "modalOpen";
@@ -79,8 +101,10 @@ export default function RoomType({ typesArray }: { typesArray: any[] }) {
                                                 }
                                                 content={
                                                     <div className="room-content">
-                                                        <div className="calendar" onClick={toggleModal}>
-                                                            <img src="/ships/adventure/common/dummy/cal.jpg" alt="" />
+                                                        <div className="calendar">
+                                                            <BookingCalendar
+                                                                onDateClick={() => setIsModalOpen(!isModalOpen)}
+                                                            />
                                                         </div>
                                                         <form className="booking-form" method="get" data-open={isModalOpen}>
                                                             <div className="booking-form__inner">

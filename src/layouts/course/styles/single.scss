@@ -157,7 +157,8 @@
             }
         }
 
-        &:has(.booking-form[data-open="true"]) {
+        &:has(.booking-form[data-open="true"]),
+        &:has(.filterModal[data-open="true"]) {
             position: static;
             z-index : unset;
 

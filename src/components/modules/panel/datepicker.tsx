@@ -7,6 +7,7 @@
  */
 "use client";
 import DatePicker from 'react-datepicker';
+import { ja } from "date-fns/locale";
 import 'react-datepicker/dist/react-datepicker.css';
 import "./styles/datepicker.scss";
 
@@ -18,6 +19,7 @@ type DatePickerProps = {
 const Datepicker = ({ selectedDate, onChange }: DatePickerProps) => {
     return (
         <DatePicker
+            locale={ja}
             selected={selectedDate}
             onChange={(date) => onChange(date)}
             dateFormat="yyyy/MM/dd"

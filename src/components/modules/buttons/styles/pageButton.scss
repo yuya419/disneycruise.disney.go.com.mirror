@@ -27,6 +27,7 @@
             background-color: var(--color_white);
             text-decoration : none;
             padding-inline  : 1.3rem;
+            transition      : 0.1s var(--customEasingOut);
 
             @include g.hover() {
                 background-color: var(--theme_color_main);
@@ -51,6 +52,7 @@
             text-align   : center;
             color        : var(--theme_color_main);
             margin-inline: auto;
+            transition   : color 0.1s var(--customEasingOut);
         }
 
         .icon {
@@ -62,6 +64,7 @@
             height          : 1.9rem;
             background-color: var(--theme_color_main);
             border-radius   : 100%;
+            transition      : background-color 0.1s var(--customEasingOut);
 
             .i-arw-r {
                 display     : block;
@@ -69,6 +72,7 @@
                 aspect-ratio: 1;
                 color       : var(--color_white);
                 rotate      : 90deg;
+                transition  : color 0.1s var(--customEasingOut);
             }
         }
     }

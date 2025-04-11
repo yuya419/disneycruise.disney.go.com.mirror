@@ -4,17 +4,11 @@
  */
 "use client";
 import { useState } from 'react';
-import Datepicker from "@/components/modules/panel/datepicker";
 import Headline from "@/components/modules/headline/headline";
 import "./styles/filter.scss";
 
 export default function Filter() {
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [values, setValues] = useState({ adult: 0, child: 0 });
-
-    const handleDateChange = (date: Date | null) => {
-        setSelectedDate(date);
-    };
 
     const handleValueChange = (type: 'adult' | 'child', value: number) => {
         setValues((prev) => ({ ...prev, [type]: value }));
@@ -52,7 +46,7 @@ export default function Filter() {
                     <Headline design="01" hlLevel="p">出発日</Headline>
                     <div className="form-item__input">
                         <label className="input-item">
-                            <Datepicker selectedDate={selectedDate} onChange={handleDateChange} />
+                            <input type="text" name="date" className="input" />
                             <span className="icon">
                                 <svg className="i-calendar">
                                     <use href="#i-calendar"></use>

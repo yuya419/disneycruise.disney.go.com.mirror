@@ -243,6 +243,7 @@
             background-color: var(--theme_color_main);
             border          : 1px solid var(--theme_color_main);
             font-size       : 1.5rem;
+            transition      : color 0.1s var(--customEasingOut), background-color 0.1s var(--customEasingOut);
 
             @include g.hover() {
                 background-color: var(--color_white);
@@ -253,5 +254,4 @@
 }
 
 // sp
-@include g.media(md) {
-}
+@include g.media(md) {}

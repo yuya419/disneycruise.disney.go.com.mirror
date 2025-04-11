@@ -10,6 +10,13 @@
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.c-filter__form {
+    .react-datepicker {
+        &__triangle {
+            display: none;
+        }
+    }
+}
 
 // sp
 @include g.media(md) {}

@@ -9,6 +9,7 @@ import Headline from "@/components/modules/headline/headline";
 import SearchTags from "@/layouts/course/modules/searchTags";
 import RoomType from "./modules/roomType";
 import Schedule from "./modules/schedule";
+import FilterModal from "@/layouts/course/modules/filterModal";
 import "./styles/single.scss";
 
 export default function Single() {
@@ -324,6 +325,7 @@ export default function Single() {
                     </div>
                 </div>
             </section>
+            <FilterModal />
         </div >
     )
 }

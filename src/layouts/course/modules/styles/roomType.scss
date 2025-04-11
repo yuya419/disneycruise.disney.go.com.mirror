@@ -234,9 +234,7 @@
                 grid-template-columns: auto 1fr;
                 column-gap           : 2.5rem;
 
-                .calendar {
-                    width: 41rem;
-                }
+                .calendar {}
 
                 .booking-form {
                     &__inner {
@@ -379,6 +377,7 @@
                         background-color: var(--theme_color_main);
                         font-size       : 1.5rem;
                         margin-top      : 3.5rem;
+                        transition      : background-color 0.1s var(--customEasingOut), color 0.1s var(--customEasingOut);
 
                         @include g.hover() {
                             background-color: var(--color_white);
@@ -401,13 +400,15 @@
                             height          : 1.9rem;
                             border-radius   : 50%;
                             background-color: var(--theme_color_sub);
+                            transition      : background-color 0.1s var(--customEasingOut);
 
                             .i-check {
                                 display     : block;
                                 width       : 70%;
                                 aspect-ratio: 1;
                                 color       : var(--theme_color_main);
-                                margin-top: 0.2rem;
+                                margin-top  : 0.2rem;
+                                transition  : color 0.1s var(--customEasingOut);
                             }
                         }
                     }
@@ -577,7 +578,7 @@
 
                         &__inner {
                             display: block;
-                            height: auto;
+                            height : auto;
                         }
 
                         .info {

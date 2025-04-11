@@ -65,6 +65,16 @@ const Symbol = () => {
             viewBox: "0 0 17 17",
             path: '<path d="m7.44989 14.1699c3.56221 0 6.44991-2.8877 6.44991-6.44986 0-3.56218-2.8877-6.4499-6.44991-6.4499-3.56217 0-6.44989 2.88772-6.44989 6.4499 0 3.56216 2.88772 6.44986 6.44989 6.44986z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6555" /><path d="m14.8762 16.2979-3.4504-3.4504 1.7598-1.7599 3.4505 3.4505c.4869.487.4869 1.2756 0 1.7598-.487.487-1.2756.487-1.7599 0z" fill="currentColor" />',
         },
+        {
+            id: "i-circle",
+            viewBox: "0 0 10 10",
+            path: '<circle cx="5" cy="5" r="3.85" stroke="currentColor" stroke-width="1.3"/>',
+        },
+        {
+            id: "i-cross",
+            viewBox: "0 0 10 10",
+            path: '<g stroke="currentColor" stroke-width="1.3"><path d="m8.45962 1.45962-7 7" /><path d="m0-.65h9.8995" transform="matrix(.707107 .707107 .707107 -.707107 2 1)" /></g>',
+        },
     ];
 
     const symbol = paths.map((path, key) => {

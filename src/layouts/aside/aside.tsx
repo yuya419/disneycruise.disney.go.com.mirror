@@ -3,15 +3,42 @@
  * @description サイドメニューを表示するページ
  */
 "use client";
+import { useEffect, useRef } from "react";
 import { AccordionType02 as Accordion } from "@/components/modules/acdn/acdn";
 import Filter from "@/components/modules/panel/filter";
 import "./styles/aside.scss";
 
 type AsideProps = {
     page: "course";
-}
+};
 
 export default function Aside({ page }: AsideProps) {
+    const asideRef = useRef<HTMLElement | null>(null);
+
+    useEffect(() => {
+        const html = document.documentElement;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    html.classList.remove("is-filter-button-show");
+                } else {
+                    html.classList.add("is-filter-button-show");
+                }
+            },
+            { root: null, threshold: 0 } // 画面内に 1px でも見えていれば true
+        );
+
+        if (asideRef.current) {
+            observer.observe(asideRef.current);
+        }
+
+        return () => {
+            if (asideRef.current) {
+                observer.unobserve(asideRef.current);
+            }
+        };
+    }, []);
 
     const AsideContent = () => {
         if (page === "course") {
@@ -33,16 +60,15 @@ export default function Aside({ page }: AsideProps) {
                                 </span>
                             </>
                         }
-                        content={
-                            <Filter />
-                        } />
+                        content={<Filter />}
+                    />
                 </div>
-            )
+            );
         }
-    }
+    };
 
     return (
-        <aside className="l-aside">
+        <aside className="l-aside" ref={asideRef}>
             <AsideContent />
         </aside>
     );

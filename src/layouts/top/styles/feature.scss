@@ -12,8 +12,6 @@
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .t-feature {
     overflow: clip;
-    
-    background-color: #8286A5;
 
     .container {
         padding-block: 15rem;
@@ -43,7 +41,7 @@
     }
 
     &__body {
-        $h: 56rem;
+        $h: min(56rem, calc(100dvh / (768/560)));
         $s: 7rem;
 
         .feature {
@@ -59,14 +57,14 @@
                 height        : $h;
                 margin        : calc(#{$s} * -1) auto 0;
                 position      : sticky;
-                top           : 6rem;
+                top           : calc(50dvh - $h / 2);
                 pointer-events: none;
                 z-index       : 2;
             }
 
             &-item {
                 position      : absolute;
-                width         : 40rem;
+                width         : min(40rem, (100dvh/(768/400)));
                 height        : 100%;
                 top           : 0;
                 right         : 0;
@@ -86,12 +84,12 @@
                     border-radius : 100vmax;
                     opacity       : 0.6;
                     background    : radial-gradient(70.61% 50% at 50% 50%, #95DCFF 0%, #55B4E6 58.5%, #405D9E 100%);
-                    filter        : blur(60px);
                     pointer-events: none;
-                }
+                    filter        : blur(60px);
 
-                &:not(:first-child) {
-                    opacity: 0;
+                    scale     : 0.7;
+                    opacity   : 0;
+                    transition: scale 0.3s var(--customEasingOut) 0s, opacity 0.3s var(--customEasingOut) 0s;
                 }
 
                 img {
@@ -99,6 +97,10 @@
                     width     : 100%;
                     height    : 100%;
                     object-fit: cover;
+
+                    opacity   : 0;
+                    filter    : brightness(0.5);
+                    transition: opacity 0.3s var(--customEasingOut) 0.15s, filter 0.35s var(--customEasingOut) 0s;
                 }
             }
         }
@@ -138,6 +140,7 @@
 
             .arrow {
                 flex-shrink: 0;
+                transition : background-color 0.3s var(--customEasingOut);
             }
 
             .thumbnail {
@@ -173,7 +176,9 @@
             margin-top : calc((#{$h} - #{$s} - 6rem) * -1);
 
             .divider {
-                border-top: 1px solid rgba(255, 255, 255, 0.2);
+                border-top      : 1px solid rgba(255, 255, 255, 0.2);
+                background-color: rgba(255, 255, 255, 0.0);
+                transition      : background-color 0.3s var(--customEasingOut);
 
                 &:last-child {
                     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -183,6 +188,38 @@
 
         .button {
             margin-top: 6rem;
+        }
+
+        @for $i from 0 to 5 {
+            [data-post="#{$i}"] {
+                .post-thumbnail-item:nth-child(#{$i}) {
+                    &::before {
+                        scale     : 1;
+                        opacity   : 0.6;
+                        transition: scale 0.35s var(--customEasingIn) 0.2s, opacity 0.35s var(--customEasingIn) 0.2s;
+                    }
+
+                    img {
+                        opacity   : 1;
+                        filter    : brightness(1);
+                        transition: opacity 0.35s var(--customEasingIn) 0.2s, filter 0.4s var(--customEasingIn) 0.35s;
+                    }
+                }
+
+                .post-item:nth-child(#{$i}) {
+                    .post-link {
+                        .arrow {
+                            background-color: var(--theme_color_sub);
+                            transition      : background-color 0.35s var(--customEasingIn);
+                        }
+                    }
+                }
+
+                .divider:nth-child(#{$i}) {
+                    background-color: rgba(255, 255, 255, 0.1);
+                    transition      : background-color 0.35s var(--customEasingIn);
+                }
+            }
         }
     }
 }

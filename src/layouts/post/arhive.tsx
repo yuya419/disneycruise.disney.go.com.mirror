@@ -37,15 +37,16 @@ const Feature = (props: {
         }
     },
     hlLevel?: "h2" | "h3",
-    arrow: boolean
+    arrow: boolean,
+    data?: boolean,
 },) => {
     const { posts } = props;
     const Tag = props.hlLevel === "h2" ? "h2" : "h3";
 
-    const postItems = Object.keys(posts).map((key) => {
+    const postItems = Object.keys(posts).map((key, index) => {
         return (
             <article className="post-item" key={key}>
-                <Link href={'/feature/' + posts[key].link} className="post-link">
+                <Link href={'/feature/' + posts[key].link} className="post-link" {...props.data ? { "data-post": index + 1 } : {} }>
                     <div className="post-content">
                         {props.arrow && arrow({ bg: "white", color: "blue" })}
                         <div className="thumbnail">

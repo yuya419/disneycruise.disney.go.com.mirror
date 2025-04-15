@@ -26,8 +26,8 @@
     --theme_color_sub   : var(--color_gold);
 
     // easing
-    --customEasingIn : ease-in;
-    --customEasingOut: ease-out;
+    --customEasingIn : cubic-bezier(0.46, 0.74, 0.53, 0.88);
+    --customEasingOut: cubic-bezier(0.27, 0.58, 0.38, 0.69);
 
     // font size
 }

@@ -376,18 +376,15 @@
 
 // hover selecter
 .room-image-item {
-    position: relative;
-
-    &:not(.isSelect) {
-        transition: opacity 0.3s var(--customEasingOut);
-        opacity   : 0;
-        z-index   : 2;
-    }
+    position  : relative;
+    opacity   : 0;
+    z-index   : 1;
+    transition: opacity 0.3s var(--customEasingOut) 0.3s;
 
     &.isSelect {
+        transition: opacity 0.3s var(--customEasingIn);
         opacity   : 1;
-        transition: opacity 0.3s var(--customEasingOut);
-        z-index   : 1;
+        z-index   : 2;
     }
 }
 

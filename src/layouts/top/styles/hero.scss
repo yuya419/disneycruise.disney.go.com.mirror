@@ -23,7 +23,10 @@
         left    : 2.7rem;
         width   : 29rem;
 
-        img {}
+        img {
+            width: 100%;
+            height: auto;
+        }
     }
 
     // &__scroll

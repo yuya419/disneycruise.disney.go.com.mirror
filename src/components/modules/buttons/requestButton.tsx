@@ -3,7 +3,6 @@
  * @description 「ご予約はこちら」ボタン
  */
 import Link from "next/link";
-import { Divider } from "@/components/modules/common/common";
 import "./styles/requestButton.scss";
 
 export default function RequestButton() {
@@ -11,7 +10,7 @@ export default function RequestButton() {
         <div className="requestButton">
             <Link href="/list/">
                 <span className="label">ご予約<span>はこちら</span></span>
-                <Divider dir="hrzn" w="18" h="2" color="blue"/>
+                <span className="divider"></span>
                 <span className="icon">
                     <svg className="i-calendar">
                         <use xlinkHref="#i-calendar" />

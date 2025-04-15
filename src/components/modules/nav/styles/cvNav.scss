@@ -83,11 +83,8 @@
                 column-gap : 6rem;
 
                 .divider {
-                    width              : 2px;
-                    height             : 64px;
-                    background-image   : linear-gradient(to top, rgba(255, 255, 255, 0.8) 2px, transparent 2px);
-                    background-position: center top;
-                    background-size    : 1px 4.5px;
+                    height     : 6.4rem;
+                    border-left: 3px dotted rgba(255, 255, 255, 0.8);
                 }
 
                 .i-calendar {

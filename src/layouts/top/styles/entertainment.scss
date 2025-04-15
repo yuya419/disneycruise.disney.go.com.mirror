@@ -143,41 +143,54 @@
 
         &-item {
             position: absolute;
+            transform: translateY(20%);
 
             &.is-item-img01 {
+                width: 22.0rem;
                 top : 30.6rem;
                 left: 0;
             }
 
             &.is-item-img02 {
+                width: 29.0rem;
                 top : 45.9rem;
                 left: 7.4rem;
             }
 
             &.is-item-img03 {
+                width: 11.0rem;
                 top    : 80.9rem;
                 left   : 4.6rem;
                 z-index: 2;
             }
 
             &.is-item-img04 {
+                width: 19.0rem;
                 top : 84.2rem;
                 left: 12.8rem;
             }
 
             &.is-item-img05 {
+                width: 23.0rem;
                 top  : 29.8rem;
                 right: 4.3rem;
             }
 
             &.is-item-img06 {
+                width: 32.0rem;
                 top  : 57.8rem;
                 right: 0;
             }
 
             &.is-item-img07 {
+                width: 16.0rem;
                 top  : 80.9rem;
                 right: 21rem;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
             }
         }
     }
@@ -254,6 +267,7 @@
             }
 
             &-item {
+                width : 19.5rem;
                 height: 13rem;
             }
         }

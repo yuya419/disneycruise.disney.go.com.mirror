@@ -4,6 +4,7 @@
  */
 import Image from "next/image";
 import helper from "@/libs/helper";
+import { GSAPToggleContainer } from "@/components/modules/gsap/container";
 import { GallerySlider } from "@/components/modules/common/common";
 import "./styles/message.scss";
 
@@ -38,7 +39,7 @@ export default function Hero() {
     }
 
     return (
-        <section className="t-message">
+        <GSAPToggleContainer tag="section" className="t-message" toggle={{ logo: true, color: null }}>
             <div className="container">
                 <hgroup className="t-message__head">
                     <p className="logo">
@@ -64,6 +65,6 @@ export default function Hero() {
                 </div>
             </div>
             <GallerySlider to="left" images={images} />
-        </section>
+        </GSAPToggleContainer>
     )
 }

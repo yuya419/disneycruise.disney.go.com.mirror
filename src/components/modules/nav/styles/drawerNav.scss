@@ -21,7 +21,6 @@
     opacity       : 0;
     pointer-events: none;
 
-
     [data-state="navOpen"] & {
         opacity       : 1;
         pointer-events: all;
@@ -77,6 +76,11 @@
             width     : 100%;
             height    : 100%;
             object-fit: cover;
+            display   : none;
+
+            [data-state="navOpen"] & {
+                display: block;
+            }
         }
     }
 
@@ -502,133 +506,3 @@
         }
     }
 }
-
-/* __20: drawerButton */
-/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-// .drawerButton {
-//     position     : fixed;
-//     right        : 0;
-//     top          : 0;
-//     z-index      : 99;
-//     width        : 8rem;
-//     height       : 9.8rem;
-//     border-bottom: 0.2rem solid rgba(255, 255, 255, 0.4);
-//     transition   : border-bottom-color 0.3s var(--customEasingOut);
-
-//     [data-state="navOpen"] & {
-//         border-bottom-color: transparent;
-//     }
-
-//     &-inner {
-//         width         : 100%;
-//         height        : 100%;
-//         display       : flex;
-//         flex-direction: column;
-//         align-items   : center;
-//         padding-top   : 1.7rem;
-//         row-gap       : 0.7rem;
-//     }
-
-//     .icon {
-//         display    : block;
-//         width      : 4.2rem;
-//         height     : 4.2rem;
-//         will-change: rotate;
-//         transition : rotate 0.3s var(--customEasingOut), opacity 0.3s var(--customEasingOut);
-
-//         [data-state="navOpen"] & {
-//             rotate : 180deg;
-//             opacity: 0;
-//         }
-
-//         .i-menu {
-//             display: block;
-//             width  : 100%;
-//             height : 100%;
-//         }
-//     }
-
-//     .text {
-//         font-size     : 1.3rem;
-//         font-weight   : 700;
-//         letter-spacing: 0.03em;
-//         line-height   : 0.8;
-//         color         : var(--color_white);
-//         overflow      : hidden;
-//         text-align    : center;
-//         transition    : opacity 0.3s var(--customEasingOut);
-
-//         [data-state="navOpen"] & {
-//             opacity: 0;
-//         }
-//     }
-
-//     .close {
-//         position        : absolute;
-//         inset           : 0;
-//         margin          : auto;
-//         width           : 5rem;
-//         aspect-ratio    : 1;
-//         background-color: var(--color_white);
-//         clip-path       : inset(100% round 50%);
-//         transition      : clip-path 0.3s var(--customEasingOut);
-
-//         [data-state="navOpen"] & {
-//             clip-path: inset(0% round 50%);
-//         }
-
-//         &::before,
-//         &::after {
-//             content         : "";
-//             position        : absolute;
-//             inset           : 0;
-//             margin          : auto;
-//             width           : 45%;
-//             height          : 1px;
-//             background-color: var(--theme_color_main);
-//         }
-
-//         &::before {
-//             rotate: 45deg;
-//         }
-
-//         &::after {
-//             rotate: -45deg;
-//         }
-//     }
-// }
-
-// // sp
-// @include g.media(md) {
-//     .drawerButton {
-//         width           : 6.3rem;
-//         height          : 7.2rem;
-//         right           : 1rem;
-//         border-bottom   : none;
-//         border-radius   : 0 0 0.5rem 0.5rem;
-//         background-color: var(--color_white);
-//         transition      : background-color 0.3s var(--customEasingOut);
-
-//         [data-state="navOpen"] & {
-//             background-color: transparent;
-//         }
-
-//         &-inner {
-//             justify-content: center;
-//             padding-top    : 0;
-//             row-gap        : 0.6rem;
-//         }
-
-//         .icon {
-//             width : 3.6rem;
-//             height: 3.6rem;
-
-//             .i-menu {}
-//         }
-
-//         .text {
-//             font-size: 1.2rem;
-//             color    : var(--theme_color_text);
-//         }
-//     }
-// }

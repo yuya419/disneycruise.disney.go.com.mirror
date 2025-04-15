@@ -5,29 +5,11 @@
 'use client';
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import helper from "@/libs/helper";
 import "./styles/common.scss";
-
-/**
- * @name Divider
- * @description 区切り線
- * @param props.dir 区切り線の方向
- * @param props.w 区切り線の幅
- * @param props.h 区切り線の高さ
- * @param props.color 区切り線の色
- */
-const Divider = (props: { dir: "vert" | "hrzn", w: string, h: string, color: "white" | "blue" }) => {
-
-    let style = {
-        "--w": props.w,
-        "--h": props.h,
-        "--divider-color": props.color === "white" ? "#fff" : "#002D74",
-    } as React.CSSProperties;
-
-    return (
-        <span className={{ vert: "divider is-vert", hrzn: "divider is-hrzn" }[props.dir]} style={style}></span>
-    )
-}
 
 /**
  * @name GallerySlider
@@ -46,7 +28,30 @@ const GallerySlider = (props: {
         }
     }
 }) => {
+    const pathname = usePathname();
+    const containerRef = useRef<HTMLDivElement>(null);
     const { getImagePath } = helper();
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const ctx = gsap.context(() => {
+            const container = containerRef.current;
+            if (!container) return;
+
+            ScrollTrigger.create({
+                trigger: container,
+                start: "top bottom",
+                end: "bottom top",
+                onEnter: () => container.classList.add("isPlay"),
+                onLeave: () => container.classList.remove("isPlay"),
+                onEnterBack: () => container.classList.add("isPlay"),
+                onLeaveBack: () => container.classList.remove("isPlay"),
+            });
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, []);
 
     const gallerySliderList = () => {
         return (
@@ -71,7 +76,7 @@ const GallerySlider = (props: {
     }
 
     return (
-        <div className="gallery-slider" data-slide-to={props.to}>
+        <div className="gallery-slider" data-slide-to={props.to} ref={containerRef}>
             {gallerySliderList()}
             {gallerySliderList()}
             {gallerySliderList()}
@@ -94,13 +99,42 @@ const GalleryParallax = (props: {
         }
     }
 }) => {
+    const pathname = usePathname();
     const { getImagePath } = helper();
 
     const galleryParallaxItems = () => {
         return (
             Object.keys(props.images).map((key) => {
+                const itemref = useRef<HTMLDivElement>(null);
+
+                useEffect(() => {
+                    const ctx = gsap.context(() => {
+                        const item = itemref.current;
+                        if (!item) return;
+
+                        gsap.to(item, {
+                            y: () => {
+                                const windowHeight = window.innerHeight;
+                                const itemHeight = item.clientHeight;
+                                const scrollTriggerStart = (windowHeight - itemHeight) * -0.2;
+                                return scrollTriggerStart;
+                            },
+                            ease: "none",
+                            scrollTrigger: {
+                                trigger: item,
+                                start: "top bottom",
+                                end: "bottom top",
+                                scrub: 2,
+                                invalidateOnRefresh: true,
+                            },
+                        })
+                    }, itemref);
+        
+                    return () => ctx.revert();
+                }, []);
+
                 return (
-                    <div key={key} className={`gallery-parallax-item is-item-${key}`}>
+                    <div key={key} className={`gallery-parallax-item is-item-${key}`} ref={itemref}>
                         <Image
                             src={getImagePath(props.images[key].src)}
                             alt={props.images[key].alt}
@@ -120,7 +154,6 @@ const GalleryParallax = (props: {
         </div>
     )
 }
-
 
 /**
  * @name Bg
@@ -176,49 +209,8 @@ const Bg = (props: { state: boolean }) => {
     )
 }
 
-/**
- * @name PostThumbnailList
- * @description 投稿のサムネイル一覧
- * @param props
- * @returns 
- */
-const PostThumbnailList = (props: {
-    posts: {
-        [key: string]: {
-            thumbnail: {
-                src: string,
-                alt: string,
-                w: number,
-                h: number,
-            }
-        }
-    },
-}) => {
-    const thumbnailItems = Object.keys(props.posts).map((key) => {
-        return (
-            <div className="post-thumbnail-item" key={key}>
-                <Image
-                    src={props.posts[key].thumbnail.src}
-                    alt={props.posts[key].thumbnail.alt + "のサムネイル"}
-                    width={props.posts[key].thumbnail.w}
-                    height={props.posts[key].thumbnail.h}
-                    priority
-                />
-            </div>
-        )
-    });
-
-    return (
-        <div className="post-thumbnail-list">
-            {thumbnailItems}
-        </div>
-    )
-}
-
 export {
-    Divider,
     GallerySlider,
     GalleryParallax,
     Bg,
-    PostThumbnailList,
 }

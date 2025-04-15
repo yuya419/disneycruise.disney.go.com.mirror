@@ -3,44 +3,31 @@
 /* common */
 
 /* 目次 */
-/* __10: divider */
-/* __20: gallery-slider */
-/* __30: bg */
+/* __10: gallery-slider */
+/* __20: bg */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 @use "@/assets/styles/_mixin"as g;
 
-/* __10: divider */
-/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-.divider {
-    display    : block;
-    flex-shrink: 0;
-    width      : calc(var(--w)*1px);
-    height     : calc(var(--h)*1px);
-
-    &.is-vert {
-        background-image   : linear-gradient(to top, var(--divider-color) 2px, transparent 2px);
-        background-position: center top;
-        background-size    : 1px calc(var(--h) * 1px / 5);
-    }
-
-    &.is-hrzn {
-        background-image   : linear-gradient(to right, var(--divider-color) 2px, transparent 2px);
-        background-position: left top;
-        background-size    : calc(var(--w) * 1px / 5) 1px;
-    }
-}
-
-/* __20: gallery-slider */
+/* __10: gallery-slider */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .gallery-slider {
     overflow: hidden;
     display : flex;
 
+    &.isPlay {
+        .gallery-slider-list {
+            animation-play-state: running;
+        }
+    }
+
     &-list {
-        display    : flex;
-        flex-shrink: 0;
-        animation  : gallerySlider 20s linear infinite forwards;
+        display             : flex;
+        flex-shrink         : 0;
+        will-change         : translate;
+        translate           : 0 0;
+        animation           : gallerySlider 20s linear infinite;
+        animation-play-state: paused;
     }
 
     &-item {
@@ -69,7 +56,7 @@
     }
 }
 
-/* __30: bg */
+/* __20: bg */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .bg {
     position     : fixed;
@@ -87,10 +74,10 @@
     }
 
     .color {
-        z-index            : 2;
-        background-color   : var(--color_white);
-        background-color   : rgba($color: #000846, $alpha: 0.7);
-        background-color   : transparent;
+        z-index               : 3;
+        background-color      : var(--color_white);
+        background-color      : rgba($color: #000846, $alpha: 0.7);
+        // background-color   : transparent;
         // background-color: rgba($color: #000846, $alpha: 0.6);
     }
 
@@ -105,10 +92,6 @@
             height  : 100%;
             top     : 0;
             left    : 0;
-        }
-
-        .hero {
-            z-index: 2;
 
             &::before {
                 content         : "";
@@ -121,9 +104,13 @@
             }
         }
 
-        .water {
+        .hero {
             z-index: 2;
-            opacity: 0;
+        }
+
+        .water {
+            z-index   : 2;
+            // opacity: 0;
         }
 
         video {

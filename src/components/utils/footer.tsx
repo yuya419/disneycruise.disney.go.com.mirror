@@ -49,12 +49,6 @@ export default function Footer() {
                     <p className="copyright" translate="no">Copyright &copy; KK Miki Tourist, All Rights Reserved.</p>
                 </div>
             </div>
-            <div className="f-bg">
-                <video autoPlay muted loop playsInline preload="metadata">
-                    <source src={getImagePath("movie/water.webm")} type="video/webm" />
-                    <source src={getImagePath("movie/water.mp4")} type="video/mp4" />
-                </video>
-            </div>
         </footer>
     )
 }

@@ -16,7 +16,6 @@ import {
   Adults,
   Concierge,
 } from "@/layouts/top/top";
-import { Bg } from "@/components/modules/common/common";
 
 // メタデータ
 export const metadata: Metadata = metaArray["index"];
@@ -36,7 +35,6 @@ export default function Home() {
         <Adults />
         <Concierge />
       </main>
-      <Bg state={true} />
     </>
   );
 }

@@ -18,17 +18,18 @@ export default function KidsClubs() {
     const pathname = usePathname();
 
     useEffect(() => {
-        // メディアクエリの設定
-        const mediaQuery = window.matchMedia("(min-width: 1025px)");
+        const mm = gsap.matchMedia();
+        const pc = "(min-width: 1025px)";
+        const sp = "(max-width: 1024px)";
+
+        const container = containerRef.current;
+        if (!container) return;
 
         // スクロールアニメーションの設定
         const scrollAnimation = () => {
             gsap.registerPlugin(ScrollTrigger);
 
             const ctx = gsap.context(() => {
-                const container = containerRef.current;
-                if (!container) return;
-
                 ScrollTrigger.create({
                     trigger: container,
                     start: "top 50%",
@@ -56,8 +57,6 @@ export default function KidsClubs() {
             let move = 0;
 
             let interval: ReturnType<typeof setInterval> | null = null;
-            const container = containerRef.current;
-            if (!container) return;
 
             container.style.setProperty("--rotate", rotate.toString());
 
@@ -148,18 +147,19 @@ export default function KidsClubs() {
             }
         }
 
-        // メディアクエリに応じたイベントリスナーの設定
-        const handleMediaChange = () => {
-            mediaQuery.matches ? scrollAnimation() : rotateSlider();
-        }
+        // PC用のアニメーション設定
+        mm.add(pc, () => {
+            return scrollAnimation();
+        });
 
-        // 初回実行
-        handleMediaChange();
-
-        mediaQuery.addEventListener("change", handleMediaChange);
+        // SP用のアニメーション設定
+        mm.add(sp, () => {
+            return rotateSlider();
+        });
 
         return () => {
-            mediaQuery.removeEventListener("change", handleMediaChange);
+            mm.revert();
+            gsap.killTweensOf(container);
         }
     }, [pathname]);
 

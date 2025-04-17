@@ -208,6 +208,7 @@
             height          : 100%;
             object-fit      : cover;
             transform-origin: top;
+            will-change     : transform;
             scale           : 1.15;
         }
     }

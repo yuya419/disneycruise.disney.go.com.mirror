@@ -4,6 +4,7 @@
  */
 import Button from "@/components/modules/buttons/button";
 import { GallerySlider } from "@/components/modules/common/common";
+import { GSAPToggleContainer } from "@/components/modules/gsap/container";
 import "./styles/dining.scss";
 
 export default function Dining() {

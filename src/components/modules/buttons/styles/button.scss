@@ -72,6 +72,15 @@
             color: #866B0E;
         }
     }
+
+    // 白ベタ, 黒文字
+    [data-type="quaternary"] {
+        background-color: var(--color_white);
+
+        .label {
+            color: var(--theme_color_text);
+        }
+    }
 }
 
 // sp

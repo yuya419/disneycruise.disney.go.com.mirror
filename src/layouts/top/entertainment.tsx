@@ -5,6 +5,7 @@
 'use client';
 import Button from "@/components/modules/buttons/button";
 import { GallerySlider, GalleryParallax } from "@/components/modules/common/common"
+import { GSAPToggleContainer } from "@/components/modules/gsap/container";
 import "./styles/entertainment.scss";
 
 export default function Entertainment() {
@@ -60,7 +61,7 @@ export default function Entertainment() {
     }, {} as { [key: string]: { src: string; alt: string; w: number; h: number } });
 
     return (
-        <section className="t-entertainment">
+        <GSAPToggleContainer tag="section" className="t-entertainment" toggle={{ logo: false, color: "blue" }}>
             <GallerySlider to="left" images={reverseImages} />
             <div className="container">
                 <hgroup className="t-entertainment__head">
@@ -95,6 +96,6 @@ export default function Entertainment() {
             </div>
             <GallerySlider to="left" images={images} />
             <GalleryParallax images={images} />
-        </section>
+        </GSAPToggleContainer>
     )
 }

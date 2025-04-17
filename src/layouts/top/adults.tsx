@@ -43,7 +43,7 @@ export default function Adults() {
 
         const outline = Object.keys(relaxations).map((key) => {
             return (
-                <div key={key} className={`outline-item ${key == "01" ? "isActive" : ""}`} data-num={key}>
+                <div key={key} className={`outline-item ${key == "01" ? "isActive" : "isNext"}`} data-num={key}>
                     <dl className="outline-box">
                         <dt className="outline-title">
                             <p className="ja">{relaxations[key].name}</p>
@@ -54,7 +54,7 @@ export default function Adults() {
                         </dd>
                     </dl>
                     <div className="outline-image">
-                        <Image src={getImagePath(`top/adults/img${key}.jpg`)} alt="" width={580} height={387} priority />
+                        <Image src={getImagePath(`top/adults/img${key}.jpg`)} alt={relaxations[key].name + 'のイメージ写真'} width={580} height={387} priority />
                     </div>
                 </div>
             )
@@ -70,11 +70,12 @@ export default function Adults() {
 
         useEffect(() => {
             gsap.registerPlugin(ScrollTrigger);
+            const mm = gsap.matchMedia();
+            const pc = "(min-width: 1025px)";
+            const sp = "(max-width: 1024px)";
+
             const container = containerRef.current;
             if (!container) return;
-
-            // メディアクエリの設定
-            const mediaQuery = window.matchMedia("(min-width: 1025px)");
 
             // スクロールアニメーションの設定
             const scrollAnimation = () => {
@@ -151,8 +152,8 @@ export default function Adults() {
 
                 const area = container.querySelector(".relaxation-outline") as HTMLElement;
                 const track = container.querySelector(".relaxation-outline .outline-list") as HTMLElement;
-                const prevButton = container.querySelector(".isPrev") as HTMLButtonElement;
-                const nextButton = container.querySelector(".isNext") as HTMLButtonElement;
+                const prevButton = container.querySelector("button.isPrev") as HTMLButtonElement;
+                const nextButton = container.querySelector("button.isNext") as HTMLButtonElement;
                 const balets = container.querySelectorAll(".balet");
 
                 area.style.setProperty("--move", "0");
@@ -299,27 +300,23 @@ export default function Adults() {
             };
 
             const resizeObserver = new ResizeObserver(updateOffsets);
+            resizeObserver.observe(container);
 
-            // メディアクエリに応じたイベントリスナーの設定
-            const handleMediaChange = () => {
-                if (mediaQuery.matches) {
-                    scrollAnimation();
-                    resizeObserver.observe(container);
-                }else {
-                    slider();
-                }
-            }
+            // PC用のアニメーション設定
+            mm.add(pc, () => {
+                return scrollAnimation();
+            });
 
-            // 初回実行
-            handleMediaChange();
-
-            // リサイズイベントリスナーの設定
-            mediaQuery.addEventListener("change", handleMediaChange);
+            // SP用のアニメーション設定
+            mm.add(sp, () => {
+                return slider();
+            });
 
             // クリーンアップ
             return () => {
-                mediaQuery.removeEventListener("change", handleMediaChange);
+                mm.revert();
                 resizeObserver.disconnect();
+                gsap.killTweensOf(container);
             }
         }, [pathname]);
 
@@ -346,7 +343,7 @@ export default function Adults() {
                             <div className="outline-list">
                                 {outline}
                             </div>
-                            <div className="navgation">
+                            <div className="navigation">
                                 <button type="button" className="nav-el isPrev" disabled>
                                     <svg className="i-arw-r">
                                         <use href="#i-arw-r"></use>

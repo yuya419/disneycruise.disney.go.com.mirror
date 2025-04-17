@@ -12,6 +12,7 @@ import Header from "@/components/utils/header";
 import Footer from "@/components/utils/footer";
 import DrawerNav from "@/components/modules/nav/drawerNav";
 import RequestButton from "@/components/modules/buttons/requestButton";
+import { Bg } from "@/components/modules/common/common";
 import { Symbol } from "@/libs/symbol";
 
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
@@ -34,6 +35,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
         <Footer />
         <DrawerNav />
         <RequestButton />
+        <Bg state={true} />
         <Symbol />
         <div className="overlay"></div>
       </body>

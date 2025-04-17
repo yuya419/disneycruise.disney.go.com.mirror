@@ -6,6 +6,12 @@ html {
     font-size                 : 10px;
     overscroll-behavior-y     : contain;
     -webkit-overflow-scrolling: touch;
+    // scrollbar-width           : none;
+    // -ms-overflow-style        : none;
+
+    // &::-webkit-scrollbar {
+    //     display: none;
+    // }
 
     * {
         box-sizing: border-box;

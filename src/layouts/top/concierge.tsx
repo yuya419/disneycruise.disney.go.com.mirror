@@ -5,7 +5,6 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import helper from "@/libs/helper";
 import Button from "@/components/modules/buttons/button";
@@ -17,36 +16,52 @@ export default function Concierge() {
     const imageRef = useRef<HTMLImageElement>(null);
 
     useEffect(() => {
-        const ctx = gsap.context(() => {
-            const container = containerRef.current as HTMLDivElement;
-            const img = imageRef.current as HTMLImageElement;
-            if (!container && !img) return;
+        const mm = gsap.matchMedia();
+        const pc = "(min-width: 1025px)";
+        const scrollAnimation = () => {
+            const ctx = gsap.context(() => {
+                const container = containerRef.current as HTMLDivElement;
+                const img = imageRef.current as HTMLImageElement;
+                if (!container && !img) return;
 
-            gsap.to(img, {
-                y: () => {
-                    const windowHeight = window.innerHeight;
-                    const itemHeight = img.clientHeight * 1.15;
-                    const scrollTriggerStart = (windowHeight - itemHeight);
-                    return scrollTriggerStart;
-                },
-                ease: "none",
-                scrollTrigger: {
-                    trigger: img,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: 1,
-                    invalidateOnRefresh: true,
-                },
-            })
-        }, [containerRef, imageRef]);
+                gsap.to(img, {
+                    y: () => {
+                        const windowHeight = window.innerHeight;
+                        const itemHeight = img.clientHeight * 1.15;
+                        const scrollTriggerStart = (windowHeight - itemHeight);
+                        return scrollTriggerStart;
+                    },
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: img,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: true,
+                        invalidateOnRefresh: true,
+                    },
+                })
+            }, [containerRef, imageRef]);
 
-        return () => ctx.revert();
+            return () => ctx.revert();
+        };
+
+        // PC用のアニメーション設定
+        mm.add(pc, () => {
+            return scrollAnimation();
+        });
+
+        // クリーンアップ処理
+        return () => {
+            mm.revert(); // すべてのメディアクエリを解除
+            gsap.killTweensOf(containerRef.current);
+            gsap.killTweensOf(imageRef.current);
+        };
     }, []);
 
     return (
         <section className="t-concierge" ref={containerRef}>
             <div className="t-concierge__bg">
-                <Image src={getImagePath("top/concierge/img.jpg")} alt="コンシェルジュスイート&ステートルーム​​の内装" width={1300} height={768} priority ref={imageRef}/>
+                <Image src={getImagePath("top/concierge/img.jpg")} alt="コンシェルジュスイート&ステートルーム​​の内装" width={1300} height={768} priority ref={imageRef} />
             </div>
             <div className="container">
                 <div className="t-concierge__detail">

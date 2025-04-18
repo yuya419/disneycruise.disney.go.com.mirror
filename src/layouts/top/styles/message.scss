@@ -11,8 +11,7 @@
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .t-message {
-    background-color: #BFE5ED;
-    color: var(--color_white);
+    color           : var(--color_white);
 
     .container {
         width        : calc(100% - 50px);
@@ -56,6 +55,14 @@
             @include g.leadingTrim(calc(35/18));
         }
     }
+
+    .gallery-slider {
+
+        &-item {
+            width : 39rem;
+            height: 26rem;
+        }
+    }
 }
 
 // sp
@@ -91,6 +98,7 @@
         .gallery-slider {
 
             &-item {
+                width : 19.5rem;
                 height: 13rem;
             }
         }

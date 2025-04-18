@@ -29,21 +29,21 @@ export default function Accommodations() {
             en: "Verandah Stateroom",
             desp: "テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。",
             link: "/accommodations/",
-            image: "top/accommodations/room01.jpg",
+            image: "common/dummy/course-list-type02-thumbnail.jpg",
         },
         "room03": {
             name: "オーシャンビュー客室",
             en: "Oceanview Stateroom",
             desp: "テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。",
             link: "/accommodations/",
-            image: "top/accommodations/room01.jpg",
+            image: "common/dummy/course-list-type03-thumbnail.jpg",
         },
         "room04": {
             name: "内側​​​客室",
             en: "Inside Stateroom",
             desp: "テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。",
             link: "/accommodations/",
-            image: "top/accommodations/room01.jpg",
+            image: "common/dummy/course-list-type04-thumbnail.jpg",
         },
     }
 
@@ -55,7 +55,7 @@ export default function Accommodations() {
 
         const roomImages = Object.keys(rooms).map((key) => {
             return (
-                <div key={key} className={`room-image-item ${key == "room01" ? "isSelect" : ""}`} data-room={key}>
+                <div key={key} className={`room-image-item ${key == "room01" ? "isSelect" : "isNext"}`} data-room={key}>
                     <Image src={getImagePath(rooms[key].image)} alt={`${rooms[key].name}の内装`} width={550} height={455} priority />
                 </div>
             )
@@ -134,20 +134,38 @@ export default function Accommodations() {
             const room = target.getAttribute("data-room");
             if (!room) return;
 
+            // 選択された要素を取得
             const imageItem = wrap.querySelector(`.room-image-item[data-room="${room}"]`);
             const detailItem = wrap.querySelector(`.room-detail-item[data-room="${room}"]`);
 
+            // すべてのクラスをリセット
+            roomImages.forEach((item) => item.classList.remove("isSelect", "isPrev", "isNext"));
+            roomDetails.forEach((item) => item !== detailItem ? item.classList.remove("isSelect") : null);
+
+            // 選択された要素にクラスを付与
             if (imageItem && detailItem) {
                 imageItem.classList.toggle("isSelect", isSelect);
                 detailItem.classList.toggle("isSelect", isSelect);
             }
 
-            roomImages.forEach((item) =>
-                item !== imageItem ? item.classList.remove("isSelect") : null
-            );
-            roomDetails.forEach((item) =>
-                item !== detailItem ? item.classList.remove("isSelect") : null
-            );
+            // 前後の要素にクラスを付与
+            if (imageItem) {
+                const imageIndex = Array.from(roomImages).indexOf(imageItem);
+
+                // 前の要素に isPrev を付与
+                roomImages.forEach((item, index) => {
+                    if (index < imageIndex) {
+                        item.classList.add("isPrev");
+                    }
+                });
+
+                // 後の要素に isNext を付与
+                roomImages.forEach((item, index) => {
+                    if (index > imageIndex) {
+                        item.classList.add("isNext");
+                    }
+                });
+            }
         };
 
         /**

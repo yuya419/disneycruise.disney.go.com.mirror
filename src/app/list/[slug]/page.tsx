@@ -20,13 +20,15 @@ export default function Page() {
 
     return (
         <div className="single">
-            <Breadcrumb items={breadcrumbItems} />
-            <HasAsideContainer>
-                <main className="l-main">
-                    <Single />
-                </main>
-                <Aside page="course" />
-            </HasAsideContainer>
+            <div className="s-course">
+                <Breadcrumb items={breadcrumbItems} />
+                <HasAsideContainer>
+                    <main className="l-main">
+                        <Single />
+                    </main>
+                    <Aside page="course" />
+                </HasAsideContainer>
+            </div>
         </div>
     );
 }

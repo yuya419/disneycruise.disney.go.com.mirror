@@ -20,6 +20,13 @@ main {
     }
 }
 
+
+.single {
+    position        : relative;
+    z-index         : 2;
+    background-color: var(--color_white);
+}
+
 .overlay {
     position       : fixed;
     z-index        : 99;

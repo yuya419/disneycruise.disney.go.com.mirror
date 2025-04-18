@@ -37,7 +37,11 @@
             align-items  : center;
             padding-right: 3rem;
 
-            .divider {}
+            .divider {
+                display    : block;
+                height     : 1.8rem;
+                border-left: 2px dotted var(--theme_color_main);
+            }
 
             .label {
                 font-size     : 1.5rem;

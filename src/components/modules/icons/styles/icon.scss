@@ -37,6 +37,10 @@
         background-color: #AF9438;
     }
 
+    &[data-bg="gray"] {
+        background-color: var(--theme_color_text);
+    }
+
     // 矢印の色
     &[data-color="blue"] {
         color: #174395;
@@ -48,6 +52,10 @@
 
     &[data-color="gold"] {
         color: #866B0E;
+    }
+
+    &[data-color="gray"] {
+        color: var(--theme_color_text);
     }
 }
 

@@ -72,6 +72,26 @@
             color: #866B0E;
         }
     }
+
+    // 白ベタ, 黒文字
+    [data-type="quaternary"] {
+        background-color: var(--color_white);
+
+        .label {
+            color: var(--theme_color_text);
+        }
+    }
+
+    // 左右反転
+    &[data-reverse="true"] {
+        .button-el {
+            flex-direction: row-reverse;
+
+            .arrow {
+                scale: -1 1;
+            }
+        }
+    }
 }
 
 // sp

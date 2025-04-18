@@ -31,23 +31,53 @@ const metaArray = {
         },
     },
     "list": {
-        title: "コース一覧	" + " | " + siteInfo.siteName,
-        description: "コース一覧	を表示するページ",
+        title: "コース一覧" + " | " + siteInfo.siteName,
+        description: "コース一覧を表示するページ",
         openGraph: {
-            title: "コース一覧	" + " | " + siteInfo.siteName,
+            title: "コース一覧" + " | " + siteInfo.siteName,
             siteName: siteInfo.siteName,
-            description: "コース一覧	を表示するページ",
+            description: "コース一覧を表示するページ",
             url: `${siteInfo.url}list/`,
         },
     },
     "detail": {
-        title: "シンガポール発着　3泊クルーズ	" + " | " + siteInfo.siteName,
-        description: "コース詳細	を表示するページ",
+        title: "シンガポール発着　3泊クルーズ" + " | " + siteInfo.siteName,
+        description: "コース詳細を表示するページ",
         openGraph: {
-            title: "シンガポール発着　3泊クルーズ	" + " | " + siteInfo.siteName,
+            title: "シンガポール発着　3泊クルーズ" + " | " + siteInfo.siteName,
             siteName: siteInfo.siteName,
-            description: "コース詳細	を表示するページ",
+            description: "コース詳細を表示するページ",
             url: `${siteInfo.url}list//detail/`,
+        },
+    },
+    "book": {
+        title: "予約申し込み" + " | " + siteInfo.siteName,
+        description: "予約申し込みを表示するページ",
+        openGraph: {
+            title: "予約申し込み" + " | " + siteInfo.siteName,
+            siteName: siteInfo.siteName,
+            description: "予約申し込みを表示するページ",
+            url: `${siteInfo.url}book/`,
+        },
+    },
+    "inquiry": {
+        title: "お問い合わせ" + " | " + siteInfo.siteName,
+        description: "お問い合わせを表示するページ",
+        openGraph: {
+            title: "お問い合わせ" + " | " + siteInfo.siteName,
+            siteName: siteInfo.siteName,
+            description: "お問い合わせを表示するページ",
+            url: `${siteInfo.url}inquiry/`,
+        },
+    },
+    "mailmagazine": {
+        title: "メールマガジン登録" + " | " + siteInfo.siteName,
+        description: "メールマガジン登録を表示するページ",
+        openGraph: {
+            title: "メールマガジン登録" + " | " + siteInfo.siteName,
+            siteName: siteInfo.siteName,
+            description: "メールマガジン登録を表示するページ",
+            url: `${siteInfo.url}mailmagazine/`,
         },
     },
 }

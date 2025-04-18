@@ -47,13 +47,14 @@
             grid-area       : slide;
             transform-origin: center 225vw;
             position        : relative;
+            transition      : rotate 0.7s var(--customEasingIn);
 
             &:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
                 display: none;
             }
 
             &:nth-child(1) {
-                rotate : calc(-12deg * var(--val, 1));
+                rotate : calc(-12deg * var(--val, 0.2));
                 z-index: 1;
             }
 
@@ -62,7 +63,7 @@
             }
 
             &:nth-child(3) {
-                rotate : calc(12deg * var(--val, 1));
+                rotate : calc(12deg * var(--val, 0.2));
                 z-index: 1;
             }
 
@@ -150,18 +151,35 @@
         &__circle-slider {
             top: -11.6rem;
 
-            .circle-slider {}
+            .circle-slider {
+
+                &.isSliding {
+                    pointer-events: none;
+
+                    .circle-slide-list {
+                        transition: rotate 0.3s ease-in-out;
+                    }
+                }
+
+                &.isReset {
+                    .circle-slide-list {
+                        transition: rotate 0s inherit;
+                    }
+                }
+            }
 
             .circle-slide-list {
                 width           : 30rem;
                 height          : 20rem;
                 transform-origin: 50% 167rem;
-                rotate          : calc(-12deg * 5); // 2,8 → 5リセット
+                will-change     : rotate;
+                rotate          : calc(-12deg * var(--rotate, 5) + (var(--move, 0) * 1deg)); // 2,8 → 5リセット
             }
 
             .circle-slide-item {
                 transform-origin: 50% 167rem;
                 z-index         : 1;
+                pointer-events  : none;
 
                 &:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
                     display: block;

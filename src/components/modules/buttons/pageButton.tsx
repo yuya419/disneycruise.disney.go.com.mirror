@@ -2,7 +2,7 @@
  * @name pageButton.tsx
  * @description ページ内ボタン
  */
-import Link from "next/link";
+import { Link as Scroll } from 'react-scroll'
 import "./styles/pageButton.scss";
 
 type PageButtonProps = {
@@ -24,14 +24,14 @@ export default function PageButton({ pageButton }: { pageButton: PageButtonProps
                     if (!button) return null; // 安全にスキップ
                     return (
                         <div className="page-button" key={key}>
-                            <Link href={`#${button.to}`} className="page-button-el">
+                            <Scroll to={`${button.to}`} smooth={true} duration={500} offset={-100} className="page-button-el">
                                 <span className="label">{button.label}</span>
                                 <span className="icon">
                                     <svg className="i-arw-r">
                                         <use xlinkHref="#i-arw-r" />
                                     </svg>
                                 </span>
-                            </Link>
+                            </Scroll>
                         </div>
                     )
                 })

@@ -3,9 +3,9 @@
  * @description Legendary Entertainment 船上で味わう、最高のエンターテイメント
  */
 'use client';
-import { useEffect, useState } from "react";
 import Button from "@/components/modules/buttons/button";
 import { GallerySlider, GalleryParallax } from "@/components/modules/common/common"
+import { GSAPToggleContainer } from "@/components/modules/gsap/container";
 import "./styles/entertainment.scss";
 
 export default function Entertainment() {
@@ -55,19 +55,14 @@ export default function Entertainment() {
         },
     }
 
-    // クライアントサイドでランダム化
-    const [shuffledImages, setShuffledImages] = useState<{}>({});
-
-    useEffect(() => {
-        const shuffled = Object.fromEntries(
-            Object.entries(images).sort(() => Math.random() - 0.5)
-        );
-        setShuffledImages(shuffled);
-    }, []);
+    const reverseImages = Object.keys(images).reverse().reduce((acc, key) => {
+        acc[key] = images[key as keyof typeof images];
+        return acc;
+    }, {} as { [key: string]: { src: string; alt: string; w: number; h: number } });
 
     return (
-        <section className="t-entertainment">
-            <GallerySlider to="left" images={shuffledImages} />
+        <GSAPToggleContainer tag="section" className="t-entertainment" toggle={{ logo: false, color: "blue" }}>
+            <GallerySlider to="left" images={reverseImages} />
             <div className="container">
                 <hgroup className="t-entertainment__head">
                     <p>船上で味わう、最高のエンターテイメント</p>
@@ -101,6 +96,6 @@ export default function Entertainment() {
             </div>
             <GallerySlider to="left" images={images} />
             <GalleryParallax images={images} />
-        </section>
+        </GSAPToggleContainer>
     )
 }

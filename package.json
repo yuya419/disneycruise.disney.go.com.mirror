@@ -6,11 +6,13 @@
   "scripts": {
     "dev": "node ./task/server.js",
     "build": "next build",
-    "start": "next start",
+    "start": "next build && next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@holiday-jp/holiday_jp": "^2.4.0",
+    "@studio-freight/lenis": "^1.0.42",
     "date-fns": "^4.1.0",
     "gsap": "^3.12.7",
     "next": "15.2.2",
@@ -18,13 +20,15 @@
     "react-datepicker": "^8.3.0",
     "react-day-picker": "^9.6.5",
     "react-dom": "^19.0.0",
-    "react-scroll": "^1.9.3"
+    "react-scroll": "^1.9.3",
+    "swiper": "^11.2.6"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/react-scroll": "^1.8.10",
     "sass": "^1.85.1",
     "typescript": "^5"
   },

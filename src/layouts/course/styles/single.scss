@@ -14,7 +14,7 @@
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-.single {
+.s-course {
     width         : calc(100% - 180px);
     max-width     : 112rem;
     padding-top   : 9.7rem;
@@ -35,9 +35,6 @@
             border-radius   : 0.6rem;
         }
     }
-}
-
-.s-course {
 
     // .m-page-button
     .m-page-button {
@@ -141,7 +138,7 @@
 
 // sp
 @include g.media(md) {
-    .single {
+    .s-course {
         width         : calc(100% - 50px);
         max-width     : inherit;
         padding-top   : 10.4rem;
@@ -167,9 +164,6 @@
                 z-index : unset;
             }
         }
-    }
-
-    .s-course {
 
         .m-page-button {
             margin-top: 2.4rem;

@@ -34,7 +34,9 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
         {children}
         <Footer />
         <DrawerNav />
-        <RequestButton />
+        {pathname !== "/book/" && pathname !== "/book/confirm/" && pathname !== "/book/complete/" && (
+          <RequestButton />
+        )}
         <Bg state={true} />
         <Symbol />
         <div className="overlay"></div>

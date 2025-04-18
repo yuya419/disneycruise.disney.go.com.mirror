@@ -13,10 +13,11 @@ const Button = (props: {
     link: string,
     blank?: boolean,
     align?: "left" | "center" | "right",
+    reverse?: boolean,
 }) => {
 
     return (
-        <div className="button" data-align={props.align}>
+        <div className="button" data-align={props.align} data-reverse={props.reverse}>
             <Link href={props.link} className="button-el" target={props.blank ? "_blank" : "_self"} data-type={props.type}>
                 <span className="label" lang={props.lang}>{props.label}</span>
                 {arrow({

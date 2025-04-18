@@ -1,0 +1,100 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* delivery */
+
+/* 目次 */
+/* __10: 共通設定 */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.l-delivery {
+    margin-top: 7rem;
+
+    // &-detail
+    &-detail {
+        max-width    : 74.4rem;
+        margin-inline: auto;
+
+        .text {
+            p {
+                font-size     : 1.5rem;
+                text-align    : center;
+                letter-spacing: 0;
+                line-height   : calc(27/15);
+                @include g.leadingTrim(calc(27/15));
+            }
+        }
+
+        .delivery {
+            margin-top   : 4.5rem;
+            padding-block: 2.4rem;
+            border-top   : 1px solid var(--theme_color_border);
+            border-bottom: 1px solid var(--theme_color_border);
+
+            .ttl {
+                p {
+                    font-size     : 1.3rem;
+                    line-height   : calc(10/13);
+                    letter-spacing: 0;
+                    color         : var(--theme_color_caption);
+                }
+            }
+
+            &-list {
+                margin-top: 2rem;
+                @include g.listInit("ul");
+
+                .list-item {
+                    font-size     : 1.3rem;
+                    line-height   : calc(20/13);
+                    letter-spacing: 0;
+
+                    &+.list-item {
+                        margin-top: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// sp
+@include g.media(md) {
+    .l-delivery {
+        margin-top: 4.8rem;
+
+        // &-detail
+        &-detail {
+            max-width: inherit;
+
+            .text {
+                p {
+                    font-size  : 1.4rem;
+                    text-align : justify;
+                    line-height: calc(26/14);
+                    @include g.leadingTrim(calc(26/14));
+                }
+            }
+
+            .delivery {
+                margin-top   : 2.4rem;
+                padding-block: 2rem;
+
+                &-list {
+                    margin-top: 1.8rem;
+
+                    .list-item {
+                        line-height: calc(19/13);
+
+                        &+.list-item {
+                            margin-top: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

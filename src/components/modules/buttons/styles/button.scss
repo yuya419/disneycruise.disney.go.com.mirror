@@ -81,6 +81,17 @@
             color: var(--theme_color_text);
         }
     }
+
+    // 左右反転
+    &[data-reverse="true"] {
+        .button-el {
+            flex-direction: row-reverse;
+
+            .arrow {
+                scale: -1 1;
+            }
+        }
+    }
 }
 
 // sp

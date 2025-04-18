@@ -7,7 +7,7 @@ import "./styles/headline.scss";
 
 const Headline = (props: {
     design: "01" | "02" | "03",
-    hlLevel?: "h2" | "h3" | "h4" | "h5" | "h6" | "p",
+    hlLevel?: "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "dt",
     children: React.ReactNode,
 }) => {
     const { design, hlLevel, ...rest } = props;

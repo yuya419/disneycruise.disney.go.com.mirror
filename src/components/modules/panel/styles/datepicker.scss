@@ -10,11 +10,80 @@
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-.c-filter__form {
-    .react-datepicker {
-        &__triangle {
+.react-datepicker {
+    font-size: 1.4rem;
+    border   : none;
+
+    &-wrapper {}
+
+    &__header {
+        padding-bottom: 0;
+    }
+
+    &__month {
+        margin          : 0;
+        padding         : 0 1px 1px;
+        background-color: var(--theme_color_border);
+    }
+
+    &__current-month {
+        font-size: 1.4rem;
+    }
+
+    &__day {
+        width           : calc(22rem / 7);
+        line-height     : calc(22rem / 7);
+        margin          : 1px;
+        background-color: var(--color_white);
+
+        &-names {
+            margin     : 0;
+            white-space: inherit;
+        }
+
+        &-name {
+            width      : calc(22rem / 7);
+            line-height: calc(22rem / 10);
+            margin     : 1px;
+        }
+
+        &--outside-month {
+            background-color: var(--color_white);
+            color           : var(--color_white);
+            pointer-events  : none;
+        }
+    }
+
+    &__navigation {
+        width : 21px;
+        height: 21px;
+        top   : 8px;
+
+        &::before {
+            content         : "";
+            position        : absolute;
+            inset           : 0;
+            margin          : auto;
+            background-color: var(--theme_color_main);
+            clip-path       : polygon(0 20%, 0 80%, 50% 50%);
+        }
+
+        &--next {
+            right: 8px;
+        }
+
+        &--previous {
+            left : 8px;
+            scale: -1 1;
+        }
+
+        span {
             display: none;
         }
+    }
+
+    &__triangle {
+        display: none;
     }
 }
 

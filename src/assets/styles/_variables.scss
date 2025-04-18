@@ -8,6 +8,7 @@
     // color
     --color_black: #272833;
     --color_white: white;
+    --color_gray: #9396A7;
 
     --color_bg_gray : #F4F4F4;
     --color_bg_beige: #F7F1E5;
@@ -19,6 +20,7 @@
 
     // theme color
     --theme_color_text  : var(--color_black);
+    --theme_color_caption  : var(--color_gray);
     --theme_color_bg    : var(--color_bg_gray);
     --theme_color_bg_sub: var(--color_bg_beige);
     --theme_color_border: var(--color_bdr);

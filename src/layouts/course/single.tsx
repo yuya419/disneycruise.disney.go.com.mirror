@@ -236,7 +236,7 @@ export default function Single() {
     }
 
     return (
-        <div className="s-course">
+        <>
             <Title type="course" title={post.courses.title} image={post.courses.thumbnail.src} />
             <PageButton pageButton={{ column: 3, buttons: pageButtons }} />
             <section id="type" className="s-course-type">
@@ -326,6 +326,6 @@ export default function Single() {
                 </div>
             </section>
             <FilterModal />
-        </div >
+        </>
     )
 }

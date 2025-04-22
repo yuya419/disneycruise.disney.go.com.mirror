@@ -172,15 +172,17 @@ const Bg = () => {
 
     return (
         <div className="bg">
-            <div className="video is-video-hero" ref={hero}>
-                <video autoPlay muted loop playsInline preload="metadata">
-                    <source src={getImagePath("movie/dcl_da_sp.webm")} media="(max-width: 1024px)" type="video/webm" />
-                    <source src={getImagePath("movie/dcl_da_sp.mp4")} media="(max-width: 1024px)" type="video/mp4" />
-                    <source src={getImagePath("movie/dcl_da_pc.webm")} type="video/webm" />
-                    <source src={getImagePath("movie/dcl_da_pc.mp4")} type="video/mp4" />
-                </video>
-            </div>
-            <div className="video is-video-water is-set-mask" ref={water}>
+            {pathname === "/" && (
+                <div className="video is-video-hero" ref={hero}>
+                    <video autoPlay muted loop playsInline preload="metadata">
+                        <source src={getImagePath("movie/dcl_da_sp.webm")} media="(max-width: 1024px)" type="video/webm" />
+                        <source src={getImagePath("movie/dcl_da_sp.mp4")} media="(max-width: 1024px)" type="video/mp4" />
+                        <source src={getImagePath("movie/dcl_da_pc.webm")} type="video/webm" />
+                        <source src={getImagePath("movie/dcl_da_pc.mp4")} type="video/mp4" />
+                    </video>
+                </div>
+            )}
+            <div className={`video is-video-water ${pathname === "/" ? "is-set-mask" : ""}`} ref={water}>
                 <video autoPlay muted loop playsInline preload="metadata">
                     <source src={getImagePath("movie/water.webm")} type="video/webm" />
                     <source src={getImagePath("movie/water.mp4")} type="video/mp4" />

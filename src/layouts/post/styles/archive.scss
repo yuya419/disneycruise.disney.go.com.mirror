@@ -4,205 +4,141 @@
 
 /* 目次 */
 /* __10: 共通設定 */
-/* __20: post-special-feature */
-/* __30: post-course */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 @use "@/assets/styles/_mixin"as g;
 
-/* __20: post-special-feature */
-/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-.post-special-feature {
-
+@mixin post() {
     .post {
-        &-list {}
+        &-list {
+            display              : grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap           : 6rem;
+            border-top           : 1px solid var(--theme_color_border);
 
-        &-item {}
-
-        &-link {
-            display        : block;
-            text-decoration: none;
+            @include g.media(md) {
+                display: block;
+            }
         }
 
         &-content {
-            display    : flex;
-            align-items: center;
-        }
-    }
+            column-gap: 2.8rem;
 
-    .thumbnail {
-        img {
-            display   : block;
-            width     : 100%;
-            height    : 100%;
-            object-fit: cover;
-        }
-    }
-
-    .meta {
-        display    : flex;
-        flex-wrap  : wrap;
-        align-items: center;
-        column-gap : 1.2rem;
-
-        .title {
-            width: 100%;
+            @include g.media(md) {
+                column-gap : 1.6rem;
+                align-items: flex-start;
+            }
         }
 
-        .date {
-            font-size     : 1.4rem;
-            letter-spacing: 0.03em;
+        &-item {
+            .thumbnail {
+                flex-shrink: 0;
+            }
         }
 
-        .cats {
-            display   : flex;
-            flex-wrap : wrap;
-            column-gap: 1.2rem;
+        &-link {
+            color        : var(--theme_color_text);
+            padding-block: 2.4rem;
+            border-bottom: 1px solid var(--theme_color_border);
 
-            .cat {
-                display        : flex;
-                align-items    : center;
-                justify-content: center;
-                font-size      : 1.2rem;
-                border-width   : 1px;
-                border-style   : solid;
-                border-radius  : 0.2rem;
-                padding-inline : 0.45rem;
+            .meta {
+                row-gap: 0.4rem;
+            }
+
+            .title {
+                font-size  : 1.5rem;
+                line-height: calc(25/15);
+                @include g.leadingTrim(calc(25/15));
+                margin-bottom: 2rem;
+
+                @include g.media(md) {
+                    font-size  : 1.4rem;
+                    line-height: calc(24/14);
+                    @include g.leadingTrim(calc(24/14));
+                    margin-bottom: 1.6rem;
+                }
+
+                .clamp {
+                    display           : -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 3;
+                    overflow          : hidden;
+                    width             : 100%;
+                }
+            }
+
+            .cats {
+                .cat {
+                    color: var(--theme_color_main);
+                }
             }
         }
     }
 }
 
-/* __30: post-course */
+/* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-.post-course {
-    .post {
-        &-list {}
+.arc-post {
+    position: relative;
+    @include g.container();
 
-        &-item {
-            position     : relative;
-            display      : flex;
-            column-gap   : 4rem;
-            padding-block: 3.2rem;
+    .l-post {
+        margin-top: 7rem;
 
-            &+.post-item {
-                border-top: 1px solid var(--color_bdr);
-            }
+        .post-feature {
+            @include post();
 
             .thumbnail {
-                flex-shrink : 0;
-                width       : 26rem;
-                height      : 16rem;
-                margin-block: auto;
-
-                img {
-                    display   : block;
-                    width     : 100%;
-                    height    : 100%;
-                    object-fit: cover;
-                }
-            }
-
-            .title {
-                font-size   : 1.8rem;
-                line-height : calc(28/18);
-                color       : var(--theme_color_main);
-                margin-block: auto;
-            }
-
-            .button {
-                flex-shrink      : 0;
-                display          : flex;
-                align-items      : center;
-                margin-left      : auto;
-                padding-left     : 5rem;
-                background-image : url("/ships/adventure/common/icon/i-dot-b.svg");
-                background-size  : 0.3rem 0.5rem;
-                background-repeat: repeat-Y;
-            }
-
-            >.arrow {
-                display: none;
+                width : 11.5rem;
+                height: 16.1rem;
             }
         }
 
-        &-link-area {
-            position: absolute;
-            inset   : 0;
-            margin  : auto;
-            display : none;
+        .post-news {
+            @include post();
+
+            .thumbnail {
+                width : 11.5rem;
+                height: 11.5rem;
+            }
+        }
+
+        .post-pickup {
+
+            &+.post-feature,
+            &+.post-news {
+                margin-top: 8rem;
+            }
         }
     }
 }
 
 // sp
 @include g.media(md) {
-    .post-special-feature {
+    .arc-post {
+        .l-post {
+            margin-top: 4.8rem;
 
-        .post {
-            &-list {}
-
-            &-item {}
-
-            &-link {}
-
-            &-content {}
-        }
-
-        .meta {
-            .date {}
-
-            .cats {
-
-                .cat {}
-            }
-        }
-    }
-
-    .post-course {
-        .post {
-            &-list {
-                display              : grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap                  : 3.5rem 2rem;
-            }
-
-            &-item {
-                flex-direction     : column;
-                padding-block      : 2.4rem;
-                background-image   : url("/ships/adventure/common/icon/i-dot-b.svg");
-                background-position: left bottom;
-                background-size    : 0.4rem 0.2rem;
-                background-repeat  : repeat-x;
-
-                &+.post-item {
-                    border-top: none;
-                }
-
+            .post-feature {
                 .thumbnail {
-                    width : 100%;
-                    height: 10.6rem;
-                }
-
-                .title {
-                    font-size  : 1.4rem;
-                    line-height: calc(24/14);
-                    margin-top : 2rem;
-                }
-
-                .button {
-                    display: none;
-                }
-
-                >.arrow {
-                    display    : flex;
-                    margin-left: auto;
-                    margin-top : 0.8rem;
+                    width : 7rem;
+                    height: 9.8rem;
                 }
             }
 
-            &-link-area {
-                display: block;
+            .post-news {
+                .thumbnail {
+                    width : 10rem;
+                    height: 10rem;
+                }
+            }
+
+            .post-pickup {
+
+                &+.post-feature,
+                &+.post-news {
+                    margin-top: 6rem;
+                }
             }
         }
     }

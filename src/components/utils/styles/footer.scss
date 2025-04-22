@@ -23,6 +23,15 @@
         position: relative;
         z-index : 1;
 
+        &::before {
+            content         : "";
+            position        : absolute;
+            inset           : 0;
+            margin          : auto;
+            z-index         : -1;
+            background-color: rgba($color: #000846, $alpha: 0.6);
+        }
+
         .space {
             display       : block;
             width         : 100%;

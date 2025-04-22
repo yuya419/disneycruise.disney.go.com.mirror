@@ -10,7 +10,7 @@ import { Single } from "@/layouts/course/course";
 import Aside from "@/layouts/aside/aside";
 
 // メタデータ
-export const metadata: Metadata = metaArray["detail"];
+export const metadata: Metadata = metaArray["list-detail"];
 
 export default function Page() {
     const breadcrumbItems = [

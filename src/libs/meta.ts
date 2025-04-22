@@ -50,14 +50,54 @@ const metaArray = {
             url: `${siteInfo.url}list/`,
         },
     },
-    "detail": {
+    "list-detail": {
         title: "シンガポール発着　3泊クルーズ" + " | " + siteInfo.siteName,
         description: "コース詳細を表示するページ",
         openGraph: {
             title: "シンガポール発着　3泊クルーズ" + " | " + siteInfo.siteName,
             siteName: siteInfo.siteName,
             description: "コース詳細を表示するページ",
-            url: `${siteInfo.url}list//detail/`,
+            url: `${siteInfo.url}list/detail/`,
+        },
+    },
+    "feature": {
+        title: "特集一覧" + " | " + siteInfo.siteName,
+        description: "特集一覧を表示するページ",
+        openGraph: {
+            title: "特集一覧" + " | " + siteInfo.siteName,
+            siteName: siteInfo.siteName,
+            description: "特集一覧を表示するページ",
+            url: `${siteInfo.url}feature/`,
+        },
+    },
+    "feature-detail": {
+        title: "特集詳細" + " | " + siteInfo.siteName,
+        description: "特集詳細を表示するページ",
+        openGraph: {
+            title: "特集詳細" + " | " + siteInfo.siteName,
+            siteName: siteInfo.siteName,
+            description: "特集詳細を表示するページ",
+            url: `${siteInfo.url}feature/detail/`,
+        },
+    },
+    "news": {
+        title: "新着情報一覧" + " | " + siteInfo.siteName,
+        description: "新着情報一覧を表示するページ",
+        openGraph: {
+            title: "新着情報一覧" + " | " + siteInfo.siteName,
+            siteName: siteInfo.siteName,
+            description: "新着情報一覧を表示するページ",
+            url: `${siteInfo.url}news/`,
+        },
+    },
+    "news-detail": {
+        title: "新着情報詳細" + " | " + siteInfo.siteName,
+        description: "新着情報詳細を表示するページ",
+        openGraph: {
+            title: "新着情報詳細" + " | " + siteInfo.siteName,
+            siteName: siteInfo.siteName,
+            description: "新着情報詳細を表示するページ",
+            url: `${siteInfo.url}news/detail/`,
         },
     },
     "book": {

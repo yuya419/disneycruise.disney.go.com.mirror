@@ -2,13 +2,32 @@
  * @name hero.tsx
  * @description ヒーロー
  */
+"use client";
 import Image from "next/image";
-import Pickup from "@/layouts/post/pickup";
+import { HeroNews } from "@/layouts/post/pickup";
 import helper from "@/libs/helper";
 import "./styles/hero.scss";
 
 export default function Hero() {
     const { getImagePath } = helper();
+
+    const posts = {
+        "post01": {
+            link: "post01",
+            title: "ピクサー映画『ウォーリー』の愛らしいロボットたちが贈る、愛と切なさが詰まった感動の物語",
+            date: "2025.00.00",
+            cat: {
+                "cat01": { name: "カテゴリー1", },
+                "cat02": { name: "カテゴリー2", }
+            },
+            thumbnail: {
+                src: "/ships/adventure/common/dummy/feature.jpg",
+                alt: "ピクサー映画『ウォーリー』の愛らしいロボットたちが贈る、愛と切なさが詰まった感動の物語",
+                w: 115,
+                h: 161,
+            }
+        },
+    };
 
     return (
         <div className="t-hero">
@@ -30,7 +49,7 @@ export default function Hero() {
                     <span className="circle"></span>
                 </p>
             </div>
-            <Pickup className="t-hero" hlLevel="h2" />
+            <HeroNews posts={posts} />
         </div>
     )
 }

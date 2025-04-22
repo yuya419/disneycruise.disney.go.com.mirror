@@ -5,7 +5,7 @@
 'use client';
 import { useEffect, useState, useMemo, useRef } from "react";
 import Image from "next/image";
-import { Feature as Archive } from "@/layouts/post/arhive";
+import { Post as Archive } from "@/layouts/post/article";
 import Button from "@/components/modules/buttons/button";
 import { GSAPMaskContainer } from "@/components/modules/gsap/container";
 import "./styles/feature.scss";
@@ -160,7 +160,7 @@ export default function Feature() {
                 <div className="t-feature__body">
                     <div className="feature" data-post="1" ref={hoverGroupRef}>
                         <PostThumbnailList posts={posts} />
-                        <Archive posts={posts} hlLevel="h3" arrow={true} data={true} />
+                        <Archive type="feature" posts={posts} perPage={4} hlLevel="h3" arrow={true} data={true} />
                         <div className="divider-list">
                             {isDivider}
                         </div>

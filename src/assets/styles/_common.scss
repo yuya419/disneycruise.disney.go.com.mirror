@@ -17,6 +17,10 @@ main {
     &.page,
     &.single {
         background-color: var(--color_white);
+
+        &:has(.arc-post) {
+            overflow: hidden;
+        }
     }
 }
 

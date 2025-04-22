@@ -6,7 +6,7 @@
 import Image from "next/image";
 import Breadcrumb from "@/components/modules/breadcrumb/breadcrumb";
 import Title from "@/layouts/common/title";
-import { Course as Post } from "@/layouts/post/arhive";
+import { Course as Post } from "@/layouts/post/article";
 import "./styles/archive.scss";
 
 export default function Archive() {

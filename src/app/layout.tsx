@@ -8,6 +8,7 @@ import "@/assets/styles/style.scss";
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { RefProvider } from "@/hooks/useRefContext";
 import Header from "@/components/utils/header";
 import Footer from "@/components/utils/footer";
 import DrawerNav from "@/components/modules/nav/drawerNav";
@@ -30,16 +31,18 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
   return (
     <html lang="ja">
       <body className={`${NotoSansJP.variable} ${PhilosopherFont.variable}`} data-head-color={isColor}>
-        <Header />
-        {children}
-        <Footer />
-        <DrawerNav />
-        {pathname !== "/book/" && pathname !== "/book/confirm/" && pathname !== "/book/complete/" && (
-          <RequestButton />
-        )}
-        <Bg state={true} />
-        <Symbol />
-        <div className="overlay"></div>
+        <RefProvider>
+          <Header />
+          {children}
+          <Footer />
+          <DrawerNav />
+          {pathname !== "/book/" && pathname !== "/book/confirm/" && pathname !== "/book/complete/" && (
+            <RequestButton />
+          )}
+          <Bg />
+          <Symbol />
+          <div className="overlay"></div>
+        </RefProvider>
       </body>
     </html>
   );

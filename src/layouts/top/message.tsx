@@ -2,13 +2,14 @@
  * @name message.tsx
  * @description メッセージ
  */
+"use client";
 import Image from "next/image";
 import helper from "@/libs/helper";
-import { GSAPToggleContainer } from "@/components/modules/gsap/container";
+import { GSAPToggleContainer, GSAPMaskContainer } from "@/components/modules/gsap/container";
 import { GallerySlider } from "@/components/modules/common/common";
 import "./styles/message.scss";
 
-export default function Hero() {
+export default function Message() {
     const { getImagePath } = helper();
 
     const images = {
@@ -40,7 +41,7 @@ export default function Hero() {
 
     return (
         <GSAPToggleContainer tag="section" className="t-message" toggle={{ logo: true, color: null }}>
-            <div className="container">
+            <GSAPMaskContainer tag="div" className="container" mask={"water"}>
                 <hgroup className="t-message__head">
                     <p className="logo">
                         <Image
@@ -63,7 +64,7 @@ export default function Hero() {
                         シンガポールから出航するこの客船では、<br />3泊〜5泊の航海をご用意しています。<br />
                         洋上で魔法のような日々をお過ごしください。</p>
                 </div>
-            </div>
+            </GSAPMaskContainer>
             <GallerySlider to="left" images={images} />
         </GSAPToggleContainer>
     )

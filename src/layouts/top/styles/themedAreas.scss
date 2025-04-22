@@ -11,10 +11,9 @@
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .t-themed-areas {
-    // color: var(--color_white);
-    color           : var(--theme_color_text);
-    transition      : color 0.3s var(--customEasingOut);
-    background-color: var(--color_white);
+    color     : var(--color_white);
+    color     : var(--theme_color_text);
+    transition: color 0.3s var(--customEasingOut);
 
     .container {
         padding-top: 15rem;

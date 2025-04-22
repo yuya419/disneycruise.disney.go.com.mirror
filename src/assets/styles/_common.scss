@@ -20,8 +20,8 @@ main {
     }
 }
 
-
-.single {
+.single,
+.page {
     position        : relative;
     z-index         : 2;
     background-color: var(--color_white);

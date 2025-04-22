@@ -24,7 +24,9 @@ export default function Page() {
                 <Breadcrumb items={breadcrumbItems} />
                 <HasAsideContainer>
                     <main className="l-main">
-                        <Single />
+                        <article className="l-article">
+                            <Single />
+                        </article>
                     </main>
                     <Aside page="course" />
                 </HasAsideContainer>

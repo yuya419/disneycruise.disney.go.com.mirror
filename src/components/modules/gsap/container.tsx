@@ -7,6 +7,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { usePathname } from "next/navigation";
+import { useRefContext } from "@/hooks/useRefContext";
 
 interface ContainerProps {
     children: React.ReactNode;
@@ -68,7 +69,52 @@ export function GSAPToggleContainer({ children, tag, id, className, toggle }: Co
         }, containerRef);
 
         return () => ctx.revert();
-    }, [pathname]);
+    }, []);
+
+    return (
+        <Tag id={id} className={`${className}`} ref={containerRef}>
+            {children}
+        </Tag>
+    );
+}
+
+interface MaskContainerProps {
+    children: React.ReactNode;
+    tag: "section" | "div";
+    id?: string;
+    className?: string;
+    mask: "water" | "colorBlue" | "colorWhite";
+}
+
+export function GSAPMaskContainer({ children, tag, id, className, mask }: MaskContainerProps) {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const Tag = tag;
+    const { hero, water, colorBlue, colorWhite } = useRefContext();
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const ctx = gsap.context(() => {
+            const container = containerRef.current;
+            if (!container) return;
+
+            const maskEl = mask === "water" ? water.current : mask === "colorBlue" ? colorBlue.current : colorWhite.current;
+            console.log(maskEl);
+
+            gsap.to(maskEl, {
+                scrollTrigger: {
+                    trigger: container,
+                    start: "top 75%",
+                    end: "center 75%",
+                    invalidateOnRefresh: true,
+                    onEnter: () => maskEl?.classList.add("isHide"),
+                    onLeaveBack: () => maskEl?.classList.remove("isHide"),
+                }
+            })
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, []);
 
     return (
         <Tag id={id} className={`${className}`} ref={containerRef}>

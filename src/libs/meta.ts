@@ -30,6 +30,16 @@ const metaArray = {
             url: `${siteInfo.url}themed-areas/`,
         },
     },
+    "qa": {
+        title: "よくあるご質問" + " | " + siteInfo.siteName,
+        description: "よくあるご質問を表示するページ",
+        openGraph: {
+            title: "よくあるご質問	" + " | " + siteInfo.siteName,
+            siteName: siteInfo.siteName,
+            description: "よくあるご質問を表示するページ",
+            url: `${siteInfo.url}qa/`,
+        },
+    },
     "list": {
         title: "コース一覧" + " | " + siteInfo.siteName,
         description: "コース一覧を表示するページ",

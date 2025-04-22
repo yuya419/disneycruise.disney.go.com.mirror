@@ -14,7 +14,7 @@ import Link from "next/link";
 import helper from "@/libs/helper";
 import Button from "@/components/modules/buttons/button";
 import { arrow } from "@/components/modules/icons/icon";
-import { GSAPToggleContainer } from "@/components/modules/gsap/container";
+import { GSAPToggleContainer, GSAPMaskContainer } from "@/components/modules/gsap/container";
 import "./styles/themedAreas.scss";
 
 export default function ThemedAreas() {
@@ -514,7 +514,7 @@ export default function ThemedAreas() {
                             <div className="cv-button">
                                 <Link href="/themed-areas/" className="cv-button-el is-button-area">
                                     <span className="label">
-                                        <span className="en" lang="en">Explore <br className="nopc"/>the Areas</span>
+                                        <span className="en" lang="en">Explore <br className="nopc" />the Areas</span>
                                         <span className="ja">各エリアを詳しく見る</span>
                                     </span>
                                     {arrow({ bg: "blue", color: "white", })}
@@ -548,7 +548,7 @@ export default function ThemedAreas() {
     return (
         <GSAPToggleContainer tag="section" className="t-themed-areas" toggle={{ logo: false, color: "blue" }}>
             <div className="container" ref={containerRef}>
-                <div className="t-themed-areas__head">
+                <GSAPMaskContainer tag="div" className="t-themed-areas__head" mask={"colorWhite"}>
                     <svg className="onm is-left"><use href="#i-onm-01"></use></svg>
                     <span className="bar is-left"></span>
                     <hgroup className="headline">
@@ -557,7 +557,7 @@ export default function ThemedAreas() {
                     </hgroup>
                     <span className="bar is-right"></span>
                     <svg className="onm is-right"><use href="#i-onm-01"></use></svg>
-                </div>
+                </GSAPMaskContainer>
                 <div className="t-themed-areas__detail">
                     <div className="lead">
                         <h3>7つのテーマエリアで、<br className="nopc" />あなたの楽しみを最大限に。</h3>

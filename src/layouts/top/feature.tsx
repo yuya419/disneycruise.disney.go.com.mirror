@@ -7,6 +7,7 @@ import { useEffect, useState, useMemo, useRef } from "react";
 import Image from "next/image";
 import { Feature as Archive } from "@/layouts/post/arhive";
 import Button from "@/components/modules/buttons/button";
+import { GSAPMaskContainer } from "@/components/modules/gsap/container";
 import "./styles/feature.scss";
 
 export default function Feature() {
@@ -151,7 +152,7 @@ export default function Feature() {
 
     return (
         <section className="t-feature" ref={wrapRef}>
-            <div className="container">
+            <GSAPMaskContainer tag="div" className="container" mask={"colorBlue"}>
                 <hgroup className="t-feature__head">
                     <p lang="en">Special Feature</p>
                     <h2>特集記事</h2>
@@ -168,7 +169,7 @@ export default function Feature() {
                         posts && <Button type="secondary" label="View More" lang="en" link="/feature/" align="center" />
                     }
                 </div>
-            </div>
+            </GSAPMaskContainer>
         </section>
     )
 }

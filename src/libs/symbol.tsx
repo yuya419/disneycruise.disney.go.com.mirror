@@ -90,6 +90,16 @@ const Symbol = () => {
             viewBox: "0 0 13 11",
             path: '<g fill="currentColor"><path d="m0 .5h2v2h-2z"/><path d="m4 1h9v1h-9z"/><path d="m0 4.5h2v2h-2z"/><path d="m4 5h9v1h-9z"/><path d="m0 8.5h2v2h-2z"/><path d="m4 9h9v1h-9z"/></g>',
         },
+        {
+            id: "i-index-2",
+            viewBox: "0 0 14 14",
+            path: '<g fill="currentColor"><path d="m0 .778809h14v1h-14z"/><path d="m0 6.77881h14v1h-14z"/><path d="m0 12.7788h14v1h-14z"/></g>',
+        },
+        {
+            id: "i-polygon",
+            viewBox: "0 0 19 20",
+            path: '<path d="m17.7121 8.23733c1.4067.75414 1.4067 2.77117 0 3.52537l-14.76711 7.9168c-1.33236.7143-2.94498907-.2509-2.94498901-1.7627l.0000007-15.83362c.00000006-1.511746 1.61263831-2.47696 2.94498831-1.762672z" fill="currentColor" />',
+        },
     ];
 
     const symbol = paths.map((path, key) => {

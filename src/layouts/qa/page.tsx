@@ -20,6 +20,10 @@ export function Page() {
         parent01: [
             {
                 item: ["ご旅行の準備", "sec01"],
+                child: [
+                    { item: ["パスポートの有効期限はどのくらい必要ですか？", "sec01"] },
+                    { item: ["日本から持って行った方がよいものはありますか？", "sec01"] },
+                ]
             }
         ],
         parent02: [

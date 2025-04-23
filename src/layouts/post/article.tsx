@@ -52,43 +52,44 @@ const Post = (props: {
 },) => {
     const { posts, perPage = 5 } = props;
 
-    const searchParams = useSearchParams();
-    const pathname = usePathname();
-    const [currentPage, setCurrentPage] = useState<number>(1);
-    const [displayedPosts, setDisplayedPosts] = useState<string[]>([]);
+    // const searchParams = useSearchParams();
+    // const pathname = usePathname();
+    // const [currentPage, setCurrentPage] = useState<number>(1);
+    // const [displayedPosts, setDisplayedPosts] = useState<string[]>([]);
 
     const postsRef = useRef<HTMLDivElement>(null);
     const moreBtnRef = useRef<HTMLButtonElement>(null);
 
     const Tag = props.hlLevel === "h2" ? "h2" : "h3";
     const postClass = props.type === "feature" ? "post-feature" : "post-news";
+    const displayedPosts = Object.keys(posts).slice(0, perPage);
 
     // ページ数に応じて投稿を更新
-    useEffect(() => {
-        const page = parseInt(searchParams.get("page") || "1", 10);
-        setCurrentPage(page);
+    // useEffect(() => {
+    //     const page = parseInt(searchParams.get("page") || "1", 10);
+    //     setCurrentPage(page);
 
-        const startIndex = (page - 1) * perPage;
-        const endIndex = startIndex + perPage;
-        setDisplayedPosts(Object.keys(posts).slice(0, endIndex));
-    }, [searchParams, posts, perPage]);
+    //     const startIndex = (page - 1) * perPage;
+    //     const endIndex = startIndex + perPage;
+    //     setDisplayedPosts(Object.keys(posts).slice(0, endIndex));
+    // }, [searchParams, posts, perPage]);
 
     // View Moreボタンを押したときの処理
-    const handleViewMore = () => {
-        const nextPage = currentPage + 1;
-        setCurrentPage(nextPage);
+    // const handleViewMore = () => {
+    //     const nextPage = currentPage + 1;
+    //     setCurrentPage(nextPage);
 
-        const startIndex = displayedPosts.length;
-        const endIndex = startIndex + perPage;
-        setDisplayedPosts((prev) => [
-            ...prev,
-            ...Object.keys(posts).slice(startIndex, endIndex),
-        ]);
+    //     const startIndex = displayedPosts.length;
+    //     const endIndex = startIndex + perPage;
+    //     setDisplayedPosts((prev) => [
+    //         ...prev,
+    //         ...Object.keys(posts).slice(startIndex, endIndex),
+    //     ]);
 
-        // URLを更新
-        const newUrl = `/ships/adventure${pathname}?page=${nextPage}`;
-        window.history.pushState(null, "", newUrl);
-    };
+    //     // URLを更新
+    //     const newUrl = `/ships/adventure${pathname}?page=${nextPage}`;
+    //     window.history.pushState(null, "", newUrl);
+    // };
 
     const postItems = displayedPosts.map((key, index) => {
         return (
@@ -151,7 +152,7 @@ const Post = (props: {
             <div className="post-list" ref={postsRef}>
                 {postItems}
             </div>
-            {displayedPosts.length < Object.keys(posts).length && (
+            {/* {displayedPosts.length < Object.keys(posts).length && (
                 <div className="view-more">
                     <button
                         type="button"
@@ -169,7 +170,7 @@ const Post = (props: {
                         </span>
                     </button>
                 </div>
-            )}
+            )} */}
         </div>
     );
 }

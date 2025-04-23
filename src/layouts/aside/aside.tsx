@@ -172,7 +172,7 @@ export default function Aside({ page, step, nav }: AsideProps) {
             );
         }
 
-        if (page === "qa") {
+        if (page === "page") {
             const uListRef = useRef<HTMLUListElement | null>(null);
 
             useEffect(() => {
@@ -248,7 +248,7 @@ export default function Aside({ page, step, nav }: AsideProps) {
                                                             <ul className="child-nav-menu">
                                                                 {value[0].child.map((child, index) => (
                                                                     <li key={index} className="child-menu-item">
-                                                                        <Scroll to={child.item[1]} smooth={true} duration={500} offset={-100} className="child-menu-item-link uline"><span className="line">{child.item[0]}</span></Scroll>
+                                                                        <Scroll to={child.item[1]} smooth={true} duration={500} offset={-100} className="child-menu-item-link uline"><span className="line" dangerouslySetInnerHTML={{ __html: child.item[0] }}></span></Scroll>
                                                                     </li>
                                                                 ))}
                                                             </ul>
@@ -256,7 +256,7 @@ export default function Aside({ page, step, nav }: AsideProps) {
                                                     />
                                                 ) || (
                                                     <Scroll to={value[0].item[1]} smooth={true} duration={500} offset={-100} className="menu-item-link" data-current="false">
-                                                        <span className="label">{value[0].item[0]}</span>
+                                                        <span className="label" dangerouslySetInnerHTML={{ __html: value[0].item[0] }}></span>
                                                     </Scroll>
                                                 )
                                             }

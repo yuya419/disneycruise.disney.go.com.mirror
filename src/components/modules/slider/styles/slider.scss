@@ -1,0 +1,255 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* slider */
+
+/* 目次 */
+/* __10: 共通設定 */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+@mixin dotColor($type) {
+    @if$type==01 {
+        .dotButton {
+            background-color: rgba($color: #272833, $alpha: 0.15);
+
+            &.isActive {
+                background-color: var(--theme_color_main);
+            }
+        }
+    }
+
+    @if$type==02 {
+        .dotButton {
+            background-color: rgba($color: #FFFFFF, $alpha: 0.4);
+
+            &.isActive {
+                background-color: var(--theme_color_sub);
+            }
+        }
+    }
+}
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.m-slider {
+
+    &-box {
+        overflow: hidden;
+    }
+
+    &-list {
+        display: flex;
+    }
+
+    &-item {
+        flex     : 0 0 100%;
+        min-width: 0;
+
+        img {
+            display: block;
+            width  : 100%;
+        }
+    }
+
+    // &[data-type="default"]
+    &[data-type="default"] {
+        .m-slider-item {
+            aspect-ratio: 16/9;
+            margin-right: 1.6rem;
+
+            img {
+                height    : 100%;
+                object-fit: contain;
+            }
+        }
+
+        .m-slider-tool-box {
+            grid-template-areas: "prev dots next";
+            justify-content    : space-between;
+            margin-top         : 1.6rem;
+        }
+
+        @include dotColor(01);
+    }
+
+    // &[data-type="hero"]
+    &[data-type="hero"] {
+        .m-slider-item {
+            transform  : translate3d(0, 0, 0);
+            position   : relative;
+
+            img {
+                display   : block;
+                width     : 100%;
+                height    : 100svh;
+                object-fit: cover;
+                scale     : 1.1;
+                opacity   : 0;
+                transition: scale 0s ease 1s, opacity 0.3s ease 0.3s;
+            }
+
+            figure {
+                display : block;
+                position: relative;
+                overflow: hidden;
+
+                &::before,
+                &::after {
+                    content : "";
+                    position: absolute;
+                    left    : 0;
+                    width   : 100%;
+                }
+
+                &::before {
+                    bottom    : 0;
+                    height    : 30rem;
+                    opacity   : 0.5;
+                    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.60) 40%, #000 100%);
+                }
+
+                &::after {
+                    top       : 0;
+                    height    : 8rem;
+                    opacity   : 0.25;
+                    background: linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
+                }
+            }
+
+            figcaption {
+                position   : absolute;
+                right      : 1rem;
+                bottom     : 3.7rem;
+                font-size  : 0.9rem;
+                font-weight: 400;
+                line-height: calc(11/9);
+                color      : var(--color_white);
+                text-align : right;
+            }
+
+            &.is-snapped {
+
+                img {
+                    scale     : 1;
+                    opacity   : 1;
+                    transition: scale 1s var(--customEasingIn), opacity 0.3s var(--customEasingIn);
+                }
+            }
+        }
+
+        .m-slider-tool-box {
+            grid-template-areas: "dots dots dots";
+            justify-content    : center;
+            position           : absolute;
+            width              : 100%;
+            bottom             : 2rem;
+
+            .arrowButton {
+                display: none;
+            }
+        }
+
+        @include dotColor(02);
+    }
+
+    // &[data-type="small"]
+    &[data-type="small"] {
+        .m-slider-item {
+            aspect-ratio: 16/9;
+            margin-right: 1.6rem;
+
+            img {
+                height    : 100%;
+                object-fit: contain;
+            }
+        }
+
+        .m-slider-tool-box {
+            grid-template-areas: "prev dots next";
+            justify-content    : center;
+            margin-top         : 1.4rem;
+        }
+
+        @include dotColor(01);
+    }
+
+    // &[data-type="carousel"]
+    &[data-type="carousel"] {
+        .m-slider-item {
+            max-width   : 33.7rem;
+            margin-right: 1.6rem;
+        }
+
+        .m-slider-tool-box {
+            grid-template-areas: "prev next dots";
+            justify-content    : center;
+            margin-top         : 2rem;
+        }
+
+        @include dotColor(01);
+    }
+
+    &-tool-box {
+        display              : grid;
+        grid-template-columns: repeat(3, auto);
+        column-gap           : 3.2rem;
+        align-items          : center;
+
+        .arrowButton {
+            &.isPrev {
+                grid-area: prev;
+                scale    : -1 1;
+            }
+
+            &.isNext {
+                grid-area: next;
+            }
+        }
+
+        .dotButtons {
+            grid-area : dots;
+            display   : flex;
+            column-gap: 0.7rem;
+
+            .dotButton {
+                flex-shrink  : 0;
+                width        : 0.7rem;
+                height       : 0.7rem;
+                border-radius: 50%;
+                transition   : background-color 0.15s var(--customEasingOut);
+            }
+        }
+    }
+}
+
+// sp
+@include g.media(md) {
+    .m-slider {
+
+        // &[data-type="hero"]
+        &[data-type="hero"] {
+            .m-slider-item {
+                figure {
+
+                    &::before {
+                        height    : 100%;
+                        opacity   : 0.5;
+                        background: linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.70) 15.97%, rgba(0, 0, 0, 0.40) 24%, rgba(0, 0, 0, 0.05) 30%, rgba(0, 0, 0, 0.45) 40%, rgba(0, 0, 0, 0.85) 49.5%, rgba(0, 0, 0, 0.45) 60%, rgba(0, 0, 0, 0.00) 70.32%, rgba(0, 0, 0, 0.50) 79.98%, #000 100%);
+                    }
+
+                    &::after {
+                        content: none;
+                    }
+                }
+
+                figcaption {
+                    right     : inherit;
+                    left      : 1rem;
+                    bottom    : calc(100svh/(663/80));
+                    text-align: left;
+                }
+            }
+        }
+    }
+}

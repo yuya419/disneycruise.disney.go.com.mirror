@@ -6,7 +6,7 @@
 import Image from "next/image";
 import { useState, useEffect } from 'react';
 import { AccordionType02, AccordionType03 } from "@/components/modules/acdn/acdn";
-import Headline from "@/components/modules/headline/headline";
+import { Headline } from "@/components/modules/headline/headline";
 import BookingCalendar from "@/components/modules/calendar/calendar";
 import "./styles/roomType.scss";
 

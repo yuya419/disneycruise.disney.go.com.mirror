@@ -21,7 +21,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
   const [isColor, setIsColor] = useState<"white" | "blue" | null>(null);
 
   useEffect(() => {
-    if (pathname === "/") {
+    if (pathname === "/" || pathname === "/themed-areas/") {
       setIsColor("white");
     } else {
       setIsColor("blue");

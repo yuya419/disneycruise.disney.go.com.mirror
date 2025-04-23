@@ -5,7 +5,7 @@
 "use client";
 import Image from "next/image";
 import Button from "@/components/modules/buttons/button";
-import Headline from "@/components/modules/headline/headline";
+import { Headline } from "@/components/modules/headline/headline";
 import "./styles/reservation.scss";
 
 export default function Reservation(props: {
@@ -16,7 +16,7 @@ export default function Reservation(props: {
     if (step === "complete") {
         return null;
     }
-    
+
     return (
         <div className="l-reservation">
             <div className="l-reservation-detail">

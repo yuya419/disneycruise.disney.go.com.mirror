@@ -40,7 +40,7 @@ export default function Content(props: {
 }) {
     const { type, post, prevnext } = props;
     const { link, title, date, cat } = post;
-    
+
     const label = type === "news" ? "お知らせ" : "特集記事";
     const exTitle = title.length > 30 ? title.slice(0, 30) + "…" : title
     const breadcrumbItems = [
@@ -93,13 +93,19 @@ export default function Content(props: {
                 <p>楽しい家族旅行、友人との小旅行、カップルでの小旅行など、ディズニーの客室とスイートなら、リラックスして快適にお過ごしいただけます。<br />
                     各客室とスイートには、<a href="#">ディズニー</a>、<a href="#">ピクサー</a>、<a href="#">マーベル</a>のストーリーにインスピレーションを得たアートワークなど、他では見られない魔法のような雰囲気が漂います。</p>
                 <BlockHeadline hlLevel="h4">夢と魔法がいっぱいの冒険をはじめましょう。(h4)</BlockHeadline>
-                <BlockSlider images={[""]} />
+                <BlockSlider images={[
+                    "/ships/adventure/common/dummy/content/dummy05.jpg",
+                    "/ships/adventure/common/dummy/content/dummy01.jpg",
+                    "/ships/adventure/common/dummy/content/dummy02.jpg",
+                    "/ships/adventure/common/dummy/content/dummy03.jpg",
+                    "/ships/adventure/common/dummy/content/dummy04.jpg",
+                ]} />
                 <BlockHeadline hlLevel="h2">船上で味わう、最高のエンターテイメント(h2)</BlockHeadline>
                 <BlockMovie type="video" src="/ships/adventure/movie/dcl_da_pc.mp4" />
                 <p>楽しい家族旅行、友人との小旅行、カップルでの小旅行など、ディズニーの客室とスイートなら、リラックスして快適にお過ごしいただけます。<br />
                     各客室とスイートには、テキストリンクのストーリーにインスピレーションを得たアートワークなど、他では見られない魔法のような雰囲気が漂います。</p>
                 <BlockButton href="/">予約はこちら（ボタン要素）</BlockButton>
-                <BlockImg src={"/ships/adventure/common/dummy/content/dummy05.jpg"} alt={"ダミー"} width={824} height={355} />
+                <BlockImg src={"/ships/adventure/common/dummy/content/dummy06.jpg"} alt={"ダミー"} width={824} height={355} />
                 <BlockTable
                     header={
                         [{ "1": { text: "表組1列" }, }]

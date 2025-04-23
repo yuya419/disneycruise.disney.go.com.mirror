@@ -18,7 +18,6 @@ export function Table(props: {
     const headerKeys = Object.keys(header?.[0] || {});
     const bodyKeys = Object.keys(body[0] || {});
     const celLength = Math.max(headerKeys.length, bodyKeys.length);
-    console.log('celLength', celLength);
 
     return (
         <div className="m-b-table">

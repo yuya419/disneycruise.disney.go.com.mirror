@@ -19,7 +19,7 @@ const post = {
 };
 
 const prevnext = {
-    prev: "",
+    prev: "post01",
     next: "post02"
 };
 

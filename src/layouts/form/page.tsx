@@ -4,10 +4,10 @@
  */
 "use client";
 import Breadcrumb from "@/components/modules/breadcrumb/breadcrumb";
-import Title from "@/layouts/common/title";
+import Title from "@/layouts/title/title";
 import Reservation from "@/layouts/form/reservation";
 import Delivery from "./delivery";
-import { HasAsideContainer } from "@/layouts/common/container";
+import { HasAsideContainer } from "@/layouts/container/container";
 import { 
     Book as BookInput,
     Inquiry as InquiryInput,

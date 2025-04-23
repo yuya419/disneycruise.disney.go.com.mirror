@@ -8,6 +8,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { usePathname } from "next/navigation";
 import { useRefContext } from "@/hooks/useRefContext";
+import "@/layouts/container/styles/container.scss";
 
 interface ContainerProps {
     children: React.ReactNode;

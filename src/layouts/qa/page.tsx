@@ -4,10 +4,10 @@
  */
 "use client";
 import Breadcrumb from "@/components/modules/breadcrumb/breadcrumb";
-import Title from "@/layouts/common/title";
+import Title from "@/layouts/title/title";
 import Aside from "../aside/aside";
-import { HasAsideContainer } from "@/layouts/common/container";
-import Headline from "@/components/modules/headline/headline";
+import { HasAsideContainer } from "@/layouts/container/container";
+import { Headline } from "@/components/modules/headline/headline";
 import { AccordionType02 } from "@/components/modules/acdn/acdn";
 import "./styles/page.scss";
 
@@ -20,10 +20,6 @@ export function Page() {
         parent01: [
             {
                 item: ["ご旅行の準備", "sec01"],
-                child: [
-                    { item: ["パスポートの有効期限はどのくらい必要ですか？", "sec01"] },
-                    { item: ["日本から持って行った方がよいものはありますか？", "sec01"] },
-                ]
             }
         ],
         parent02: [
@@ -183,7 +179,7 @@ export function Page() {
                         </section>
                     </article>
                 </main>
-                <Aside page="qa" nav={navArray} />
+                <Aside page="page" nav={navArray} />
             </HasAsideContainer>
         </div>
     );

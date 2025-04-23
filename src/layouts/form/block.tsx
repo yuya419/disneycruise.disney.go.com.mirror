@@ -3,7 +3,7 @@
  * @description フォームブロック
  */
 "use client";
-import Headline from "@/components/modules/headline/headline";
+import { Headline } from "@/components/modules/headline/headline";
 import "./styles/block.scss";
 
 export default function Block(props: {

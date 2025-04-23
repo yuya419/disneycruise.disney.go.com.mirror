@@ -4,7 +4,7 @@
  */
 import type { Metadata } from "next";
 import metaArray from "@/libs/meta";
-import { HasAsideContainer } from "@/layouts/common/container";
+import { HasAsideContainer } from "@/layouts/container/container";
 import Breadcrumb from "@/components/modules/breadcrumb/breadcrumb";
 import { Single } from "@/layouts/course/course";
 import Aside from "@/layouts/aside/aside";

@@ -4,7 +4,7 @@
  */
 "use client";
 import Breadcrumb from "@/components/modules/breadcrumb/breadcrumb";
-import Title from "@/layouts/common/title";
+import Title from "@/layouts/title/title";
 import { Post } from "@/layouts/post/article";
 import { Pickup } from "@/layouts/post/pickup";
 import "./styles/archive.scss";

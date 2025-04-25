@@ -8,6 +8,7 @@ import { gsap } from "gsap";
 import Image from "next/image";
 import helper from "@/libs/helper";
 import Button from "@/components/modules/buttons/button";
+import { GSAPToggleContainer } from "@/components/modules/gsap/container";
 import "./styles/concierge.scss";
 
 export default function Concierge() {
@@ -63,7 +64,7 @@ export default function Concierge() {
             <div className="t-concierge__bg">
                 <Image src={getImagePath("top/concierge/img.jpg")} alt="コンシェルジュスイート&ステートルーム​​の内装" width={1300} height={768} priority ref={imageRef} />
             </div>
-            <div className="container">
+            <GSAPToggleContainer tag="div" className="container" toggle={{ logo: true, color: null, movie: { video: "water", state: true } }}>
                 <div className="t-concierge__detail">
                     <div className="detail">
                         <hgroup className="t-concierge__head">
@@ -103,7 +104,7 @@ export default function Concierge() {
                         <Button type="tertiary" label="View More" lang="en" link="/concierge/" align="center" />
                     </div>
                 </div>
-            </div>
+            </GSAPToggleContainer>
         </section>
     )
 }

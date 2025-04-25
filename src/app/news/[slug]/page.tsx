@@ -19,8 +19,8 @@ const post = {
 };
 
 const prevnext = {
-    prev: "post01",
-    next: "post02"
+    prev: "detail",
+    next: ""
 };
 
 export default function Page() {

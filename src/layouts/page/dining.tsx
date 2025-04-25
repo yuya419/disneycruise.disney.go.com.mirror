@@ -345,8 +345,8 @@ export function Page() {
                                     <p>ゲストの航海中に、ディズニーならではの3つの異なるダイニング体験をお楽しみいただけます。<br />※指定のレストランをご利用いただきます。<br className="nopc" />お選びいただく事はできません。</p>
                                 </div>
                                 <div className="theme">
-                                    {themeArray.map((theme) => {
-                                        return themeBlock(theme)
+                                    {themeArray.map((theme, index) => {
+                                        return themeBlock(theme);
                                     })}
                                 </div>
                             </div>

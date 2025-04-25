@@ -66,7 +66,9 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                                                     <Link href="/themed-areas/#area07" className="child-menu-item-link uline"><span className="line">タウン・スクエア</span></Link>
                                                 </li>
                                             </ul>
-                                        } />
+                                        }
+                                        pageTo={true}
+                                    />
                                 </li>
                                 <li className="menu-item">
                                     <Accordion
@@ -79,19 +81,20 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                                         content={
                                             <ul className="child-nav-menu">
                                                 <li className="child-menu-item">
-                                                    <Link href="/accommodations/" className="child-menu-item-link uline"><span className="line">コンシェルジュ・スイート</span></Link>
+                                                    <Link href="/accommodations/?type=room01" className="child-menu-item-link uline"><span className="line">コンシェルジュ・スイート</span></Link>
                                                 </li>
                                                 <li className="child-menu-item">
-                                                    <Link href="/accommodations/" className="child-menu-item-link uline"><span className="line">ベランダ客室</span></Link>
+                                                    <Link href="/accommodations/?type=room02" className="child-menu-item-link uline"><span className="line">ベランダ客室</span></Link>
                                                 </li>
                                                 <li className="child-menu-item">
-                                                    <Link href="/accommodations/" className="child-menu-item-link uline"><span className="line">オーシャンビュー客室</span></Link>
+                                                    <Link href="/accommodations/?type=room03" className="child-menu-item-link uline"><span className="line">オーシャンビュー客室</span></Link>
                                                 </li>
                                                 <li className="child-menu-item">
-                                                    <Link href="/accommodations/" className="child-menu-item-link uline"><span className="line">内側​​​客室</span></Link>
+                                                    <Link href="/accommodations/?type=room04" className="child-menu-item-link uline"><span className="line">内側​​​客室</span></Link>
                                                 </li>
                                             </ul>
-                                        } />
+                                        }
+                                        pageTo={true} />
                                 </li>
                                 <li className="menu-item">
                                     <Link href="/entertainment/" className="menu-item-link">

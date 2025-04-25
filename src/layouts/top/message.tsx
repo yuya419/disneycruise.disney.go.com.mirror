@@ -5,7 +5,7 @@
 "use client";
 import Image from "next/image";
 import helper from "@/libs/helper";
-import { GSAPToggleContainer, GSAPMaskContainer } from "@/components/modules/gsap/container";
+import { GSAPToggleContainer, GSAPMaskToggle } from "@/components/modules/gsap/container";
 import { GallerySlider } from "@/components/modules/common/common";
 import "./styles/message.scss";
 
@@ -40,8 +40,8 @@ export default function Message() {
     }
 
     return (
-        <GSAPToggleContainer tag="section" className="t-message" toggle={{ logo: true, color: null }}>
-            <GSAPMaskContainer tag="div" className="container" mask={"water"}>
+        <GSAPToggleContainer tag="section" className="t-message" toggle={{ logo: true, color: null, movie: { video: "hero", state: false } }} id="message">
+            <div className="container">
                 <hgroup className="t-message__head">
                     <p className="logo">
                         <Image
@@ -64,8 +64,9 @@ export default function Message() {
                         シンガポールから出航するこの客船では、<br />3泊〜5泊の航海をご用意しています。<br />
                         洋上で魔法のような日々をお過ごしください。</p>
                 </div>
-            </GSAPMaskContainer>
+            </div>
             <GallerySlider to="left" images={images} />
+            <GSAPMaskToggle mask={"water"} />
         </GSAPToggleContainer>
     )
 }

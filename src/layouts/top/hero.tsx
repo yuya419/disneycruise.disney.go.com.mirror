@@ -13,7 +13,7 @@ export default function Hero() {
 
     const posts = {
         "post01": {
-            link: "post01",
+            link: "/news/detail/",
             title: "ピクサー映画『ウォーリー』の愛らしいロボットたちが贈る、愛と切なさが詰まった感動の物語",
             date: "2025.00.00",
             cat: {
@@ -41,7 +41,7 @@ export default function Hero() {
                 />
             </div>
             <div className="t-hero__copy">
-                <p lang="en"> Website presented by <a href="#" target="_blank" className="uline-r"><span className="line">Miki Tourist</span></a></p>
+                <p lang="en"> Website presented by <a href="https://www.mikitourist.co.jp/" target="_blank" className="uline-r"><span className="line">Miki Tourist</span></a></p>
             </div>
             <div className="t-hero__scroll">
                 <p>

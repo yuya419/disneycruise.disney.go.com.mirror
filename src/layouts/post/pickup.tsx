@@ -48,29 +48,32 @@ export function HeroNews(props: posts) {
     const firstPostKey = Object.keys(posts)[0];
     const firstPost = posts[firstPostKey];
 
+    const Meta = () => {
+        return (
+            <div className="meta">
+                {
+                    Object.keys(firstPost.cat).map((key) => {
+                        return (
+                            <span key={key} className="cat" lang="ja">{firstPost.cat[key].name}</span>
+                        )
+                    })
+                }
+                <h2 className="title">{firstPost.title}</h2>
+            </div>
+        )
+    }
+
     return (
         <div className="t-hero__pickup">
             <article className={"t-hero__pickup-item"}>
                 <Link href={firstPost.link} className={"t-hero__pickup-link"}>
-                    <div className="meta">
-                        {
-                            Object.keys(firstPost.cat).map((key) => {
-                                return (
-                                    <span key={key} className="cat" lang="ja">{firstPost.cat[key].name}</span>
-                                )
-                            })
-                        }
-                        <h2 className="title">{firstPost.title}</h2>
+                    <div className="link-inline">
+                        <Meta />
+                        <Meta />
                     </div>
-                    <div className="meta">
-                        {
-                            Object.keys(firstPost.cat).map((key) => {
-                                return (
-                                    <span key={key} className="cat" lang="ja">{firstPost.cat[key].name}</span>
-                                )
-                            })
-                        }
-                        <h2 className="title">{firstPost.title}</h2>
+                    <div className="link-inline">
+                        <Meta />
+                        <Meta />
                     </div>
                 </Link>
             </article>

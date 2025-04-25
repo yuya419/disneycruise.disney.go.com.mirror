@@ -22,14 +22,32 @@
         padding-left   : 2.2rem;
         padding-right  : 1.8rem;
         text-decoration: none;
+        border-width   : 1px;
+        border-style   : solid;
+        transition     : background-color 0.3s var(--customEasingOut), border-color 0.3s var(--customEasingOut);
+
+        @include g.hover() {
+            .arrow {
+                .i-arw-r {
+                    rotate: X 180deg;
+                }
+            }
+        }
 
         .label {
             font-size  : 1.8rem;
             line-height: calc(26/18);
             @include g.leadingTrim(calc(26/18));
+            transition: color 0.3s var(--customEasingOut);
         }
 
-        .arrow {}
+        .arrow {
+            transition: background-color 0.3s var(--customEasingOut);
+
+            .i-arw-r {
+                transition: color 0.3s var(--customEasingOut), rotate 0.3s var(--customEasingOut);
+            }
+        }
     }
 
     // 中央揃え
@@ -48,33 +66,85 @@
 
     // 青ベタ、白文字
     [data-type="primary"] {
+        border-color    : var(--theme_color_main);
         background-color: var(--theme_color_main);
 
         .label {
             color: var(--color_white);
         }
+
+        @include g.hover() {
+            background-color: var(--color_white);
+
+            .label {
+                color: var(--theme_color_main);
+            }
+
+            .arrow {
+                background-color: var(--theme_color_main);
+
+                .i-arw-r {
+                    color: var(--color_white);
+                }
+            }
+        }
     }
 
     // 白ベタ、青文字
     [data-type="secondary"] {
+        border-color    : var(--color_white);
         background-color: var(--color_white);
 
         .label {
             color: var(--theme_color_main);
         }
+
+        @include g.hover() {
+            background-color: var(--theme_color_main);
+
+            .label {
+                color: var(--color_white);
+            }
+
+            .arrow {
+                background-color: var(--color_white);
+
+                .i-arw-r {
+                    color: var(--theme_color_main);
+                }
+            }
+        }
     }
 
     // 金ベタ、白文字
     [data-type="tertiary"] {
+        border-color    : var(--color_white);
         background-color: var(--color_white);
 
         .label {
             color: #866B0E;
         }
+
+        @include g.hover() {
+            background-color: #988648;
+
+            .label {
+                color: var(--color_white);
+            }
+
+            .arrow {
+                background-color: var(--color_white);
+
+                .i-arw-r {
+                    color: #866B0E;
+                }
+            }
+        }
     }
 
     // 白ベタ, 黒文字
     [data-type="quaternary"] {
+        border-color    : var(--color_white);
         background-color: var(--color_white);
 
         .label {

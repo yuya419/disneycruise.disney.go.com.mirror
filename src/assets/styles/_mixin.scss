@@ -17,7 +17,7 @@
     -webkit-overflow-scrolling: none;
     overflow                  : hidden;
     overscroll-behavior       : none;
-    scrollbar-gutter          : stable
+    // scrollbar-gutter          : stable
 }
 
 // スクリーンリーダーテキスト
@@ -160,7 +160,7 @@ $vi-screen-reader-text: "screen-reader-text";
 
 /* メディアクエリ */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-$breakpoints: ('sm': 640px, 'md': 1024px, 'lg': 1600px, 'xl': 1920px);
+$breakpoints: ('sm': 640px, 'md': 1024px, 'lg': 1600px, 'xl': 1920px, 'bs': 1300px);
 $minmax     : ('min': min, 'max': max);
 
 @mixin media($size, $width: 'max') {

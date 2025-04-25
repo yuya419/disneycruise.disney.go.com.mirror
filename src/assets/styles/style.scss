@@ -89,6 +89,13 @@ a:not([class]) {
     }
 }
 
+// bs - 1024px ~ 1300px
+@include g.media(bs, max) {
+    html {
+        @include g.font-vw(10, 1300);
+    }
+}
+
 // SP(md) - n ~ 1024px
 @include g.media(md) {
     html {

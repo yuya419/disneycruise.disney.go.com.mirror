@@ -27,7 +27,7 @@ export default function CvNav() {
                         </Link>
                     </li>
                     <li className="menu-item is-mail-magazine">
-                        <Link href="/" className="menu-item-link">
+                        <Link href="/mailmagazine/" className="menu-item-link">
                             <span className="label">
                                 <span className="en" lang="en">Mail Magazine</span>
                                 <span className="jp">メールマガジン登録</span>
@@ -36,7 +36,7 @@ export default function CvNav() {
                         </Link>
                     </li>
                     <li className="menu-item is-contact">
-                        <Link href="/" className="menu-item-link">
+                        <Link href="/inquiry/" className="menu-item-link">
                             <span className="label">
                                 <span className="en" lang="en">Contact</span>
                                 <span className="jp">お問い合わせ</span>

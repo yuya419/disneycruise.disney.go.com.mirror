@@ -57,7 +57,7 @@ export default function Title({ type, title, en, slider, image }: TitleProps) {
                     <h1>{title}</h1>
                 </hgroup>
                 <div className="l-title__copy">
-                    <p lang="en"> Website presented by <a href="#" target="_blank" className="uline-r"><span className="line">Miki Tourist</span></a></p>
+                    <p lang="en"> Website presented by <a href="https://www.mikitourist.co.jp/" target="_blank" className="uline-r"><span className="line">Miki Tourist</span></a></p>
                 </div>
             </div>
         )

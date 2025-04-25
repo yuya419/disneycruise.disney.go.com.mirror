@@ -24,7 +24,7 @@
         width   : 29rem;
 
         img {
-            width: 100%;
+            width : 100%;
             height: auto;
         }
     }
@@ -132,11 +132,40 @@
         }
 
         &-link {
-            width          : 35rem;
-            display        : flex;
-            align-items    : center;
-            text-decoration: none;
-            padding-block  : 1.4rem;
+            display            : grid;
+            grid-template-areas: "link";
+            text-decoration    : none;
+            overflow           : hidden;
+
+            @include g.hover() {
+                .link-inline {
+
+                    &:first-child {
+                        translate: 0 -100%;
+                    }
+
+                    &:last-child {
+                        translate: 0 0%;
+                    }
+                }
+            }
+
+            .link-inline {
+                grid-area    : link;
+                width        : 35rem;
+                display      : flex;
+                align-items  : center;
+                padding-block: 1.4rem;
+                transition   : translate 0.5s var(--customEasingOut);
+
+                &:first-child {
+                    translate: 0 0%;
+                }
+
+                &:last-child {
+                    translate: 0 100%;
+                }
+            }
 
             .meta {
                 flex-shrink : 0;

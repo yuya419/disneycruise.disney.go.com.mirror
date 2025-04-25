@@ -124,20 +124,18 @@
     // マスク
     .is-set-mask {
         mask-repeat  : no-repeat;
-        mask-image   : url('/ships/adventure/common/mask.webp');
-        mask-size    : 300% 600%;
-        mask-position: -33% 20%;
-        transition   : mask-position 1.5s var(--customEasingOut);
-
-        // mask-image   : url('/ships/adventure/common/test-mask.png');
-        // mask-size    : 500% 600%;
-        // mask-position: -20% 50%;
+        mask-image   : url('/ships/adventure/common/mask.png');
+        mask-size    : 600% 300%;
+        mask-position: 20% -33%;
+        visibility   : hidden;
 
         &.isHide {
-            mask-position: 66% 0%;
-            transition   : mask-position 1.5s var(--customEasingOut);
+            visibility: inherit;
+        }
 
-            // mask-position: 0% 80%;
+        &.isShow {
+            mask-size : 0;
+            visibility: inherit;
         }
     }
 }
@@ -152,6 +150,9 @@
             height  : 70.3rem;
         }
 
-        .water {}
+        // マスク
+        .is-set-mask {
+            mask-image   : url('/ships/adventure/common/mask-vert.png');
+        }
     }
 }

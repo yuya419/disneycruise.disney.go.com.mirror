@@ -253,6 +253,7 @@ export default function Aside({ page, step, nav }: AsideProps) {
                                                                 ))}
                                                             </ul>
                                                         }
+                                                        isOpenDefault={true}
                                                     />
                                                 ) || (
                                                     <Scroll to={value[0].item[1]} smooth={true} duration={500} offset={-100} className="menu-item-link" data-current="false">
@@ -264,6 +265,7 @@ export default function Aside({ page, step, nav }: AsideProps) {
                                     ))}
                                 </ul>
                             }
+                            isOpenDefault={true}
                         />
                     </nav>
                 </div>

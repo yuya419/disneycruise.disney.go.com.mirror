@@ -8,6 +8,7 @@ import "@/assets/styles/style.scss";
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { RefProvider } from "@/hooks/useRefContext";
 import Header from "@/components/utils/header";
 import Footer from "@/components/utils/footer";
 import DrawerNav from "@/components/modules/nav/drawerNav";
@@ -20,26 +21,25 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
   const [isColor, setIsColor] = useState<"white" | "blue" | null>(null);
 
   useEffect(() => {
-    if (pathname === "/") {
-      setIsColor("white");
-    } else {
-      setIsColor("blue");
-    }
+    const whitePaths = ["/", "/themed-areas/", "/entertainment/", "/dining/", "/accommodations/", "/kids-clubs/", "/spa-lounges-bar/", "/concierge/"];
+    setIsColor(whitePaths.includes(pathname) ? "white" : "blue");
   }, [pathname, isColor]);
 
   return (
     <html lang="ja">
       <body className={`${NotoSansJP.variable} ${PhilosopherFont.variable}`} data-head-color={isColor}>
-        <Header />
-        {children}
-        <Footer />
-        <DrawerNav />
-        {pathname !== "/book/" && pathname !== "/book/confirm/" && pathname !== "/book/complete/" && (
-          <RequestButton />
-        )}
-        <Bg state={true} />
-        <Symbol />
-        <div className="overlay"></div>
+        <RefProvider>
+          <Header />
+          {children}
+          <Footer />
+          <DrawerNav />
+          {pathname !== "/book/" && pathname !== "/book/confirm/" && pathname !== "/book/complete/" && (
+            <RequestButton />
+          )}
+          <Bg />
+          <Symbol />
+          <div className="overlay"></div>
+        </RefProvider>
       </body>
     </html>
   );

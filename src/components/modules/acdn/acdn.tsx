@@ -11,6 +11,7 @@ interface AccordionProps {
     label: React.ReactNode;
     content: React.ReactNode;
     isOpenDefault?: boolean;
+    pageTo?: boolean;
 }
 
 /**
@@ -18,7 +19,7 @@ interface AccordionProps {
  * @description アコーディオンコンポーネント01 - トグルエリアがアイコンのみ
  * @param {boolean} isOpenDefault - 初期状態で開いているかどうか
  */
-function AccordionType01({ label, content, isOpenDefault }: AccordionProps) {
+function AccordionType01({ label, content, isOpenDefault, pageTo }: AccordionProps) {
     const [isOpen, setIsOpen] = useState(isOpenDefault);
     const pathName = usePathname();
 
@@ -27,7 +28,9 @@ function AccordionType01({ label, content, isOpenDefault }: AccordionProps) {
     }
 
     useEffect(() => {
-        setIsOpen(false);
+        if (pageTo) {
+            setIsOpen(false);
+        }
     }, [pathName]);
 
     return (
@@ -50,7 +53,7 @@ function AccordionType01({ label, content, isOpenDefault }: AccordionProps) {
  * @description アコーディオンコンポーネント02 - トグルエリアがラベル全体
  * @param {boolean} isOpenDefault - 初期状態で開いているかどうか
  */
-function AccordionType02({ label, content, isOpenDefault }: AccordionProps) {
+function AccordionType02({ label, content, isOpenDefault, pageTo }: AccordionProps) {
     const [isOpen, setIsOpen] = useState(isOpenDefault);
     const pathName = usePathname();
 
@@ -59,7 +62,9 @@ function AccordionType02({ label, content, isOpenDefault }: AccordionProps) {
     }
 
     useEffect(() => {
-        setIsOpen(false);
+        if (pageTo) {
+            setIsOpen(false);
+        }
     }, [pathName]);
 
     return (
@@ -81,7 +86,7 @@ function AccordionType02({ label, content, isOpenDefault }: AccordionProps) {
  * @description アコーディオンコンポーネント03 - トグルボタン独立
  * @param {boolean} isOpenDefault - 初期状態で開いているかどうか
  */
-function AccordionType03({ label, content, isOpenDefault }: AccordionProps) {
+function AccordionType03({ label, content, isOpenDefault, pageTo }: AccordionProps) {
     const [isOpen, setIsOpen] = useState(isOpenDefault);
     const pathName = usePathname();
 
@@ -90,7 +95,9 @@ function AccordionType03({ label, content, isOpenDefault }: AccordionProps) {
     }
 
     useEffect(() => {
-        setIsOpen(false);
+        if (pageTo) {
+            setIsOpen(false);
+        }
     }, [pathName]);
 
     return (

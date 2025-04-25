@@ -168,6 +168,10 @@
                     transition: opacity 0.1s var(--customEasingOut);
                 }
 
+                .close {
+                    opacity: 0;
+                }
+
                 .icon {
                     display: block;
                     width  : 1rem;

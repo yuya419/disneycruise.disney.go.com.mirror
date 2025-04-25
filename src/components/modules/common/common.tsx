@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import helper from "@/libs/helper";
+import { useRefContext } from "@/hooks/useRefContext";
 import "./styles/common.scss";
 
 /**
@@ -28,7 +29,6 @@ const GallerySlider = (props: {
         }
     }
 }) => {
-    const pathname = usePathname();
     const containerRef = useRef<HTMLDivElement>(null);
     const { getImagePath } = helper();
 
@@ -129,7 +129,7 @@ const GalleryParallax = (props: {
                             },
                         })
                     }, itemref);
-        
+
                     return () => ctx.revert();
                 }, []);
 
@@ -160,51 +160,36 @@ const GalleryParallax = (props: {
  * @description 背景動画
  * @param props.state 動画の再生状態
  */
-const Bg = (props: { state: boolean }) => {
+const Bg = () => {
     const { getImagePath } = helper();
-    const [isLoaded, setIsLoaded] = useState(false);
-    const videoRef = useRef<HTMLVideoElement>(null);
-
-    useEffect(() => {
-        if (props.state) {
-            if (videoRef.current) {
-                videoRef.current.play();
-            }
-        } else {
-            if (videoRef.current) {
-                videoRef.current.pause();
-            }
-        }
-    }, [props.state]);
+    const pathname = usePathname();
+    const { hero, water, colorBlue, colorWhite } = useRefContext() as {
+        hero: React.RefObject<HTMLDivElement>;
+        water: React.RefObject<HTMLDivElement>;
+        colorBlue: React.RefObject<HTMLDivElement>;
+        colorWhite: React.RefObject<HTMLDivElement>;
+    };
 
     return (
         <div className="bg">
-            <div className="color"></div>
-            <div className="video">
-                <div className="hero">
-                    <video muted loop playsInline preload="metadata" ref={videoRef} onLoadedData={() => {
-                        setIsLoaded(true);
-                        if (videoRef.current) {
-                            videoRef.current.play();
-                        }
-                    }} onEnded={() => {
-                        if (videoRef.current) {
-                            videoRef.current.play();
-                        }
-                    }}>
+            {pathname === "/" && (
+                <div className="video is-video-hero" ref={hero}>
+                    <video autoPlay muted loop playsInline preload="metadata">
                         <source src={getImagePath("movie/dcl_da_sp.webm")} media="(max-width: 1024px)" type="video/webm" />
                         <source src={getImagePath("movie/dcl_da_sp.mp4")} media="(max-width: 1024px)" type="video/mp4" />
                         <source src={getImagePath("movie/dcl_da_pc.webm")} type="video/webm" />
                         <source src={getImagePath("movie/dcl_da_pc.mp4")} type="video/mp4" />
                     </video>
                 </div>
-                <div className="water">
-                    <video autoPlay muted loop playsInline preload="metadata">
-                        <source src={getImagePath("movie/water.webm")} type="video/webm" />
-                        <source src={getImagePath("movie/water.mp4")} type="video/mp4" />
-                    </video>
-                </div>
+            )}
+            <div className={`video is-video-water ${pathname === "/" ? "is-set-mask" : ""}`} ref={water}>
+                <video autoPlay muted loop playsInline preload="metadata">
+                    <source src={getImagePath("movie/water.webm")} type="video/webm" />
+                    <source src={getImagePath("movie/water.mp4")} type="video/mp4" />
+                </video>
             </div>
+            <div className="color is-color-blue is-set-mask" ref={colorBlue}></div>
+            <div className="color is-color-white is-set-mask" ref={colorWhite}></div>
         </div>
     )
 }

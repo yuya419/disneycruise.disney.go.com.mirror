@@ -12,6 +12,7 @@ import Sitemap from "@/components/modules/nav/sitemap";
 import SubNav from "@/components/modules/nav/subNav";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRefContext } from "@/hooks/useRefContext";
 import "./styles/footer.scss";
 
 export default function Footer() {
@@ -20,48 +21,57 @@ export default function Footer() {
     const pathname = usePathname();
     const { getImagePath } = helper();
 
-    useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-        const mm = gsap.matchMedia();
-        const pc = "(min-width: 1025px)";
-        const scrollAnimation = () => {
-            const ctx = gsap.context(() => {
-                const trigger = triggerRef.current;
-                const footer = footerRef.current;
-                if (!trigger || !footer) return;
+    gsap.registerPlugin(ScrollTrigger);
 
-                gsap.to(footer, {
-                    y: `0%`,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: trigger,
-                        start: 'top bottom',
-                        end: 'bottom bottom',
-                        scrub: true,
-                        invalidateOnRefresh: true,
+    const { colorBlue, colorWhite } = useRefContext();
+
+    const scrollAnimation = () => {
+        const trigger = triggerRef.current;
+        const footer = footerRef.current;
+        if (!trigger || !footer) return;
+
+        const ctx = gsap.context(() => {
+            gsap.to(footer, {
+                y: `0%`,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: trigger,
+                    start: 'top bottom',
+                    end: 'bottom bottom',
+                    scrub: true,
+                    invalidateOnRefresh: true,
+                    onEnter: () => {
+                        colorBlue.current?.classList.add("isShow");
+                        colorWhite.current?.classList.add("isShow");
                     },
-                });
-            }, triggerRef);
+                    onLeaveBack: () => {
+                        colorBlue.current?.classList.remove("isShow");
+                        colorWhite.current?.classList.remove("isShow");
+                    },
+                },
+            });
+        }, triggerRef);
 
-            return () => ctx.revert();
-        };
+        return () => ctx.revert();
+    };
 
-        // PC用のアニメーション設定
-        mm.add(pc, () => {
-            return scrollAnimation();
-        });
+    useEffect(() => {
+
+        scrollAnimation();
 
         // クリーンアップ処理
         return () => {
-            mm.revert(); // すべてのメディアクエリを解除
             gsap.killTweensOf(triggerRef.current);
             gsap.killTweensOf(footerRef.current);
+            footerRef.current?.removeAttribute("style");
+            colorBlue.current?.classList.remove("isShow");
+            colorWhite.current?.classList.remove("isShow");
         };
     }, [pathname]);
 
     return (
         <div className="footer-wrap">
-            <div className="space nosp" ref={triggerRef}></div>
+            <div className="space" ref={triggerRef}></div>
             <footer className="footer" ref={footerRef}>
                 <div className="footer-inner">
                     <CvNav />
@@ -72,7 +82,7 @@ export default function Footer() {
                                 <Image src={getImagePath("common/logo-miki-tourist.png")} alt="株式会社ミキ・ツーリスト" width={182} height={18} priority />
                             </p>
                             <p>ディズニークルーズライン日本正規販売代理店　株式会社ミキ・ツーリスト<br />
-                                1967年創立。1998年より様々なクルーズ商品の取り扱いをしています。<a href="#" target="_blank" className="uline-r"><span className="line">詳しくはこちら</span></a></p>
+                                1967年創立。1998年より様々なクルーズ商品の取り扱いをしています。<a href="https://www.mikitourist.co.jp/" target="_blank" className="uline-r"><span className="line">詳しくはこちら</span></a></p>
                         </div>
                         <div className="guideline__image">
                             <p className="ttl">画像に関する免責事項</p>

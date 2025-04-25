@@ -20,6 +20,7 @@
     left          : 0;
     opacity       : 0;
     pointer-events: none;
+    // transition    : opacity 0.4s var(--customEasingOut);
 
     [data-state="navOpen"] & {
         opacity       : 1;
@@ -37,12 +38,19 @@
             "logo cvNav"
             "logo mainNav"
             "subNav mainNav";
-        grid-template-columns: auto 71rem;
+        grid-template-columns: auto 1fr;
         grid-template-rows   : auto 1fr;
         column-gap           : 10rem;
         padding              : 5.7rem 8rem;
         height               : 100%;
         overflow-y           : auto;
+
+        scrollbar-width   : none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 
     &-bg {
@@ -197,9 +205,10 @@
                     padding-block  : 2.2rem;
 
                     .en {
-                        display  : block;
-                        font-size: 2.5rem;
-                        color    : var(--color_white);
+                        display   : block;
+                        font-size : 2.5rem;
+                        color     : var(--color_white);
+                        transition: color 0.3s var(--customEasingOut);
                     }
 
                     .jp {

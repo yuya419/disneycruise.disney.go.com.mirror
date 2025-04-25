@@ -4,7 +4,7 @@
  */
 "use client";
 import { useState } from 'react';
-import Headline from "@/components/modules/headline/headline";
+import { Headline } from "@/components/modules/headline/headline";
 import "./styles/filter.scss";
 
 export default function Filter() {

@@ -1,0 +1,41 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* page */
+
+/* 目次 */
+/* __10: 共通設定 */
+/* __20: p-spa-lounges-bar-section */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+@use "./init"as i;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.p-spa-lounges-bar {
+    @include i.init();
+
+    &-section {
+
+        // .spa-lounges-bar-block
+        .spa-lounges-bar-block {
+            margin-top: 4rem;
+
+            @include i.order();
+
+            @include i.caption();
+        }
+    }
+}
+
+@include g.media(md) {
+    .p-spa-lounges-bar {
+        &-section {
+
+            // .spa-lounges-bar-block
+            .spa-lounges-bar-block {
+                margin-top: 3.2rem;
+            }
+        }
+    }
+}

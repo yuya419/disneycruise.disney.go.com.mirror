@@ -59,59 +59,18 @@
 /* __20: bg */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .bg {
-    position     : fixed;
-    top          : 0;
-    width        : 100%;
-    height       : 100lvh;
-    // margin-top: -100lvh;
-    z-index      : -1;
+    position: fixed;
+    top     : 0;
+    width   : 100%;
+    height  : 100lvh;
+    z-index : -1;
 
     .color,
     .video {
-        position: absolute;
-        inset   : 0;
-        margin  : auto;
-    }
-
-    .color {
-        z-index               : 3;
-        background-color      : var(--color_white);
-        background-color      : rgba($color: #000846, $alpha: 0.7);
-        // background-color   : transparent;
-        // background-color: rgba($color: #000846, $alpha: 0.6);
-    }
-
-    .video {
-        z-index   : 1;
-        // opacity: 0;
-
-        .hero,
-        .water {
-            position: absolute;
-            width   : 100%;
-            height  : 100%;
-            top     : 0;
-            left    : 0;
-
-            &::before {
-                content         : "";
-                position        : absolute;
-                inset           : 0;
-                margin          : auto;
-                background-color: black;
-                opacity         : 0.15;
-                z-index         : 3;
-            }
-        }
-
-        .hero {
-            z-index: 2;
-        }
-
-        .water {
-            z-index   : 2;
-            // opacity: 0;
-        }
+        width : 100%;
+        height: 100%;
+        top   : 0;
+        left  : 0;
 
         video {
             display   : block;
@@ -120,25 +79,80 @@
             object-fit: cover;
         }
     }
+
+    // HERO
+    .is-video-hero {
+        z-index: 1;
+
+        &::before {
+            content         : "";
+            position        : absolute;
+            inset           : 0;
+            margin          : auto;
+            background-color: rgba($color: #000000, $alpha: 0.15);
+        }
+    }
+
+    // 水
+    .is-video-water {
+        position: absolute;
+        z-index : 2;
+
+        &::before {
+            content         : "";
+            position        : absolute;
+            inset           : 0;
+            margin          : auto;
+            background-color: rgba($color: #0099B4, $alpha: 0.5);
+        }
+    }
+
+    // 紺
+    .is-color-blue {
+        position        : absolute;
+        z-index         : 3;
+        background-color: rgba($color: #000846, $alpha: 0.7);
+    }
+
+    // 白
+    .is-color-white {
+        position        : absolute;
+        z-index         : 4;
+        background-color: var(--color_white);
+    }
+
+    // マスク
+    .is-set-mask {
+        mask-repeat  : no-repeat;
+        mask-image   : url('/ships/adventure/common/mask.png');
+        mask-size    : 600% 300%;
+        mask-position: 20% -33%;
+        visibility   : hidden;
+
+        &.isHide {
+            visibility: inherit;
+        }
+
+        &.isShow {
+            mask-size : 0;
+            visibility: inherit;
+        }
+    }
 }
 
 // sp
 @include g.media(md) {
     .bg {
-        .video {
-            display: contents;
 
-            .hero {
-                position: relative;
-                top     : -3.9rem;
-                height  : 70.3rem;
+        .hero {
+            position: relative;
+            top     : -3.9rem;
+            height  : 70.3rem;
+        }
 
-                // video {
-                //     object-position: center -3.9rem;
-                // }
-            }
-
-            .water {}
+        // マスク
+        .is-set-mask {
+            mask-image   : url('/ships/adventure/common/mask-vert.png');
         }
     }
 }

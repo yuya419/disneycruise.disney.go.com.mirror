@@ -3,9 +3,9 @@
  * @description コース詳細を表示するページ
  */
 "use client";
-import Title from "@/layouts/common/title";
+import Title from "@/layouts/title/title";
 import PageButton from "@/components/modules/buttons/pageButton";
-import Headline from "@/components/modules/headline/headline";
+import { Headline } from "@/components/modules/headline/headline";
 import SearchTags from "@/layouts/course/modules/searchTags";
 import RoomType from "./modules/roomType";
 import Schedule from "./modules/schedule";

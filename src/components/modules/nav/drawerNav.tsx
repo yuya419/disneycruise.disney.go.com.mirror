@@ -45,33 +45,35 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                                         content={
                                             <ul className="child-nav-menu">
                                                 <li className="child-menu-item">
-                                                    <Link href="/" className="child-menu-item-link uline"><span className="line">ディズニーイマジネーションガーデン</span></Link>
+                                                    <Link href="/themed-areas/#area01" className="child-menu-item-link uline"><span className="line">ディズニーイマジネーションガーデン</span></Link>
                                                 </li>
                                                 <li className="child-menu-item">
-                                                    <Link href="/" className="child-menu-item-link uline"><span className="line">ディズニーディスカバリーリーフ</span></Link>
+                                                    <Link href="/themed-areas/#area02" className="child-menu-item-link uline"><span className="line">ディズニーディスカバリーリーフ</span></Link>
                                                 </li>
                                                 <li className="child-menu-item">
-                                                    <Link href="/" className="child-menu-item-link uline"><span className="line">トイストーリープレイス​</span></Link>
+                                                    <Link href="/themed-areas/#area03" className="child-menu-item-link uline"><span className="line">トイストーリープレイス​</span></Link>
                                                 </li>
                                                 <li className="child-menu-item">
-                                                    <Link href="/" className="child-menu-item-link uline"><span className="line">マーベルランディング​​</span></Link>
+                                                    <Link href="/themed-areas/#area04" className="child-menu-item-link uline"><span className="line">マーベルランディング​​</span></Link>
                                                 </li>
                                                 <li className="child-menu-item">
-                                                    <Link href="/" className="child-menu-item-link uline"><span className="line">ウェイファインダーベイ​</span></Link>
+                                                    <Link href="/themed-areas/#area05" className="child-menu-item-link uline"><span className="line">ウェイファインダーベイ​</span></Link>
                                                 </li>
                                                 <li className="child-menu-item">
-                                                    <Link href="/" className="child-menu-item-link uline"><span className="line">サンフランソウキョウ・ストリート</span></Link>
+                                                    <Link href="/themed-areas/#area06" className="child-menu-item-link uline"><span className="line">サンフランソウキョウ・ストリート</span></Link>
                                                 </li>
                                                 <li className="child-menu-item">
-                                                    <Link href="/" className="child-menu-item-link uline"><span className="line">タウン・スクエア</span></Link>
+                                                    <Link href="/themed-areas/#area07" className="child-menu-item-link uline"><span className="line">タウン・スクエア</span></Link>
                                                 </li>
                                             </ul>
-                                        } />
+                                        }
+                                        pageTo={true}
+                                    />
                                 </li>
                                 <li className="menu-item">
                                     <Accordion
                                         label={
-                                            <Link href="/" className="menu-item-link">
+                                            <Link href="/accommodations/" className="menu-item-link">
                                                 <span className="en" lang="en">Accommodations</span>
                                                 <span className="jp">客室案内</span>
                                             </Link>
@@ -79,34 +81,35 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                                         content={
                                             <ul className="child-nav-menu">
                                                 <li className="child-menu-item">
-                                                    <Link href="/" className="child-menu-item-link uline"><span className="line">コンシェルジュ・スイート</span></Link>
+                                                    <Link href="/accommodations/?type=room01" className="child-menu-item-link uline"><span className="line">コンシェルジュ・スイート</span></Link>
                                                 </li>
                                                 <li className="child-menu-item">
-                                                    <Link href="/" className="child-menu-item-link uline"><span className="line">ベランダ客室</span></Link>
+                                                    <Link href="/accommodations/?type=room02" className="child-menu-item-link uline"><span className="line">ベランダ客室</span></Link>
                                                 </li>
                                                 <li className="child-menu-item">
-                                                    <Link href="/" className="child-menu-item-link uline"><span className="line">オーシャンビュー客室</span></Link>
+                                                    <Link href="/accommodations/?type=room03" className="child-menu-item-link uline"><span className="line">オーシャンビュー客室</span></Link>
                                                 </li>
                                                 <li className="child-menu-item">
-                                                    <Link href="/" className="child-menu-item-link uline"><span className="line">内側​​​客室</span></Link>
+                                                    <Link href="/accommodations/?type=room04" className="child-menu-item-link uline"><span className="line">内側​​​客室</span></Link>
                                                 </li>
                                             </ul>
-                                        } />
+                                        }
+                                        pageTo={true} />
                                 </li>
                                 <li className="menu-item">
-                                    <Link href="/" className="menu-item-link">
+                                    <Link href="/entertainment/" className="menu-item-link">
                                         <span className="en" lang="en">Entertainment</span>
                                         <span className="jp">エンターテイメント</span>
                                     </Link>
                                 </li>
                                 <li className="menu-item">
-                                    <Link href="/" className="menu-item-link">
+                                    <Link href="/dining/" className="menu-item-link">
                                         <span className="en" lang="en">Dining</span>
                                         <span className="jp">ダイニング</span>
                                     </Link>
                                 </li>
                                 <li className="menu-item">
-                                    <Link href="/" className="menu-item-link">
+                                    <Link href="/kids-clubs/" className="menu-item-link">
                                         <span className="en" lang="en">Kids Clubs</span>
                                         <span className="jp">キッズクラブ</span>
                                     </Link>
@@ -114,31 +117,31 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                             </ul>
                             <ul className="nav-menu">
                                 <li className="menu-item">
-                                    <Link href="/" className="menu-item-link">
+                                    <Link href="/spa-lounges-bar/" className="menu-item-link">
                                         <span className="en" lang="en">Adults</span>
                                         <span className="jp">大人のための施設</span>
                                     </Link>
                                 </li>
                                 <li className="menu-item">
-                                    <Link href="/" className="menu-item-link">
+                                    <Link href="/concierge/" className="menu-item-link">
                                         <span className="en" lang="en">Concierge</span>
                                         <span className="jp">コンシェルジュルーム</span>
                                     </Link>
                                 </li>
                                 <li className="menu-item">
-                                    <Link href="/" className="menu-item-link">
+                                    <Link href="/feature/" className="menu-item-link">
                                         <span className="en" lang="en">Special Feature</span>
                                         <span className="jp">特集記事</span>
                                     </Link>
                                 </li>
                                 <li className="menu-item">
-                                    <Link href="/" className="menu-item-link">
+                                    <Link href="/news/" className="menu-item-link">
                                         <span className="en" lang="en">News</span>
                                         <span className="jp">お知らせ</span>
                                     </Link>
                                 </li>
                                 <li className="menu-item">
-                                    <Link href="/" className="menu-item-link">
+                                    <Link href="/qa/" className="menu-item-link">
                                         <span className="en" lang="en">Faq</span>
                                         <span className="jp">よくあるご質問</span>
                                     </Link>

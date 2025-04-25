@@ -23,11 +23,21 @@
         position: relative;
         z-index : 1;
 
+        &::before {
+            content         : "";
+            position        : absolute;
+            inset           : 0;
+            margin          : auto;
+            z-index         : -1;
+            background-color: rgba($color: #000846, $alpha: 0.6);
+        }
+
         .space {
             display       : block;
             width         : 100%;
             height        : #{$h};
             margin-bottom : calc(#{$h} * -1);
+            pointer-events: none;
         }
     }
 
@@ -169,6 +179,13 @@
         &-wrap {
             position: relative;
             z-index : 1;
+
+            .space {
+                position     : absolute;
+                top          : 0;
+                height       : 100vh;
+                margin-bottom: 0;
+            }
         }
 
         &-inner {

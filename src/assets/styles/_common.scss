@@ -17,14 +17,25 @@ main {
     &.page,
     &.single {
         background-color: var(--color_white);
+
+        &:has(.arc-post) {
+            overflow: hidden;
+        }
     }
 }
 
-
-.single {
+.single,
+.page {
     position        : relative;
     z-index         : 2;
     background-color: var(--color_white);
+
+    &:has(.booking-form[data-open="true"]),
+    &:has(.filterModal[data-open="true"]),
+    &:has(.room-modal[data-open="true"]) {
+        position: static;
+        z-index : unset;
+    }
 }
 
 .overlay {

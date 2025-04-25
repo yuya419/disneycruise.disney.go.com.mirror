@@ -738,7 +738,7 @@
                         img {
                             height    : 100%;
                             opacity   : 0;
-                            transition: opacity 0.3s var(--customEasingOut);
+                            transition: opacity 1s var(--customEasingOut);
                         }
 
                         &.isActive {

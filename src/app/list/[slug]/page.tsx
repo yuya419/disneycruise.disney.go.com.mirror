@@ -4,13 +4,13 @@
  */
 import type { Metadata } from "next";
 import metaArray from "@/libs/meta";
-import { HasAsideContainer } from "@/layouts/common/container";
+import { HasAsideContainer } from "@/layouts/container/container";
 import Breadcrumb from "@/components/modules/breadcrumb/breadcrumb";
 import { Single } from "@/layouts/course/course";
 import Aside from "@/layouts/aside/aside";
 
 // メタデータ
-export const metadata: Metadata = metaArray["detail"];
+export const metadata: Metadata = metaArray["list-detail"];
 
 export default function Page() {
     const breadcrumbItems = [
@@ -24,7 +24,9 @@ export default function Page() {
                 <Breadcrumb items={breadcrumbItems} />
                 <HasAsideContainer>
                     <main className="l-main">
-                        <Single />
+                        <article className="l-article">
+                            <Single />
+                        </article>
                     </main>
                     <Aside page="course" />
                 </HasAsideContainer>

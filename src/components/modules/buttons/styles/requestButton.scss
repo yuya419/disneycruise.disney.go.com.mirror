@@ -60,6 +60,28 @@
                 background-color: var(--theme_color_sub);
             }
         }
+
+        @include g.hover() {
+            background-color: #988648;
+
+            &::before {
+                background-color: var(--color_white);
+            }
+
+            .label {
+                color: var(--color_white);
+            }
+
+            .divider {
+                border-bottom-color: var(--color_white);
+            }
+
+            .icon {
+                .i-calendar {
+                    color: var(--color_white);
+                }
+            }
+        }
     }
 
     .label {

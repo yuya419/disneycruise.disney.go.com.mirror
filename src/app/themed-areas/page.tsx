@@ -4,7 +4,7 @@
  */
 import type { Metadata } from "next";
 import metaArray from "@/libs/meta";
-import { Page as ThemedAreas } from "@/layouts/themed-areas/page";
+import { ThemedAreas } from "@/layouts/page/page";
 
 // メタデータ
 export const metadata: Metadata = metaArray["themed-areas"];

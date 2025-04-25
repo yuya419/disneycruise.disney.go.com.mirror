@@ -30,6 +30,66 @@ const metaArray = {
             url: `${siteInfo.url}themed-areas/`,
         },
     },
+    "entertainment": {
+        title: "エンターテイメント" + " | " + siteInfo.siteName,
+        description: "エンターテイメントを表示するページ",
+        openGraph: {
+            title: "エンターテイメント" + " | " + siteInfo.siteName,
+            siteName: siteInfo.siteName,
+            description: "エンターテイメントを表示するページ",
+            url: `${siteInfo.url}entertainment/`,
+        },
+    },
+    "dining": {
+        title: "ダイニング" + " | " + siteInfo.siteName,
+        description: "ダイニングを表示するページ",
+        openGraph: {
+            title: "ダイニング" + " | " + siteInfo.siteName,
+            siteName: siteInfo.siteName,
+            description: "ダイニングを表示するページ",
+            url: `${siteInfo.url}dining/`,
+        },
+    },
+    "accommodations": {
+        title: "客室案内・デッキプラン" + " | " + siteInfo.siteName,
+        description: "客室案内・デッキプランを表示するページ",
+        openGraph: {
+            title: "客室案内・デッキプラン" + " | " + siteInfo.siteName,
+            siteName: siteInfo.siteName,
+            description: "客室案内・デッキプランを表示するページ",
+            url: `${siteInfo.url}accommodations/`,
+        },
+    },
+    "kids-clubs": {
+        title: "キッズクラブ" + " | " + siteInfo.siteName,
+        description: "キッズクラブを表示するページ",
+        openGraph: {
+            title: "キッズクラブ" + " | " + siteInfo.siteName,
+            siteName: siteInfo.siteName,
+            description: "キッズクラブを表示するページ",
+            url: `${siteInfo.url}kids-clubs/`,
+        },
+    },
+    "spa-lounges-bar": {
+        title: "スパ・ラウンジ・バー" + " | " + siteInfo.siteName,
+        description: "スパ・ラウンジ・バーを表示するページ",
+        openGraph: {
+            title: "スパ・ラウンジ・バー" + " | " + siteInfo.siteName,
+            siteName: siteInfo.siteName,
+            description: "スパ・ラウンジ・バーを表示するページ",
+            url: `${siteInfo.url}spa-lounges-bar/`,
+        },
+    },
+    "concierge": {
+        title: "コンシェルジュ・スイート" + " | " + siteInfo.siteName,
+        description: "コンシェルジュ・スイートを表示するページ",
+        openGraph: {
+            title: "コンシェルジュ・スイート" + " | " + siteInfo.siteName,
+            siteName: siteInfo.siteName,
+            description: "コンシェルジュ・スイートを表示するページ",
+            url: `${siteInfo.url}concierge/`,
+        },
+    },
     "qa": {
         title: "よくあるご質問" + " | " + siteInfo.siteName,
         description: "よくあるご質問を表示するページ",

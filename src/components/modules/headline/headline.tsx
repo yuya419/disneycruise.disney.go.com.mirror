@@ -35,12 +35,12 @@ const OnmHeadline01 = (props: {
             <div className="m-headline-onm">
                 <svg className="onm is-left"><use href="#i-onm-01"></use></svg>
                 <span className="bar is-left"></span>
-                <span className="label" lang="en">{en}</span>
+                <span className="label" lang="en" dangerouslySetInnerHTML={{ __html: en }}></span>
                 <span className="bar is-right"></span>
                 <svg className="onm is-right"><use href="#i-onm-01"></use></svg>
             </div>
             <hgroup className="m-headline-text">
-                <Tag>{jp}</Tag>
+                <Tag dangerouslySetInnerHTML={{ __html: jp }}></Tag>
             </hgroup>
         </div>
     );

@@ -4,7 +4,7 @@
  */
 import type { Metadata } from "next";
 import metaArray from "@/libs/meta";
-import { Page as Qa } from "@/layouts/qa/page";
+import { Qa } from "@/layouts/page/page";
 
 // メタデータ
 export const metadata: Metadata = metaArray["qa"];

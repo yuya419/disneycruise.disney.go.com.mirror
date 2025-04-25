@@ -64,8 +64,8 @@
 
 @mixin childMenu() {
     .child-nav-menu {
-        margin-block     : 1.3rem;
-        padding-left     : 2rem;
+        margin-block       : 1.3rem;
+        padding-left       : 2rem;
         background-repeat  : repeat-y;
         background-position: 0.2em top;
         background-size    : 1.5px 4.5px;
@@ -76,9 +76,9 @@
             @include g.leadingTrim(calc(20/13));
 
             &-link {
-                display    : block;
-                font-size  : 1.3rem;
-                cursor     : pointer;
+                display  : block;
+                font-size: 1.3rem;
+                cursor   : pointer;
             }
 
             &:not(:first-child) {
@@ -433,6 +433,10 @@
                 .menu-item {
                     &-link {
                         padding-block: 0;
+
+                        &[data-current="true"] {
+                            color: var(--theme_color_text);
+                        }
 
                         &::before {
                             content: none;

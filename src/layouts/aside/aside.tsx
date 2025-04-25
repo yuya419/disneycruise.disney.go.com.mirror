@@ -241,7 +241,7 @@ export default function Aside({ page, step, nav }: AsideProps) {
                                                     <AccordionType01
                                                         label={
                                                             <Scroll to={value[0].item[1]} smooth={true} duration={500} offset={0} className="menu-item-link" data-current="false">
-                                                                <span className="label">{value[0].item[0]}</span>
+                                                                <span className="label" dangerouslySetInnerHTML={{ __html: value[0].item[0] }}></span>
                                                             </Scroll>
                                                         }
                                                         content={

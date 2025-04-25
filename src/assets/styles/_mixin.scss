@@ -65,7 +65,7 @@ $vi-screen-reader-text: "screen-reader-text";
     @if $type=="ul" {
         li {
             padding-left: 1.3em;
-            text-indent : -0.85em;
+            text-indent : -0.7em;
 
             &::before {
                 content         : "";

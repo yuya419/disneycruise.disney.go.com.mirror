@@ -1,0 +1,45 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* page */
+
+/* 目次 */
+/* __10: 共通設定 */
+/* __20: p-concierge-section */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+@use "./init"as i;
+
+/* __10: 共通設定 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.p-concierge {
+    @include i.init();
+
+    &-section {
+
+        // .concierge-block
+        .concierge-block {
+            margin-top: 4rem;
+
+            @include i.order();
+
+            @include i.caption();
+            
+            @include i.card(center);
+        }
+    }
+}
+
+// sp
+@include g.media(md) {
+    .p-concierge {
+
+        &-section {
+
+            // .concierge-block
+            .concierge-block {
+                margin-top: 3.2rem;
+            }
+        }
+    }
+}

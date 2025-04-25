@@ -43,7 +43,8 @@
     }
 
     &-item {
-        flex     : 0 0 100%;
+        --size   : 100%;
+        flex     : 0 0 var(--size);
         min-width: 0;
 
         img {
@@ -76,8 +77,8 @@
     // &[data-type="hero"]
     &[data-type="hero"] {
         .m-slider-item {
-            transform  : translate3d(0, 0, 0);
-            position   : relative;
+            transform: translate3d(0, 0, 0);
+            position : relative;
 
             img {
                 display   : block;
@@ -177,13 +178,21 @@
     // &[data-type="carousel"]
     &[data-type="carousel"] {
         .m-slider-item {
-            max-width   : 33.7rem;
+            --size      : 33.7rem;
             margin-right: 1.6rem;
+        }
+
+        .card-item {
+            padding: 2.6rem 2rem 1.6rem;
+
+            &__head {
+                text-align: center;
+            }
         }
 
         .m-slider-tool-box {
             grid-template-areas: "prev next dots";
-            justify-content    : center;
+            justify-content    : flex-start;
             margin-top         : 2rem;
         }
 
@@ -249,6 +258,13 @@
                     bottom    : calc(100svh/(663/80));
                     text-align: left;
                 }
+            }
+        }
+
+        // &[data-type="carousel"]
+        &[data-type="carousel"] {
+            .m-slider-item {
+                --size: 29.8rem;
             }
         }
     }

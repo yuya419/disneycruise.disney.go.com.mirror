@@ -133,7 +133,7 @@ export default function Feature() {
         return () => {
             resizeObserver.disconnect();
         }
-    }, [posts]);
+    }, []);
 
     useEffect(() => {
         const group = hoverGroupRef.current;
@@ -148,7 +148,7 @@ export default function Feature() {
         }
         
         links.forEach((link) => link.addEventListener('mouseenter', (e) => handleMouseEvent(e as Event)));
-    }, [posts]);
+    }, []);
 
     return (
         <section className="t-feature" ref={wrapRef}>

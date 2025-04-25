@@ -16,11 +16,11 @@ export default function KidsClubs() {
     const { getImagePath } = helper();
     const containerRef = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
+    const mm = gsap.matchMedia();
+    const pc = "(min-width: 1025px)";
+    const sp = "(max-width: 1024px)";
 
     useEffect(() => {
-        const mm = gsap.matchMedia();
-        const pc = "(min-width: 1025px)";
-        const sp = "(max-width: 1024px)";
 
         const container = containerRef.current;
         if (!container) return;
@@ -148,14 +148,8 @@ export default function KidsClubs() {
         }
 
         // PC用のアニメーション設定
-        mm.add(pc, () => {
-            return scrollAnimation();
-        });
-
-        // SP用のアニメーション設定
-        mm.add(sp, () => {
-            return rotateSlider();
-        });
+        mm.add(pc, () => scrollAnimation())
+            .add(sp, () => rotateSlider());
 
         return () => {
             mm.revert();

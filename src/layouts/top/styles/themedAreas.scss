@@ -1045,6 +1045,7 @@
                                     img {
                                         translate: 0;
                                         clip-path: inset(0);
+                                        filter   : blur(0px);
                                     }
                                 }
                             }
@@ -1075,6 +1076,7 @@
                                     img {
                                         translate: 0;
                                         clip-path: inset(0);
+                                        filter   : blur(0px);
                                     }
                                 }
                             }
@@ -1310,8 +1312,9 @@
 
                         &::before,
                         img {
-                            opacity   : 0;
-                            transition: opacity 1s var(--customEasingOut);
+                            will-change: opacity;
+                            opacity    : 0;
+                            transition : opacity 0.3s var(--customEasingOut);
                         }
 
                         &:not([data-num="1"]) {

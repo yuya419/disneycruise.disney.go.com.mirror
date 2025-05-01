@@ -732,6 +732,19 @@
             }
         }
 
+        // &-design
+        &-design {
+            margin-top: var(--space-lg);
+
+            &__body {
+                margin-top: var(--space-sm);
+
+                p+ul {
+                    margin-top: var(--space-sm);
+                }
+            }
+        }
+
         // &-preDepartureServices
         &-preDepartureServices {
             margin-top: var(--space-lg);

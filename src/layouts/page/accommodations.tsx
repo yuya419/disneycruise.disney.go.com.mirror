@@ -277,7 +277,7 @@ export function Page() {
                         <dt className="card-item__head">
                             <figure>
                                 <Image src={getImagePath(item.src)} alt={item.name} width={334} height={300} />
-                                <figcaption>{item.caption}</figcaption>
+                                <figcaption dangerouslySetInnerHTML={{ __html: item.caption }}></figcaption>
                             </figure>
                             <span className="name" dangerouslySetInnerHTML={{ __html: item.name }}></span>
                         </dt>
@@ -411,7 +411,7 @@ export function Page() {
                                 ))}
                             </div>
                         </div>}
-                    {modalData[id].benefits.length > 0 &&
+                    {modalData[id].benefits["list"].length > 0 &&
                         <div className="room-benefits">
                             <div className="room-benefits__head">
                                 <span className="bar is-left"></span>
@@ -421,8 +421,9 @@ export function Page() {
                                 <span className="bar is-right"></span>
                             </div>
                             <div className="room-benefits__body">
+                                {modalData[id].benefits["desc"] && <p dangerouslySetInnerHTML={{ __html: modalData[id].benefits["desc"] }}></p>}
                                 <ul>
-                                    {modalData[id].benefits.map((item: string, index: number) => <li key={index} dangerouslySetInnerHTML={{ __html: item }}></li>)}
+                                    {modalData[id].benefits["list"].map((item: string, index: number) => <li key={index} dangerouslySetInnerHTML={{ __html: item }}></li>)}
                                 </ul>
                             </div>
                         </div>}

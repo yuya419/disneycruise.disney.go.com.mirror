@@ -648,6 +648,10 @@
 
             &__body {
                 margin-top: 3rem;
+
+                p+ul {
+                    margin-top: var(--space-sm);
+                }
             }
         }
 

@@ -4,5 +4,10 @@
             "source": "/ships/adventure/:path*",
             "destination": "/:path*"
         }
-    ]
+    ],
+    "git": {
+        "deploymentEnabled": {
+            "dev": false
+        }
+    }
 }

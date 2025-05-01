@@ -15,41 +15,40 @@ export default function Concierge() {
     const { getImagePath } = helper();
     const containerRef = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
+    const mm = gsap.matchMedia();
+    const pc = "(min-width: 1025px)";
+
+    const scrollAnimation = () => {
+        const ctx = gsap.context(() => {
+            const container = containerRef.current as HTMLDivElement;
+            const img = imageRef.current as HTMLImageElement;
+            if (!container && !img) return;
+
+            gsap.to(img, {
+                y: () => {
+                    const windowHeight = window.innerHeight;
+                    const itemHeight = img.clientHeight * 1.15;
+                    const scrollTriggerStart = (windowHeight - itemHeight);
+                    return scrollTriggerStart;
+                },
+                ease: "none",
+                scrollTrigger: {
+                    trigger: img,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true,
+                    invalidateOnRefresh: true,
+                },
+            })
+        }, [containerRef, imageRef]);
+
+        return () => ctx.revert();
+    };
 
     useEffect(() => {
-        const mm = gsap.matchMedia();
-        const pc = "(min-width: 1025px)";
-        const scrollAnimation = () => {
-            const ctx = gsap.context(() => {
-                const container = containerRef.current as HTMLDivElement;
-                const img = imageRef.current as HTMLImageElement;
-                if (!container && !img) return;
-
-                gsap.to(img, {
-                    y: () => {
-                        const windowHeight = window.innerHeight;
-                        const itemHeight = img.clientHeight * 1.15;
-                        const scrollTriggerStart = (windowHeight - itemHeight);
-                        return scrollTriggerStart;
-                    },
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: img,
-                        start: "top bottom",
-                        end: "bottom top",
-                        scrub: true,
-                        invalidateOnRefresh: true,
-                    },
-                })
-            }, [containerRef, imageRef]);
-
-            return () => ctx.revert();
-        };
 
         // PC用のアニメーション設定
-        mm.add(pc, () => {
-            return scrollAnimation();
-        });
+        mm.add(pc, () => scrollAnimation());
 
         // クリーンアップ処理
         return () => {

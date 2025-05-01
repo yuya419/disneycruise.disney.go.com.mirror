@@ -40,6 +40,10 @@ export default function Adults() {
     }
 
     const Relaxation = () => {
+        gsap.registerPlugin(ScrollTrigger);
+        const mm = gsap.matchMedia();
+        const pc = "(min-width: 1025px)";
+        const sp = "(max-width: 1024px)";
 
         const outline = Object.keys(relaxations).map((key) => {
             return (
@@ -69,10 +73,6 @@ export default function Adults() {
         })
 
         useEffect(() => {
-            gsap.registerPlugin(ScrollTrigger);
-            const mm = gsap.matchMedia();
-            const pc = "(min-width: 1025px)";
-            const sp = "(max-width: 1024px)";
 
             const container = containerRef.current;
             if (!container) return;
@@ -303,14 +303,8 @@ export default function Adults() {
             resizeObserver.observe(container);
 
             // PC用のアニメーション設定
-            mm.add(pc, () => {
-                return scrollAnimation();
-            });
-
-            // SP用のアニメーション設定
-            mm.add(sp, () => {
-                return slider();
-            });
+            mm.add(pc, () => scrollAnimation())
+                .add(sp, () => slider());
 
             // クリーンアップ
             return () => {
@@ -318,7 +312,7 @@ export default function Adults() {
                 resizeObserver.disconnect();
                 gsap.killTweensOf(container);
             }
-        }, [pathname]);
+        }, []);
 
         return (
             <GSAPToggleContainer tag="div" className="t-adults__relaxation" toggle={{ logo: false, color: "white" }}>

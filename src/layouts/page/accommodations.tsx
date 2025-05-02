@@ -104,7 +104,7 @@ export function Page() {
       {
         id: `type01-04`,
         src: `page/accommodations/type01/type01-04/Concierge Family Oceanview Suite.png`,
-        name: `コンシェルジュファミリーオーシャンビュースイート​`,
+        name: `コンシェルジュファミリーオーシャンビュースイート客室​`,
         caption: ``,
         desc: `「アラジン」をテーマにした広々としたスイートで、巨大な窓から壮大な海の景色を楽しみながらくつろいでください。​`,
       },
@@ -376,6 +376,7 @@ export function Page() {
                       type="small"
                       slides={sliderItems}
                       options={{ loop: true }}
+                      autoplay={true}
                     />
                   </div>
                 )}
@@ -587,7 +588,7 @@ export function Page() {
                 <div className="room-balcony">
                   <div className="room-balcony__head">
                     <Headline design="01" hlLevel="p">
-                      ベランダ
+                      バルコニー
                     </Headline>
                   </div>
                   <div className="room-balcony__body">

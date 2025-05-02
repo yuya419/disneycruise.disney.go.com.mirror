@@ -25,6 +25,15 @@ interface SliderProps {
 export const Slider = (props: SliderProps) => {
     const { type, slides, options, autoplay, fade } = props;
 
+    // slidesが1つの場合はスライダー機能を無効化
+    if (slides.length === 1) {
+        return (
+            <div className="m-slider" data-type={type}>
+                <div className="m-slider-item" role="listitem">{slides[0].dom}</div>
+            </div>
+        );
+    }
+
     // autoplayオプションを設定
     const autoPlay = autoplay ? useRef(Autoplay({ delay: 4000, stopOnInteraction: false })) : undefined;
 

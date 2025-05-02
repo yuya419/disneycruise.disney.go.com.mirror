@@ -648,6 +648,10 @@
 
             &__body {
                 margin-top: 3rem;
+
+                p+ul {
+                    margin-top: var(--space-sm);
+                }
             }
         }
 
@@ -717,6 +721,19 @@
 
         // &-balcony
         &-balcony {
+            margin-top: var(--space-lg);
+
+            &__body {
+                margin-top: var(--space-sm);
+
+                p+ul {
+                    margin-top: var(--space-sm);
+                }
+            }
+        }
+
+        // &-design
+        &-design {
             margin-top: var(--space-lg);
 
             &__body {

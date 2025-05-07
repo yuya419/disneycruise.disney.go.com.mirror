@@ -744,7 +744,7 @@ export function Page() {
                                     <div className="text">
                                         <p>ディズニーアドベンチャーの客室タイプとパブリックスペースの位置をご確認いただけます。</p>
                                         <div className="pdf-button">
-                                            <Link href="#" target="_blank" rel="noopener noreferrer" className="pdf-button-el">
+                                            <Link href={"/page/accommodations/document/DCL-DA_Deck_Plan_V1_16_Oct.pdf"} target="_blank" rel="noopener noreferrer" className="pdf-button-el">
                                                 <span className="label">デッキプラン</span>
                                                 <span className="icon">
                                                     <svg className="i-pdf">

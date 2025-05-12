@@ -592,17 +592,17 @@ export default function ThemedAreas() {
         return () => ctx.revert();
     }
 
-    useLayoutEffect(() => {
-        toggleAnimation();
+    // useLayoutEffect(() => {
+    //     toggleAnimation();
 
-        mm.add(pc, () => scrollAnimation())
-            .add(sp, () => slider());
+    //     mm.add(pc, () => scrollAnimation())
+    //         .add(sp, () => slider());
 
-        return () => {
-            mm.revert();
-        }
+    //     return () => {
+    //         mm.revert();
+    //     }
 
-    }, [])
+    // }, [])
 
     return (
         <GSAPToggleContainer tag="section" className="t-themed-areas" toggle={{ logo: false, color: "blue", movie: { video: "water", state: false } }}>

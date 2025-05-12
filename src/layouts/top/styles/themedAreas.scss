@@ -579,11 +579,11 @@
                     position     : relative;
                     visibility   : hidden;
                     mask-repeat  : no-repeat;
-                    will-change  : mask-position;
-                    mask-image   : url('/ships/adventure/common/mask.png');
-                    mask-size    : 600% 300%;
-                    mask-position: 20% -33%;
-                    transition   : mask-position 1s var(--customEasingOut), visibility 0s ease 1s;
+                    // will-change  : mask-position;
+                    // mask-image   : url('/ships/adventure/common/mask.png');
+                    // mask-size    : 600% 300%;
+                    // mask-position: 20% -33%;
+                    // transition   : mask-position 1s var(--customEasingOut), visibility 0s ease 1s;
 
                     &::before {
                         content : "";
@@ -605,16 +605,16 @@
                     &:not([data-num="1"]) {
 
                         &.isActive {
-                            visibility   : inherit;
-                            mask-position: 0 66%;
-                            transition   : mask-position 1s var(--customEasingOut);
+                            // visibility   : inherit;
+                            // mask-position: 0 66%;
+                            // transition   : mask-position 1s var(--customEasingOut);
                         }
                     }
 
                     &[data-num="1"].isActive {
                         scale        : calc(1140/1300);
-                        visibility   : inherit;
-                        mask-position: 0 66%;
+                        // visibility   : inherit;
+                        // mask-position: 0 66%;
 
                         img {
                             object-position: right bottom;

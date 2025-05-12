@@ -113,7 +113,7 @@ export function GSAPMaskToggle(props: { mask: "water" | "blue" | "white" }) {
             if (!trigger) return;
 
             gsap.to(maskEl, {
-                maskPosition: "0% 66%",
+                maskPosition: "60% 77%",
                 scrollTrigger: {
                     trigger: trigger,
                     start: "top 75%",

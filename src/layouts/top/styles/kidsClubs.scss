@@ -47,7 +47,7 @@
             grid-area       : slide;
             transform-origin: center 225vw;
             position        : relative;
-            transition      : rotate 0.7s var(--customEasingIn);
+            transition      : rotate .45s cubic-bezier(0.55, -0.21, 0.34, 0.77);
 
             &:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
                 display: none;

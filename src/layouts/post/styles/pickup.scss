@@ -115,6 +115,21 @@
                 margin-inline  : auto;
 
                 .arrowButton {
+
+                    @include g.hover() {
+
+                        .arrow {
+                            background-color: var(--theme_color_sub);
+
+                            .i-arw-r {
+                                color: var(--color_white);
+                            }
+
+                            @include g.arrowMove();
+
+                        }
+                    }
+
                     &.isPrev {
                         scale: -1 1;
                     }
@@ -133,6 +148,10 @@
                         transition      : background-color 0.15s var(--customEasingOut);
 
                         &.isActive {
+                            background-color: var(--theme_color_sub);
+                        }
+
+                        @include g.hover() {
                             background-color: var(--theme_color_sub);
                         }
                     }

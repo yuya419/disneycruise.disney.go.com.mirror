@@ -212,9 +212,21 @@
 
                 .post-item:nth-child(#{$i}) {
                     .post-link {
+
                         .arrow {
                             background-color: var(--theme_color_sub);
                             transition      : background-color 0.35s var(--customEasingIn);
+
+                            .i-arw-r {
+
+                                &:first-child {
+                                    --fm: 0;
+                                }
+
+                                &:last-child {
+                                    --lm: 1;
+                                }
+                            }
                         }
                     }
                 }

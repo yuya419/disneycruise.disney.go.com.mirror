@@ -12,14 +12,14 @@
 /* __10: drawerNav */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .drawerNav {
-    width         : 100%;
-    height        : 100dvh;
-    position      : fixed;
-    z-index       : 88;
-    top           : 0;
-    left          : 0;
-    opacity       : 0;
-    pointer-events: none;
+    width            : 100%;
+    height           : 100dvh;
+    position         : fixed;
+    z-index          : 88;
+    top              : 0;
+    left             : 0;
+    opacity          : 0;
+    pointer-events   : none;
     // transition    : opacity 0.4s var(--customEasingOut);
 
     [data-state="navOpen"] & {
@@ -128,6 +128,11 @@
                     height       : 12.6rem;
                     padding-right: 2.5rem;
                     border-radius: 0.6rem;
+
+                    &::before {
+                        --inline: 1rem;
+                        --radius: 0.4rem;
+                    }
                 }
 
                 .label {
@@ -208,7 +213,7 @@
                         display   : block;
                         font-size : 2.5rem;
                         color     : var(--color_white);
-                        transition: color 0.3s var(--customEasingOut);
+                        transition: color var(--t-out);
                     }
 
                     .jp {
@@ -216,10 +221,13 @@
                         font-size : 1.3rem;
                         color     : rgba(255, 255, 255, 0.7);
                         margin-top: 1.5rem;
+                        transition: color var(--t-out);
                     }
 
                     @include g.hover() {
-                        .en {
+
+                        .en,
+                        .jp {
                             color: var(--theme_color_sub);
                         }
                     }
@@ -261,6 +269,37 @@
             &-inner {
                 overflow: hidden;
             }
+
+            &-icon {
+                &[data-expanded="false"] {
+                    @include g.hover() {
+                        .icon {
+                            background-color: var(--theme_color_sub);
+                            border-color    : var(--theme_color_sub);
+
+                            &::before,
+                            &::after {
+                                background-color: #264372;
+                            }
+                        }
+                    }
+                }
+
+                &[data-expanded="true"] {
+                    .icon {
+                        background-color: var(--color_white);
+
+                        &::before,
+                        &::after {
+                            background-color: var(--theme_color_main);
+                        }
+
+                        &::after {
+                            rotate: 0deg;
+                        }
+                    }
+                }
+            }
         }
 
         // .toggle
@@ -288,7 +327,7 @@
                     background-color: transparent;
                     border          : 1px solid var(--color_white);
                     border-radius   : 50%;
-                    transition      : background-color 0.2s var(--customEasingOut);
+                    transition      : background-color var(--t-out);
 
                     &::before,
                     &::after {
@@ -299,26 +338,11 @@
                         width           : 0.8rem;
                         height          : 1px;
                         background-color: var(--color_white);
-                        transition      : rotate 0.2s var(--customEasingOut), border-color 0.2s var(--customEasingOut);
+                        transition      : rotate var(--t-out), border-color var(--t-out);
                     }
 
                     &::after {
                         rotate: 90deg;
-                    }
-                }
-
-                &[data-expanded="true"] {
-                    .icon {
-                        background-color: var(--color_white);
-
-                        &::before,
-                        &::after {
-                            background-color: var(--theme_color_main);
-                        }
-
-                        &::after {
-                            rotate: 0deg;
-                        }
                     }
                 }
             }

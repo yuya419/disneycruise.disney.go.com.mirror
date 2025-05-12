@@ -31,7 +31,7 @@
         border-radius  : 0.3rem;
         text-decoration: none;
         position       : relative;
-        transition     : background-color 0.3s var(--customEasingOut);
+        transition     : background-color var(--t-out);
 
         [data-head-color="white"] & {
             background-color: var(--color_white);
@@ -50,7 +50,7 @@
             left         : 0;
             right        : 0;
             margin-inline: auto;
-            transition   : background-color 0.3s var(--customEasingOut);
+            transition   : background-color var(--t-out);
 
             [data-head-color="white"] & {
                 background-color: var(--theme_color_main);
@@ -61,27 +61,7 @@
             }
         }
 
-        @include g.hover() {
-            background-color: #988648;
-
-            &::before {
-                background-color: var(--color_white);
-            }
-
-            .label {
-                color: var(--color_white);
-            }
-
-            .divider {
-                border-bottom-color: var(--color_white);
-            }
-
-            .icon {
-                .i-calendar {
-                    color: var(--color_white);
-                }
-            }
-        }
+        @include g.buttonHover();
     }
 
     .label {
@@ -90,7 +70,7 @@
         writing-mode  : vertical-lr;
         letter-spacing: 0.1em;
         white-space   : nowrap;
-        transition    : color 0.3s var(--customEasingOut);
+        transition    : color var(--t-out);
 
         [data-head-color="white"] & {
             color: var(--theme_color_main);
@@ -99,8 +79,6 @@
         [data-head-color="blue"] & {
             color: var(--color_white);
         }
-
-        span {}
     }
 
     .divider {
@@ -108,7 +86,7 @@
         width              : 1.8rem;
         border-bottom-width: 1.5px;
         border-bottom-style: dotted;
-        transition         : border-bottom-color 0.3s var(--customEasingOut);
+        transition         : border-bottom-color var(--t-out);
 
         [data-head-color="white"] & {
             border-bottom-color: var(--theme_color_main);
@@ -125,7 +103,7 @@
         height : 1.3rem;
 
         .i-calendar {
-            transition: color 0.3s var(--customEasingOut);
+            transition: color var(--t-out);
 
             [data-head-color="white"] & {
                 color: var(--theme_color_main);

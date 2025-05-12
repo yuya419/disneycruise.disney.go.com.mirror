@@ -17,6 +17,9 @@ const arrow = (props: {
             <svg className="i-arw-r">
                 <use xlinkHref="#i-arw-r" />
             </svg>
+            <svg className="i-arw-r">
+                <use xlinkHref="#i-arw-r" />
+            </svg>
         </span>
     )
 }

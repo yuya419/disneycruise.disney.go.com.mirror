@@ -16,6 +16,10 @@
             &.isActive {
                 background-color: var(--theme_color_main);
             }
+
+            @include g.hover() {
+                background-color: var(--theme_color_main);
+            }
         }
     }
 
@@ -24,6 +28,10 @@
             background-color: rgba($color: #FFFFFF, $alpha: 0.4);
 
             &.isActive {
+                background-color: var(--theme_color_sub);
+            }
+
+            @include g.hover() {
                 background-color: var(--theme_color_sub);
             }
         }
@@ -218,6 +226,20 @@
 
             &.isNext {
                 grid-area: next;
+            }
+
+            @include g.hover() {
+
+                .arrow {
+                    background-color: var(--theme_color_sub);
+
+                    .i-arw-r {
+                        color: var(--color_white);
+                    }
+
+                    @include g.arrowMove();
+
+                }
             }
         }
 

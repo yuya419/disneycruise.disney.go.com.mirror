@@ -101,8 +101,6 @@
                 width           : 17.2rem;
                 height          : 5.5rem;
                 border-radius   : 0.7rem;
-                border-style    : solid;
-                border-width    : 1px;
                 margin-inline   : auto;
                 background-color: var(--theme_color_main);
                 padding-left    : 2.2rem;
@@ -110,17 +108,17 @@
                 transition      : background-color 0.15s var(--customEasingOut);
 
                 @include g.hover() {
-                    background-color: var(--color_white);
+                    background-color: #B99E4F;
 
                     .label {
-                        color: var(--theme_color_main);
+                        color: var(--color_white);
                     }
 
                     .icon {
-                        background-color: var(--theme_color_main);
+                        background-color: var(--color_white);
 
                         .i-plus {
-                            color: var(--color_white);
+                            color: #B99E4F;
                         }
                     }
                 }

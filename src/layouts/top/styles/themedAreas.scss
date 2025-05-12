@@ -762,6 +762,9 @@
                     }
 
                     &-button {
+                        opacity   : 0;
+                        transition: opacity 0.3s var(--customEasingIn);
+
                         &-el {
                             display        : flex;
                             align-items    : center;
@@ -770,8 +773,7 @@
                             border-radius  : 0.7rem;
                             padding-inline : 2.5rem;
                             text-decoration: none;
-                            opacity        : 0;
-                            transition     : opacity 0.3s var(--customEasingIn);
+                            transition     : background-color var(--t-out);
 
                             .label {
                                 .en {
@@ -779,6 +781,7 @@
                                     font-size     : 2.5rem;
                                     line-height   : calc(17/25);
                                     letter-spacing: 0;
+                                    transition    : color var(--t-out);
                                 }
 
                                 .ja {
@@ -786,6 +789,7 @@
                                     font-size  : 1.4rem;
                                     line-height: calc(10/14);
                                     margin-top : 1em;
+                                    transition : color var(--t-out);
                                 }
                             }
 
@@ -806,6 +810,7 @@
                                     height     : 1.6rem;
                                     color      : var(--theme_color_sub);
                                     margin-left: 2.4rem;
+                                    transition : color var(--t-out);
                                 }
                             }
 
@@ -821,6 +826,9 @@
                                 .ja {
                                     color: #829BC4;
                                 }
+
+                                @include g.buttonHover();
+
                             }
 
                             // &.is-button-book
@@ -835,6 +843,8 @@
                                 .ja {
                                     color: var(--color_white);
                                 }
+
+                                @include g.buttonHover();
                             }
                         }
                     }
@@ -879,10 +889,8 @@
                         }
 
                         &-button {
-                            &-el {
-                                opacity   : 1;
-                                transition: opacity 0.4s var(--customEasingOut) 0.2s;
-                            }
+                            opacity   : 1;
+                            transition: opacity 0.4s var(--customEasingOut) 0.2s;
                         }
                     }
                 }

@@ -13,10 +13,10 @@
 
 //固定化
 @mixin isFixed {
-    touch-action              : none;
-    -webkit-overflow-scrolling: none;
-    overflow                  : hidden;
-    overscroll-behavior       : none;
+    touch-action                 : none;
+    -webkit-overflow-scrolling   : none;
+    overflow                     : hidden;
+    overscroll-behavior          : none;
     // scrollbar-gutter          : stable
 }
 
@@ -92,6 +92,57 @@ $vi-screen-reader-text: "screen-reader-text";
                 display   : inline-block;
                 width     : 1.5em;
                 text-align: right;
+            }
+        }
+    }
+}
+
+// 矢印 - 共通ホバーアクション
+@mixin arrowMove {
+    .i-arw-r {
+
+        &:first-child {
+            --fm: 0;
+        }
+
+        &:last-child {
+            --lm: 1;
+        }
+    }
+}
+
+// ボタン - 共通ホバーアクション
+@mixin buttonHover {
+    @include hover() {
+        background-color: #B99E4F;
+
+        &::before {
+            background-color: #FFED96;
+        }
+
+        .label,
+        .en,
+        .ja {
+            color: var(--color_white);
+        }
+
+        .divider {
+            border-color: rgba($color: #FFFFFF, $alpha: 0.6);
+        }
+
+        .arrow {
+            background-color: var(--color_white);
+
+            .i-arw-r {
+                color: #B99E4F;
+            }
+
+            @include arrowMove();
+        }
+
+        .icon {
+            >svg {
+                color: var(--color_white) !important;
             }
         }
     }

@@ -33,6 +33,7 @@
             margin-block : auto;
             border       : 1px solid var(--color_white);
             border-radius: 50%;
+            transition   : background-color var(--t-out), border-color var(--t-out);
 
             &::before,
             &::after {
@@ -43,11 +44,11 @@
                 width           : 0.8rem;
                 height          : 1px;
                 background-color: var(--color_white);
+                transition      : rotate var(--t-out), background-color var(--t-out);
             }
 
             &::after {
-                rotate    : 90deg;
-                transition: rotate 0.2s var(--customEasingOut);
+                rotate: 90deg;
             }
         }
 

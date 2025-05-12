@@ -169,7 +169,7 @@ export function Page() {
         const { id, label, jp, en, num, attention, cards } = props;
 
         return (
-            <div id={id} className="theme-block">
+            <div key={id} id={id} className="theme-block">
                 <OnmHeadline02 hlLevel="h3" jp={jp} en={en} label={label} num={num} />
                 {attention &&
                     <div className="attention">

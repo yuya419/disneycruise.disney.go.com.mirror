@@ -57,6 +57,33 @@
                 padding-right   : 6rem;
                 border-radius   : 1rem;
                 background-color: var(--theme_color_main);
+                position        : relative;
+
+                &::before {
+                    --inline: 2rem;
+                    --radius: 0.7rem;
+
+                    content      : "";
+                    position     : absolute;
+                    inset        : 0;
+                    margin       : auto;
+                    width        : calc(100% - var(--inline));
+                    height       : calc(100% - var(--inline));
+                    border       : 1px solid var(--theme_color_sub);
+                    border-radius: var(--radius);
+                    opacity      : 0;
+                    transition   : opacity var(--t-out);
+                }
+
+                @include g.hover() {
+                    &::before {
+                        opacity: 1;
+                    }
+
+                    .label {
+                        border-left-color: transparent;
+                    }
+                }
             }
 
             .label {
@@ -64,6 +91,7 @@
                 flex-direction: column;
                 padding-left  : 5.7rem;
                 border-left   : 3px solid #E5C35C;
+                transition    : border-left-color var(--t-out);
 
                 .en {
                     font-size: 3.9rem;
@@ -100,14 +128,44 @@
         .is-contact {
             .label {
                 .en {
-                    font-size: 2.7rem;
-                    color    : var(--color_white);
+                    font-size : 2.7rem;
+                    color     : var(--color_white);
+                    transition: color var(--t-out);
                 }
 
                 .jp {
                     font-size : 1.4rem;
                     color     : rgba(255, 255, 255, 0.6);
                     margin-top: 1.5rem;
+                    transition: color var(--t-out);
+                }
+            }
+
+            .menu-item-link {
+                @include g.hover() {
+                    .label {
+
+                        .en,
+                        .jp {
+                            color: #E4C055;
+                        }
+                    }
+
+                    .arrow {
+                        background-color: #E4C055;
+
+                        .i-arw-r {
+                            color: #1A7AA0;
+
+                            &:first-child {
+                                --fm: 0;
+                            }
+
+                            &:last-child {
+                                --lm: 1;
+                            }
+                        }
+                    }
                 }
             }
         }

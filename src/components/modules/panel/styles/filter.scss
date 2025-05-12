@@ -49,6 +49,11 @@
             background-color: var(--color_white);
             border-radius   : 0.3rem;
             cursor          : pointer;
+            transition      : filter var(--t-out);
+
+            @include g.hover() {
+                filter: brightness(0.9);
+            }
 
             &:has(.input:checked) {
                 background-color: var(--theme_color_main);
@@ -158,6 +163,7 @@
                     color           : var(--color_white);
                     border-radius   : 100%;
                     position        : relative;
+                    transition      : filter var(--t-out);
 
                     @include g.hover() {
                         filter: brightness(0.9);
@@ -241,13 +247,12 @@
             border-radius   : 0.7rem;
             color           : var(--color_white);
             background-color: var(--theme_color_main);
-            border          : 1px solid var(--theme_color_main);
             font-size       : 1.5rem;
-            transition      : color 0.1s var(--customEasingOut), background-color 0.1s var(--customEasingOut);
+            transition      : color var(--t-out), background-color var(--t-out);
 
             @include g.hover() {
-                background-color: var(--color_white);
-                color           : var(--theme_color_main);
+                background-color: #B99E4F;
+                color           : var(--color_white);
             }
         }
     }

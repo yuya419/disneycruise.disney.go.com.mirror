@@ -380,28 +380,25 @@
 
     &.isSelect {
         img {
-            filter    : blur(0px);
             clip-path : inset(0);
             translate : 0 0;
-            transition: clip-path 0.5s var(--customEasingOut), translate 0.45s var(--customEasingOut), filter 0.4s var(--customEasingOut);
+            transition: clip-path 0.5s var(--customEasingOut), translate 0.45s var(--customEasingOut);
         }
     }
 
     &.isNext {
         img {
-            filter    : blur(5px);
             clip-path : inset(67% 0 0);
             translate : 0 33%;
-            transition: clip-path 0.5s var(--customEasingOut), translate 0.45s var(--customEasingOut), filter 0.45s var(--customEasingOut);
+            transition: clip-path 0.5s var(--customEasingOut), translate 0.45s var(--customEasingOut);
         }
     }
 
     &.isPrev {
         img {
-            filter    : blur(5px);
             clip-path : inset(0% 0 67%);
             translate : 0 -33%;
-            transition: clip-path 0.5s var(--customEasingOut), translate 0.45s var(--customEasingOut), filter 0.45s var(--customEasingOut);
+            transition: clip-path 0.5s var(--customEasingOut), translate 0.45s var(--customEasingOut);
         }
     }
 }

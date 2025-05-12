@@ -45,16 +45,18 @@
                 .en {
                     font-size : 2.3rem;
                     color     : var(--color_white);
-                    transition: color 0.15s var(--customEasingOut);
+                    transition: color var(--t-out);
                 }
 
                 .jp {
-                    font-size: 1.3rem;
-                    color    : rgba(255, 255, 255, 0.7);
+                    font-size : 1.3rem;
+                    color     : rgba(255, 255, 255, 0.7);
+                    transition: color var(--t-out);
                 }
 
                 @include g.hover() {
-                    .en {
+                    .en,
+                    .jp {
                         color: var(--theme_color_sub);
                     }
                 }

@@ -21,6 +21,27 @@
         border          : 1px solid var(--theme_color_border);
         border-radius   : 0.7rem;
         text-decoration : none;
+        transition      : border-color var(--t-out);
+
+        @include g.hover() {
+            border-color: var(--theme_color_main);
+
+            .arrow {
+                background-color: var(--theme_color_sub);
+
+                .i-arw-r {
+                    color: var(--color_white);
+
+                    &:first-child {
+                        --fm: 0;
+                    }
+
+                    &:last-child {
+                        --lm: 1;
+                    }
+                }
+            }
+        }
 
         .en-label {
             flex-shrink : 0;
@@ -29,6 +50,7 @@
             color       : var(--theme_color_main);
             border-left : 3px solid var(--theme_color_sub);
             padding-left: 3rem;
+            margin-left : -1px;
         }
 
         .ja-label {
@@ -50,8 +72,6 @@
                 margin-left   : 2.6rem;
                 margin-right  : 1rem;
             }
-
-            .arrow {}
         }
     }
 }

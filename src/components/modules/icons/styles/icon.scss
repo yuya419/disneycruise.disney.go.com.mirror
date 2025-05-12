@@ -17,11 +17,27 @@
     border-radius  : 100vmax;
     width          : 3.1rem;
     height         : 1.8rem;
+    position       : relative;
+    overflow       : hidden;
+    transition     : background-color var(--t-out);
 
     .i-arw-r {
         display     : block;
         width       : 0.9rem;
         aspect-ratio: 1;
+        translate   : calc((50% + 1.6rem) * var(--fm, var(--lm))) 0;
+        transition  : translate var(--t-out), color var(--t-out);
+
+        &:first-child {
+            position: absolute;
+            inset   : 0;
+            margin  : auto;
+            --fm    : -1;
+        }
+
+        &:last-child {
+            --lm: 0;
+        }
     }
 
     // 背景色

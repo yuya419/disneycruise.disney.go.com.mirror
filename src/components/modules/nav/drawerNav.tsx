@@ -3,12 +3,13 @@
  * @description ドロワーナビゲーション
  */
 "use client";
+import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import helper from "@/libs/helper";
 import { AccordionType01 as Accordion } from "@/components/modules/acdn/acdn";
 import CvNav from "@/components/modules/nav/cvNav";
 import SubNav from "@/components/modules/nav/subNav";
-import DrawerButton from "@/components/modules/buttons/drawerButton";
 import "./styles/drawerNav.scss";
 
 interface DrawerNavProps {
@@ -17,6 +18,39 @@ interface DrawerNavProps {
 
 export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
     const { getImagePath } = helper();
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [isOpen, setIsOpen] = useState(isOpenDefault);
+    const pathName = usePathname();
+
+    const toggleDrawer = () => setIsOpen((prev) => !prev);
+
+    useEffect(() => {
+        const video = videoRef.current;
+
+        if (isOpen) {
+            document.body.dataset.state = "navOpen";
+            video?.play();
+        } else {
+            document.body.dataset.state = "";
+            video?.pause();
+        }
+
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") setIsOpen(false);
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            document.body.dataset.state = "";
+            video?.pause();
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [isOpen]);
+
+    useEffect(() => {
+        setIsOpen(false);
+    }, [pathName]);
 
     return (
         <>
@@ -163,13 +197,21 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                     </div>
                 </div>
                 <div className="drawerNav-bg">
-                    <video muted loop playsInline preload="metadata">
+                    <video muted loop playsInline preload="metadata" ref={videoRef}>
                         <source src={getImagePath("movie/water.webm")} type="video/webm" />
                         <source src={getImagePath("movie/water.mp4")} type="video/mp4" />
                     </video>
                 </div>
             </div>
-            <DrawerButton />
+            <button type="button" className="drawerButton" onClick={toggleDrawer} data-open={isOpen}>
+                <div className="drawerButton-inner">
+                    <span className="icon">
+                        <svg className="i-menu"><use xlinkHref="#i-menu" /></svg>
+                    </span>
+                    <span className="text" lang="en">MENU</span>
+                    <span className="close"></span>
+                </div>
+            </button>
         </>
     )
 }

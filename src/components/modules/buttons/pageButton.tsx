@@ -3,6 +3,7 @@
  * @description ページ内ボタン
  */
 import { Link as Scroll } from 'react-scroll'
+import { useHeaderHeight } from "@/hooks/useHead";
 import "./styles/pageButton.scss";
 
 type PageButtonProps = {
@@ -16,6 +17,7 @@ type PageButtonProps = {
 }
 
 export default function PageButton({ pageButton }: { pageButton: PageButtonProps }) {
+    let offset = useHeaderHeight();
     return (
         <div className="m-page-button" style={{ "--length": `${pageButton.column}` } as React.CSSProperties}>
             {
@@ -24,7 +26,7 @@ export default function PageButton({ pageButton }: { pageButton: PageButtonProps
                     if (!button) return null; // 安全にスキップ
                     return (
                         <div className="page-button" key={key}>
-                            <Scroll to={`${button.to}`} smooth={true} duration={500} offset={-100} className="page-button-el">
+                            <Scroll to={`${button.to}`} smooth={true} duration={500} offset={offset} className="page-button-el">
                                 <span className="label">{button.label}</span>
                                 <span className="icon">
                                     <svg className="i-arw-r">

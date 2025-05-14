@@ -3,7 +3,7 @@
  * @description 共通コンポーネント
  */
 'use client';
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { gsap } from "gsap";

@@ -399,8 +399,7 @@
     transition    : opacity 0.3s var(--customEasingOut);
 
     [data-state="modalOpen"] & {
-        opacity       : 1;
-        pointer-events: all;
+        opacity: 1;
     }
 
     // &-container
@@ -413,8 +412,9 @@
         position        : relative;
 
         [data-state="modalOpen"] & {
-            opacity  : 0;
-            animation: show 0.3s var(--customEasingOut) forwards 0.3s;
+            opacity       : 0;
+            animation     : show 0.3s var(--customEasingOut) forwards 0.3s;
+            pointer-events: all;
 
             @keyframes show {
 

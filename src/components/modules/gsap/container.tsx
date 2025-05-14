@@ -27,6 +27,7 @@ interface ContainerProps {
 }
 
 export function GSAPToggleContainer({ children, tag, id, className, toggle }: ContainerProps) {
+    const pathname = usePathname();
     const containerRef = useRef<HTMLDivElement>(null);
     const { hero, water } = useRefContext();
 

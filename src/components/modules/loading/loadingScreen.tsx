@@ -11,6 +11,7 @@ import './styles/loadingScreen.scss';
 
 const preloadMedia = async (): Promise<void> => {
     const videos = Array.from(document.querySelectorAll('video'));
+    if (videos.length === 0) return; // 動画がなければ即resolve
     const videoPromises = videos.map((video) =>
         new Promise<void>((resolve) => {
             let resolved = false;
@@ -39,9 +40,9 @@ const preloadMedia = async (): Promise<void> => {
                 video.removeEventListener('canplaythrough', onReady);
                 video.removeEventListener('error', onError);
                 playAndResolve();
-            }, 2000);
+            }, 5000);
 
-            if (video.readyState >= 3) {
+            if (video.readyState === 4) {
                 clearTimeout(timeout);
                 onReady();
             } else {

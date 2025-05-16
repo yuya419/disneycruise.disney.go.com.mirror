@@ -11,8 +11,6 @@ export const metadata: Metadata = metaArray["accommodations"];
 
 export default function Page() {
     return (
-        <div className="page">
-            <Accommodations />
-        </div>
+        <Accommodations />
     );
 }

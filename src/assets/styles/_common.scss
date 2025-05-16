@@ -33,8 +33,10 @@ main {
     &:has(.booking-form[data-open="true"]),
     &:has(.filterModal[data-open="true"]),
     &:has(.room-modal[data-open="true"]) {
-        position: static;
-        z-index : unset;
+        @include g.media(md) {
+            position: static;
+            z-index : unset;
+        }
     }
 }
 

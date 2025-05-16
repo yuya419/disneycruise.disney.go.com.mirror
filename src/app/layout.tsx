@@ -3,6 +3,7 @@
  * @description 共通レイアウト
  */
 "use client";
+import { useEffect } from "react";
 import { NotoSansJP, PhilosopherFont } from "@/libs/font";
 import "@/assets/styles/style.scss";
 

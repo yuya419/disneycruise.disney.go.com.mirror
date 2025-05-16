@@ -7,12 +7,6 @@ html {
     scroll-behavior              : auto;
     overscroll-behavior-y        : contain;
     -webkit-overflow-scrolling   : touch;
-    // scrollbar-width           : none;
-    // -ms-overflow-style        : none;
-
-    // &::-webkit-scrollbar {
-    //     display: none;
-    // }
 
     * {
         box-sizing: border-box;
@@ -21,12 +15,12 @@ html {
     }
 
     //ドロワーナビオープン時
-    :has([data-state="navOpen"]) {
+    &:has([data-state="navOpen"]) {
         @include g.isFixed();
     }
 
     //モーダルオープン時
-    :has([data-state="modalOpen"]) {
+    &:has([data-state="modalOpen"]) {
         @include g.isFixed();
     }
 }

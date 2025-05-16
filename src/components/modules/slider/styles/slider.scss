@@ -296,3 +296,68 @@
         }
     }
 }
+
+/* __20: tool-box-buttons, tool-box-dots */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@include g.media(md) {
+    .tool-box {
+        &-buttons {
+            display        : flex;
+            justify-content: space-between;
+            align-items    : center;
+            position       : absolute;
+            z-index        : 2;
+            top            : 0;
+            left           : 0;
+            right          : 0;
+            margin-inline  : auto;
+            pointer-events : none;
+
+            .arrowButton {
+                pointer-events  : all;
+                border-radius   : 50%;
+                background-color: var(--color_white);
+
+                .arrow {
+                    background-color: transparent;
+                    width           : 2.6rem;
+                    height          : 2.6rem;
+                    color           : var(--arrow-color, #1F3631);
+
+                    .i-arw-r {
+                        width: 1rem;
+                    }
+                }
+
+                &.isPrev {
+                    scale: -1 1;
+                }
+
+                &:disabled {
+                    pointer-events  : none;
+                    background-color: hsla(0, 0%, 100%, .4);
+                }
+            }
+        }
+
+        &-dots {
+            display        : flex;
+            align-items    : center;
+            justify-content: center;
+            column-gap     : 0.7rem;
+            margin-top     : 2rem;
+
+            .dotButton {
+                width           : 0.7rem;
+                height          : 0.7rem;
+                border-radius   : 50%;
+                background-color: hsla(0, 0%, 100%, .4);
+                transition      : background-color .15s var(--customEasingIn);
+
+                &.isActive {
+                    background-color: var(--theme_color_sub);
+                }
+            }
+        }
+    }
+}

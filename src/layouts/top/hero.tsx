@@ -49,6 +49,12 @@ export default function Hero() {
                     <span className="circle"></span>
                 </p>
             </div>
+            <div className="t-hero__movie" >
+                <video autoPlay muted loop playsInline preload="metadata">
+                    <source src={getImagePath("movie/dcl_da_sp.webm")} type="video/webm" />
+                    <source src={getImagePath("movie/dcl_da_sp.mp4")} type="video/mp4" />
+                </video>
+            </div>
             <HeroNews posts={posts} />
         </div>
     )

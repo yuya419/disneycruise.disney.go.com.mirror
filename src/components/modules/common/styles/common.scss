@@ -124,7 +124,7 @@
     // マスク
     .is-set-mask {
         mask-repeat  : no-repeat;
-        mask-image   : url('/ships/adventure/common/mask.png');
+        mask-image   : url('/ships/adventure/common/mask.webp');
         mask-size    : 800% 300%;
         mask-position: 30% -30%;
         visibility   : hidden;
@@ -144,15 +144,18 @@
 @include g.media(md) {
     .bg {
 
-        .is-video-hero {
-            position: relative;
-            top     : -3.9rem;
-            height  : 70.3rem;
-        }
-
         // マスク
         .is-set-mask {
-            mask-image   : url('/ships/adventure/common/mask-vert.png');
+            mask-image: url('/ships/adventure/common/mask-vert.webp');
+        }
+
+        .is-video-hero {
+            display: none;
+        }
+
+        .is-video-water {
+            mask-image: none;
+            visibility: inherit;
         }
     }
 }

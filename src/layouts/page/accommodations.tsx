@@ -13,42 +13,17 @@ import Aside from "../aside/aside";
 import { Headline, OnmHeadline01, OnmHeadline02 } from "@/components/modules/headline/headline";
 import { Slider } from "@/components/modules/slider/slider";
 import { GSAPToggleContainer } from "@/components/modules/gsap/container";
-import { roomOutline } from "@/libs/array";
+import { roomType, roomOutline } from "@/libs/array";
 import { useRefContext } from "@/hooks/useRefContext";
 import "./styles/accommodations.scss";
 
 export function Page() {
   const { getImagePath } = helper();
+  const [currentTab, setCurrentTab] = useState("room01");
   const [modalId, setModalId] = useState<string | null>(null); // モーダルの状態を管理
   const roomRef = useRef<HTMLDivElement>(null);
   const [isModalOpen, setIsModalOpen] = useState(false); // モーダルの開閉状態を管理
   const { overlay } = useRefContext();
-
-  useEffect(() => {
-    const closeModalHandler = (event?: KeyboardEvent | MouseEvent) => {
-      if (
-        (event instanceof KeyboardEvent && event.key === "Escape") ||
-        event === undefined
-      ) {
-        setIsModalOpen(false);
-      }
-    };
-
-    document.addEventListener("keydown", closeModalHandler);
-    overlay.current?.addEventListener("click", closeModalHandler);
-
-    document.body.dataset.state = isModalOpen ? "modalOpen" : "";
-
-    return () => {
-      document.removeEventListener("keydown", closeModalHandler);
-      overlay.current?.removeEventListener("click", closeModalHandler);
-      document.body.dataset.state = "";
-    };
-  }, [isModalOpen, overlay]);
-
-  const closeModal = () => {
-    setIsModalOpen(false); // モーダルを閉じる
-  };
 
   const breadcrumbItems = [
     { label: "客室案内", href: "/accommodations/", },
@@ -80,184 +55,65 @@ export function Page() {
     },
   ]
 
-  const type01Array = [
-    {
-      id: `type01-01`,
-      src: `page/accommodations/type01/type01-01/Concierge Inside Family Stateroom.jpg`,
-      name: `コンシェルジュファミリー内側客室`,
-      caption: ``,
-      desc: `ソーにインスパイアされた、この広々としたファミリー向け客室で、家のようにくつろげる空間を提供します。`,
-    },
-    {
-      id: `type01-02`,
-      src: `page/accommodations/type01/type01-02/Concierge Family Stateroom with Garden View Verandah.png`,
-      name: `コンシェルジュファミリーガーデンビュー<br>ベランダ客室`,
-      caption: ``,
-      desc: `ディズニーの「イマジネーションガーデン」を見渡すプライベートベランダから、海の上の広々とした「ソー」テーマの家で、夢のような時間をお楽しみいただけます。`,
-    },
-    {
-      id: `type01-03`,
-      src: `page/accommodations/type01/type01-03/DCL-DA_Concierge Family w Verandah (Main Bedrm).png`,
-      name: `コンシェルジュファミリーオーシャンビュー<br>ベランダ客室`,
-      caption: ``,
-      desc: `モアナ、ソー、アラジンのいずれかのテーマにインスパイアされた、海の上の夢のような家のプライベートベランダから、素晴らしい海の景色をお楽しみいただけます。`,
-    },
-    {
-      id: `type01-04`,
-      src: `page/accommodations/type01/type01-04/Concierge Family Oceanview Suite.png`,
-      name: `コンシェルジュファミリーオーシャンビュースイート客室​`,
-      caption: ``,
-      desc: `「アラジン」をテーマにした広々としたスイートで、巨大な窓から壮大な海の景色を楽しみながらくつろいでください。​`,
-    },
-    {
-      id: `type01-05`,
-      src: `page/accommodations/type01/type01-05/DCL-DA_Concierge Suite w Verandah (Main Bedrm).png`,
-      name: `コンシェルジュスイートオーシャンビュー<br>ベランダ客室`,
-      caption: ``,
-      desc: `ディズニークルーズラインの「アナとエルサ」をテーマにした豪華なスイートで、氷の王国にいるような気分でクルーズを楽しんでください。​`,
-    },
-    {
-      id: `type01-06`,
-      src: `page/accommodations/type01/type01-06/Concierge Oceanview Suite.png`,
-      name: `コンシェルジュオーシャンビュースイート<br>客室`,
-      caption: ``,
-      desc: `広々としたスイートで、ベッドルームとリビングエリアを備え、究極の快適さとリラックスを提供します。海の景色を楽しみながら、特別なひとときをお過ごしください。`,
-    },
-    {
-      id: `type01-07`,
-      src: `page/accommodations/type01/type01-07/DCL-DA_Concierge 1-BR Oceanview Suite (Bedroom).png`,
-      name: `コンシェルジュ1ベッドルームオーシャンビュースイート客室`,
-      caption: ``,
-      desc: `ディズニー映画『アナと雪の女王』の心温まる物語を彷彿とさせる、豪華な装飾と一流のアメニティが整ったロイヤルスイートで、夢のような航海に出かけましょう。​`,
-    },
-    {
-      id: `type01-08`,
-      src: `page/accommodations/type01/type01-08/DCL-DA_Concierge Royal Suite - Elsa (Main Bedrm).png`,
-      name: `コンシェルジュロイヤルスイートオーシャンビューベランダ客室​`,
-      caption: ``,
-      desc: `ディズニー映画『アナと雪の女王』の心温まる物語を彷彿とさせる、豪華な装飾と一流のアメニティが整ったロイヤルスイートで、夢のような航海に出かけましょう。`,
-    },
-  ];
+  // モーダルを開く関数
+  const handleModalOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const target = event.currentTarget;
+    const id = target.dataset.id;
+    if (id) {
+      setModalId(id);
+      setIsModalOpen(true);
+    }
+  };
 
-  const type02Array = [
-    {
-      id: `type02-01`,
-      src: `page/accommodations/type02/type02-01/Stateroom with Verandah.png`,
-      name: `ベランダ客室​`,
-      caption: ``,
-      desc: `プライベートバルコニーで新鮮な空気を感じながら、客室の快適さを保ったまま絶景をお楽しみいただけます。​`,
-    },
-    {
-      id: `type02-02`,
-      src: `page/accommodations/type02/type02-02/DCL-DA_Accoms (Deluxe Oceanview with Verandah).png`,
-      name: `デラックスオーシャンビューベランダ客室`,
-      caption: ``,
-      desc: `ベランダ客室より広い家族向けの広さを誇り、プライベートベランダから壮大な海の景色をお楽しみいただけます。`,
-    },
-    {
-      id: `type02-03`,
-      src: `page/accommodations/type02/type02-03/DCL-DA_Accoms (Deluxe Gardenview w Verandah).png`,
-      name: `デラックスガーデンビューベランダ客室​`,
-      caption: ``,
-      desc: `ベランダ客室より広い家族向けの広さを誇り、プライベートベランダからディズニー・イマジネーション・ガーデンの素晴らしい景色をお楽しみいただけます。`,
-    },
-    {
-      id: `type02-04`,
-      src: `page/accommodations/type02/type02-04/DCL-DA_Accoms (Deluxe Gardenview w Verandah).png`,
-      name: `デラックスリーフビューベランダ客室`,
-      caption: ``,
-      desc: `ベランダ付き客室より広い家族向けの広さを誇り、プライベートベランダからディズニー・ディスカバリー・リーフの素晴らしい景色をお楽しみいただけます。`,
-    },
-  ];
+  // モーダルを閉じる関数
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
-  const type03Array = [
-    {
-      id: `type03-01`,
-      src: `page/accommodations/type03/type03-01/DCL-DA_Accoms ( Oceanview Stateroom).png`,
-      name: `オーシャンビュー客室`,
-      caption: ``,
-      desc: `自然光が差し込む大きな窓から、美しい海の景色を楽しめる快適な客室で、ゆったりとおくつろぎください。`,
-    },
-    {
-      id: `type03-02`,
-      src: `page/accommodations/type03/type03-02/DCL-DA_Accoms (Deluxe Oceanview Staterm).png`,
-      name: `デラックス・オーシャンビュー客室​`,
-      caption: ``,
-      desc: `オーシャンビュー客室よりも広いスペースを誇り、大きな窓から美しい海の景色を堪能できる快適な客室です。​`,
-    },
-  ];
+  // モーダルの開閉状態を管理するuseEffect
+  useEffect(() => {
+    document.addEventListener("keydown", (event) => (event.key === "Escape") ? setIsModalOpen(false) : null);
+    overlay.current?.addEventListener("click", () => setIsModalOpen(false));
 
-  const type04Array = [
-    {
-      id: `type04-01`,
-      src: `page/accommodations/type04/type04-01/DCL-DA_Accoms (Inside Stateroom).png`,
-      name: `内側客室`,
-      caption: ``,
-      desc: `内側客室は、エンターテイメント、ダイニング、ショッピングエリアに便利な場所に位置しています。`,
-    },
-    {
-      id: `type04-02`,
-      src: `page/accommodations/type04/type04-02/DCL-DA_Accoms (Deluxe Inside Stateroom).jpg`,
-      name: `デラックス内側客室`,
-      caption: ``,
-      desc: `内側客室より広いスペースを誇る快適なキャビンで、リラックスして心身をリフレッシュできます。`,
-    },
-    {
-      id: `type04-03`,
-      src: `page/accommodations/type04/type04-03/DCL-DA_Accoms (Deluxe Inside w Reef View).png`,
-      name: `デラックス内側客室（リーフビュー付き）`,
-      caption: ``,
-      desc: `デラックス内側客室と同じ広さを備えたこの客室タイプでは、ディズニー・ディスカバリー・リーフの魅力的な景色を楽しむことができます。`,
-    },
-  ];
+    document.body.dataset.state = isModalOpen ? "modalOpen" : "";
 
-  const Room = () => {
+    return () => {
+      document.removeEventListener("keydown", (event) => (event.key === "Escape") ? setIsModalOpen(false) : null);
+      overlay.current?.removeEventListener("click", () => setIsModalOpen(false));
+      document.body.dataset.state = "";
+    };
+  }, [isModalOpen, overlay]);
 
-    useEffect(() => {
-      if (roomRef.current) {
-        const buttons = roomRef.current.querySelectorAll(".room-selector-el");
-        const modalButtons = roomRef.current.querySelectorAll(".modal-button-el");
-        const content = roomRef.current.querySelector(".room-selector-content");
-        const urlParams = new URLSearchParams(window.location.search);
-        const typeParam = urlParams.get("type");
-
-        if (typeParam) {
-          content?.setAttribute("data-current", typeParam);
-          Array.from(buttons).forEach((btn) => btn.classList.toggle("isSelect", btn.getAttribute("data-tab") === typeParam));
-        }
-
-        buttons.forEach((button) => {
-          button.addEventListener("click", () => {
-            const tabValue = button.getAttribute("data-tab");
-            if (tabValue) {
-              content?.setAttribute("data-current", tabValue);
-              Array.from(buttons).forEach((btn) => btn.classList.toggle("isSelect", btn.getAttribute("data-tab") === tabValue));
-            }
-          });
-        });
-
-        modalButtons.forEach((button) => {
-          button.addEventListener("click", () => {
-            const id = button.getAttribute("data-id");
-            if (id) {
-              const modalData = roomOutline.find((item) => item[id]);
-              if (!modalData || !modalData[id].name) return
-              setModalId(id);
-              setIsModalOpen(true);
-            }
-          });
-        });
+  // URLのクエリパラメータを取得して、初期タブを設定
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      const typeParam = urlParams.get("type");
+      if (typeParam && ["room01", "room02", "room03", "room04"].includes(typeParam)) {
+        setCurrentTab(typeParam);
       }
-    }, []);
+    }
+  }, []);
+
+  /**
+   * @name Room
+   * @description 客室セクション
+   */
+  const Room = ({ currentTab, setCurrentTab }: { currentTab: string, setCurrentTab: (tab: string) => void }) => {
+
+    // タブ切り替え
+    const handleTabClick = (tab: string) => {
+      setCurrentTab(tab);
+    };
 
     const RoomSlector = () => {
 
       return (
         <div className="room-selector">
-          <button type="button" className="room-selector-el isSelect" data-tab="room01"><span className="label">コンシェルジュ<br />スイート</span></button>
-          <button type="button" className="room-selector-el" data-tab="room02"><span className="label">ベランダ</span></button>
-          <button type="button" className="room-selector-el" data-tab="room03"><span className="label">オーシャンビュー</span></button>
-          <button type="button" className="room-selector-el" data-tab="room04"><span className="label">インサイド</span></button>
+          <button type="button" className={`room-selector-el${currentTab === "room01" ? " isSelect" : ""}`} data-tab="room01" onClick={() => handleTabClick("room01")}><span className="label">コンシェルジュ<br />スイート</span></button>
+          <button type="button" className={`room-selector-el${currentTab === "room02" ? " isSelect" : ""}`} data-tab="room02" onClick={() => handleTabClick("room02")}><span className="label">ベランダ</span></button>
+          <button type="button" className={`room-selector-el${currentTab === "room03" ? " isSelect" : ""}`} data-tab="room03" onClick={() => handleTabClick("room03")}><span className="label">オーシャンビュー</span></button>
+          <button type="button" className={`room-selector-el${currentTab === "room04" ? " isSelect" : ""}`} data-tab="room04" onClick={() => handleTabClick("room04")}><span className="label">インサイド</span></button>
         </div>
       )
     }
@@ -276,7 +132,7 @@ export function Page() {
           <dl key={index} className="card-item">
             <dt className="card-item__head">
               <figure>
-                <Image src={getImagePath(item.src)} alt={item.name} width={334} height={300} />
+                <Image src={getImagePath(item.src)} alt={item.name} width={334} height={200} />
                 <figcaption dangerouslySetInnerHTML={{ __html: item.caption }}></figcaption>
               </figure>
               <span className="name" dangerouslySetInnerHTML={{ __html: item.name }}></span>
@@ -284,7 +140,7 @@ export function Page() {
             <dd className="card-item__body">
               <span className="desc" dangerouslySetInnerHTML={{ __html: item.desc }}></span>
               <div className="modal-button">
-                <button type="button" className="modal-button-el" data-id={item.id}>
+                <button type="button" className="modal-button-el" data-id={item.id} onClick={handleModalOpen}>
                   <span className="label" lang="en">View More</span>
                   <span className="icon">
                     <svg className="i-modal">
@@ -327,11 +183,11 @@ export function Page() {
 
     const RoomContent = () => {
       return (
-        <div className="room-selector-content" data-current="room01">
-          <RoomBlock type="room01" desc="最も豪華な客室で、コンシェルジュのゲストが海上でもパーソナルなサービスと自宅のような快適さをお楽しみいただけます。洗練された優雅さ、豪華なアメニティ、ディズニーならではのタッチでデザインされた、広々とした贅沢な客室とスイートをお楽しみください。コンシェルジュサービスには、プライベートリトリートへの専用アクセス、高級ショッピング、一流のスパサービス、高級フィットネス施設などが含まれます。" cards={type01Array} />
-          <RoomBlock type="room02" desc="ご家族向けに作られた当ホテルの最も人気のある客室は、最大4名様までご宿泊いただけ、海、ディズニーイマジネーションガーデン、ディズニーディスカバリーリーフの息を呑むような景色をお楽しみいただける専用バルコニーを備えています。この風通しの良い聖域では、日の出を眺め、海風に吹かれ、朝のコーヒーや夜の寝酒をお楽しみいただけます。" cards={type02Array} />
-          <RoomBlock type="room03" desc="最大4名様までご宿泊いただけるよう設計された、美しく整えられた客室には、個別のシングルベッドが備わっており、どなたにもぐっすりとお休みいただけます。大きな舷窓から、息を呑むような海の眺めをお楽しみください。" cards={type03Array} />
-          <RoomBlock type="room04" desc="最大4名様までご宿泊いただけるよう設計された、美しく整えられた客室には、個別のシングルベッドが備わっており、どなたにもぐっすりとお休みいただけます。大きな舷窓から、息を呑むような海の眺めをお楽しみください。" cards={type04Array} />
+        <div className="room-selector-content" data-current={currentTab}>
+          <RoomBlock type="room01" desc="最も豪華な客室で、コンシェルジュのゲストが海上でもパーソナルなサービスと自宅のような快適さをお楽しみいただけます。洗練された優雅さ、豪華なアメニティ、ディズニーならではのタッチでデザインされた、広々とした贅沢な客室とスイートをお楽しみください。コンシェルジュサービスには、プライベートリトリートへの専用アクセス、高級ショッピング、一流のスパサービス、高級フィットネス施設などが含まれます。" cards={roomType().type01Array} />
+          <RoomBlock type="room02" desc="ご家族向けに作られた当ホテルの最も人気のある客室は、最大4名様までご宿泊いただけ、海、ディズニーイマジネーションガーデン、ディズニーディスカバリーリーフの息を呑むような景色をお楽しみいただける専用バルコニーを備えています。この風通しの良い聖域では、日の出を眺め、海風に吹かれ、朝のコーヒーや夜の寝酒をお楽しみいただけます。" cards={roomType().type02Array} />
+          <RoomBlock type="room03" desc="最大4名様までご宿泊いただけるよう設計された、美しく整えられた客室には、個別のシングルベッドが備わっており、どなたにもぐっすりとお休みいただけます。大きな舷窓から、息を呑むような海の眺めをお楽しみください。" cards={roomType().type03Array} />
+          <RoomBlock type="room04" desc="最大4名様までご宿泊いただけるよう設計された、美しく整えられた客室には、個別のシングルベッドが備わっており、どなたにもぐっすりとお休みいただけます。大きな舷窓から、息を呑むような海の眺めをお楽しみください。" cards={roomType().type04Array} />
         </div>
       )
     }
@@ -719,51 +575,55 @@ export function Page() {
   }
 
   return (
-    <div className="p-accommodations">
-      <Breadcrumb items={breadcrumbItems} />
-      <Title type="slider" title="客室案内" en="Accommodations" slider={heroSliderItems} />
-      <GSAPToggleContainer tag="div" className="l-has-aside-container" toggle={{ logo: false, color: "blue" }}>
-        <main className="l-main">
-          <article className="l-article">
-            <section id="sec01" className="p-accommodations-section">
-              <OnmHeadline01 hlLevel="h2" jp="客室タイプ" en={`Staterooms`} />
-              <div className="accommodations-block">
-                <div className="lead">
-                  <p>以下の4つのカテゴリーから、<br className="nopc" />あなたにぴったりの素敵な客室をお選びいただけます。</p>
-                </div>
-                <Room />
-              </div>
-            </section>
-            <section id="sec02" className="p-accommodations-section">
-              <OnmHeadline01 hlLevel="h2" jp="デッキプラン" en={`deck`} />
-              <div className="accommodations-block">
-                <div className="deck">
-                  <div className="img">
-                    <Image src={getImagePath("page/accommodations/deck.jpg")} alt="デッキプラン" width={374} height={194} />
+    <>
+      <div className="page">
+        <div className="p-accommodations">
+          <Breadcrumb items={breadcrumbItems} />
+          <Title type="slider" title="客室案内" en="Accommodations" slider={heroSliderItems} />
+          <GSAPToggleContainer tag="div" className="l-has-aside-container" toggle={{ logo: false, color: "blue" }}>
+            <main className="l-main">
+              <article className="l-article">
+                <section id="sec01" className="p-accommodations-section">
+                  <OnmHeadline01 hlLevel="h2" jp="客室タイプ" en={`Staterooms`} />
+                  <div className="accommodations-block">
+                    <div className="lead">
+                      <p>以下の4つのカテゴリーから、<br className="nopc" />あなたにぴったりの素敵な客室をお選びいただけます。</p>
+                    </div>
+                    <Room currentTab={currentTab} setCurrentTab={setCurrentTab} />
                   </div>
-                  <div className="text">
-                    <p>ディズニーアドベンチャーの客室タイプとパブリックスペースの位置をご確認いただけます。</p>
-                    <div className="pdf-button">
-                      <Link href={"/page/accommodations/document/DCL-DA_Deck_Plan_V1_16_Oct.pdf"} target="_blank" rel="noopener noreferrer" className="pdf-button-el">
-                        <span className="label">デッキプラン</span>
-                        <span className="icon">
-                          <svg className="i-pdf">
-                            <use xlinkHref="#i-pdf" />
-                          </svg>
-                        </span>
-                      </Link>
+                </section>
+                <section id="sec02" className="p-accommodations-section">
+                  <OnmHeadline01 hlLevel="h2" jp="デッキプラン" en={`deck`} />
+                  <div className="accommodations-block">
+                    <div className="deck">
+                      <div className="img">
+                        <Image src={getImagePath("page/accommodations/deck.jpg")} alt="デッキプラン" width={374} height={194} />
+                      </div>
+                      <div className="text">
+                        <p>ディズニーアドベンチャーの客室タイプとパブリックスペースの位置をご確認いただけます。</p>
+                        <div className="pdf-button">
+                          <Link href={"/page/accommodations/document/DCL-DA_Deck_Plan_V1_16_Oct.pdf"} target="_blank" rel="noopener noreferrer" className="pdf-button-el">
+                            <span className="label">デッキプラン</span>
+                            <span className="icon">
+                              <svg className="i-pdf">
+                                <use xlinkHref="#i-pdf" />
+                              </svg>
+                            </span>
+                          </Link>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </section>
-          </article>
-        </main>
-        <Aside page="page" nav={navArray} />
-      </GSAPToggleContainer>
+                </section>
+              </article>
+            </main>
+            <Aside page="page" nav={navArray} />
+          </GSAPToggleContainer>
+        </div>
+      </div>
       <div className="room-modal" data-open={isModalOpen}>
         {isModalOpen && Modal(modalId!)}
       </div>
-    </div>
+    </>
   )
 }

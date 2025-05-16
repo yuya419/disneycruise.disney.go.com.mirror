@@ -1,6 +1,151 @@
 /**
- * @name RoomOutline
+ * @name roomType
  * @description 客室案内ページ用 - 部屋タイプ情報
+ */
+const roomType = () => {
+
+  const type01Array = [
+    {
+      id: `type01-01`,
+      src: `page/accommodations/type01/type01-01/Concierge Inside Family Stateroom.jpg`,
+      name: `コンシェルジュファミリー内側客室`,
+      caption: ``,
+      desc: `ソーにインスパイアされた、この広々としたファミリー向け客室で、家のようにくつろげる空間を提供します。`,
+    },
+    {
+      id: `type01-02`,
+      src: `page/accommodations/type01/type01-02/Concierge Family Stateroom with Garden View Verandah.png`,
+      name: `コンシェルジュファミリーガーデンビュー<br>ベランダ客室`,
+      caption: ``,
+      desc: `ディズニーの「イマジネーションガーデン」を見渡すプライベートベランダから、海の上の広々とした「ソー」テーマの家で、夢のような時間をお楽しみいただけます。`,
+    },
+    {
+      id: `type01-03`,
+      src: `page/accommodations/type01/type01-03/DCL-DA_Concierge Family w Verandah (Main Bedrm).png`,
+      name: `コンシェルジュファミリーオーシャンビュー<br>ベランダ客室`,
+      caption: ``,
+      desc: `モアナ、ソー、アラジンのいずれかのテーマにインスパイアされた、海の上の夢のような家のプライベートベランダから、素晴らしい海の景色をお楽しみいただけます。`,
+    },
+    {
+      id: `type01-04`,
+      src: `page/accommodations/type01/type01-04/Concierge Family Oceanview Suite.png`,
+      name: `コンシェルジュファミリーオーシャンビュースイート客室​`,
+      caption: ``,
+      desc: `「アラジン」をテーマにした広々としたスイートで、巨大な窓から壮大な海の景色を楽しみながらくつろいでください。​`,
+    },
+    {
+      id: `type01-05`,
+      src: `page/accommodations/type01/type01-05/DCL-DA_Concierge Suite w Verandah (Main Bedrm).png`,
+      name: `コンシェルジュスイートオーシャンビュー<br>ベランダ客室`,
+      caption: ``,
+      desc: `ディズニークルーズラインの「アナとエルサ」をテーマにした豪華なスイートで、氷の王国にいるような気分でクルーズを楽しんでください。​`,
+    },
+    {
+      id: `type01-06`,
+      src: `page/accommodations/type01/type01-06/Concierge Oceanview Suite.png`,
+      name: `コンシェルジュオーシャンビュースイート<br>客室`,
+      caption: ``,
+      desc: `広々としたスイートで、ベッドルームとリビングエリアを備え、究極の快適さとリラックスを提供します。海の景色を楽しみながら、特別なひとときをお過ごしください。`,
+    },
+    {
+      id: `type01-07`,
+      src: `page/accommodations/type01/type01-07/DCL-DA_Concierge 1-BR Oceanview Suite (Bedroom).png`,
+      name: `コンシェルジュ1ベッドルームオーシャンビュースイート客室`,
+      caption: ``,
+      desc: `ディズニー映画『アナと雪の女王』の心温まる物語を彷彿とさせる、豪華な装飾と一流のアメニティが整ったロイヤルスイートで、夢のような航海に出かけましょう。​`,
+    },
+    {
+      id: `type01-08`,
+      src: `page/accommodations/type01/type01-08/DCL-DA_Concierge Royal Suite - Elsa (Main Bedrm).png`,
+      name: `コンシェルジュロイヤルスイートオーシャンビューベランダ客室​`,
+      caption: ``,
+      desc: `ディズニー映画『アナと雪の女王』の心温まる物語を彷彿とさせる、豪華な装飾と一流のアメニティが整ったロイヤルスイートで、夢のような航海に出かけましょう。`,
+    },
+  ];
+
+  const type02Array = [
+    {
+      id: `type02-01`,
+      src: `page/accommodations/type02/type02-01/Stateroom with Verandah.png`,
+      name: `ベランダ客室​`,
+      caption: ``,
+      desc: `プライベートバルコニーで新鮮な空気を感じながら、客室の快適さを保ったまま絶景をお楽しみいただけます。​`,
+    },
+    {
+      id: `type02-02`,
+      src: `page/accommodations/type02/type02-02/DCL-DA_Accoms (Deluxe Oceanview with Verandah).png`,
+      name: `デラックスオーシャンビューベランダ客室`,
+      caption: ``,
+      desc: `ベランダ客室より広い家族向けの広さを誇り、プライベートベランダから壮大な海の景色をお楽しみいただけます。`,
+    },
+    {
+      id: `type02-03`,
+      src: `page/accommodations/type02/type02-03/DCL-DA_Accoms (Deluxe Gardenview w Verandah).png`,
+      name: `デラックスガーデンビューベランダ客室​`,
+      caption: ``,
+      desc: `ベランダ客室より広い家族向けの広さを誇り、プライベートベランダからディズニー・イマジネーション・ガーデンの素晴らしい景色をお楽しみいただけます。`,
+    },
+    {
+      id: `type02-04`,
+      src: `page/accommodations/type02/type02-04/DCL-DA_Accoms (Deluxe Gardenview w Verandah).png`,
+      name: `デラックスリーフビューベランダ客室`,
+      caption: ``,
+      desc: `ベランダ付き客室より広い家族向けの広さを誇り、プライベートベランダからディズニー・ディスカバリー・リーフの素晴らしい景色をお楽しみいただけます。`,
+    },
+  ];
+
+  const type03Array = [
+    {
+      id: `type03-01`,
+      src: `page/accommodations/type03/type03-01/DCL-DA_Accoms ( Oceanview Stateroom).png`,
+      name: `オーシャンビュー客室`,
+      caption: ``,
+      desc: `自然光が差し込む大きな窓から、美しい海の景色を楽しめる快適な客室で、ゆったりとおくつろぎください。`,
+    },
+    {
+      id: `type03-02`,
+      src: `page/accommodations/type03/type03-02/DCL-DA_Accoms (Deluxe Oceanview Staterm).png`,
+      name: `デラックス・オーシャンビュー客室​`,
+      caption: ``,
+      desc: `オーシャンビュー客室よりも広いスペースを誇り、大きな窓から美しい海の景色を堪能できる快適な客室です。​`,
+    },
+  ];
+
+  const type04Array = [
+    {
+      id: `type04-01`,
+      src: `page/accommodations/type04/type04-01/DCL-DA_Accoms (Inside Stateroom).png`,
+      name: `内側客室`,
+      caption: ``,
+      desc: `内側客室は、エンターテイメント、ダイニング、ショッピングエリアに便利な場所に位置しています。`,
+    },
+    {
+      id: `type04-02`,
+      src: `page/accommodations/type04/type04-02/DCL-DA_Accoms (Deluxe Inside Stateroom).jpg`,
+      name: `デラックス内側客室`,
+      caption: ``,
+      desc: `内側客室より広いスペースを誇る快適なキャビンで、リラックスして心身をリフレッシュできます。`,
+    },
+    {
+      id: `type04-03`,
+      src: `page/accommodations/type04/type04-03/DCL-DA_Accoms (Deluxe Inside w Reef View).png`,
+      name: `デラックス内側客室（リーフビュー付き）`,
+      caption: ``,
+      desc: `デラックス内側客室と同じ広さを備えたこの客室タイプでは、ディズニー・ディスカバリー・リーフの魅力的な景色を楽しむことができます。`,
+    },
+  ];
+
+  return {
+    type01Array,
+    type02Array,
+    type03Array,
+    type04Array,
+  };
+}
+
+/**
+ * @name RoomOutline
+ * @description 客室案内ページ用 - 部屋タイプ詳細情報
  * @type {Array}
  * @property {string} key - 部屋タイプID
  * @property {string} name - 部屋タイプ名
@@ -1845,4 +1990,75 @@ const roomOutline: Array<any> = [
   },
 ];
 
-export { roomOutline };
+
+/**
+ * @description TOPページの7つのテーマ別エリアの情報
+ * @type {Record<string, { name: string, en: string, desp: string }>}
+ * @property {string} name - 日本語名
+ * @property {string} en - 英語名
+ * @property {string} desp - 日本語説明文
+ */
+const topThemedAreas: Record<string, { name: string, en: string, desp: string }> = {
+  "1": {
+    name: "ディズニーイマジネーションガーデン",
+    en: "Disney Imagination Garden",
+    desp: '旅のはじまりはここから。<br class="nopc"/>魔法の谷と庭園で、冒険の扉がひらく。',
+  },
+  "2": {
+    name: "ディズニーディスカバリーリーフ",
+    en: "Disney Discovery Reef",
+    desp: '美しい光に包まれたこの場所で、<br class="nopc"/>美味しい食事を心躍るひとときと共に。',
+  },
+  "3": {
+    name: "トイストーリープレイス​",
+    en: "Toy Story Place",
+    desp: '上層デッキでは、プールやジャグジーなど<br class="nopc"/>ウォーターアトラクションが楽しめます。',
+  },
+  "4": {
+    name: "マーベルランディング​​",
+    en: "Marvel Landing",
+    desp: 'アベンジャーズ集合！アドベンチャー満載の<br class="nopc"/>マーベルワールドで、ヒーロー気分を満喫。',
+  },
+  "5": {
+    name: "ウェイファインダーベイ​",
+    en: "Wayfinder Bay",
+    desp: '映画『モアナと伝説の海』にインスパイアされた<br class="nopc"/>屋外のオアシスで、心のままにリラックス。',
+  },
+  "6": {
+    name: "サンフランソウキョウ・ストリート",
+    en: "San Fransokyo Street",
+    desp: 'ワクワクする体験なら、映画『ベイマックス』に<br class="nopc"/>登場する都市をモチーフにしたエリアで。',
+  },
+  "7": {
+    name: "タウン・スクエア",
+    en: "Town Square",
+    desp: 'ようこそおとぎ話の世界へ。カフェやラウンジ、<br class="nopc"/>ショッピングで魔法のようなひとときを。',
+  },
+}
+
+/**
+ * @description TOPページの大人のための施設の情報
+ * @type {Record<string, { name: string, en: string, desp: string }>}
+ * @property {string} name - 日本語名
+ * @property {string} en - 英語名
+ * @property {string} desp - 日本語説明文
+ */
+const topRelaxations: Record<string, { name: string, en: string, desp: string }> = {
+  "01": {
+    name: "スパ・サロン・フィットネス",
+    en: "Spa, Salon & Fitness",
+    desp: "自然と贅沢が融合したオアシスで、至高のリラクゼーションをご提供します。スパや美容トリートメントを堪能できるほか、フィットネス、サイクリングやヨガなどのアクティビティスペースもご利用いただけます。",
+  },
+  "02": {
+    name: "ラウンジ",
+    en: "Lounges",
+    desp: "エレガントな空間からディズニーをテーマにした、活気あるラウンジがゲストをお待ちしています。各種取り揃えたスペシャルなドリンクを片手に、くつろぎのひとときをお楽しみください。",
+  },
+  "03": {
+    name: "バッカニアバー",
+    en: "Buccaneer Bar",
+    desp: "海賊気分を味わいたいなら、ぜひバッカニアバーへ。さわやかなドリンクを堪能しながら、スポーツ観戦、広大な海の観賞など、気分はまるで船長に。思いのままにおくつろぎいただけます。",
+  },
+}
+
+export { roomType, roomOutline, topThemedAreas, topRelaxations };

@@ -25,7 +25,7 @@
         display     : block;
         width       : 0.9rem;
         aspect-ratio: 1;
-        translate   : calc((50% + 1.6rem) * var(--fm, var(--lm))) 0;
+        translate   : calc((50% + 2rem) * var(--fm, var(--lm))) 0;
         transition  : translate var(--t-out), color var(--t-out);
 
         &:first-child {

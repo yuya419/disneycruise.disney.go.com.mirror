@@ -5,22 +5,29 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Filter from "@/components/modules/panel/filter";
+import { useRefContext } from "@/hooks/useRefContext";
 import "./styles/filterModal.scss";
 
 export default function FilterModal() {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const { overlay } = useRefContext();
 
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
     };
 
     useEffect(() => {
-        const html = document.documentElement;
         if (isModalOpen) {
-            html.dataset.state = "modalOpen";
+            document.body.dataset.state = "modalOpen";
         } else {
-            html.dataset.state = "";
+            document.body.dataset.state = "";
         }
+
+        overlay.current?.addEventListener("click", () => setIsModalOpen(false));
+
+        return () => {
+            overlay.current?.removeEventListener("click", () => setIsModalOpen(false));
+        };
     }, [isModalOpen]);
 
     return (

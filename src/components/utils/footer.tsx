@@ -37,7 +37,7 @@ export default function Footer() {
                 scrollTrigger: {
                     trigger: trigger,
                     start: 'top bottom',
-                    end: 'bottom bottom',
+                    end: '90% bottom',
                     scrub: true,
                     invalidateOnRefresh: true,
                     onEnter: () => {
@@ -56,16 +56,42 @@ export default function Footer() {
     };
 
     useEffect(() => {
-
         scrollAnimation();
 
-        // クリーンアップ処理
+        // 高さ変動時にScrollTrigger.refresh()を呼ぶ
+        let refreshTimeout: NodeJS.Timeout | null = null;
+        let lastBodyHeight = document.body.offsetHeight;
+        const refresh = () => {
+            if (refreshTimeout) clearTimeout(refreshTimeout);
+            refreshTimeout = setTimeout(() => {
+                const newBodyHeight = document.body.offsetHeight;
+                if (newBodyHeight !== lastBodyHeight) {
+                    lastBodyHeight = newBodyHeight;
+                    console.log("refresh (height changed)");
+                    ScrollTrigger.refresh();
+                } else {
+                    // console.log("no height change, skip refresh");
+                }
+            }, 100); // 100msディバウンス
+        };
+
+        let observer: MutationObserver | null = null;
+        const isPC = window.matchMedia("(min-width: 1025px)").matches;
+        if (isPC) {
+            window.addEventListener("resize", refresh);
+            observer = new MutationObserver(refresh);
+            observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+        }
+
         return () => {
             gsap.killTweensOf(triggerRef.current);
             gsap.killTweensOf(footerRef.current);
             footerRef.current?.removeAttribute("style");
             colorBlue.current?.classList.remove("isShow");
             colorWhite.current?.classList.remove("isShow");
+            window.removeEventListener("resize", refresh);
+            observer?.disconnect();
+            if (refreshTimeout) clearTimeout(refreshTimeout);
         };
     }, [pathname]);
 

@@ -3,7 +3,7 @@
  * @description 共通コンポーネント
  */
 'use client';
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
@@ -102,50 +102,58 @@ const GalleryParallax = (props: {
     const pathname = usePathname();
     const { getImagePath } = helper();
 
+    // 画像ごとにrefを作成
+    const itemRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+    useEffect(() => {
+        const triggers: gsap.core.Tween[] = [];
+        const ctx = gsap.context(() => {
+            Object.keys(props.images).forEach((key) => {
+                const item = itemRefs.current[key];
+                if (!item) return;
+
+                const tween = gsap.to(item, {
+                    y: () => {
+                        const windowHeight = window.innerHeight;
+                        const itemHeight = item.clientHeight;
+                        const scrollTriggerStart = (windowHeight - itemHeight) * -0.2;
+                        return scrollTriggerStart;
+                    },
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: 2,
+                        invalidateOnRefresh: true,
+                    },
+                });
+                triggers.push(tween);
+            });
+        });
+
+        return () => {
+            ctx.revert();
+            triggers.forEach(tween => tween.kill());
+        };
+    }, []);
+
     const galleryParallaxItems = () => {
-        return (
-            Object.keys(props.images).map((key) => {
-                const itemref = useRef<HTMLDivElement>(null);
-
-                useEffect(() => {
-                    const ctx = gsap.context(() => {
-                        const item = itemref.current;
-                        if (!item) return;
-
-                        gsap.to(item, {
-                            y: () => {
-                                const windowHeight = window.innerHeight;
-                                const itemHeight = item.clientHeight;
-                                const scrollTriggerStart = (windowHeight - itemHeight) * -0.2;
-                                return scrollTriggerStart;
-                            },
-                            ease: "none",
-                            scrollTrigger: {
-                                trigger: item,
-                                start: "top bottom",
-                                end: "bottom top",
-                                scrub: 2,
-                                invalidateOnRefresh: true,
-                            },
-                        })
-                    }, itemref);
-
-                    return () => ctx.revert();
-                }, []);
-
-                return (
-                    <div key={key} className={`gallery-parallax-item is-item-${key}`} ref={itemref}>
-                        <Image
-                            src={getImagePath(props.images[key].src)}
-                            alt={props.images[key].alt}
-                            width={props.images[key].w}
-                            height={props.images[key].h}
-                            priority
-                        />
-                    </div>
-                );
-            })
-        )
+        return Object.keys(props.images).map((key) => (
+            <div
+                key={key}
+                className={`gallery-parallax-item is-item-${key}`}
+                ref={el => { itemRefs.current[key] = el; }}
+            >
+                <Image
+                    src={getImagePath(props.images[key].src)}
+                    alt={props.images[key].alt}
+                    width={props.images[key].w}
+                    height={props.images[key].h}
+                    priority
+                />
+            </div>
+        ));
     }
 
     return (
@@ -175,8 +183,6 @@ const Bg = () => {
             {pathname === "/" && (
                 <div className="video is-video-hero" ref={hero}>
                     <video autoPlay muted loop playsInline preload="metadata">
-                        <source src={getImagePath("movie/dcl_da_sp.webm")} media="(max-width: 1024px)" type="video/webm" />
-                        <source src={getImagePath("movie/dcl_da_sp.mp4")} media="(max-width: 1024px)" type="video/mp4" />
                         <source src={getImagePath("movie/dcl_da_pc.webm")} type="video/webm" />
                         <source src={getImagePath("movie/dcl_da_pc.mp4")} type="video/mp4" />
                     </video>

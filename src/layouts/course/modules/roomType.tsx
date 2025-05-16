@@ -8,10 +8,12 @@ import { useState, useEffect } from 'react';
 import { AccordionType02, AccordionType03 } from "@/components/modules/acdn/acdn";
 import { Headline } from "@/components/modules/headline/headline";
 import BookingCalendar from "@/components/modules/calendar/calendar";
+import { useRefContext } from "@/hooks/useRefContext";
 import "./styles/roomType.scss";
 
 export default function RoomType({ typesArray }: { typesArray: any[] }) {
     const [isMobile, setIsMobile] = useState(false);
+    const { overlay } = useRefContext();
 
     useEffect(() => {
         const mediaQuery = window.matchMedia("(max-width: 1024px)");
@@ -28,13 +30,6 @@ export default function RoomType({ typesArray }: { typesArray: any[] }) {
         // クリーンアップ
         return () => {
             mediaQuery.removeEventListener("change", handleResize);
-        };
-    }, []);
-
-    useEffect(() => {
-        const html = document.documentElement;
-        return () => {
-            html.dataset.state = "";
         };
     }, []);
 
@@ -74,12 +69,16 @@ export default function RoomType({ typesArray }: { typesArray: any[] }) {
                                     useEffect(() => {
                                         if (!isMobile) return; // モバイル時のみ実行
 
-                                        const html = document.documentElement;
                                         if (isModalOpen) {
-                                            html.dataset.state = "modalOpen";
+                                            document.body.dataset.state = "modalOpen";
                                         } else {
-                                            html.dataset.state = "";
+                                            document.body.dataset.state = "";
                                         }
+                                        overlay.current?.addEventListener("click", () => setIsModalOpen(false));
+
+                                        return () => {
+                                            overlay.current?.removeEventListener("click", () => setIsModalOpen(false));
+                                        };
                                     }, [isModalOpen]);
 
                                     return (

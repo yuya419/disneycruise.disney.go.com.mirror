@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { AccordionType01, AccordionType02 } from "@/components/modules/acdn/acdn";
 import Filter from "@/components/modules/panel/filter";
 import { Link as Scroll } from 'react-scroll'
+import { useHeaderHeight } from "@/hooks/useHead";
 import "./styles/aside.scss";
 
 type AsideProps = {
@@ -25,19 +26,18 @@ type AsideProps = {
 export default function Aside({ page, step, nav }: AsideProps) {
 
     const AsideContent = () => {
+        let offset = useHeaderHeight();
 
         if (page === "course") {
             const asideRef = useRef<HTMLDivElement | null>(null);
 
             useEffect(() => {
-                const html = document.documentElement;
-
                 const observer = new IntersectionObserver(
                     ([entry]) => {
                         if (entry.isIntersecting) {
-                            html.classList.remove("is-filter-button-show");
+                            document.body.classList.remove("is-filter-button-show");
                         } else {
-                            html.classList.add("is-filter-button-show");
+                            document.body.classList.add("is-filter-button-show");
                         }
                     },
                     { root: null, threshold: 0 } // 画面内に 1px でも見えていれば true
@@ -240,7 +240,7 @@ export default function Aside({ page, step, nav }: AsideProps) {
                                                 value[0].child && (
                                                     <AccordionType01
                                                         label={
-                                                            <Scroll to={value[0].item[1]} smooth={true} duration={500} offset={0} className="menu-item-link" data-current="false">
+                                                            <Scroll to={value[0].item[1]} smooth={true} duration={500} offset={offset} className="menu-item-link" data-current="false">
                                                                 <span className="label" dangerouslySetInnerHTML={{ __html: value[0].item[0] }}></span>
                                                             </Scroll>
                                                         }
@@ -248,7 +248,7 @@ export default function Aside({ page, step, nav }: AsideProps) {
                                                             <ul className="child-nav-menu">
                                                                 {value[0].child.map((child, index) => (
                                                                     <li key={index} className="child-menu-item">
-                                                                        <Scroll to={child.item[1]} smooth={true} duration={500} offset={-100} className="child-menu-item-link uline"><span className="line" dangerouslySetInnerHTML={{ __html: child.item[0] }}></span></Scroll>
+                                                                        <Scroll to={child.item[1]} smooth={true} duration={500} offset={offset} className="child-menu-item-link uline"><span className="line" dangerouslySetInnerHTML={{ __html: child.item[0] }}></span></Scroll>
                                                                     </li>
                                                                 ))}
                                                             </ul>
@@ -256,7 +256,7 @@ export default function Aside({ page, step, nav }: AsideProps) {
                                                         isOpenDefault={true}
                                                     />
                                                 ) || (
-                                                    <Scroll to={value[0].item[1]} smooth={true} duration={500} offset={-100} className="menu-item-link" data-current="false">
+                                                    <Scroll to={value[0].item[1]} smooth={true} duration={500} offset={offset} className="menu-item-link" data-current="false">
                                                         <span className="label" dangerouslySetInnerHTML={{ __html: value[0].item[0] }}></span>
                                                     </Scroll>
                                                 )

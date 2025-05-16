@@ -27,6 +27,7 @@ interface ContainerProps {
 }
 
 export function GSAPToggleContainer({ children, tag, id, className, toggle }: ContainerProps) {
+    const pathname = usePathname();
     const containerRef = useRef<HTMLDivElement>(null);
     const { hero, water } = useRefContext();
 
@@ -113,7 +114,7 @@ export function GSAPMaskToggle(props: { mask: "water" | "blue" | "white" }) {
             if (!trigger) return;
 
             gsap.to(maskEl, {
-                maskPosition: "0% 66%",
+                maskPosition: "60% 77%",
                 scrollTrigger: {
                     trigger: trigger,
                     start: "top 75%",

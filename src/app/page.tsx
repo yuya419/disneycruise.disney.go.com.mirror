@@ -17,6 +17,9 @@ import {
   Concierge,
 } from "@/layouts/top/top";
 
+// styles
+import "@/components/modules/slider/styles/slider.scss";
+
 // メタデータ
 export const metadata: Metadata = metaArray["index"];
 

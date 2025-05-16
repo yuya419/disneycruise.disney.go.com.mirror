@@ -204,12 +204,16 @@
             }
         }
     }
+
+    &__movie {
+        display: none;
+    }
 }
 
 // sp
 @include g.media(md) {
     .t-hero {
-        height: 66.3rem;
+        height: auto;
 
         // &__logo
         &__logo {
@@ -246,9 +250,9 @@
                 background-color: var(--color_white);
 
                 .link-inline {
-                    width           : 27.5rem;
-                    padding-block   : 1rem;
-    
+                    width        : 27.5rem;
+                    padding-block: 1rem;
+
                     &:last-child {
                         display: none;
                     }
@@ -269,6 +273,16 @@
                     font-size: 1.3rem;
                     color    : var(--theme_color_text);
                 }
+            }
+        }
+
+        &__movie {
+            display   : block;
+            margin-top: -4rem;
+
+            video {
+                display: block;
+                width  : 100%;
             }
         }
     }

@@ -13,10 +13,12 @@ const RefContext = createContext<RefMap | null>(null);
 
 export function RefProvider({ children }: { children: React.ReactNode }) {
     const refs: RefMap = {
+        header: useRef<HTMLElement>(null),
         hero: useRef<HTMLElement>(null),
         water: useRef<HTMLElement>(null),
         colorBlue: useRef<HTMLElement>(null),
         colorWhite: useRef<HTMLElement>(null),
+        overlay: useRef<HTMLDivElement>(null),
     };
 
     return <RefContext.Provider value={refs}>{children}</RefContext.Provider>;

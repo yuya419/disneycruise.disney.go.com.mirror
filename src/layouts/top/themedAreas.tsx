@@ -270,14 +270,16 @@ export default function ThemedAreas() {
         }
 
         const phase02 = () => {
-            let tl = gsap.timeline();
             const animations = [
                 {
                     configs: [
                         { trigger: el.spaces[0], start: 'center bottom', end: 'bottom bottom' },
                     ],
                     props: {
-                        '--scale': 1,
+                        '--scale': {
+                            start: 1140 / 1300,
+                            end: 1,
+                        }
                     },
                 },
                 {
@@ -285,7 +287,10 @@ export default function ThemedAreas() {
                         { trigger: el.spaces[0], start: 'center top', end: 'bottom top' },
                     ],
                     props: {
-                        '--filter': 1,
+                        '--filter': {
+                            start: 0,
+                            end: 1,
+                        }
                     },
                     onLeave: () => {
                         toggleActive(refs.areaOutline.current, true);
@@ -298,19 +303,24 @@ export default function ThemedAreas() {
 
             animations.forEach((animation) => {
                 animation.configs.forEach((config) => {
-                    tl.to(el.current, {
-                        ...animation.props,
-                        ease: 'none',
-                        scrollTrigger: {
-                            trigger: config.trigger,
-                            start: config.start,
-                            end: config.end,
-                            scrub: true,
-                            invalidateOnRefresh: true,
-                            onLeave: animation.onLeave,
-                            onEnterBack: animation.onEnterBack,
+                    ScrollTrigger.create({
+                        trigger: config.trigger,
+                        start: config.start,
+                        end: config.end,
+                        scrub: true,
+                        invalidateOnRefresh: true,
+                        onLeave: animation.onLeave,
+                        onEnterBack: animation.onEnterBack,
+                        onUpdate: (self) => {
+                            let progress = self.progress;
+                            Object.entries(animation.props).forEach(([key, value]) => {
+                                let start = value.start;
+                                let end = value.end;
+                                let newValue = start + (end - start) * progress;
+                                el.current?.style.setProperty(key, `${newValue}`);
+                            });
                         }
-                    }, 0);
+                    });
                 });
             });
         }
@@ -333,8 +343,6 @@ export default function ThemedAreas() {
         }
 
         const phase04 = () => {
-            let tl = gsap.timeline();
-
             let options = {
                 start: '-50% center',
                 end: 'center center',
@@ -343,34 +351,60 @@ export default function ThemedAreas() {
                 overwrite: true,
             }
 
+            // areaImage
+            const areaImage = (img: HTMLImageElement, wrap: HTMLDivElement, progress: number) => {
+                let areaImage = {
+                    img: {
+                        start: { cp: 0, y: 0 },
+                        end: { cp: 75, y: -25 }
+                    },
+                    wrap: {
+                        start: { cp: 75, y: 25 },
+                        end: { cp: 0, y: 0 }
+                    }
+                }
+
+                let imgCp = areaImage.img.start.cp + (areaImage.img.end.cp - areaImage.img.start.cp) * progress;
+                let imgY = areaImage.img.start.y + (areaImage.img.end.y - areaImage.img.start.y) * progress;
+                let wrapCp = areaImage.wrap.start.cp + (areaImage.wrap.end.cp - areaImage.wrap.start.cp) * progress;
+                let wrapY = areaImage.wrap.start.y + (areaImage.wrap.end.y - areaImage.wrap.start.y) * progress;
+
+                img.style.setProperty("--clip-path", `inset(0 0 ${imgCp}%)`);
+                img.style.setProperty("--y", `${imgY}%`);
+
+                wrap.style.setProperty("--wrap-clip-path", `inset(${wrapCp}% 0 0)`);
+                wrap.style.setProperty("--wrap-y", `${wrapY}%`);
+            }
+
+            // maskPosition
+            const maskPosition = (el: HTMLDivElement, progress: number) => {
+                let maskPosition = {
+                    start: { x: 30, y: -30 },
+                    end: { x: 60, y: 77 }
+                };
+                let maskX = maskPosition.start.x + (maskPosition.end.x - maskPosition.start.x) * progress;
+                let maskY = maskPosition.start.y + (maskPosition.end.y - maskPosition.start.y) * progress;
+                el.style.setProperty("--mask-position", `${maskX}% ${maskY}%`);
+            }
+
             el.spaces.slice(2, 8).forEach((space, index) => {
-                tl.to(el.areaImages[index].querySelector('img'), {
-                    clipPath: 'inset(0 0 75%)',
-                    y: '-25%',
-                    scrollTrigger: {
-                        trigger: space,
-                        ...options,
+                ScrollTrigger.create({
+                    trigger: space,
+                    ...options,
+                    onEnter: () => {
+                        toggleActive(el.bgItems[index - 1], false)
+                        toggleActive(el.bgItems[index + 1], true)
+                    },
+                    onLeaveBack: () => {
+                        toggleActive(el.bgItems[index - 1], true)
+                        toggleActive(el.bgItems[index + 1], false)
+                    },
+                    onUpdate: (self) => {
+                        let progress = self.progress;
+                        maskPosition(el.bgItems[index + 1], progress);
+                        areaImage(el.areaImages[index].querySelector('img') as HTMLImageElement, el.areaImages[index + 1], progress);
                     }
-                }).to(el.areaImages[index + 1], {
-                    clipPath: 'inset(0% 0 0)',
-                    y: '0%',
-                    scrollTrigger: {
-                        trigger: space,
-                        ...options
-                    }
-                }).to(el.bgItems[index + 1], {
-                    maskPosition: "60% 77%",
-                    scrollTrigger: {
-                        trigger: space,
-                        ...options,
-                        onEnter: () => {
-                            toggleActive(el.bgItems[index + 1], true);
-                        },
-                        onLeaveBack: () => {
-                            toggleActive(el.bgItems[index + 1], false);
-                        },
-                    }
-                })
+                });
             })
         }
 

@@ -123,11 +123,13 @@
 
     // マスク
     .is-set-mask {
-        mask-repeat  : no-repeat;
-        mask-image   : url('/ships/adventure/common/mask.webp');
-        mask-size    : 800% 300%;
-        mask-position: 30% -30%;
-        visibility   : hidden;
+        --mask-position: 30% -30%;
+        will-change    : mask-position;
+        mask-repeat    : no-repeat;
+        mask-image     : url('/ships/adventure/common/mask.webp');
+        mask-size      : 800% 300%;
+        mask-position  : var(--mask-position);
+        visibility     : hidden;
 
         &.isHide {
             visibility: inherit;

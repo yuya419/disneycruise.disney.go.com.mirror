@@ -109,22 +109,34 @@ export function GSAPMaskToggle(props: { mask: "water" | "blue" | "white" }) {
 
         const maskEl = mask === "water" ? water.current : mask === "blue" ? colorBlue.current : colorWhite.current;
 
+        // maskPosition
+        const maskPosition = (el: HTMLDivElement, progress: number) => {
+            let maskPosition = {
+                start: { x: 30, y: -30 },
+                end: { x: 60, y: 77 }
+            };
+            let maskX = maskPosition.start.x + (maskPosition.end.x - maskPosition.start.x) * progress;
+            let maskY = maskPosition.start.y + (maskPosition.end.y - maskPosition.start.y) * progress;
+            el.style.setProperty("--mask-position", `${maskX}% ${maskY}%`);
+        }
+
         const ctx = gsap.context(() => {
             const trigger = troggerRef.current;
             if (!trigger) return;
 
-            gsap.to(maskEl, {
-                maskPosition: "60% 77%",
-                scrollTrigger: {
-                    trigger: trigger,
-                    start: "top 75%",
-                    end: "bottom 75%",
-                    scrub: true,
-                    invalidateOnRefresh: true,
-                    onEnter: () => maskEl?.classList.add("isHide"),
-                    onLeaveBack: () => maskEl?.classList.remove("isHide"),
+            ScrollTrigger.create({
+                trigger: trigger,
+                start: "top 100%",
+                end: "bottom 100%",
+                scrub: true,
+                invalidateOnRefresh: true,
+                onEnter: () => maskEl?.classList.add("isHide"),
+                onLeaveBack: () => maskEl?.classList.remove("isHide"),
+                onUpdate: (self) => {
+                    let progress = self.progress;
+                    maskPosition(maskEl as HTMLDivElement, progress);
                 }
-            })
+            });
         }, troggerRef);
 
         return () => ctx.revert();

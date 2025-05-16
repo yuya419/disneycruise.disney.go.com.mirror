@@ -67,7 +67,6 @@ export default function Footer() {
                 const newBodyHeight = document.body.offsetHeight;
                 if (newBodyHeight !== lastBodyHeight) {
                     lastBodyHeight = newBodyHeight;
-                    console.log("refresh (height changed)");
                     ScrollTrigger.refresh();
                 } else {
                     // console.log("no height change, skip refresh");

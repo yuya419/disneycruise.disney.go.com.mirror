@@ -3,7 +3,6 @@
  * @description 共通レイアウト
  */
 "use client";
-import { useEffect } from "react";
 import { NotoSansJP, PhilosopherFont } from "@/libs/font";
 import "@/assets/styles/style.scss";
 
@@ -18,6 +17,7 @@ import { Bg } from "@/components/modules/common/common";
 import { Symbol } from "@/libs/symbol";
 import { useHeadColor } from "@/hooks/useHead";
 import { useRefContext } from "@/hooks/useRefContext";
+import LoadingScreen from "@/components/modules/loading/loadingScreen";
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   const pathname = usePathname();
@@ -27,6 +27,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="ja">
       <body className={`${NotoSansJP.variable} ${PhilosopherFont.variable}`} data-head-color={isColor}>
         <RefProvider>
+          <LoadingScreen />
           <Layout
             children={children}
             pathname={pathname}

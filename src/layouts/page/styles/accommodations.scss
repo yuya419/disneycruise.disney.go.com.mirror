@@ -819,6 +819,10 @@
         --space-lg: 3.6rem;
         --space-sm: 2rem;
 
+        [data-state="modalOpen"] & {
+            pointer-events: all;
+        }
+
         // &-container
         &-container {
             max-width: inherit;

@@ -182,14 +182,14 @@ const Bg = () => {
         <div className="bg">
             {pathname === "/" && (
                 <div className="video is-video-hero" ref={hero}>
-                    <video autoPlay muted loop playsInline preload="metadata">
+                    <video muted loop playsInline preload="metadata">
                         <source src={getImagePath("movie/dcl_da_pc.webm")} type="video/webm" />
                         <source src={getImagePath("movie/dcl_da_pc.mp4")} type="video/mp4" />
                     </video>
                 </div>
             )}
             <div className={`video is-video-water ${pathname === "/" ? "is-set-mask" : ""}`} ref={water}>
-                <video autoPlay muted loop playsInline preload="metadata">
+                <video muted loop playsInline preload="metadata">
                     <source src={getImagePath("movie/water.webm")} type="video/webm" />
                     <source src={getImagePath("movie/water.mp4")} type="video/mp4" />
                 </video>

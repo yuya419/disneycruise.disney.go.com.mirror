@@ -335,8 +335,7 @@
                         line-height: calc(12/16);
                         color      : var(--theme_color_sub);
                         opacity    : 0;
-                        filter     : blur(5px);
-                        transition : opacity 0.4s var(--customEasingIn) 0.07s, filter 0.4s var(--customEasingIn) 0.07s;
+                        transition : opacity 0.4s var(--customEasingIn) 0.07s;
                     }
 
                     .en {
@@ -344,8 +343,7 @@
                         line-height: calc(24/37);
                         color      : var(--color_white);
                         opacity    : 0;
-                        filter     : blur(5px);
-                        transition : opacity 0.4s var(--customEasingIn) 0.12s, filter 0.4s var(--customEasingIn) 0.12s;
+                        transition : opacity 0.4s var(--customEasingIn) 0.12s;
                     }
                 }
 
@@ -358,8 +356,7 @@
                         text-align : center;
                         color      : var(--color_white);
                         opacity    : 0;
-                        filter     : blur(5px);
-                        transition : opacity 0.4s var(--customEasingIn), filter 0.4s var(--customEasingIn);
+                        transition : opacity 0.4s var(--customEasingIn);
                     }
 
                     .button {
@@ -374,12 +371,16 @@
                     position: relative;
                     overflow: hidden;
 
+                    .img {
+                        will-change: transform, clip-path;
+                    }
+
                     img {
                         display    : block;
                         width      : 100%;
                         height     : 100%;
                         object-fit : cover;
-                        will-change: filter;
+                        will-change: transform, clip-path;
                     }
                 }
 
@@ -477,14 +478,25 @@
             z-index            : -1;
             overflow           : hidden;
 
+            &::before {
+                content                : "";
+                position               : absolute;
+                inset                  : 0;
+                z-index                : 1;
+                backdrop-filter        : blur(calc(8px * var(--filter, 0) + 0.0001px));
+                -webkit-backdrop-filter: blur(calc(8px * var(--filter, 0) + 0.0001px));
+            }
+
             &-item {
-                grid-area    : bg;
-                position     : relative;
-                mask-repeat  : no-repeat;
-                mask-image   : url('/ships/adventure/common/mask.webp');
-                mask-size    : 800% 300%;
-                mask-position: 30% -30%;
-                visibility   : hidden;
+                --mask-position: 30% -30%;
+                grid-area      : bg;
+                position       : relative;
+                will-change    : mask-position;
+                mask-repeat    : no-repeat;
+                mask-image     : url('/ships/adventure/common/mask.webp');
+                mask-size      : 800% 300%;
+                mask-position  : var(--mask-position);
+                visibility     : hidden;
 
                 &.isActive {
                     visibility: visible;
@@ -500,8 +512,6 @@
                     &:not(.nopc) {
                         display: block;
                     }
-
-                    filter : blur(8px);
                 }
 
                 .grd {
@@ -516,14 +526,14 @@
                     visibility   : visible;
 
                     .grd {
+                        filter : opacity;
                         opacity: var(--filter);
                     }
 
                     .image.nosp {
-                        object-position      : right bottom;
-                        scale                : max(calc(1140/1300), var(--scale));
-                        // clip-path         : inset(calc(95px * var(--scale, 1)) calc(80px * var(--scale, 1)));
-                        filter               : blur(calc(8px * var(--filter, 0) + 0.0001px));
+                        object-position: right bottom;
+                        will-change    : scale, filter;
+                        scale          : max(calc(1140/1300), var(--scale));
                     }
                 }
             }
@@ -770,9 +780,8 @@
         }
 
         .space {
-            width        : 100%;
-            height       : 100lvh;
-            // border-top: 1px solid red;
+            width : 100%;
+            height: 100lvh;
 
             &:nth-child(2) {
                 height: 150lvh;
@@ -797,26 +806,45 @@
 
     // アニメーション関係
     [data-current] {
-        $scale     : calc(1140/1300);
-        --scale    : #{$scale};
-        // --scale : 1;
-        --filter   : 0;
-        display    : contents;
+        $scale  : calc(1140/1300);
+        --scale : #{$scale};
+        --filter: 0;
+        display : contents;
     }
 
     .outline-item {
-        .outline-image {
-            .img {
-                clip-path: inset(0);
-                transform: translateY(0);
+        &.is-outline01 {
+            .outline-image {
+                .img {
+                    --wrap-clip-path: inset(0 0 0);
+                    --wrap-y        : 0;
+                    clip-path       : var(--wrap-clip-path);
+                    transform       : translateY(var(--wrap-y));
+                }
+
+                img {
+                    --clip-path: inset(0 0 0);
+                    --y        : 0;
+                    clip-path  : var(--clip-path);
+                    transform  : translateY(var(--y));
+                }
             }
         }
 
         &:not(.is-outline01) {
             .outline-image {
                 .img {
-                    clip-path: inset(75% 0 0);
-                    transform: translateY(25%);
+                    --wrap-clip-path: inset(75% 0 0);
+                    --wrap-y        : 25%;
+                    clip-path       : var(--wrap-clip-path);
+                    transform       : translateY(var(--wrap-y));
+                }
+
+                img {
+                    --clip-path: inset(0 0 0);
+                    --y        : 0;
+                    clip-path  : var(--clip-path);
+                    transform  : translateY(var(--y));
                 }
             }
         }
@@ -831,22 +859,19 @@
                     .outline-title {
                         .ja {
                             opacity   : 1;
-                            filter    : blur(0px);
-                            transition: opacity 0.4s var(--customEasingOut) 0.12s, filter 0.4s var(--customEasingOut) 0.12s;
+                            transition: opacity 0.4s var(--customEasingOut) 0.12s;
                         }
 
                         .en {
                             opacity   : 1;
-                            filter    : blur(0px);
-                            transition: opacity 0.4s var(--customEasingOut) 0.17s, filter 0.4s var(--customEasingOut) 0.17s;
+                            transition: opacity 0.4s var(--customEasingOut) 0.17s;
                         }
                     }
 
                     .outline-text {
                         p {
                             opacity   : 1;
-                            filter    : blur(0px);
-                            transition: opacity 0.4s var(--customEasingOut) 0.07s, filter 0.4s var(--customEasingOut) 0.07s;
+                            transition: opacity 0.4s var(--customEasingOut) 0.07s;
                         }
                     }
                 }
@@ -1129,6 +1154,10 @@
                 position : relative;
                 height   : 71rem;
                 grid-area: outline;
+
+                &::before {
+                    content: none;
+                }
 
                 &-item {
                     grid-area : bg;

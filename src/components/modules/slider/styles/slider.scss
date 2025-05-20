@@ -52,8 +52,9 @@
 
     &-item {
         --size   : 100%;
-        flex     : 0 0 var(--size);
+        flex     : 0 0 100%;
         min-width: 0;
+        max-width: var(--size);
 
         img {
             display: block;

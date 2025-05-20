@@ -5,6 +5,7 @@
 "use client";
 import { useState } from 'react';
 import { Headline } from "@/components/modules/headline/headline";
+import Datepicker from './datepicker';
 import "./styles/filter.scss";
 
 export default function Filter() {
@@ -46,7 +47,8 @@ export default function Filter() {
                     <Headline design="01" hlLevel="p">出発日</Headline>
                     <div className="form-item__input">
                         <label className="input-item">
-                            <input type="text" name="date" className="input" />
+                            {/* <input type="text" name="date" className="input" /> */}
+                            <Datepicker selectedDate={null} onChange={() => {}} />
                             <span className="icon">
                                 <svg className="i-calendar">
                                     <use href="#i-calendar"></use>

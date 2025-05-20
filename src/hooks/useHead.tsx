@@ -22,25 +22,23 @@ export function useHeadColor(setIsColor: (color: HeadColor) => void) {
     }, [pathname, setIsColor]);
 }
 
-export function useHeaderHeight(): number {
-    const { header } = useRefContext();
-    const [headerHeight, setHeaderHeight] = useState(0);
+export function useHeaderHeight() {
+    const { drawerButton } = useRefContext();
 
     useEffect(() => {
-        function updateHeaderHeight() {
-            const rect = header.current?.getBoundingClientRect();
-            const height = rect ? (rect.height + rect.top * 2) * -1 : 0;
-            setHeaderHeight(height);
+        function updateDrawerButtonHeight() {
+            const rect = drawerButton.current?.getBoundingClientRect();
+            const height = rect ? rect.height * -1 : 0;
+            
+            document.documentElement.style.scrollPaddingTop = `${Math.abs(height)}px`;
         }
 
-        updateHeaderHeight();
-        window.addEventListener("resize", updateHeaderHeight);
+        updateDrawerButtonHeight();
+        window.addEventListener("resize", updateDrawerButtonHeight);
 
         return () => {
-            window.removeEventListener("resize", updateHeaderHeight);
-            setHeaderHeight(0);
+            window.removeEventListener("resize", updateDrawerButtonHeight);
+            document.documentElement.style.scrollPaddingTop = "";
         };
-    }, [header]);
-
-    return headerHeight;
+    }, [drawerButton]);
 }

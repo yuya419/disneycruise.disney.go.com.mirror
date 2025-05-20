@@ -183,7 +183,7 @@
     // .mainNav
     .mainNav {
         grid-area : mainNav;
-        margin-top: 4rem;
+        margin-top: 2rem;
 
         .nav {
             display              : grid;
@@ -195,12 +195,6 @@
                 .menu-item {
                     &:not(:first-child) {
                         border-top: 1px solid rgba(255, 255, 255, 0.3);
-                    }
-
-                    &:first-child {
-                        .menu-item-link {
-                            padding-top: 0;
-                        }
                     }
 
                     &:last-child {
@@ -280,11 +274,17 @@
                 }
             }
 
+            &-label {
+                align-items: inherit;
+            }
+
             &-inner {
                 overflow: hidden;
             }
 
             &-icon {
+                width: 2rem;
+
                 &[data-expanded="false"] {
                     @include g.hover() {
                         .icon {

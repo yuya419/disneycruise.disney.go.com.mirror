@@ -4,6 +4,7 @@
  */
 "use client";
 import { useRef, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import helper from "@/libs/helper";
@@ -24,6 +25,7 @@ export function Page() {
   const roomRef = useRef<HTMLDivElement>(null);
   const [isModalOpen, setIsModalOpen] = useState(false); // モーダルの開閉状態を管理
   const { overlay } = useRefContext();
+  const pathName = usePathname();
 
   const breadcrumbItems = [
     { label: "客室案内", href: "/accommodations/", },

@@ -52,6 +52,24 @@
             color           : var(--color_white);
             pointer-events  : none;
         }
+
+        &--today {
+            color           : var(--color_white);
+            background-color: var(--theme_color_main);
+        }
+
+        &--selected {
+            color           : var(--theme_color_text) !important;
+            background-color: var(--color_bg_beige) !important;
+            pointer-events  : none;
+            cursor          : inherit;
+        }
+
+
+        @include g.hover() {
+            color           : var(--theme_color_text) !important;
+            background-color: rgb(240, 240, 240) !important;
+        }
     }
 
     &__navigation {

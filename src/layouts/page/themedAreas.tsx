@@ -189,10 +189,12 @@ export function Page() {
 
         return (
             <div id={id} className="area-block">
-                <OnmHeadline02 hlLevel="h3" jp={name} en={en} label="Area" num={num} />
-                <Slider type="default" slides={slides} options={{ loop: true }} />
-                <div className="caption" dangerouslySetInnerHTML={{ __html: props.caption }}></div>
-                <p>{desc}</p>
+                <div className="area-block__inner">
+                    <OnmHeadline02 hlLevel="h3" jp={name} en={en} label="Area" num={num} />
+                    <Slider type="default" slides={slides} options={{ loop: true }} />
+                    <div className="caption" dangerouslySetInnerHTML={{ __html: props.caption }}></div>
+                    <p>{desc}</p>
+                </div>
             </div>
         )
     }

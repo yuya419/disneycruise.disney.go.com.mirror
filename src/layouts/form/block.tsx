@@ -12,7 +12,8 @@ export default function Block(props: {
     children?: React.ReactNode,
 }) {
     return (
-        <div id={props.id} className="form-block">
+        <div className="form-block">
+            <div id={props.id} className="form-block-anchor" />
             {props.title && (
                 <Headline design="01" hlLevel="h2">{props.title}</Headline>
             )}

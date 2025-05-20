@@ -73,16 +73,19 @@
     // .area-block
     .area-block {
         margin-top      : 4rem;
-        padding         : 5rem 4rem 4rem;
         background-color: var(--theme_color_bg_sub);
         border-radius   : 0.6rem;
 
         @include i.order();
-        
+
         @include i.caption();
 
         &+.area-block {
             margin-top: 2.8rem;
+        }
+
+        &__inner {
+            padding: 5rem 4rem 4rem;
         }
 
         .m-slider {
@@ -141,11 +144,14 @@
 
         .area-block {
             margin-top   : 3.2rem;
-            padding      : 3.6rem 2rem 2.6rem;
             border-radius: 0.5rem;
 
             &+.area-block {
                 margin-top: 1.8rem;
+            }
+
+            &__inner {
+                padding: 3.6rem 2rem 2.6rem;
             }
 
             .m-slider {

@@ -6,7 +6,7 @@
 import { NotoSansJP, PhilosopherFont } from "@/libs/font";
 import "@/assets/styles/style.scss";
 
-import { useState } from "react";
+import { use, useState } from "react";
 import { usePathname } from "next/navigation";
 import { RefProvider } from "@/hooks/useRefContext";
 import Header from "@/components/utils/header";
@@ -20,6 +20,7 @@ import { useRefContext } from "@/hooks/useRefContext";
 import LoadingScreen from "@/components/modules/loading/loadingScreen";
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
+
   const pathname = usePathname();
   const [isColor, setIsColor] = useState<"white" | "blue" | null>(null);
 
@@ -49,7 +50,6 @@ function Layout({ children, pathname, isColor, setIsColor, }: {
   isColor: "white" | "blue" | null;
   setIsColor: (color: "white" | "blue") => void;
 }) {
-
   const { overlay } = useRefContext() as {
     overlay: React.RefObject<HTMLDivElement>;
   };

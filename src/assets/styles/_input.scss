@@ -1,13 +1,38 @@
 // プレースホルダー
 @mixin placeholder($color) {
-
-    &::placeholder,
-    &:-ms-input-placeholder,
-    &::-ms-input-placeholder {
+    &::placeholder {
+        color      : $color !important;
+        opacity    : 1;
         font-family: var(--noto-sans-jp);
         font-weight: 500;
-        color      : $color;
+    }
+
+    &::-webkit-input-placeholder {
+        color      : $color !important;
         opacity    : 1;
+        font-family: var(--noto-sans-jp);
+        font-weight: 500;
+    }
+
+    &::-moz-placeholder {
+        color      : $color !important;
+        opacity    : 1;
+        font-family: var(--noto-sans-jp);
+        font-weight: 500;
+    }
+
+    &:-ms-input-placeholder {
+        color      : $color !important;
+        opacity    : 1;
+        font-family: var(--noto-sans-jp);
+        font-weight: 500;
+    }
+
+    &::-ms-input-placeholder {
+        color      : $color !important;
+        opacity    : 1;
+        font-family: var(--noto-sans-jp);
+        font-weight: 500;
     }
 }
 
@@ -91,7 +116,8 @@ form {
         -webkit-tap-highlight-color: transparent;
         font-family                : "Noto Sans JP", sans-serif;
         box-sizing                 : border-box;
-        @include placeholder(rgba(0, 0, 0, 0.3));
+
+        @include placeholder(rgba(39, 40, 51, 0.5));
 
         //自動入力時
         &:-webkit-autofill {

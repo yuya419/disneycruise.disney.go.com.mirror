@@ -6,25 +6,34 @@
  * @param onChange - 日付と時刻が変更されたときのコールバック関数
  */
 "use client";
+import { useState, forwardRef } from "react";
 import DatePicker from 'react-datepicker';
 import { ja } from "date-fns/locale";
 import 'react-datepicker/dist/react-datepicker.css';
 import "./styles/datepicker.scss";
 
-type DatePickerProps = {
-    selectedDate: Date | null;
-    onChange: (date: Date | null) => void;
-}
+const ReadOnlyInput = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>(
+    (props, ref) => (
+        <input
+            type="text"
+            {...props}
+            ref={ref}
+            readOnly
+            className="input"
+        />
+    )
+);
 
-const Datepicker = ({ selectedDate, onChange }: DatePickerProps) => {
+const Datepicker = () => {
+    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     return (
         <DatePicker
             locale={ja}
             selected={selectedDate}
-            onChange={(date) => onChange(date)}
+            onChange={(date: Date | null) => setSelectedDate(date)}
             dateFormat="yyyy/MM/dd"
-            name='date'
-            className='input'
+            name={"date"}
+            customInput={<ReadOnlyInput />}
         />
     );
 };

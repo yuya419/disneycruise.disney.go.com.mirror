@@ -79,9 +79,10 @@
     .t-dining {
 
         .container {
-            display  : block;
-            width    : 100%;
-            max-width: inherit;
+            display    : block;
+            width      : 100%;
+            max-width  : inherit;
+            padding-top: 8rem;
         }
 
         // &__head

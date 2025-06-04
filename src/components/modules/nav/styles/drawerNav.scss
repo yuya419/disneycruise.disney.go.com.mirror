@@ -245,11 +245,12 @@
 
         // .child-nav-menu
         .child-nav-menu {
-            padding-left     : 2rem;
-            background-image : url("/ships/adventure/common/icon/i-dot-w.svg");
-            background-size  : 0.2rem 0.6rem;
-            background-repeat: repeat-y;
-            margin-bottom    : 2.2rem;
+            padding-left       : 2rem;
+            margin-bottom      : 2.2rem;
+            background-repeat  : repeat-y;
+            background-position: left top;
+            background-size    : 1.5px 4.5px;
+            background-image   : linear-gradient(to top, rgba(255, 255, 255, 0.8) 1.5px, #0000 1.5px);
 
             .child-menu-item-link {
                 display        : block;
@@ -404,6 +405,7 @@
             left    : 1.5rem;
             width   : 24.8rem;
             order   : 1;
+            z-index : 2;
         }
 
         // .cvNav
@@ -582,7 +584,12 @@
     height             : 9.8rem;
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    transition         : border-bottom-color 0.3s var(--customEasingOut);
+    translate          : 0 0;
+    transition         : border-bottom-color 0.3s var(--customEasingOut), translate 0.3s var(--customEasingOut);
+
+    .buttonHidden & {
+        translate: 100% 0;
+    }
 
     [data-head-color="white"] & {
         border-bottom-color: rgba(255, 255, 255, 0.4);
@@ -710,6 +717,10 @@
         border-radius   : 0 0 0.5rem 0.5rem;
         background-color: var(--color_white);
         transition      : background-color 0.3s var(--customEasingOut);
+
+        .buttonHidden & {
+            translate: 0 100%;
+        }
 
         [data-state="navOpen"] & {
             background-color: transparent;

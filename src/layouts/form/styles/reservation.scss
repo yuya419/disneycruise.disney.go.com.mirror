@@ -81,10 +81,10 @@
             &-item {
                 &.is-item-course {
                     padding-bottom     : 2.4rem;
-                    background-image   : url("/ships/adventure/common/icon/i-dot-b.svg");
-                    background-position: left bottom;
-                    background-size    : 0.42rem 0.24rem;
                     background-repeat  : repeat-X;
+                    background-position: left bottom;
+                    background-size    : 4.5px 1.5px;
+                    background-image   : linear-gradient(to left, rgb(0 45 116 / 80%) 1.5px, #0000 1.5px);
 
                     dt {
                         font-size  : 1.5rem;

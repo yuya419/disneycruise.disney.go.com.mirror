@@ -172,12 +172,12 @@
             .bar {
                 width              : 1.5rem;
                 height             : 7.4rem;
-                background-image   : url("/ships/adventure/common/icon/i-dot-b.svg");
-                background-size    : 3.5px 6.5px;
-                background-position: top left 0.58rem;
-                background-repeat  : repeat-y;
-                margin-inline      : auto;
                 clip-path          : inset(0 0 100%);
+                margin-inline      : auto;
+                background-repeat  : repeat-y;
+                background-position: center top;
+                background-size    : 1.5px 4.5px;
+                background-image   : linear-gradient(to top, rgb(0 45 116) 1.5px, #0000 1.5px);
             }
         }
 
@@ -301,6 +301,11 @@
                             font-size: 1em;
                         }
 
+                        .zero {
+                            rotate    : Y calc(180deg * var(--current, 0));
+                            transition: rotate 0.3s var(--customEasingIn);
+                        }
+
                         .val {
                             grid-area          : val;
                             font-size          : 1em;
@@ -381,14 +386,16 @@
 
                     .img {
                         will-change: transform, clip-path;
+                        height     : 100%;
                     }
 
                     img {
-                        display    : block;
-                        width      : 100%;
-                        height     : 100%;
-                        object-fit : cover;
-                        will-change: transform, clip-path;
+                        display        : block;
+                        width          : calc(100% + 1px);
+                        height         : 100%;
+                        object-position: -1px bottom;
+                        object-fit     : cover;
+                        will-change    : transform, clip-path;
                     }
                 }
 
@@ -690,10 +697,10 @@
                             display            : flex;
                             align-items        : center;
                             height             : 4.8rem;
-                            background-image   : url("/ships/adventure/common/icon/i-dot-w.svg");
-                            background-size    : 3.5px 6.5px;
-                            background-position: left;
                             background-repeat  : repeat-y;
+                            background-position: left top;
+                            background-size    : 1.5px 4px;
+                            background-image   : linear-gradient(to top, rgb(255 255 255 / 80%) 1.5px, #0000 1.5px);
 
                             .i-calendar {
                                 display    : block;
@@ -885,6 +892,10 @@
                 }
             }
 
+            .zero {
+                --current : #{$i};
+            }
+
             .is-val0#{$i} {
                 rotate    : Y 0deg !important;
                 transition: rotate 0.3s var(--customEasingOut) !important;
@@ -980,6 +991,7 @@
             .areas-outline {
                 width         : calc(100% - 30px);
                 max-width     : inherit;
+                height        : auto;
                 position      : relative;
                 margin-top    : 0;
                 opacity       : 1;

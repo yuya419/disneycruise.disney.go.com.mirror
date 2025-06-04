@@ -150,7 +150,7 @@ export default function ThemedAreas() {
                             <div className="label">
                                 <span className="ttl" lang="en">Area</span>
                                 <span className="num" lang="en">
-                                    <span>0</span>
+                                    <span className="zero">0</span>
                                     {Object.keys(topThemedAreas).map((key) => (
                                         <span key={key} className={`val is-val0${key}`}>{key}</span>
                                     ))}

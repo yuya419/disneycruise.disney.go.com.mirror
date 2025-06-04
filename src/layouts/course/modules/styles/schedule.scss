@@ -50,11 +50,13 @@
             &::before {
                 content            : "";
                 display            : block;
+                margin-inline      : auto;
+                width              : 2px;
                 height             : 100%;
-                background-image   : url("/ships/adventure/common/icon/i-dot-b.svg");
-                background-size    : 3px 6px;
-                background-position: center top;
-                background-repeat  : repeat-Y;
+                background-repeat  : repeat-y;
+                background-position: left top;
+                background-size    : 1.5px 4.5px;
+                background-image   : linear-gradient(to top, rgb(0 45 116 / 80%) 1.5px, #0000 1.5px);
             }
 
             .image {

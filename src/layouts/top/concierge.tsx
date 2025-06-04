@@ -63,7 +63,7 @@ export default function Concierge() {
             <div className="t-concierge__bg">
                 <Image src={getImagePath("top/concierge/img.jpg")} alt="コンシェルジュスイート&ステートルーム​​の内装" width={1300} height={768} priority ref={imageRef} />
             </div>
-            <GSAPToggleContainer tag="div" className="container" toggle={{ logo: true, color: null, movie: { video: "water", state: true } }}>
+            <GSAPToggleContainer tag="div" className="container" toggle={{ logo: false, color: null, movie: { video: "water", state: true } }}>
                 <div className="t-concierge__detail">
                     <div className="detail">
                         <hgroup className="t-concierge__head">

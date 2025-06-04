@@ -62,7 +62,7 @@
 
             .bar {
                 height          : 1px;
-                background-color: #DED1B8;
+                background-color: #CCBE8C;
             }
         }
 
@@ -119,11 +119,11 @@
 
         .divider {
             width              : 4rem;
-            height             : 2px;
+            height             : 1.5px;
             margin             : 4.5rem auto;
-            background-image   : linear-gradient(to right, rgba(255, 255, 255, 0.8) 2px, transparent 2px);
-            background-position: left top;
-            background-size    : 4.5px 1px;
+            background-image   : linear-gradient(to right, rgba(255, 255, 255, 0.8) 1.5px, transparent 1.5px);
+            background-position: left center;
+            background-size    : 4px 1.5px;
         }
 
         .guest {

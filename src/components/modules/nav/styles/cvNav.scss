@@ -111,8 +111,12 @@
                 column-gap : 6rem;
 
                 .divider {
-                    height     : 6.4rem;
-                    border-left: 3px dotted rgba(255, 255, 255, 0.8);
+                    width              : 2px;
+                    height             : 6.4rem;
+                    background-repeat  : repeat-y;
+                    background-position: left top;
+                    background-size    : 1.5px 4.5px;
+                    background-image   : linear-gradient(to top, rgba(255, 255, 255, 0.8) 1.5px, #0000 1.5px);
                 }
 
                 .i-calendar {
@@ -219,9 +223,7 @@
                     column-gap: 2.5rem;
 
                     .divider {
-                        width          : 2px;
-                        height         : 43px;
-                        background-size: 1px 4.5px;
+                        height: 43px;
                     }
 
                     .i-calendar {

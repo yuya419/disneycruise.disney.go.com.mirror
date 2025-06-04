@@ -44,6 +44,15 @@
     }
 }
 
+p.h-logo {
+    translate : 0 0;
+    transition: translate 0.25s var(--customEasingOut);
+
+    .buttonHidden & {
+        translate: 0 calc(-100% + -1.3rem);
+    }
+}
+
 h1.h-logo {
     translate : 0 calc(-100% + -1.3rem);
     transition: translate 0.25s var(--customEasingOut);
@@ -62,6 +71,10 @@ h1.h-logo {
 
     h1.h-logo {
         translate: 0 0;
+
+        .buttonHidden & {
+            translate: 0 calc(-100% + -1.3rem);
+        }
 
         svg {
             color: var(--color_white);

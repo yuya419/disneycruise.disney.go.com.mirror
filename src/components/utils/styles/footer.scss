@@ -74,11 +74,12 @@
 
         // &__image
         &__image {
-            margin-top       : 2.8rem;
-            padding-top      : 2.8rem;
-            background-image : url("/ships/adventure/common/icon/i-dot-w.svg");
-            background-size  : 0.6rem 0.2rem;
-            background-repeat: repeat-X;
+            margin-top          : 2.8rem;
+            padding-top         : 2.8rem;
+            background-repeat  : repeat-X;
+            background-position: left top;
+            background-size    : 4.5px 1.5px;
+            background-image   : linear-gradient(to left, rgba(255, 255, 255, 0.8) 1.5px, #0000 1.5px);
         }
 
         p {

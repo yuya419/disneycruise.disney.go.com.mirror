@@ -41,7 +41,8 @@
             }
 
             .m-headline-text {
-                display: grid;
+                display   : grid;
+                margin-top: 3.5rem;
 
                 h3 {
                     --fz      : 15;
@@ -97,7 +98,7 @@
                     }
 
                     &__body {
-                        margin-top: 3.2rem;
+                        margin-top: 2.3rem;
                     }
                 }
             }
@@ -171,7 +172,7 @@
 
             // .theme-block
             .theme-block {
-                padding      : 2.8rem 2rem 2rem;
+                padding      : 3.2rem 2rem 2rem;
                 border-radius: 0.3rem;
 
                 &+.theme-block {
@@ -179,6 +180,7 @@
                 }
 
                 .m-headline-text {
+                    margin-top: 2.5rem;
 
                     h3 {
                         --fz: 13;
@@ -200,20 +202,25 @@
 
                 .card {
                     &-list {
-                        margin-top: 2rem;
+                        margin-top: 1.5rem;
                     }
 
                     &-item {
                         padding         : 2rem 2rem 2.4rem;
                         background-color: var(--color_white);
 
+                        &__body {
+                            margin-top: 1.6rem;
+                        }
+
                         .jp {
                             --fz      : 15;
-                            margin-top: 2.4rem;
+                            margin-top: 2.1rem;
                         }
 
                         .en {
-                            --fz: 13;
+                            --fz      : 13;
+                            margin-top: 0.7rem;
                         }
 
                         .desc {

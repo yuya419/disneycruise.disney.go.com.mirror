@@ -10,7 +10,7 @@ import Content from "@/layouts/post/content2";
 export const metadata: Metadata = metaArray["news-detail"];
 
 const post = {
-    link: "post01",
+    link: "detail",
     title: "サイトをリニューアルしました。",
     date: "2025.00.00",
     cat: {

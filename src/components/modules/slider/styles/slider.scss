@@ -86,8 +86,7 @@
     // &[data-type="hero"]
     &[data-type="hero"] {
         .m-slider-item {
-            transform: translate3d(0, 0, 0);
-            position : relative;
+            position: relative;
 
             img {
                 display   : block;
@@ -96,7 +95,7 @@
                 object-fit: cover;
                 scale     : 1.1;
                 opacity   : 0;
-                transition: scale 0s ease 1s, opacity 0.3s ease 0.3s;
+                transition: scale 0s ease 1s, opacity 0s ease 0.7s;
             }
 
             figure {
@@ -109,6 +108,7 @@
                     content : "";
                     position: absolute;
                     left    : 0;
+                    z-index : 1;
                     width   : 100%;
                 }
 
@@ -131,6 +131,7 @@
                 position   : absolute;
                 right      : 1rem;
                 bottom     : 3.7rem;
+                z-index    : 2;
                 font-size  : 0.9rem;
                 font-weight: 400;
                 line-height: calc(11/9);
@@ -138,12 +139,17 @@
                 text-align : right;
             }
 
+            &.is-in-view {
+                opacity: 1 !important;
+            }
+
             &.is-snapped {
+                z-index: 2;
 
                 img {
                     scale     : 1;
                     opacity   : 1;
-                    transition: scale 1s var(--customEasingIn), opacity 0.3s var(--customEasingIn);
+                    transition: scale 1s var(--customEasingOut), opacity 0.7s var(--customEasingOut);
                 }
             }
         }
@@ -154,6 +160,7 @@
             position           : absolute;
             width              : 100%;
             bottom             : 2rem;
+            z-index            : 3;
 
             .arrowButton {
                 display: none;
@@ -171,12 +178,22 @@
         }
 
         .m-slider-item {
-            aspect-ratio: 16/9;
+            // aspect-ratio: 16/9;
+            height      : 18.8rem;
             margin-right: 1.6rem;
+
+            &:first-child:last-child {
+                margin-right: 0;
+            }
+
+            figure {
+                display: block;
+                height : 100%;
+            }
 
             img {
                 height    : 100%;
-                object-fit: contain;
+                object-fit: cover;
             }
         }
 
@@ -192,8 +209,11 @@
     // &[data-type="carousel"]
     &[data-type="carousel"] {
         .m-slider-item {
-            --size      : 33.7rem;
-            margin-right: 1.6rem;
+            --size: 33.7rem;
+
+            &:not(:last-child) {
+                margin-right: 1.6rem;
+            }
         }
 
         .card-item {
@@ -245,9 +265,10 @@
         }
 
         .dotButtons {
-            grid-area : dots;
-            display   : flex;
-            column-gap: 0.7rem;
+            grid-area      : dots;
+            display        : flex;
+            justify-content: center;
+            column-gap     : 0.7rem;
 
             .dotButton {
                 flex-shrink  : 0;

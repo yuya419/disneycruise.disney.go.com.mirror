@@ -217,12 +217,8 @@
                     transition     : color var(--t-out);
 
                     &[aria-disabled="true"] {
-                        color         : var(--theme_color_caption);
+                        opacity       : 0.25;
                         pointer-events: none;
-
-                        .arrow {
-                            background-color: var(--theme_color_caption);
-                        }
                     }
 
                     @include g.hover() {

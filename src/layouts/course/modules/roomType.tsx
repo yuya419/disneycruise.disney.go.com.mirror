@@ -105,7 +105,7 @@ export default function RoomType({ typesArray }: { typesArray: any[] }) {
                                                                 onDateClick={() => setIsModalOpen(!isModalOpen)}
                                                             />
                                                         </div>
-                                                        <form className="booking-form" method="get" data-open={isModalOpen}>
+                                                        <form action={"/ships/adventure/book/"} className="booking-form" method="get" data-open={isModalOpen}>
                                                             <div className="booking-form__inner">
                                                                 <div className="info">
                                                                     <dl className="info-item is-info-price">

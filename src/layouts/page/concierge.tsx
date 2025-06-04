@@ -247,7 +247,7 @@ export function Page() {
                                     <dl className="card-item">
                                         <dt className="card-item__head">
                                             <span className="jp">スパ＆フィットネスエリア</span>
-                                            <span className="en">Spa & Fitness Area</span>
+                                            <span className="en" lang="en">Spa & Fitness Area</span>
                                         </dt>
                                         <dd className="card-item__body">
                                             <figure>
@@ -260,7 +260,7 @@ export function Page() {
                                     <dl className="card-item">
                                         <dt className="card-item__head">
                                             <span className="jp">限定ショッピング</span>
-                                            <span className="en">Exclusive Shopping</span>
+                                            <span className="en" lang="en">Exclusive Shopping</span>
                                         </dt>
                                         <dd className="card-item__body">
                                             <figure>
@@ -273,7 +273,7 @@ export function Page() {
                                     <dl className="card-item">
                                         <dt className="card-item__head">
                                             <span className="jp">パーソナライズされたサービスの<br />レベルの向上</span>
-                                            <span className="en">Heightened Level of Personalized Service</span>
+                                            <span className="en" lang="en">Heightened Level of Personalized Service</span>
                                         </dt>
                                         <dd className="card-item__body">
                                             <figure>

@@ -69,7 +69,7 @@ const OnmHeadline02 = (props: {
                 <span className="bar is-right"></span>
             </div>
             <hgroup className="m-headline-text">
-                <Tag>{jp}</Tag>
+                <Tag dangerouslySetInnerHTML={{ __html: jp }}></Tag>
                 <p lang="en">{en}</p>
             </hgroup>
         </div>

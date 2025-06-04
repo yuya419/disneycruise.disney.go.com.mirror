@@ -188,7 +188,7 @@ export function Page() {
                                                 <figcaption dangerouslySetInnerHTML={{ __html: card.caption }}></figcaption>
                                             </figure>
                                             <span className="jp" dangerouslySetInnerHTML={{ __html: card.jp }}></span>
-                                            <span className="en" dangerouslySetInnerHTML={{ __html: card.en }}></span>
+                                            <span className="en" lang="en" dangerouslySetInnerHTML={{ __html: card.en }}></span>
                                         </dt>
                                         <dd className="card-item__body">
                                             <span className="desc" dangerouslySetInnerHTML={{ __html: card.desc }}></span>

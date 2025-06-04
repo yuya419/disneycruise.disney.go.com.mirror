@@ -190,6 +190,16 @@ const metaArray = {
             url: `${siteInfo.url}mailmagazine/`,
         },
     },
+    "404": {
+        title: "404 Not Found" + " | " + siteInfo.siteName,
+        description: "404 Not Foundを表示するページ",
+        openGraph: {
+            title: "404 Not Found" + " | " + siteInfo.siteName,
+            siteName: siteInfo.siteName,
+            description: "404 Not Foundを表示するページ",
+            url: `${siteInfo.url}/`,
+        },
+    }
 }
 
 export default metaArray;

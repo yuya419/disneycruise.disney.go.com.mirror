@@ -207,14 +207,22 @@
 
                 .current {
                     .bar {
-                        clip-path : inset(0);
-                        transition: clip-path 0.5s var(--customEasingOut) 0.5s;
+
+                        &.is-left,
+                        &.is-right {
+                            clip-path : inset(0);
+                            transition: clip-path 0.5s var(--customEasingOut) 0.5s;
+                        }
                     }
 
                     .onm {
-                        opacity   : 1;
-                        translate : 0 0;
-                        transition: opacity 0.5s var(--customEasingOut) 0.2s, translate 0.5s var(--customEasingOut) 0.2s;
+
+                        &.is-left,
+                        &.is-right {
+                            opacity   : 1;
+                            translate : 0 0;
+                            transition: opacity 0.5s var(--customEasingOut) 0.2s, translate 0.5s var(--customEasingOut) 0.2s;
+                        }
                     }
                 }
             }

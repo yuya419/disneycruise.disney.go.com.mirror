@@ -18,7 +18,7 @@
         // .m-breadcrumb
         .m-breadcrumb {
             width  : calc(100% - 24rem);
-            z-index: 2;
+            z-index: 3;
 
             ol {
                 li {
@@ -83,7 +83,8 @@
                 font-size  : calc(var(--fz)*0.1rem);
                 line-height: calc(var(--lh)/var(--fz));
                 @include g.leadingTrim(calc(var(--lh)/var(--fz)));
-                margin-top: 3rem;
+                margin-top    : 2.6rem;
+                letter-spacing: var(--letter_spacing);
             }
 
         }
@@ -129,7 +130,7 @@
                 p {
                     --fz      : 14;
                     --lh      : 24;
-                    margin-top: 2.6rem;
+                    margin-top: 2.4rem;
                 }
             }
         }
@@ -139,6 +140,10 @@
 @mixin order {
     & {
         display: grid;
+
+        &__inner {
+            display: grid;
+        }
 
         .m-headline {
             order: 1;
@@ -203,6 +208,7 @@
                 font-size  : calc(var(--fz)*0.1rem);
                 line-height: calc(var(--lh)/var(--fz));
                 @include g.leadingTrim(calc(var(--lh)/var(--fz)));
+                letter-spacing: var(--letter_spacing);
             }
 
             &__head {
@@ -279,7 +285,7 @@
                 padding: 2.4rem 2rem;
 
                 &__head {
-                    .jo {
+                    .jp {
                         --fz: 15;
                     }
 

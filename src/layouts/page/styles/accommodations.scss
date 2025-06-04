@@ -150,8 +150,9 @@
                             display: contents;
 
                             figure {
-                                display: block;
-                                height : 20rem;
+                                display   : block;
+                                // height : 20rem;
+                                height    : 18.8rem;
 
                                 img {
                                     display   : block;
@@ -310,6 +311,11 @@
                     &-el {
                         height       : 6rem;
                         border-radius: 0;
+                        border-right : none;
+
+                        &:first-child {
+                            border-left: none;
+                        }
 
                         .label {
                             font-size  : 1.3rem;
@@ -441,8 +447,8 @@
         }
 
         p {
-            font-size : 1.5rem;
-            text-align: justify;
+            font-size     : 1.5rem;
+            letter-spacing: var(--letter_spacing);
         }
 
         p.m-headline {
@@ -454,8 +460,8 @@
 
         ul {
             li {
-                font-size : 1.5rem;
-                text-align: justify;
+                font-size     : 1.5rem;
+                letter-spacing: 0;
 
                 &+li {
                     margin-top: 0.42em;
@@ -495,9 +501,10 @@
 
                 .en {
                     --fz      : 16;
-                    --lh      : 47;
+                    --lh      : 19;
                     color     : rgba($color: #272833, $alpha: 0.6);
                     margin-top: 2rem;
+                    word-break: break-word;
                 }
             }
         }
@@ -522,14 +529,19 @@
                     font-size  : calc(var(--fz)*0.1rem);
                     line-height: calc(var(--lh)/var(--fz));
                     @include g.leadingTrim(calc(var(--lh)/var(--fz)));
+                    letter-spacing: var(--letter_spacing);
                     border        : 1px solid var(--theme_color_border);
                     vertical-align: baseline;
-                    text-align    : justify;
                 }
 
                 th {
                     background-color: var(--theme_color_bg_sub);
                     padding         : 1rem 2rem;
+                    font-weight     : 500;
+
+                    &:nth-child(1) {
+                        width: 22rem;
+                    }
                 }
 
                 td {
@@ -669,12 +681,12 @@
 
                     dt,
                     dd {
-                        display    : flex;
-                        min-height : 5.5rem;
-                        font-size  : 1.5rem;
-                        line-height: calc(23/15);
-                        padding    : 1em;
-                        text-align : justify;
+                        display       : flex;
+                        min-height    : 5.5rem;
+                        font-size     : 1.5rem;
+                        line-height   : calc(23/15);
+                        padding       : 1em;
+                        letter-spacing: var(--letter_spacing);
                     }
 
                     dt {
@@ -826,7 +838,7 @@
         // &-container
         &-container {
             max-width: inherit;
-            padding  : 4.5rem 2rem;
+            padding  : 4.5rem 2.5rem;
 
             p.m-headline {
                 font-size : 1.7rem;
@@ -837,6 +849,10 @@
                 li {
                     font-size: 1.4rem;
                 }
+            }
+
+            p {
+                font-size: 1.4rem;
             }
         }
 
@@ -864,7 +880,7 @@
                     .en {
                         --fz      : 15;
                         --lh      : 18;
-                        margin-top: 2rem;
+                        margin-top: 1.6rem;
                     }
                 }
             }
@@ -897,8 +913,9 @@
                         padding         : 0.8rem 1.4rem;
                         vertical-align  : middle;
 
-                        &:nth-child(2) {
-                            width: 69%;
+                        &:nth-child(1) {
+                            width    : 10.4rem;
+                            min-width: 104px;
                         }
                     }
 
@@ -910,6 +927,8 @@
 
             // &-facilities
             &-facilities {
+                margin-top: 2.4rem;
+
                 &__head {
                     p {
                         .label {
@@ -980,6 +999,7 @@
                             width        : 100%;
                             border-right : none;
                             border-bottom: 1px solid var(--theme_color_border);
+                            padding-block: 0.8rem;
                         }
                     }
                 }

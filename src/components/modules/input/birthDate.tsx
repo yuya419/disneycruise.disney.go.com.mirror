@@ -34,6 +34,9 @@ export default function BirthDate(props: {
 }) {
     const { title, name, required } = props;
     const [selectedDate, setSelectedDate] = useState<Date | null>(null); // 選択した日付を管理
+    const today = new Date();
+    const hundredYearsAgo = new Date();
+    hundredYearsAgo.setFullYear(today.getFullYear() - 100);
 
     return (
         <dl className="form-input-box">
@@ -50,6 +53,47 @@ export default function BirthDate(props: {
                         dateFormat="yyyy/MM/dd"
                         name={name}
                         customInput={<ReadOnlyInput />} // ← ここで差し替え！
+                        showYearDropdown={false}
+                        showMonthDropdown={false}
+                        scrollableYearDropdown={false}
+                        yearDropdownItemNumber={undefined}
+                        minDate={hundredYearsAgo}
+                        maxDate={today}
+                        renderCustomHeader={({ date, changeYear, changeMonth }) => {
+                            const years = [];
+                            for (let y = today.getFullYear(); y >= hundredYearsAgo.getFullYear(); y--) {
+                                years.push(y);
+                            }
+                            const months = Array.from({ length: 12 }, (_, i) => i);
+                            return (
+                                <div className="selecter">
+                                    <div className="select">
+                                        <select value={date.getFullYear()} onChange={e => changeYear(Number(e.target.value))}>
+                                            {years.map(y => (
+                                                <option key={y} value={y}>{y}年</option>
+                                            ))}
+                                        </select>
+                                        <span className="icon">
+                                            <svg className="i-arw-t-tri">
+                                                <use xlinkHref="#i-arw-t-tri" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div className="select">
+                                        <select value={date.getMonth()} onChange={e => changeMonth(Number(e.target.value))}>
+                                            {months.map(m => (
+                                                <option key={m} value={m}>{`${m + 1}月`}</option>
+                                            ))}
+                                        </select>
+                                        <span className="icon">
+                                            <svg className="i-arw-t-tri">
+                                                <use xlinkHref="#i-arw-t-tri" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                            );
+                        }}
                     />
                     <span className="calendar">
                         <svg className="i-calendar">

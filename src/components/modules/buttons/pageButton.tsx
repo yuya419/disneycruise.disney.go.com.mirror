@@ -26,14 +26,14 @@ export default function PageButton({ pageButton }: { pageButton: PageButtonProps
                     if (!button) return null; // 安全にスキップ
                     return (
                         <div className="page-button" key={key}>
-                            <Scroll to={`${button.to}`} smooth={true} duration={500} offset={offset} className="page-button-el">
+                            <a href={`#${button.to}`} className="page-button-el">
                                 <span className="label">{button.label}</span>
                                 <span className="icon">
                                     <svg className="i-arw-r">
                                         <use xlinkHref="#i-arw-r" />
                                     </svg>
                                 </span>
-                            </Scroll>
+                            </a>
                         </div>
                     )
                 })

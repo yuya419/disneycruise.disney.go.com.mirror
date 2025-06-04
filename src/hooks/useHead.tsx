@@ -28,9 +28,9 @@ export function useHeaderHeight() {
     useEffect(() => {
         function updateDrawerButtonHeight() {
             const rect = drawerButton.current?.getBoundingClientRect();
-            const height = rect ? rect.height * -1 : 0;
-            
-            document.documentElement.style.scrollPaddingTop = `${Math.abs(height)}px`;
+            const height = rect ? rect.height : 0;
+
+            document.documentElement.style.setProperty("--header-height", `${height}px`);
         }
 
         updateDrawerButtonHeight();
@@ -38,7 +38,7 @@ export function useHeaderHeight() {
 
         return () => {
             window.removeEventListener("resize", updateDrawerButtonHeight);
-            document.documentElement.style.scrollPaddingTop = "";
+            document.documentElement.style.setProperty("--header-height", "0px");
         };
     }, [drawerButton]);
 }

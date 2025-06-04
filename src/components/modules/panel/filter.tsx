@@ -47,8 +47,7 @@ export default function Filter() {
                     <Headline design="01" hlLevel="p">出発日</Headline>
                     <div className="form-item__input">
                         <label className="input-item">
-                            {/* <input type="text" name="date" className="input" /> */}
-                            <Datepicker selectedDate={null} onChange={() => {}} />
+                            <Datepicker />
                             <span className="icon">
                                 <svg className="i-calendar">
                                     <use href="#i-calendar"></use>
@@ -63,7 +62,7 @@ export default function Filter() {
                         <dl className="input-item">
                             <dt>大人</dt>
                             <dd>
-                                <button type='button' className="minus" onClick={() => handleDecrement('adult')}>-</button>
+                                <button type='button' className="minus" onClick={() => handleDecrement('adult')} disabled={values.adult === 0}>-</button>
                                 <input type="text" name="adult" value={values.adult} onChange={(e) => handleValueChange('adult', Number(e.target.value))} className='input' disabled />
                                 <button type='button' className="plus" onClick={() => handleIncrement('adult')}>+</button>
                             </dd>
@@ -71,7 +70,7 @@ export default function Filter() {
                         <dl className="input-item">
                             <dt>子供<span>2歳〜12歳</span></dt>
                             <dd>
-                                <button type='button' className="minus" onClick={() => handleDecrement('child')}>-</button>
+                                <button type='button' className="minus" onClick={() => handleDecrement('child')} disabled={values.child === 0}>-</button>
                                 <input type="text" name="child" value={values.child} onChange={(e) => handleValueChange('child', Number(e.target.value))} className='input' disabled />
                                 <button type='button' className="plus" onClick={() => handleIncrement('child')}>+</button>
                             </dd>

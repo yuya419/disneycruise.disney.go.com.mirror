@@ -38,11 +38,11 @@
         cursor          : text;
 
         @include g.hover {
-            outline: 1px solid var(--theme_color_border);
+            outline: 1px solid var(--theme_color_main);
         }
 
         &:focus {
-            outline: 1px solid var(--theme_color_border);
+            outline: 1px solid var(--theme_color_main);
         }
 
         @include g.media(md) {
@@ -64,11 +64,11 @@
         line-height     : calc(34/15);
 
         @include g.hover {
-            outline: 1px solid var(--theme_color_border);
+            outline: 1px solid var(--theme_color_main);
         }
 
         &:focus {
-            outline: 1px solid var(--theme_color_border);
+            outline: 1px solid var(--theme_color_main);
         }
 
         @include g.media(md) {
@@ -93,11 +93,11 @@
         pointer-events  : all;
 
         @include g.hover {
-            outline: 1px solid var(--theme_color_border);
+            outline: 1px solid var(--theme_color_main);
         }
 
         &:focus {
-            outline: 1px solid var(--theme_color_border);
+            outline: 1px solid var(--theme_color_main);
         }
 
         @include g.media(md) {
@@ -149,11 +149,11 @@
             cursor          : pointer;
 
             @include g.hover {
-                outline: 1px solid var(--theme_color_border);
+                outline: 1px solid var(--theme_color_main);
             }
 
             &:focus {
-                outline: 1px solid var(--theme_color_border);
+                outline: 1px solid var(--theme_color_main);
             }
 
             @include g.media(md) {
@@ -165,8 +165,8 @@
             &::before,
             &::after {
                 content         : "";
-                width           : 1.6rem;
-                height          : 1.6rem;
+                width           : 1.4rem;
+                height          : 1.4rem;
                 border-radius   : 50%;
                 border          : 1px solid var(--theme_color_border);
                 background-color: var(--color_white);
@@ -622,8 +622,11 @@
 // roomType
 .form-input-roomType {
     .form-input-content {
-        gap: 0.8rem;
         @include twoColumn();
+
+        & {
+            gap: 0.8rem;
+        }
 
         @include g.media(md) {
             display: block;
@@ -686,6 +689,10 @@
                 color           : var(--color_white);
                 background-color: var(--theme_color_caption);
             }
+        }
+
+        @include g.media(md) {
+            height: 5.4rem;
         }
     }
 

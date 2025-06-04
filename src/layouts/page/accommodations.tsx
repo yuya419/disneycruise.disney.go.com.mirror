@@ -22,10 +22,10 @@ export function Page() {
   const { getImagePath } = helper();
   const [currentTab, setCurrentTab] = useState("room01");
   const [modalId, setModalId] = useState<string | null>(null); // モーダルの状態を管理
-  const roomRef = useRef<HTMLDivElement>(null);
+  const roomSelectorRefs = [useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null)]; // 2つのセレクター用の参照を作成
+  const sec01Ref = useRef<HTMLDivElement>(null);
   const [isModalOpen, setIsModalOpen] = useState(false); // モーダルの開閉状態を管理
   const { overlay } = useRefContext();
-  const pathName = usePathname();
 
   const breadcrumbItems = [
     { label: "客室案内", href: "/accommodations/", },
@@ -72,6 +72,27 @@ export function Page() {
     setIsModalOpen(false);
   };
 
+  // 初期タブが画面外にある場合、横スクロールして表示
+  const scrollToInitialTab = (type: string) => {
+    roomSelectorRefs.forEach(ref => {
+      const track = ref.current;
+      const target = track?.querySelector('[data-tab="' + type + '"]') as HTMLButtonElement | null;
+      if (target && track) {
+        const targetRect = target.getBoundingClientRect();
+        const trackRect = track.getBoundingClientRect();
+        if (targetRect.right > trackRect.right || targetRect.left < trackRect.left) {
+          const scrollLeft =
+            target.offsetLeft
+            - track.offsetLeft
+            - (trackRect.width / 2)
+            + (targetRect.width / 2)
+            + track.scrollLeft;
+          track.scrollTo({ left: scrollLeft, behavior: "smooth" });
+        }
+      }
+    });
+  };
+
   // モーダルの開閉状態を管理するuseEffect
   useEffect(() => {
     document.addEventListener("keydown", (event) => (event.key === "Escape") ? setIsModalOpen(false) : null);
@@ -93,32 +114,52 @@ export function Page() {
       const typeParam = urlParams.get("type");
       if (typeParam && ["room01", "room02", "room03", "room04"].includes(typeParam)) {
         setCurrentTab(typeParam);
+        setTimeout(() => {
+          scrollToInitialTab(typeParam);
+        }, 100);
       }
     }
   }, []);
+
+  useEffect(() => {
+    scrollToInitialTab(currentTab);
+  }, [currentTab]);
+
+
+  /**
+   * @name RoomSlector
+   * @description 客室セレクター
+   */
+  const RoomSlector = ({ selectorRef }: { selectorRef?: React.RefObject<HTMLDivElement | null> }) => {
+
+    // タブ切り替え
+    const handleTabClick = (tab: string) => {
+      setCurrentTab(tab);
+
+      // アンカーリンクと同じ挙動（スクロール）
+      setTimeout(() => {
+        const target = sec01Ref.current;
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 200);
+    };
+
+    return (
+      <div className="room-selector" ref={selectorRef}>
+        <button type="button" className={`room-selector-el${currentTab === "room01" ? " isSelect" : ""}`} data-tab="room01" onClick={() => handleTabClick("room01")}><span className="label">コンシェルジュ<br />スイート</span></button>
+        <button type="button" className={`room-selector-el${currentTab === "room02" ? " isSelect" : ""}`} data-tab="room02" onClick={() => handleTabClick("room02")}><span className="label">ベランダ</span></button>
+        <button type="button" className={`room-selector-el${currentTab === "room03" ? " isSelect" : ""}`} data-tab="room03" onClick={() => handleTabClick("room03")}><span className="label">オーシャンビュー</span></button>
+        <button type="button" className={`room-selector-el${currentTab === "room04" ? " isSelect" : ""}`} data-tab="room04" onClick={() => handleTabClick("room04")}><span className="label">インサイド</span></button>
+      </div>
+    )
+  }
 
   /**
    * @name Room
    * @description 客室セクション
    */
-  const Room = ({ currentTab, setCurrentTab }: { currentTab: string, setCurrentTab: (tab: string) => void }) => {
-
-    // タブ切り替え
-    const handleTabClick = (tab: string) => {
-      setCurrentTab(tab);
-    };
-
-    const RoomSlector = () => {
-
-      return (
-        <div className="room-selector">
-          <button type="button" className={`room-selector-el${currentTab === "room01" ? " isSelect" : ""}`} data-tab="room01" onClick={() => handleTabClick("room01")}><span className="label">コンシェルジュ<br />スイート</span></button>
-          <button type="button" className={`room-selector-el${currentTab === "room02" ? " isSelect" : ""}`} data-tab="room02" onClick={() => handleTabClick("room02")}><span className="label">ベランダ</span></button>
-          <button type="button" className={`room-selector-el${currentTab === "room03" ? " isSelect" : ""}`} data-tab="room03" onClick={() => handleTabClick("room03")}><span className="label">オーシャンビュー</span></button>
-          <button type="button" className={`room-selector-el${currentTab === "room04" ? " isSelect" : ""}`} data-tab="room04" onClick={() => handleTabClick("room04")}><span className="label">インサイド</span></button>
-        </div>
-      )
-    }
+  const Room = ({ currentTab }: { currentTab: string }) => {
 
     const RoomCards = (props: {
       cardItems: {
@@ -135,7 +176,7 @@ export function Page() {
             <dt className="card-item__head">
               <figure>
                 <Image src={getImagePath(item.src)} alt={item.name} width={334} height={200} />
-                <figcaption dangerouslySetInnerHTML={{ __html: item.caption }}></figcaption>
+                {item.caption && <figcaption dangerouslySetInnerHTML={{ __html: item.caption }}></figcaption>}
               </figure>
               <span className="name" dangerouslySetInnerHTML={{ __html: item.name }}></span>
             </dt>
@@ -195,11 +236,7 @@ export function Page() {
     }
 
     return (
-      <div className="room" ref={roomRef}>
-        <RoomSlector />
-        <RoomContent />
-        <RoomSlector />
-      </div>
+      <RoomContent />
     )
   }
 
@@ -585,13 +622,17 @@ export function Page() {
           <GSAPToggleContainer tag="div" className="l-has-aside-container" toggle={{ logo: false, color: "blue" }}>
             <main className="l-main">
               <article className="l-article">
-                <section id="sec01" className="p-accommodations-section">
+                <section id="sec01" className="p-accommodations-section" ref={sec01Ref}>
                   <OnmHeadline01 hlLevel="h2" jp="客室タイプ" en={`Staterooms`} />
                   <div className="accommodations-block">
                     <div className="lead">
                       <p>以下の4つのカテゴリーから、<br className="nopc" />あなたにぴったりの素敵な客室をお選びいただけます。</p>
                     </div>
-                    <Room currentTab={currentTab} setCurrentTab={setCurrentTab} />
+                    <div className="room">
+                      <RoomSlector selectorRef={roomSelectorRefs[0]} />
+                      <Room currentTab={currentTab} />
+                      <RoomSlector selectorRef={roomSelectorRefs[1]} />
+                    </div>
                   </div>
                 </section>
                 <section id="sec02" className="p-accommodations-section">

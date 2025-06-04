@@ -6,7 +6,7 @@
 import { NotoSansJP, PhilosopherFont } from "@/libs/font";
 import "@/assets/styles/style.scss";
 
-import { use, useState } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { RefProvider } from "@/hooks/useRefContext";
 import Header from "@/components/utils/header";
@@ -26,9 +26,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
   return (
     <html lang="ja">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+      </head>
       <body className={`${NotoSansJP.variable} ${PhilosopherFont.variable}`} data-head-color={isColor}>
         <RefProvider>
-          <LoadingScreen />
+          {/* <LoadingScreen /> */}
           <Layout
             children={children}
             pathname={pathname}

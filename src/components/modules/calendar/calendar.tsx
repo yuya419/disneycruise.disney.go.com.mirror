@@ -50,12 +50,39 @@ export default function BookingCalendar({ onDateClick }: { onDateClick: () => vo
                 { date: "2025-04-27", avail: true, price: "109,800" },
                 { date: "2025-04-28", avail: true, price: "109,800" },
                 { date: "2025-04-29", avail: true, price: "109,800" },
-                { date: "2025-04-30", avail: true, price: "109,800" },
+                { date: "2025-04-30", avail: false, price: "109,800" },
             ],
             5: [
+                { date: "2025-05-01", avail: true, price: "109,800" },
+                { date: "2025-05-02", avail: false, price: "109,800" },
+                { date: "2025-05-03", avail: true, price: "109,800" },
+                { date: "2025-05-04", avail: true, price: "109,800" },
+                { date: "2025-05-05", avail: false, price: "109,800" },
+                { date: "2025-05-06", avail: true, price: "109,800" },
+                { date: "2025-05-07", avail: false, price: "109,800" },
+                { date: "2025-05-08", avail: true, price: "109,800" },
+                { date: "2025-05-09", avail: true, price: "109,800" },
                 { date: "2025-05-10", avail: true, price: "109,800" },
-                { date: "2025-05-11", avail: false, price: "109,800" },
+                { date: "2025-05-11", avail: true, price: "109,800" },
                 { date: "2025-05-12", avail: true, price: "109,800" },
+                { date: "2025-05-13", avail: true, price: "109,800" },
+                { date: "2025-05-14", avail: true, price: "109,800" },
+                { date: "2025-05-15", avail: true, price: "109,800" },
+                { date: "2025-05-16", avail: true, price: "109,800" },
+                { date: "2025-05-17", avail: true, price: "109,800" },
+                { date: "2025-05-18", avail: true, price: "109,800" },
+                { date: "2025-05-19", avail: true, price: "109,800" },
+                { date: "2025-05-20", avail: true, price: "109,800" },
+                { date: "2025-05-21", avail: false, price: "109,800" },
+                { date: "2025-05-22", avail: true, price: "109,800" },
+                { date: "2025-05-23", avail: true, price: "109,800" },
+                { date: "2025-05-24", avail: true, price: "109,800" },
+                { date: "2025-05-25", avail: true, price: "109,800" },
+                { date: "2025-05-26", avail: true, price: "109,800" },
+                { date: "2025-05-27", avail: true, price: "109,800" },
+                { date: "2025-05-28", avail: true, price: "109,800" },
+                { date: "2025-05-29", avail: true, price: "109,800" },
+                { date: "2025-05-30", avail: true, price: "109,800" },
             ],
             6: [
                 { date: "2025-06-10", avail: true, price: "109,800" },
@@ -177,7 +204,6 @@ export default function BookingCalendar({ onDateClick }: { onDateClick: () => vo
                         className={`day-button`}
                         onClick={() => {
                             if (dayData?.avail) {
-                                console.log(onDateClick());
                                 onDateClick();
                             }
                         }}

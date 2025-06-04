@@ -10,7 +10,7 @@ import Content from "@/layouts/post/content";
 export const metadata: Metadata = metaArray["feature-detail"];
 
 const post = {
-    link: "post01",
+    link: "detail",
     title: "ピクサー映画『ウォーリー』の愛らしいロボットたちが贈る、愛と切なさが詰まった感動の物語",
     date: "2025.00.00",
     cat: {

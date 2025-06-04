@@ -169,6 +169,10 @@
                         filter: brightness(0.9);
                     }
 
+                    &:disabled {
+                        filter: opacity(0.5);
+                    }
+
                     &::before,
                     &::after {
                         position        : absolute;

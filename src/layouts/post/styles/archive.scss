@@ -6,140 +6,138 @@
 /* __10: 共通設定 */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin"as g;
+@use "@/assets/styles/_mixin" as g;
 
 @mixin post() {
-    .post {
-        &-list {
-            display              : grid;
-            grid-template-columns: repeat(2, 1fr);
-            column-gap           : 6rem;
-            border-top           : 1px solid var(--theme_color_border);
+  .post {
+    &-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 6rem;
+      border-top: 1px solid var(--theme_color_border);
 
-            @include g.media(md) {
-                display: block;
-            }
-        }
-
-        &-content {
-            column-gap: 2.8rem;
-
-            @include g.media(md) {
-                column-gap : 1.6rem;
-                align-items: flex-start;
-            }
-        }
-
-        &-item {
-            .thumbnail {
-                flex-shrink: 0;
-            }
-        }
-
-        &-link {
-            color        : var(--theme_color_text);
-            padding-block: 2.4rem;
-            border-bottom: 1px solid var(--theme_color_border);
-
-            .meta {
-                row-gap: 0.4rem;
-            }
-
-            .title {
-                font-size  : 1.5rem;
-                line-height: calc(25/15);
-                @include g.leadingTrim(calc(25/15));
-                margin-bottom: 2rem;
-
-                @include g.media(md) {
-                    font-size  : 1.4rem;
-                    line-height: calc(24/14);
-                    @include g.leadingTrim(calc(24/14));
-                    margin-bottom: 1.6rem;
-                }
-
-                .clamp {
-                    display           : -webkit-box;
-                    -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 3;
-                    overflow          : hidden;
-                    width             : 100%;
-                }
-            }
-
-            .cats {
-                .cat {
-                    color: var(--theme_color_main);
-                }
-            }
-        }
+      @include g.media(md) {
+        display: block;
+      }
     }
+
+    &-content {
+      column-gap: 2.8rem;
+
+      @include g.media(md) {
+        column-gap: 1.6rem;
+        align-items: flex-start;
+      }
+    }
+
+    &-item {
+      .thumbnail {
+        flex-shrink: 0;
+      }
+    }
+
+    &-link {
+      color: var(--theme_color_text);
+      padding-block: 2.4rem;
+      border-bottom: 1px solid var(--theme_color_border);
+
+      .meta {
+        row-gap: 0.4rem;
+      }
+
+      .title {
+        font-size: 1.5rem;
+        line-height: calc(25 / 15);
+        @include g.leadingTrim(calc(25 / 15));
+        margin-bottom: 2rem;
+
+        @include g.media(md) {
+          font-size: 1.4rem;
+          line-height: calc(24 / 14);
+          @include g.leadingTrim(calc(24 / 14));
+          margin-bottom: 1.6rem;
+        }
+
+        .clamp {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3;
+          overflow: hidden;
+          width: 100%;
+        }
+      }
+
+      .cats {
+        .cat {
+          color: var(--theme_color_main);
+        }
+      }
+    }
+  }
 }
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .arc-post {
-    position: relative;
-    @include g.container();
+  position: relative;
+  @include g.container();
 
-    .l-post {
-        margin-top: 7rem;
+  .l-post {
+    margin-top: 7rem;
 
-        .post-feature {
-            @include post();
+    .post-feature {
+      @include post();
 
-            .thumbnail {
-                width : 11.5rem;
-                height: 16.1rem;
-            }
-        }
-
-        .post-news {
-            @include post();
-
-            .thumbnail {
-                width : 11.5rem;
-                height: 11.5rem;
-            }
-        }
-
-        .post-pickup {
-
-            &+.post-feature,
-            &+.post-news {
-                margin-top: 8rem;
-            }
-        }
+      .thumbnail {
+        width: 11.5rem;
+        height: 16.1rem;
+      }
     }
+
+    .post-news {
+      @include post();
+
+      .thumbnail {
+        width: 11.5rem;
+        height: 11.5rem;
+      }
+    }
+
+    .post-pickup {
+      & + .post-feature,
+      & + .post-news {
+        margin-top: 8rem;
+      }
+    }
+  }
 }
 
 // sp
 @include g.media(md) {
-    .arc-post {
-        .l-post {
-            margin-top: 4.8rem;
+  .arc-post {
+    .l-post {
+      margin-top: 4.8rem;
 
-            .post-feature {
-                .thumbnail {
-                    width : 7rem;
-                    height: 9.8rem;
-                }
-            }
-
-            .post-news {
-                .thumbnail {
-                    width : 10rem;
-                    height: 10rem;
-                }
-            }
-
-            .post-pickup {
-
-                &+.post-feature,
-                &+.post-news {
-                    margin-top: 6rem;
-                }
-            }
+      .post-feature {
+        .thumbnail {
+          width: 7rem;
+          height: 9.8rem;
         }
+      }
+
+      .post-news {
+        .thumbnail {
+          width: 10rem;
+          height: 10rem;
+        }
+      }
+
+      .post-pickup {
+        & + .post-feature,
+        & + .post-news {
+          margin-top: 6rem;
+        }
+      }
     }
+  }
 }

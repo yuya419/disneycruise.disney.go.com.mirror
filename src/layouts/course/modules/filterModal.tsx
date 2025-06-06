@@ -3,59 +3,65 @@
  * @description 「条件で絞り込む」ボタンのコンポーネント
  */
 "use client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import Filter from "@/components/modules/panel/filter";
 import { useRefContext } from "@/hooks/useRefContext";
 import "./styles/filterModal.scss";
 
 export default function FilterModal() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const { overlay } = useRefContext();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { overlay } = useRefContext();
 
-    const toggleModal = () => {
-        setIsModalOpen(!isModalOpen);
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.dataset.state = "modalOpen";
+    } else {
+      document.body.dataset.state = "";
+    }
+
+    overlay.current?.addEventListener("click", () => setIsModalOpen(false));
+
+    return () => {
+      overlay.current?.removeEventListener("click", () =>
+        setIsModalOpen(false),
+      );
     };
+  }, [isModalOpen]);
 
-    useEffect(() => {
-        if (isModalOpen) {
-            document.body.dataset.state = "modalOpen";
-        } else {
-            document.body.dataset.state = "";
-        }
-
-        overlay.current?.addEventListener("click", () => setIsModalOpen(false));
-
-        return () => {
-            overlay.current?.removeEventListener("click", () => setIsModalOpen(false));
-        };
-    }, [isModalOpen]);
-
-    return (
-        <>
-            <div className="filterButton">
-                <button type="button" className="filterButton-el" onClick={toggleModal}>
-                    <span className="icon">
-                        <svg className="i-search">
-                            <use xlinkHref="#i-search"></use>
-                        </svg>
-                    </span>
-                    <span className="label">条件で絞り込む</span>
-                </button>
-            </div>
-            <div className="filterModal" data-open={isModalOpen}>
-                <div className="filterModal__head">
-                    <span className="icon">
-                        <svg className="i-search">
-                            <use href="#i-search"></use>
-                        </svg>
-                    </span>
-                    <span className="label">条件で絞り込む</span>
-                </div>
-                <div className="filterModal__detail">
-                    <Filter />
-                </div>
-                <button type="button" className="close-button" onClick={toggleModal}></button>
-            </div>
-        </>
-    )
+  return (
+    <>
+      <div className="filterButton">
+        <button type="button" className="filterButton-el" onClick={toggleModal}>
+          <span className="icon">
+            <svg className="i-search">
+              <use xlinkHref="#i-search"></use>
+            </svg>
+          </span>
+          <span className="label">条件で絞り込む</span>
+        </button>
+      </div>
+      <div className="filterModal" data-open={isModalOpen}>
+        <div className="filterModal__head">
+          <span className="icon">
+            <svg className="i-search">
+              <use href="#i-search"></use>
+            </svg>
+          </span>
+          <span className="label">条件で絞り込む</span>
+        </div>
+        <div className="filterModal__detail">
+          <Filter />
+        </div>
+        <button
+          type="button"
+          className="close-button"
+          onClick={toggleModal}
+        ></button>
+      </div>
+    </>
+  );
 }

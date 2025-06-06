@@ -19,17 +19,46 @@ import { useHeadColor } from "@/hooks/useHead";
 import { useRefContext } from "@/hooks/useRefContext";
 import LoadingScreen from "@/components/modules/loading/loadingScreen";
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
-
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   const pathname = usePathname();
   const [isColor, setIsColor] = useState<"white" | "blue" | null>(null);
 
   return (
-    <html lang="ja">
+    <html
+      lang="ja"
+      prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#"
+    >
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        {/* GTM script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PNSBK2Z5');`,
+          }}
+        />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+        />
       </head>
-      <body className={`${NotoSansJP.variable} ${PhilosopherFont.variable}`} data-head-color={isColor}>
+      <body
+        className={`${NotoSansJP.variable} ${PhilosopherFont.variable}`}
+        data-head-color={isColor}
+      >
+        {/* GTM noscript */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-PNSBK2Z5"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
         <RefProvider>
           {/* <LoadingScreen /> */}
           <Layout
@@ -47,7 +76,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
  * @name Layout
  * @description 共通レイアウト
  */
-function Layout({ children, pathname, isColor, setIsColor, }: {
+function Layout({
+  children,
+  pathname,
+  isColor,
+  setIsColor,
+}: {
   children: React.ReactNode;
   pathname: string;
   isColor: "white" | "blue" | null;
@@ -65,9 +99,9 @@ function Layout({ children, pathname, isColor, setIsColor, }: {
       {children}
       <Footer />
       <DrawerNav />
-      {pathname !== "/book/" && pathname !== "/book/confirm/" && pathname !== "/book/complete/" && (
-        <RequestButton />
-      )}
+      {pathname !== "/book/" &&
+        pathname !== "/book/confirm/" &&
+        pathname !== "/book/complete/" && <RequestButton />}
       <Bg />
       <Symbol />
       <div className="overlay" ref={overlay}></div>

@@ -10,9 +10,9 @@ import { ThemedAreas } from "@/layouts/page/page";
 export const metadata: Metadata = metaArray["themed-areas"];
 
 export default function Page() {
-    return (
-        <div className="page">
-            <ThemedAreas />
-        </div>
-    );
+  return (
+    <div className="page">
+      <ThemedAreas />
+    </div>
+  );
 }

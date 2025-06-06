@@ -13,13 +13,13 @@ import { Page as Qa } from "./qa";
 import { Page as NotFound } from "./404";
 
 export {
-    ThemedAreas,
-    Entertainment,
-    Dining,
-    Accommodations,
-    KidsClubs,
-    SpaLoungesBar,
-    Concierge,
-    Qa,
-    NotFound,
-}
+  ThemedAreas,
+  Entertainment,
+  Dining,
+  Accommodations,
+  KidsClubs,
+  SpaLoungesBar,
+  Concierge,
+  Qa,
+  NotFound,
+};

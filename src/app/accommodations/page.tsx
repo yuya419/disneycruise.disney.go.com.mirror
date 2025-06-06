@@ -10,7 +10,5 @@ import { Accommodations } from "@/layouts/page/page";
 export const metadata: Metadata = metaArray["accommodations"];
 
 export default function Page() {
-    return (
-        <Accommodations />
-    );
+  return <Accommodations />;
 }

@@ -5,7 +5,4 @@
 import Archive from "./archive";
 import Single from "./single";
 
-export {
-    Archive,
-    Single,
-};
+export { Archive, Single };

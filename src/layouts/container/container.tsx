@@ -6,13 +6,7 @@
 import "./styles/container.scss";
 
 function HasAsideContainer({ children }: { children: React.ReactNode }) {
-    return (
-        <div className="l-has-aside-container">
-            {children}
-        </div>
-    )
+  return <div className="l-has-aside-container">{children}</div>;
 }
 
-export {
-    HasAsideContainer
-}
+export { HasAsideContainer };

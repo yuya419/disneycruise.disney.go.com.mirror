@@ -7,161 +7,157 @@
 /* __20: p-entertainment-section */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin"as g;
-@use "./init"as i;
+@use "@/assets/styles/_mixin" as g;
+@use "./init" as i;
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .p-entertainment {
-    @include i.init();
+  @include i.init();
 
-    &-section {
+  &-section {
+    // .entertainment-block
+    .entertainment-block {
+      margin-top: 4rem;
 
-        // .entertainment-block
-        .entertainment-block {
-            margin-top: 4rem;
+      @include i.order();
 
-            @include i.order();
-
-            @include i.caption();
-        }
-
-        // message
-        .message {
-            background-color: var(--theme_color_bg_sub);
-            border-radius   : 0.6rem;
-            padding         : 2rem 4rem;
-
-            .accent {
-                display              : grid;
-                grid-template-columns: 1fr auto 1fr;
-                column-gap           : 1.3rem;
-
-                &.is-top {
-                    align-items: flex-end;
-
-                    .bar {
-                        margin-bottom: 0.2rem;
-                    }
-                }
-
-                &.is-bottom {
-                    align-items: flex-start;
-
-                    .onm {
-                        scale: 1 -1;
-                    }
-
-                    .bar {
-                        margin-top: 0.2rem;
-                    }
-                }
-
-                .bar {
-                    height          : 1px;
-                    background-color: #DED1B8;
-                }
-
-                .onm {
-                    display: block;
-                    width  : 2.3rem;
-                    height : 1.8rem;
-                }
-            }
-
-            // &-box
-            &-box {
-                margin-block: 3.6rem;
-            }
-
-            // &__head
-            &__head {
-                text-align: center;
-
-                h2 {
-                    --fz       : 16;
-                    --lh       : 31;
-                    font-size  : calc(var(--fz)*0.1rem);
-                    line-height: calc(var(--lh)/var(--fz));
-                    @include g.leadingTrim(calc(var(--lh)/var(--fz)));
-                    color: var(--theme_color_main);
-                }
-
-                p {
-                    --fz      : 35;
-                    --lh      : 35;
-                    color     : var(--theme_color_sub);
-                    margin-top: 1.6rem;
-                }
-            }
-
-            // &__detail
-            &__detail {
-                margin-top: 3rem;
-
-                p {
-                    --lh      : 30;
-                    text-align: center;
-                }
-            }
-        }
+      @include i.caption();
     }
+
+    // message
+    .message {
+      background-color: var(--theme_color_bg_sub);
+      border-radius: 0.6rem;
+      padding: 2rem 4rem;
+
+      .accent {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        column-gap: 1.3rem;
+
+        &.is-top {
+          align-items: flex-end;
+
+          .bar {
+            margin-bottom: 0.2rem;
+          }
+        }
+
+        &.is-bottom {
+          align-items: flex-start;
+
+          .onm {
+            scale: 1 -1;
+          }
+
+          .bar {
+            margin-top: 0.2rem;
+          }
+        }
+
+        .bar {
+          height: 1px;
+          background-color: #ded1b8;
+        }
+
+        .onm {
+          display: block;
+          width: 2.3rem;
+          height: 1.8rem;
+        }
+      }
+
+      // &-box
+      &-box {
+        margin-block: 3.6rem;
+      }
+
+      // &__head
+      &__head {
+        text-align: center;
+
+        h2 {
+          --fz: 16;
+          --lh: 31;
+          font-size: calc(var(--fz) * 0.1rem);
+          line-height: calc(var(--lh) / var(--fz));
+          @include g.leadingTrim(calc(var(--lh) / var(--fz)));
+          color: var(--theme_color_main);
+        }
+
+        p {
+          --fz: 35;
+          --lh: 35;
+          color: var(--theme_color_sub);
+          margin-top: 1.6rem;
+        }
+      }
+
+      // &__detail
+      &__detail {
+        margin-top: 3rem;
+
+        p {
+          --lh: 30;
+          text-align: center;
+        }
+      }
+    }
+  }
 }
 
 // sp
 @include g.media(md) {
-    .p-entertainment {
+  .p-entertainment {
+    &-section {
+      // .entertainment-block
+      .entertainment-block {
+        margin-top: 3.2rem;
+      }
 
-        &-section {
+      // message
+      .message {
+        border-radius: 0.5rem;
+        padding: 1.6rem 2.6rem;
 
-            // .entertainment-block
-            .entertainment-block {
-                margin-top: 3.2rem;
-            }
+        .accent {
+          column-gap: 0;
 
-            // message
-            .message {
-                border-radius: 0.5rem;
-                padding      : 1.6rem 2.6rem;
-
-                .accent {
-                    column-gap: 0;
-
-                    .onm {
-                        width : 3.6rem;
-                        height: 1.7rem;
-                    }
-                }
-
-                // &-box
-                &-box {
-                    margin-block: 2rem;
-                }
-
-                // &__head
-                &__head {
-
-                    h2 {
-                        --fz: 13;
-                    }
-
-                    p {
-                        --fz      : 29;
-                        --lh      : 30;
-                        margin-top: 1.6rem;
-                    }
-                }
-
-                // &__detail
-                &__detail {
-                    margin-top: 2.4rem;
-
-                    p {
-                        --lh      : 26;
-                        text-align: left;
-                    }
-                }
-            }
+          .onm {
+            width: 3.6rem;
+            height: 1.7rem;
+          }
         }
+
+        // &-box
+        &-box {
+          margin-block: 2rem;
+        }
+
+        // &__head
+        &__head {
+          h2 {
+            --fz: 13;
+          }
+
+          p {
+            --fz: 29;
+            --lh: 30;
+            margin-top: 1.6rem;
+          }
+        }
+
+        // &__detail
+        &__detail {
+          margin-top: 2.4rem;
+
+          p {
+            --lh: 26;
+            text-align: left;
+          }
+        }
+      }
     }
+  }
 }

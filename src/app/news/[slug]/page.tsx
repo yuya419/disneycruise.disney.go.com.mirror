@@ -10,24 +10,23 @@ import Content from "@/layouts/post/content2";
 export const metadata: Metadata = metaArray["news-detail"];
 
 const post = {
-    link: "detail",
-    title: "サイトをリニューアルしました。",
-    date: "2025.00.00",
-    cat: {
-        "cat01": { name: "カテゴリー", },
-    },
+  link: "detail",
+  title: "サイトをリニューアルしました。",
+  date: "2025.00.00",
+  cat: {
+    cat01: { name: "カテゴリー" },
+  },
 };
 
 const prevnext = {
-    prev: "detail",
-    next: ""
+  prev: "detail",
+  next: "",
 };
 
 export default function Page() {
-
-    return (
-        <main className="single">
-            <Content type="news" post={post} prevnext={prevnext} />
-        </main>
-    );
+  return (
+    <main className="single">
+      <Content type="news" post={post} prevnext={prevnext} />
+    </main>
+  );
 }

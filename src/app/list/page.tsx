@@ -10,9 +10,9 @@ import { Archive } from "@/layouts/course/course";
 export const metadata: Metadata = metaArray["list"];
 
 export default function Page() {
-    return (
-        <main className="archive">
-            <Archive />
-        </main>
-    );
+  return (
+    <main className="archive">
+      <Archive />
+    </main>
+  );
 }

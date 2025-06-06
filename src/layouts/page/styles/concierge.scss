@@ -7,39 +7,36 @@
 /* __20: p-concierge-section */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin"as g;
-@use "./init"as i;
+@use "@/assets/styles/_mixin" as g;
+@use "./init" as i;
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .p-concierge {
-    @include i.init();
+  @include i.init();
 
-    &-section {
+  &-section {
+    // .concierge-block
+    .concierge-block {
+      margin-top: 4rem;
 
-        // .concierge-block
-        .concierge-block {
-            margin-top: 4rem;
+      @include i.order();
 
-            @include i.order();
+      @include i.caption();
 
-            @include i.caption();
-            
-            @include i.card(center);
-        }
+      @include i.card(center);
     }
+  }
 }
 
 // sp
 @include g.media(md) {
-    .p-concierge {
-
-        &-section {
-
-            // .concierge-block
-            .concierge-block {
-                margin-top: 3.2rem;
-            }
-        }
+  .p-concierge {
+    &-section {
+      // .concierge-block
+      .concierge-block {
+        margin-top: 3.2rem;
+      }
     }
+  }
 }

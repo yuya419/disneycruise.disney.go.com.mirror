@@ -7,30 +7,30 @@
 /* __20: room-modal */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin"as g;
-@use "./init"as i;
+@use "@/assets/styles/_mixin" as g;
+@use "./init" as i;
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .p-404 {
-    position: relative;
-    @include g.container();
+  position: relative;
+  @include g.container();
 
-    p {
-        font-size   : 1.6rem;
-        line-height : calc(30/16);
-        text-align  : center;
-        margin-block: 6.4rem;
-    }
+  p {
+    font-size: 1.6rem;
+    line-height: calc(30 / 16);
+    text-align: center;
+    margin-block: 6.4rem;
+  }
 }
 
 // sp
 @include g.media(md) {
-    .p-404 {
-        p {
-            font-size   : 1.5rem;
-            line-height : calc(22/15);
-            margin-block: 4.8rem;
-        }
+  .p-404 {
+    p {
+      font-size: 1.5rem;
+      line-height: calc(22 / 15);
+      margin-block: 4.8rem;
     }
+  }
 }

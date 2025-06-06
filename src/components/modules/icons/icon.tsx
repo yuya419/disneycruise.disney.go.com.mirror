@@ -9,21 +9,19 @@ import "./styles/icon.scss";
  * @description 矢印アイコン
  */
 const arrow = (props: {
-    bg: "blue" | "white" | "gold" | "gray",
-    color: "blue" | "white" | "gold" | "gray",
+  bg: "blue" | "white" | "gold" | "gray";
+  color: "blue" | "white" | "gold" | "gray";
 }) => {
-    return (
-        <span className="arrow" data-bg={props.bg} data-color={props.color}>    
-            <svg className="i-arw-r">
-                <use xlinkHref="#i-arw-r" />
-            </svg>
-            <svg className="i-arw-r">
-                <use xlinkHref="#i-arw-r" />
-            </svg>
-        </span>
-    )
-}
+  return (
+    <span className="arrow" data-bg={props.bg} data-color={props.color}>
+      <svg className="i-arw-r">
+        <use xlinkHref="#i-arw-r" />
+      </svg>
+      <svg className="i-arw-r">
+        <use xlinkHref="#i-arw-r" />
+      </svg>
+    </span>
+  );
+};
 
-export {
-    arrow
-}
+export { arrow };

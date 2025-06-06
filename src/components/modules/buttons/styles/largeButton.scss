@@ -6,76 +6,80 @@
 /* __10: 共通設定 */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin"as g;
+@use "@/assets/styles/_mixin" as g;
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .large-button {
-    &-el {
-        width           : 100%;
-        height          : 11rem;
-        display         : flex;
-        align-items     : center;
-        justify-content : space-between;
-        background-color: var(--color_white);
-        border          : 1px solid var(--theme_color_border);
-        border-radius   : 0.7rem;
-        text-decoration : none;
-        transition      : border-color var(--t-out);
+  &-el {
+    width: 100%;
+    height: 11rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color_white);
+    border: 1px solid var(--theme_color_border);
+    border-radius: 0.7rem;
+    text-decoration: none;
+    transition: border-color var(--t-out);
 
-        @include g.hover() {
-            border-color: var(--theme_color_main);
+    @include g.hover() {
+      border-color: var(--theme_color_main);
 
-            .arrow {
-                background-color: var(--theme_color_sub);
+      .arrow {
+        background-color: var(--theme_color_sub);
 
-                .i-arw-r {
-                    color: var(--color_white);
+        .i-arw-r {
+          color: var(--color_white);
 
-                    &:first-child {
-                        --fm: 0;
-                    }
+          &:first-child {
+            --fm: 0;
+          }
 
-                    &:last-child {
-                        --lm: 1;
-                    }
-                }
-            }
+          &:last-child {
+            --lm: 1;
+          }
         }
-
-        .en-label {
-            flex-shrink : 0;
-            font-size   : 2.2rem;
-            line-height : calc(23/22);
-            color       : var(--theme_color_main);
-            border-left : 3px solid var(--theme_color_sub);
-            padding-left: 3rem;
-            margin-left : -1px;
-        }
-
-        .ja-label {
-            flex-shrink  : 0;
-            display      : flex;
-            align-items  : center;
-            padding-right: 3rem;
-
-            .divider {
-                display            : block;
-                width              : 2px;
-                height             : 1.8rem;
-                background-repeat  : repeat-y;
-                background-position: left top;
-                background-size    : 1.5px 4.5px;
-                background-image   : linear-gradient(to top, rgb(0 45 116 / 80%) 1.5px, #0000 1.5px);
-            }
-
-            .label {
-                font-size     : 1.5rem;
-                letter-spacing: 0.03em;
-                color         : var(--theme_color_text);
-                margin-left   : 2.6rem;
-                margin-right  : 1rem;
-            }
-        }
+      }
     }
+
+    .en-label {
+      flex-shrink: 0;
+      font-size: 2.2rem;
+      line-height: calc(23 / 22);
+      color: var(--theme_color_main);
+      border-left: 3px solid var(--theme_color_sub);
+      padding-left: 3rem;
+      margin-left: -1px;
+    }
+
+    .ja-label {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      padding-right: 3rem;
+
+      .divider {
+        display: block;
+        width: 2px;
+        height: 1.8rem;
+        background-repeat: repeat-y;
+        background-position: left top;
+        background-size: 1.5px 4.5px;
+        background-image: linear-gradient(
+          to top,
+          rgb(0 45 116 / 80%) 1.5px,
+          #0000 1.5px
+        );
+      }
+
+      .label {
+        font-size: 1.5rem;
+        letter-spacing: 0.03em;
+        color: var(--theme_color_text);
+        margin-left: 2.6rem;
+        margin-right: 1rem;
+      }
+    }
+  }
 }

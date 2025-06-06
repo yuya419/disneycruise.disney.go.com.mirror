@@ -6,132 +6,131 @@
 /* __10: 共通設定 */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin"as g;
+@use "@/assets/styles/_mixin" as g;
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .form-block {
-    background-color: var(--theme_color_bg_sub);
-    padding         : 5.6rem 6rem;
-    border-radius   : 0.6rem;
+  background-color: var(--theme_color_bg_sub);
+  padding: 5.6rem 6rem;
+  border-radius: 0.6rem;
 
-    &+.form-block {
-        margin-top   : 2px;
-        border-radius: 0;
+  & + .form-block {
+    margin-top: 2px;
+    border-radius: 0;
+  }
+
+  &:not(:last-child):first-child {
+    border-radius: 0.6rem 0.6rem 0 0;
+  }
+
+  &:not(:first-child):last-child {
+    border-radius: 0 0 0.6rem 0.6rem;
+  }
+
+  .m-headline {
+    & + .form-input {
+      margin-top: 3rem;
     }
 
-    &:not(:last-child):first-child {
-        border-radius: 0.6rem 0.6rem 0 0;
+    & + .input-content {
+      margin-top: 3rem;
+    }
+  }
+
+  .form-input {
+    & + .form-input {
+      margin-top: 4rem;
+    }
+  }
+
+  .input-content {
+    & + .input-content {
+      margin-top: 4rem;
+    }
+  }
+
+  .input-content {
+    display: grid;
+    grid-template-columns: 23rem 1fr;
+    column-gap: 4rem;
+
+    dt,
+    dd {
+      font-size: 1.5rem;
+      line-height: calc(34 / 15);
+    }
+  }
+
+  .complete-text {
+    p {
+      font-size: 1.5rem;
+      line-height: calc(24 / 15);
     }
 
-    &:not(:first-child):last-child {
-        border-radius: 0 0 0.6rem 0.6rem;
+    .button {
+      margin-top: 4rem;
     }
-
-    .m-headline {
-        &+.form-input {
-            margin-top: 3rem;
-        }
-
-        &+.input-content {
-            margin-top: 3rem;
-        }
-    }
-
-    .form-input {
-        &+.form-input {
-            margin-top: 4rem;
-        }
-    }
-
-    .input-content {
-        &+.input-content {
-            margin-top: 4rem;
-        }
-    }
-
-    .input-content {
-        display              : grid;
-        grid-template-columns: 23rem 1fr;
-        column-gap           : 4rem;
-
-        dt,
-        dd {
-            font-size  : 1.5rem;
-            line-height: calc(34/15);
-        }
-    }
-
-    .complete-text {
-        p {
-            font-size  : 1.5rem;
-            line-height: calc(24/15);
-        }
-
-        .button {
-            margin-top: 4rem;
-        }
-    }
+  }
 }
 
 // sp
 @include g.media(md) {
-    .form-block {
-        padding      : 3.2rem 2rem;
-        border-radius: 0.5rem;
+  .form-block {
+    padding: 3.2rem 2rem;
+    border-radius: 0.5rem;
 
-        &:first-child {
-            padding-top: 2.4rem;
-        }
-
-        .m-headline {
-            &+.form-input {
-                margin-top: 2rem;
-            }
-
-            &+.input-content {
-                margin-top: 2rem;
-            }
-        }
-
-        .form-input {
-            &+.form-input {
-                margin-top: 3.5rem;
-            }
-        }
-
-        .input-content {
-            &+.input-content {
-                margin-top: 3.5rem;
-            }
-        }
-
-        .input-content {
-            grid-template-columns: 1fr;
-            row-gap              : 1rem;
-
-            dt,
-            dd {
-                font-size  : 1.4rem;
-                line-height: calc(20/14);
-            }
-
-            dd {
-                padding-top: 1rem;
-                border-top : 1px solid rgba(39, 40, 51, 0.2);
-            }
-        }
-
-        .complete-text {
-
-            p {
-                font-size  : 1.4rem;
-                line-height: calc(20/14);
-            }
-
-            .button {
-                margin-top: 3.2rem;
-            }
-        }
+    &:first-child {
+      padding-top: 2.4rem;
     }
+
+    .m-headline {
+      & + .form-input {
+        margin-top: 2rem;
+      }
+
+      & + .input-content {
+        margin-top: 2rem;
+      }
+    }
+
+    .form-input {
+      & + .form-input {
+        margin-top: 3.5rem;
+      }
+    }
+
+    .input-content {
+      & + .input-content {
+        margin-top: 3.5rem;
+      }
+    }
+
+    .input-content {
+      grid-template-columns: 1fr;
+      row-gap: 1rem;
+
+      dt,
+      dd {
+        font-size: 1.4rem;
+        line-height: calc(20 / 14);
+      }
+
+      dd {
+        padding-top: 1rem;
+        border-top: 1px solid rgba(39, 40, 51, 0.2);
+      }
+    }
+
+    .complete-text {
+      p {
+        font-size: 1.4rem;
+        line-height: calc(20 / 14);
+      }
+
+      .button {
+        margin-top: 3.2rem;
+      }
+    }
+  }
 }

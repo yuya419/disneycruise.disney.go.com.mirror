@@ -1,221 +1,225 @@
-@use 'sass:map';
+@use "sass:map";
 
 // ホバー
 @mixin hover {
-
-    @media screen and (min-width: 1025px) and (hover: hover),
+  @media screen and (min-width: 1025px) and (hover: hover),
     screen and (min-width: 1025px) and (pointer: fine) {
-        &:hover {
-            @content;
-        }
+    &:hover {
+      @content;
     }
+  }
 }
 
 //固定化
 @mixin isFixed {
-    touch-action              : none;
-    -webkit-overflow-scrolling: none;
-    overflow                  : hidden;
-    overscroll-behavior       : none;
-    scrollbar-gutter          : stable
+  touch-action: none;
+  -webkit-overflow-scrolling: none;
+  overflow: hidden;
+  overscroll-behavior: none;
+  scrollbar-gutter: stable;
 }
 
 // スクリーンリーダーテキスト
 $vi-screen-reader-text: "screen-reader-text";
 
 @if $vi-screen-reader-text {
-    %#{$vi-screen-reader-text} {
-        clip    : rect(1px, 1px, 1px, 1px);
-        position: absolute;
-        left    : 0;
-        top     : 0;
-    }
+  %#{$vi-screen-reader-text} {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
 
-    .#{$vi-screen-reader-text} {
-        @extend %#{$vi-screen-reader-text};
-    }
+  .#{$vi-screen-reader-text} {
+    @extend %#{$vi-screen-reader-text};
+  }
 }
 
 // ベースコンテナ
 @mixin container($padding: "true") {
-    width        : calc(100% - 100px);
-    max-width    : 106rem;
-    margin-inline: auto;
+  width: calc(100% - 100px);
+  max-width: 106rem;
+  margin-inline: auto;
 
-    @if $padding=="true" {
-        padding-top   : 8.2rem;
-        padding-bottom: 12rem;
+  @if $padding== "true" {
+    padding-top: 8.2rem;
+    padding-bottom: 12rem;
+  }
+
+  @include media(md) {
+    width: calc(100% - 50px);
+    max-width: inherit;
+
+    @if $padding== "true" {
+      padding-top: 10.4rem;
+      padding-bottom: 8rem;
     }
-
-    @include media(md) {
-        width    : calc(100% - 50px);
-        max-width: inherit;
-
-
-        @if $padding=="true" {
-            padding-top   : 10.4rem;
-            padding-bottom: 8rem;
-        }
-
-    }
+  }
 }
 
 //リストタグ初期化
 @mixin listInit($type) {
-    @if $type=="ul" {
-        li {
-            padding-left: 1.3em;
-            text-indent : -0.7em;
+  @if $type== "ul" {
+    li {
+      padding-left: 1.3em;
+      text-indent: -0.7em;
 
-            &::before {
-                content         : "";
-                display         : inline-block;
-                width           : 0.5rem;
-                height          : 0.5rem;
-                background-color: var(--theme_color_main);
-                border-radius   : 50%;
-                margin          : 0 1rem 0.15em -0.5rem;
-            }
-        }
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 0.5rem;
+        height: 0.5rem;
+        background-color: var(--theme_color_main);
+        border-radius: 50%;
+        margin: 0 1rem 0.15em -0.5rem;
+      }
     }
+  }
 
-    @if $type=="ol" {
-        counter-reset: list-counter;
+  @if $type== "ol" {
+    counter-reset: list-counter;
 
-        li {
-            padding-left     : 1.2em;
-            text-indent      : -1.5em;
-            counter-increment: list-counter;
+    li {
+      padding-left: 1.2em;
+      text-indent: -1.5em;
+      counter-increment: list-counter;
 
-            &::before {
-                content   : counter(list-counter) ". ";
-                display   : inline-block;
-                width     : 1.5em;
-                text-align: right;
-            }
-        }
+      &::before {
+        content: counter(list-counter) ". ";
+        display: inline-block;
+        width: 1.5em;
+        text-align: right;
+      }
     }
+  }
 }
 
 // 矢印 - 共通ホバーアクション
 @mixin arrowMove {
-    .i-arw-r {
-
-        &:first-child {
-            --fm: 0;
-        }
-
-        &:last-child {
-            --lm: 1;
-        }
+  .i-arw-r {
+    &:first-child {
+      --fm: 0;
     }
+
+    &:last-child {
+      --lm: 1;
+    }
+  }
 }
 
 // ボタン - 共通ホバーアクション
 @mixin buttonHover {
-    @include hover() {
-        background-color: #B99E4F;
+  @include hover() {
+    background-color: #b99e4f;
 
-        &::before {
-            background-color: #FFED96;
-        }
-
-        .label,
-        .en,
-        .ja {
-            color: var(--color_white);
-        }
-
-        .divider {
-            --dot-color: rgba(255, 255, 255, 0.6);
-        }
-
-        .arrow {
-            background-color: var(--color_white);
-
-            .i-arw-r {
-                color: #B99E4F;
-            }
-
-            @include arrowMove();
-        }
-
-        .icon {
-            >svg {
-                color: var(--color_white) !important;
-            }
-        }
+    &::before {
+      background-color: #ffed96;
     }
+
+    .label,
+    .en,
+    .ja {
+      color: var(--color_white);
+    }
+
+    .divider {
+      --dot-color: rgba(255, 255, 255, 0.6);
+    }
+
+    .arrow {
+      background-color: var(--color_white);
+
+      .i-arw-r {
+        color: #b99e4f;
+      }
+
+      @include arrowMove();
+    }
+
+    .icon {
+      > svg {
+        color: var(--color_white) !important;
+      }
+    }
+  }
 }
 
 /* line-heightのハーフ・レディングを打ち消す */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 @mixin leadingTrim($lh) {
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    inline-size: 0;
+    block-size: 1px;
+  }
 
-    &::before,
-    &::after {
-        content    : '';
-        display    : block;
-        inline-size: 0;
-        block-size : 1px;
-    }
+  &::before {
+    margin-block-end: calc((1 - #{$lh}) * 0.5em);
+  }
 
-    &::before {
-        margin-block-end: calc((1 - #{$lh}) * 0.5em);
-    }
-
-    &::after {
-        margin-block-start: calc((1 - #{$lh}) * 0.5em);
-    }
+  &::after {
+    margin-block-start: calc((1 - #{$lh}) * 0.5em);
+  }
 }
 
 /* pxをvwに変換 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 //pxをvwに変換
 @function _get_vw($size, $viewport: 390) {
-    $rate: calc(100 / $viewport);
-    @return $rate * $size * 1vw;
+  $rate: calc(100 / $viewport);
+  @return $rate * $size * 1vw;
 }
 
 //pxをvwに変換 - フォントサイズ
 @mixin font-vw($font_size: 10, $viewsize: 390) {
-    font-size: $font_size * 1px;
-    font-size: _get_vw($font_size, $viewsize);
+  font-size: $font_size * 1px;
+  font-size: _get_vw($font_size, $viewsize);
 }
 
 //pxをvwに変換 - フリースタイル
 @mixin free-vw($property, $size, $viewsize: 390) {
-    #{$property}: $size * 1px;
-    #{$property}: _get_vw($size, $viewsize);
+  #{$property}: $size * 1px;
+  #{$property}: _get_vw($size, $viewsize);
 }
 
 /* pxをvhに変換 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 //pxをvhに変換
 @function _get_vh($size, $viewport: 663) {
-    $rate: calc(100 / $viewport);
-    @return $rate * $size * 1vh;
+  $rate: calc(100 / $viewport);
+  @return $rate * $size * 1vh;
 }
 
 //pxをvhに変換 - フォントサイズ
 @mixin font-vh($font_size: 10, $viewsize: 663) {
-    font-size: $font_size * 1px;
-    font-size: _get_vh($font_size, $viewsize);
+  font-size: $font_size * 1px;
+  font-size: _get_vh($font_size, $viewsize);
 }
 
 //pxをvhに変換 - フリースタイル
 @mixin free-vh($property, $size, $viewsize: 663) {
-    #{$property}: $size * 1px;
-    #{$property}: _get_vh($size, $viewsize);
+  #{$property}: $size * 1px;
+  #{$property}: _get_vh($size, $viewsize);
 }
 
 /* メディアクエリ */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-$breakpoints: ('sm': 640px, 'md': 1024px, 'lg': 1600px, 'xl': 1920px, 'bs': 1300px);
-$minmax     : ('min': min, 'max': max);
+$breakpoints: (
+  "sm": 640px,
+  "md": 1024px,
+  "lg": 1600px,
+  "xl": 1920px,
+  "bs": 1300px,
+);
+$minmax: (
+  "min": min,
+  "max": max,
+);
 
-@mixin media($size, $width: 'max') {
-    @media screen and (#{map.get($minmax, $width)}-width: #{map.get($breakpoints, $size)}) {
-        @content;
-    }
+@mixin media($size, $width: "max") {
+  @media screen and (#{map.get($minmax, $width)}-width: #{map.get($breakpoints, $size)}) {
+    @content;
+  }
 }

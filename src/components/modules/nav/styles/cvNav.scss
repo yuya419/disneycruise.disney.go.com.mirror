@@ -6,260 +6,262 @@
 /* __10: 共通設定 */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin"as g;
+@use "@/assets/styles/_mixin" as g;
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .cvNav {
-    background-color: rgba($color: #3DA8C3, $alpha: 0.7);
-    border-radius   : 1rem;
-    padding         : 2rem 5rem 2rem 2rem;
+  background-color: rgba($color: #3da8c3, $alpha: 0.7);
+  border-radius: 1rem;
+  padding: 2rem 5rem 2rem 2rem;
 
-    .nav {
-        &-menu {
-            display              : grid;
-            grid-template-columns: auto 1fr;
-            grid-template-areas  :
-                "reservation magazine"
-                "reservation contact";
-            column-gap: 5rem;
-        }
-
-        .menu-item {
-            &-link {
-                width          : 100%;
-                height         : 100%;
-                display        : flex;
-                align-items    : center;
-                justify-content: space-between;
-                text-decoration: none;
-
-                .label {
-
-                    .en,
-                    .jp {
-                        display       : block;
-                        letter-spacing: 0.03em;
-                        line-height   : 0.7;
-                    }
-                }
-            }
-        }
-
-        .is-reservation {
-            grid-area : reservation;
-            width     : calc(100vw/(1300/710));
-            max-width : 71rem;
-            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
-
-            .menu-item-link {
-                height          : 23rem;
-                padding-right   : 6rem;
-                border-radius   : 1rem;
-                background-color: var(--theme_color_main);
-                position        : relative;
-
-                &::before {
-                    --inline: 2rem;
-                    --radius: 0.7rem;
-
-                    content      : "";
-                    position     : absolute;
-                    inset        : 0;
-                    margin       : auto;
-                    width        : calc(100% - var(--inline));
-                    height       : calc(100% - var(--inline));
-                    border       : 1px solid var(--theme_color_sub);
-                    border-radius: var(--radius);
-                    opacity      : 0;
-                    transition   : opacity var(--t-out);
-                }
-
-                @include g.hover() {
-                    &::before {
-                        opacity: 1;
-                    }
-
-                    .label {
-                        border-left-color: transparent;
-                    }
-                }
-            }
-
-            .label {
-                display       : flex;
-                flex-direction: column;
-                padding-left  : 5.7rem;
-                border-left   : 3px solid #E5C35C;
-                transition    : border-left-color var(--t-out);
-
-                .en {
-                    font-size: 3.9rem;
-                    color    : #E5C35C;
-                }
-
-                .jp {
-                    font-size: 1.6rem;
-                    color    : var(--color_white);
-                    margin   : 2rem 0 0.2rem;
-                }
-            }
-
-            .icon {
-                display    : flex;
-                align-items: center;
-                column-gap : 6rem;
-
-                .divider {
-                    width              : 2px;
-                    height             : 6.4rem;
-                    background-repeat  : repeat-y;
-                    background-position: left top;
-                    background-size    : 1.5px 4.5px;
-                    background-image   : linear-gradient(to top, rgba(255, 255, 255, 0.8) 1.5px, #0000 1.5px);
-                }
-
-                .i-calendar {
-                    display: block;
-                    width  : 2rem;
-                    height : 2rem;
-                    color  : #E5C35C;
-                }
-            }
-        }
-
-        .is-mail-magazine,
-        .is-contact {
-            .label {
-                .en {
-                    font-size : 2.7rem;
-                    color     : var(--color_white);
-                    transition: color var(--t-out);
-                }
-
-                .jp {
-                    font-size : 1.4rem;
-                    color     : rgba(255, 255, 255, 0.6);
-                    margin-top: 1.5rem;
-                    transition: color var(--t-out);
-                }
-            }
-
-            .menu-item-link {
-                @include g.hover() {
-                    .label {
-
-                        .en,
-                        .jp {
-                            color: #E4C055;
-                        }
-                    }
-
-                    .arrow {
-                        background-color: #E4C055;
-
-                        .i-arw-r {
-                            color: #1A7AA0;
-
-                            &:first-child {
-                                --fm: 0;
-                            }
-
-                            &:last-child {
-                                --lm: 1;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        .is-mail-magazine {
-            grid-area: magazine;
-        }
-
-        .is-contact {
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
-            grid-area : contact;
-        }
+  .nav {
+    &-menu {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-areas:
+        "reservation magazine"
+        "reservation contact";
+      column-gap: 5rem;
     }
+
+    .menu-item {
+      &-link {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-decoration: none;
+
+        .label {
+          .en,
+          .jp {
+            display: block;
+            letter-spacing: 0.03em;
+            line-height: 0.7;
+          }
+        }
+      }
+    }
+
+    .is-reservation {
+      grid-area: reservation;
+      width: calc(100vw / (1300 / 710));
+      max-width: 71rem;
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+
+      .menu-item-link {
+        height: 23rem;
+        padding-right: 6rem;
+        border-radius: 1rem;
+        background-color: var(--theme_color_main);
+        position: relative;
+
+        &::before {
+          --inline: 2rem;
+          --radius: 0.7rem;
+
+          content: "";
+          position: absolute;
+          inset: 0;
+          margin: auto;
+          width: calc(100% - var(--inline));
+          height: calc(100% - var(--inline));
+          border: 1px solid var(--theme_color_sub);
+          border-radius: var(--radius);
+          opacity: 0;
+          transition: opacity var(--t-out);
+        }
+
+        @include g.hover() {
+          &::before {
+            opacity: 1;
+          }
+
+          .label {
+            border-left-color: transparent;
+          }
+        }
+      }
+
+      .label {
+        display: flex;
+        flex-direction: column;
+        padding-left: 5.7rem;
+        border-left: 3px solid #e5c35c;
+        transition: border-left-color var(--t-out);
+
+        .en {
+          font-size: 3.9rem;
+          color: #e5c35c;
+        }
+
+        .jp {
+          font-size: 1.6rem;
+          color: var(--color_white);
+          margin: 2rem 0 0.2rem;
+        }
+      }
+
+      .icon {
+        display: flex;
+        align-items: center;
+        column-gap: 6rem;
+
+        .divider {
+          width: 2px;
+          height: 6.4rem;
+          background-repeat: repeat-y;
+          background-position: left top;
+          background-size: 1.5px 4.5px;
+          background-image: linear-gradient(
+            to top,
+            rgba(255, 255, 255, 0.8) 1.5px,
+            #0000 1.5px
+          );
+        }
+
+        .i-calendar {
+          display: block;
+          width: 2rem;
+          height: 2rem;
+          color: #e5c35c;
+        }
+      }
+    }
+
+    .is-mail-magazine,
+    .is-contact {
+      .label {
+        .en {
+          font-size: 2.7rem;
+          color: var(--color_white);
+          transition: color var(--t-out);
+        }
+
+        .jp {
+          font-size: 1.4rem;
+          color: rgba(255, 255, 255, 0.6);
+          margin-top: 1.5rem;
+          transition: color var(--t-out);
+        }
+      }
+
+      .menu-item-link {
+        @include g.hover() {
+          .label {
+            .en,
+            .jp {
+              color: #e4c055;
+            }
+          }
+
+          .arrow {
+            background-color: #e4c055;
+
+            .i-arw-r {
+              color: #1a7aa0;
+
+              &:first-child {
+                --fm: 0;
+              }
+
+              &:last-child {
+                --lm: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .is-mail-magazine {
+      grid-area: magazine;
+    }
+
+    .is-contact {
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      grid-area: contact;
+    }
+  }
 }
 
 // sp
 @include g.media(md) {
-    .cvNav {
-        padding: 2.5rem 2.5rem 3rem 2.5rem;
+  .cvNav {
+    padding: 2.5rem 2.5rem 3rem 2.5rem;
 
-        .nav {
-            &-menu {
-                display: block;
-            }
+    .nav {
+      &-menu {
+        display: block;
+      }
 
-            .is-reservation {
-                width    : 100%;
-                max-width: inherit;
+      .is-reservation {
+        width: 100%;
+        max-width: inherit;
 
-                .menu-item-link {
-                    height       : 10rem;
-                    padding-right: 2.5rem;
-                    border-radius: 0.6rem;
-                }
-
-                .label {
-                    padding-left     : 2.5rem;
-                    border-left-width: 2px;
-
-                    .en {
-                        font-size: 2.4rem;
-                    }
-
-                    .jp {
-                        font-size: 1.4rem;
-                        margin   : 1.9rem 0 0.2rem;
-                    }
-                }
-
-                .icon {
-                    column-gap: 2.5rem;
-
-                    .divider {
-                        height: 43px;
-                    }
-
-                    .i-calendar {
-                        width : 1.6rem;
-                        height: 1.6rem;
-                    }
-                }
-            }
-
-            .is-mail-magazine,
-            .is-contact {
-                .label {
-                    .en {
-                        font-size: 2.1rem;
-                    }
-
-                    .jp {
-                        font-size : 1.2rem;
-                        margin-top: 1.2rem;
-                    }
-                }
-            }
-
-            .is-mail-magazine {
-                .menu-item-link {
-                    padding-block: 2.3rem;
-                }
-            }
-
-            .is-contact {
-                border-top: 1px solid rgba(255, 255, 255, 0.3);
-
-                .menu-item-link {
-                    padding-top: 2.3rem;
-                }
-            }
+        .menu-item-link {
+          height: 10rem;
+          padding-right: 2.5rem;
+          border-radius: 0.6rem;
         }
+
+        .label {
+          padding-left: 2.5rem;
+          border-left-width: 2px;
+
+          .en {
+            font-size: 2.4rem;
+          }
+
+          .jp {
+            font-size: 1.4rem;
+            margin: 1.9rem 0 0.2rem;
+          }
+        }
+
+        .icon {
+          column-gap: 2.5rem;
+
+          .divider {
+            height: 43px;
+          }
+
+          .i-calendar {
+            width: 1.6rem;
+            height: 1.6rem;
+          }
+        }
+      }
+
+      .is-mail-magazine,
+      .is-contact {
+        .label {
+          .en {
+            font-size: 2.1rem;
+          }
+
+          .jp {
+            font-size: 1.2rem;
+            margin-top: 1.2rem;
+          }
+        }
+      }
+
+      .is-mail-magazine {
+        .menu-item-link {
+          padding-block: 2.3rem;
+        }
+      }
+
+      .is-contact {
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+
+        .menu-item-link {
+          padding-top: 2.3rem;
+        }
+      }
     }
+  }
 }

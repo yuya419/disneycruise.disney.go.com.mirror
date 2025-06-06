@@ -7,35 +7,33 @@
 /* __20: p-spa-lounges-bar-section */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin"as g;
-@use "./init"as i;
+@use "@/assets/styles/_mixin" as g;
+@use "./init" as i;
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .p-spa-lounges-bar {
-    @include i.init();
+  @include i.init();
 
-    &-section {
+  &-section {
+    // .spa-lounges-bar-block
+    .spa-lounges-bar-block {
+      margin-top: 4rem;
 
-        // .spa-lounges-bar-block
-        .spa-lounges-bar-block {
-            margin-top: 4rem;
+      @include i.order();
 
-            @include i.order();
-
-            @include i.caption();
-        }
+      @include i.caption();
     }
+  }
 }
 
 @include g.media(md) {
-    .p-spa-lounges-bar {
-        &-section {
-
-            // .spa-lounges-bar-block
-            .spa-lounges-bar-block {
-                margin-top: 3.2rem;
-            }
-        }
+  .p-spa-lounges-bar {
+    &-section {
+      // .spa-lounges-bar-block
+      .spa-lounges-bar-block {
+        margin-top: 3.2rem;
+      }
     }
+  }
 }

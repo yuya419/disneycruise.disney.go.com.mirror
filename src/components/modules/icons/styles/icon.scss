@@ -6,83 +6,85 @@
 /* __10: 共通設定 */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin"as g;
+@use "@/assets/styles/_mixin" as g;
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .arrow {
-    display        : flex;
-    align-items    : center;
-    justify-content: center;
-    border-radius  : 100vmax;
-    width          : 3.1rem;
-    height         : 1.8rem;
-    position       : relative;
-    overflow       : hidden;
-    transition     : background-color var(--t-out);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100vmax;
+  width: 3.1rem;
+  height: 1.8rem;
+  position: relative;
+  overflow: hidden;
+  transition: background-color var(--t-out);
 
-    .i-arw-r {
-        display     : block;
-        width       : 0.9rem;
-        aspect-ratio: 1;
-        translate   : calc((50% + 2rem) * var(--fm, var(--lm))) 0;
-        transition  : translate var(--t-out), color var(--t-out);
+  .i-arw-r {
+    display: block;
+    width: 0.9rem;
+    aspect-ratio: 1;
+    translate: calc((50% + 2rem) * var(--fm, var(--lm))) 0;
+    transition:
+      translate var(--t-out),
+      color var(--t-out);
 
-        &:first-child {
-            position: absolute;
-            inset   : 0;
-            margin  : auto;
-            --fm    : -1;
-        }
-
-        &:last-child {
-            --lm: 0;
-        }
+    &:first-child {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      --fm: -1;
     }
 
-    // 背景色
-    &[data-bg="blue"] {
-        background-color: #174395;
+    &:last-child {
+      --lm: 0;
     }
+  }
 
-    &[data-bg="white"] {
-        background-color: var(--color_white);
-    }
+  // 背景色
+  &[data-bg="blue"] {
+    background-color: #174395;
+  }
 
-    &[data-bg="gold"] {
-        background-color: #AF9438;
-    }
+  &[data-bg="white"] {
+    background-color: var(--color_white);
+  }
 
-    &[data-bg="gray"] {
-        background-color: var(--theme_color_text);
-    }
+  &[data-bg="gold"] {
+    background-color: #af9438;
+  }
 
-    // 矢印の色
-    &[data-color="blue"] {
-        color: #174395;
-    }
+  &[data-bg="gray"] {
+    background-color: var(--theme_color_text);
+  }
 
-    &[data-color="white"] {
-        color: var(--color_white);
-    }
+  // 矢印の色
+  &[data-color="blue"] {
+    color: #174395;
+  }
 
-    &[data-color="gold"] {
-        color: #866B0E;
-    }
+  &[data-color="white"] {
+    color: var(--color_white);
+  }
 
-    &[data-color="gray"] {
-        color: var(--theme_color_text);
-    }
+  &[data-color="gold"] {
+    color: #866b0e;
+  }
+
+  &[data-color="gray"] {
+    color: var(--theme_color_text);
+  }
 }
 
 // sp
 @include g.media(md) {
-    .arrow {
-        width : 2.7rem;
-        height: 1.6rem;
+  .arrow {
+    width: 2.7rem;
+    height: 1.6rem;
 
-        .i-arw-r {
-            width: 0.8rem;
-        }
+    .i-arw-r {
+      width: 0.8rem;
     }
+  }
 }

@@ -10,9 +10,9 @@ import { Concierge } from "@/layouts/page/page";
 export const metadata: Metadata = metaArray["concierge"];
 
 export default function Page() {
-    return (
-        <div className="page">
-            <Concierge />
-        </div>
-    );
+  return (
+    <div className="page">
+      <Concierge />
+    </div>
+  );
 }

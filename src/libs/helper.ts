@@ -4,12 +4,11 @@
  */
 
 function helper() {
+  const getImagePath = (path: string) => {
+    return `/ships/adventure/${path}`;
+  };
 
-    const getImagePath = (path: string) => {
-        return `/ships/adventure/${path}`;
-    };
-
-    return { getImagePath }
+  return { getImagePath };
 }
 
 export default helper;

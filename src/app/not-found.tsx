@@ -10,9 +10,9 @@ import { NotFound } from "@/layouts/page/page";
 export const metadata: Metadata = metaArray["404"];
 
 export default function Page() {
-    return (
-        <div className="page">
-            <NotFound />
-        </div>
-    );
+  return (
+    <div className="page">
+      <NotFound />
+    </div>
+  );
 }

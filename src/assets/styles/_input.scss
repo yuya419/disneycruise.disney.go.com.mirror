@@ -1,187 +1,191 @@
 // プレースホルダー
 @mixin placeholder($color) {
-    &::placeholder {
-        color      : $color !important;
-        opacity    : 1;
-        font-family: var(--noto-sans-jp);
-        font-weight: 500;
-    }
+  &::placeholder {
+    color: $color !important;
+    opacity: 1;
+    font-family: var(--noto-sans-jp);
+    font-weight: 500;
+  }
 
-    &::-webkit-input-placeholder {
-        color      : $color !important;
-        opacity    : 1;
-        font-family: var(--noto-sans-jp);
-        font-weight: 500;
-    }
+  &::-webkit-input-placeholder {
+    color: $color !important;
+    opacity: 1;
+    font-family: var(--noto-sans-jp);
+    font-weight: 500;
+  }
 
-    &::-moz-placeholder {
-        color      : $color !important;
-        opacity    : 1;
-        font-family: var(--noto-sans-jp);
-        font-weight: 500;
-    }
+  &::-moz-placeholder {
+    color: $color !important;
+    opacity: 1;
+    font-family: var(--noto-sans-jp);
+    font-weight: 500;
+  }
 
-    &:-ms-input-placeholder {
-        color      : $color !important;
-        opacity    : 1;
-        font-family: var(--noto-sans-jp);
-        font-weight: 500;
-    }
+  &:-ms-input-placeholder {
+    color: $color !important;
+    opacity: 1;
+    font-family: var(--noto-sans-jp);
+    font-weight: 500;
+  }
 
-    &::-ms-input-placeholder {
-        color      : $color !important;
-        opacity    : 1;
-        font-family: var(--noto-sans-jp);
-        font-weight: 500;
-    }
+  &::-ms-input-placeholder {
+    color: $color !important;
+    opacity: 1;
+    font-family: var(--noto-sans-jp);
+    font-weight: 500;
+  }
 }
 
 // チェックボックス、ラジオボタン共通設定
 @mixin input_button_init($type) {
-    appearance: none;
-    display   : none;
+  appearance: none;
+  display: none;
 
-    &+span {
-        position      : relative;
-        display       : inline-block;
-        vertical-align: middle;
-        cursor        : pointer;
-        padding       : 0 0 0 3.5rem;
+  & + span {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    padding: 0 0 0 3.5rem;
 
-        &::before,
-        &::after {
-            position    : absolute;
-            content     : "";
-            display     : block;
-            top         : 0;
-            bottom      : 0;
-            left        : 0;
-            width       : 2.5rem;
-            height      : 2.5rem;
-            margin-block: auto;
-            box-sizing  : border-box;
+    &::before,
+    &::after {
+      position: absolute;
+      content: "";
+      display: block;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      margin-block: auto;
+      box-sizing: border-box;
 
-            //チェックボックス
-            @if #{$type}=="checkbox" {}
+      //チェックボックス
+      @if #{$type}== "checkbox" {
+      }
 
-            // //ラジオボタン
-            @if #{$type}=="radio" {}
-        }
-
-        &::before {
-            background-color: white;
-            border          : 1px solid var(--theme_color_border);
-            border-radius   : 0.2rem;
-        }
-
-        &::after {
-            opacity   : 0;
-            background: var(--theme_color_main);
-            scale     : 1 -1;
-            clip-path : polygon(14% 44%, 20% 52%, 38% 34%, 78% 68%, 84% 62%, 38% 26%);
-
-            //チェックボックス
-            @if #{$type}=="checkbox" {}
-
-            // //ラジオボタン
-            @if #{$type}=="radio" {}
-        }
+      // //ラジオボタン
+      @if #{$type}== "radio" {
+      }
     }
 
-    &:checked+span::before {}
-
-    &:checked+span::after {
-        opacity: 1;
+    &::before {
+      background-color: white;
+      border: 1px solid var(--theme_color_border);
+      border-radius: 0.2rem;
     }
+
+    &::after {
+      opacity: 0;
+      background: var(--theme_color_main);
+      scale: 1 -1;
+      clip-path: polygon(14% 44%, 20% 52%, 38% 34%, 78% 68%, 84% 62%, 38% 26%);
+
+      //チェックボックス
+      @if #{$type}== "checkbox" {
+      }
+
+      // //ラジオボタン
+      @if #{$type}== "radio" {
+      }
+    }
+  }
+
+  &:checked + span::before {
+  }
+
+  &:checked + span::after {
+    opacity: 1;
+  }
 }
 
 // 各input初期化
 form {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="number"],
+  textarea,
+  select,
+  input[type="file"],
+  input[type="radio"],
+  input[type="checkbox"],
+  input[type="button"],
+  input[type="submit"] {
+    all: unset;
+    user-select: none;
+    outline: revert;
+    -webkit-tap-highlight-color: transparent;
+    font-family: "Noto Sans JP", sans-serif;
+    box-sizing: border-box;
 
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    input[type="date"],
-    input[type="number"],
-    textarea,
-    select,
-    input[type="file"],
-    input[type="radio"],
-    input[type="checkbox"],
-    input[type="button"],
-    input[type="submit"] {
-        all                        : unset;
-        user-select                : none;
-        outline                    : revert;
-        -webkit-tap-highlight-color: transparent;
-        font-family                : "Noto Sans JP", sans-serif;
-        box-sizing                 : border-box;
+    @include placeholder(rgba(39, 40, 51, 0.5));
 
-        @include placeholder(rgba(39, 40, 51, 0.5));
-
-        //自動入力時
-        &:-webkit-autofill {
-            box-shadow             : 0 0 0 1000px white inset;
-            -webkit-text-fill-color: var(--theme_color_text) !important;
-        }
+    //自動入力時
+    &:-webkit-autofill {
+      box-shadow: 0 0 0 1000px white inset;
+      -webkit-text-fill-color: var(--theme_color_text) !important;
     }
+  }
 
-    input::-ms-clear {
-        visibility: hidden;
+  input::-ms-clear {
+    visibility: hidden;
+  }
+
+  input::-ms-reveal {
+    visibility: hidden;
+  }
+
+  //テキストエリア
+  textarea {
+    max-width: 100%;
+    display: block;
+    resize: none;
+    word-break: break-all;
+    white-space: pre-wrap;
+    field-sizing: content;
+  }
+
+  //select
+  select {
+    cursor: pointer;
+    appearance: none;
+
+    &::-ms-expand {
+      display: none;
     }
+  }
 
-    input::-ms-reveal {
-        visibility: hidden;
-    }
+  //チェックボックス
+  // input[type="checkbox"] {
+  //     @include input_button_init(checkbox);
+  // }
 
-    //テキストエリア
-    textarea {
-        max-width   : 100%;
-        display     : block;
-        resize      : none;
-        word-break  : break-all;
-        white-space : pre-wrap;
-        field-sizing: content;
-    }
+  //ラジオボタン
+  // input[type="radio"] {
+  //     @include input_button_init(radio);
+  // }
 
-    //select
-    select {
-        cursor    : pointer;
-        appearance: none;
+  //ラベル
+  label {
+    display: block;
+  }
 
-        &::-ms-expand {
-            display: none;
-        }
-    }
+  //ボタン
+  input[type="button"],
+  input[type="submit"] {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+  }
 
-    //チェックボックス
-    // input[type="checkbox"] {
-    //     @include input_button_init(checkbox);
-    // }
-
-    //ラジオボタン
-    // input[type="radio"] {
-    //     @include input_button_init(radio);
-    // }
-
-    //ラベル
-    label {
-        display: block;
-    }
-
-    //ボタン
-    input[type="button"],
-    input[type="submit"] {
-        width          : 100%;
-        height         : 100%;
-        display        : flex;
-        justify-content: center;
-        text-align     : center;
-        cursor         : pointer;
-    }
-
-    :disabled {
-        pointer-events: none;
-        filter        : opacity(0.3);
-    }
+  :disabled {
+    pointer-events: none;
+    filter: opacity(0.3);
+  }
 }

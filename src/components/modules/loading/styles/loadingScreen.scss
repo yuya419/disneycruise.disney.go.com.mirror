@@ -6,14 +6,14 @@
 /* __10: 共通設定 */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin"as g;
+@use "@/assets/styles/_mixin" as g;
 
 .loading {
-    position        : fixed;
-    inset           : 0;
-    z-index         : 9999;
-    display         : flex;
-    align-items     : center;
-    justify-content : center;
-    background-color: var(--color_white);
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color_white);
 }

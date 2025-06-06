@@ -1,39 +1,39 @@
 :root {
-    // font
-    --font_weight   : 500;
-    --line_height   : 1.66666;
-    --letter_spacing: 0.03em;
-    --font_size_base: 1rem;
+  // font
+  --font_weight: 500;
+  --line_height: 1.66666;
+  --letter_spacing: 0.03em;
+  --font_size_base: 1rem;
 
-    // color
-    --color_black: #272833;
-    --color_white: white;
-    --color_gray : #9396A7;
+  // color
+  --color_black: #272833;
+  --color_white: white;
+  --color_gray: #9396a7;
 
-    --color_bg_gray : #F4F4F4;
-    --color_bg_beige: #F7F1E5;
+  --color_bg_gray: #f4f4f4;
+  --color_bg_beige: #f7f1e5;
 
-    --color_bdr: #D5D7E6;
+  --color_bdr: #d5d7e6;
 
-    --color_blue: #002D74;
-    --color_gold: #D6B44D;
+  --color_blue: #002d74;
+  --color_gold: #d6b44d;
 
-    // theme color
-    --theme_color_text   : var(--color_black);
-    --theme_color_caption: var(--color_gray);
-    --theme_color_bg     : var(--color_bg_gray);
-    --theme_color_bg_sub : var(--color_bg_beige);
-    --theme_color_border : var(--color_bdr);
-    --theme_color_main   : var(--color_blue);
-    --theme_color_sub    : var(--color_gold);
+  // theme color
+  --theme_color_text: var(--color_black);
+  --theme_color_caption: var(--color_gray);
+  --theme_color_bg: var(--color_bg_gray);
+  --theme_color_bg_sub: var(--color_bg_beige);
+  --theme_color_border: var(--color_bdr);
+  --theme_color_main: var(--color_blue);
+  --theme_color_sub: var(--color_gold);
 
-    // easing
-    --customEasingIn : cubic-bezier(0.46, 0.74, 0.53, 0.88);
-    --customEasingOut: cubic-bezier(0.27, 0.58, 0.38, 0.69);
+  // easing
+  --customEasingIn: cubic-bezier(0.46, 0.74, 0.53, 0.88);
+  --customEasingOut: cubic-bezier(0.27, 0.58, 0.38, 0.69);
 
-    // duration
-    --dur: 0.2s;
+  // duration
+  --dur: 0.2s;
 
-    // transtion
-    --t-out: var(--dur) var(--customEasingOut);
+  // transtion
+  --t-out: var(--dur) var(--customEasingOut);
 }

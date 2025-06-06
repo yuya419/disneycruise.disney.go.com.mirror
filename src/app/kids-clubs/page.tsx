@@ -10,9 +10,9 @@ import { KidsClubs } from "@/layouts/page/page";
 export const metadata: Metadata = metaArray["kids-clubs"];
 
 export default function Page() {
-    return (
-        <div className="page">
-            <KidsClubs />
-        </div>
-    );
+  return (
+    <div className="page">
+      <KidsClubs />
+    </div>
+  );
 }

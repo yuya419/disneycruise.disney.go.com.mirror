@@ -10,9 +10,9 @@ import { SpaLoungesBar } from "@/layouts/page/page";
 export const metadata: Metadata = metaArray["spa-lounges-bar"];
 
 export default function Page() {
-    return (
-        <div className="page">
-            <SpaLoungesBar />
-        </div>
-    );
+  return (
+    <div className="page">
+      <SpaLoungesBar />
+    </div>
+  );
 }

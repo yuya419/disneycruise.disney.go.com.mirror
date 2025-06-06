@@ -1,105 +1,105 @@
 @use "./reset";
-@use "./globals"as g;
+@use "./globals" as g;
 
 // html
 html {
-    font-size                 : 10px;
-    scroll-behavior           : smooth;
-    overscroll-behavior-y     : contain;
-    -webkit-overflow-scrolling: touch;
-    scroll-padding-top        : var(--header-height);
+  font-size: 10px;
+  scroll-behavior: smooth;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  scroll-padding-top: var(--header-height);
 
-    * {
-        box-sizing: border-box;
-        word-break: break-all;
-        line-break: strict;
-    }
+  * {
+    box-sizing: border-box;
+    word-break: break-all;
+    line-break: strict;
+  }
 
-    //ドロワーナビオープン時
-    &:has([data-state="navOpen"]) {
-        @include g.isFixed();
-    }
+  //ドロワーナビオープン時
+  &:has([data-state="navOpen"]) {
+    @include g.isFixed();
+  }
 
-    //モーダルオープン時
-    &:has([data-state="modalOpen"]) {
-        @include g.isFixed();
-    }
+  //モーダルオープン時
+  &:has([data-state="modalOpen"]) {
+    @include g.isFixed();
+  }
 
-    // sp - html
-    @include g.media(md) {
-        scroll-padding-top: calc(var(--header-height)*1.2);
-    }
+  // sp - html
+  @include g.media(md) {
+    scroll-padding-top: calc(var(--header-height) * 1.2);
+  }
 }
 
 // body
 body {
-    color                      : var(--theme_color_text);
-    font-family                : var(--noto-sans-jp);
-    font-size                  : var(--font_size_base);
-    font-weight                : var(--font_weight);
-    line-height                : var(--line_height);
-    letter-spacing             : var(--letter_spacing);
-    -webkit-text-size-adjust   : 100%;
-    -webkit-font-smoothing     : antialiased;
-    -moz-osx-font-smoothing    : grayscale;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: var(--theme_color_text);
+  font-family: var(--noto-sans-jp);
+  font-size: var(--font_size_base);
+  font-weight: var(--font_weight);
+  line-height: var(--line_height);
+  letter-spacing: var(--letter_spacing);
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 main {
-    position: relative;
-    z-index : 2;
+  position: relative;
+  z-index: 2;
 }
 
 // a
 a:not([class]) {
-    color: var(--theme_color_main);
+  color: var(--theme_color_main);
 }
 
 // lang=en
 [lang="en"] {
-    font-family: var(--philosopher);
+  font-family: var(--philosopher);
 }
 
 //sp時非表示
 .nosp {
-    @include g.media(md) {
-        display: none !important;
-    }
+  @include g.media(md) {
+    display: none !important;
+  }
 }
 
 //pc時非表示
 .nopc {
-    display: none;
+  display: none;
 
-    @include g.media(md) {
-        display: block;
-    }
+  @include g.media(md) {
+    display: block;
+  }
 }
 
 // lg - 1600px ~ n
 @include g.media(lg, min) {
-    html {
-        font-size: 12px;
-    }
+  html {
+    font-size: 12px;
+  }
 }
 
 // xl - 1920px ~ n
 @include g.media(xl, min) {
-    html {
-        font-size: 13px;
-    }
+  html {
+    font-size: 13px;
+  }
 }
 
 // bs - 1024px ~ 1300px
 @include g.media(bs, max) {
-    html {
-        @include g.font-vw(10, 1300);
-    }
+  html {
+    @include g.font-vw(10, 1300);
+  }
 }
 
 // SP(md) - n ~ 1024px
 @include g.media(md) {
-    html {
-        @include g.font-vw();
-    }
+  html {
+    @include g.font-vw();
+  }
 }

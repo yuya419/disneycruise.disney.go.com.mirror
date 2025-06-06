@@ -13,24 +13,24 @@ import Aside from "@/layouts/aside/aside";
 export const metadata: Metadata = metaArray["list-detail"];
 
 export default function Page() {
-    const breadcrumbItems = [
-        { label: "コース一覧", href: "/list" },
-        { label: "シンガポール発着　3泊クルーズ", href: "/list/detail/" },
-    ];
+  const breadcrumbItems = [
+    { label: "コース一覧", href: "/list" },
+    { label: "シンガポール発着　3泊クルーズ", href: "/list/detail/" },
+  ];
 
-    return (
-        <div className="single">
-            <div className="s-course">
-                <Breadcrumb items={breadcrumbItems} />
-                <HasAsideContainer>
-                    <main className="l-main">
-                        <article className="l-article">
-                            <Single />
-                        </article>
-                    </main>
-                    <Aside page="course" />
-                </HasAsideContainer>
-            </div>
-        </div>
-    );
+  return (
+    <div className="single">
+      <div className="s-course">
+        <Breadcrumb items={breadcrumbItems} />
+        <HasAsideContainer>
+          <main className="l-main">
+            <article className="l-article">
+              <Single />
+            </article>
+          </main>
+          <Aside page="course" />
+        </HasAsideContainer>
+      </div>
+    </div>
+  );
 }

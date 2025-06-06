@@ -10,16 +10,16 @@ import { Page as Book } from "@/layouts/form/page";
 export const metadata: Metadata = metaArray["book"];
 
 export default function Page() {
-    return (
-        <main className="page">
-            <Book
-                slug="book"
-                title={{
-                    ja: "予約申し込み",
-                    en: "Reservation",
-                }}
-                step="confirm"
-            />
-        </main>
-    );
+  return (
+    <main className="page">
+      <Book
+        slug="book"
+        title={{
+          ja: "予約申し込み",
+          en: "Reservation",
+        }}
+        step="confirm"
+      />
+    </main>
+  );
 }

@@ -5,42 +5,43 @@ import { useRefContext } from "@/hooks/useRefContext";
 type HeadColor = "white" | "blue";
 
 export function useHeadColor(setIsColor: (color: HeadColor) => void) {
-    const pathname = usePathname();
+  const pathname = usePathname();
 
-    useEffect(() => {
-        const whitePaths = [
-            "/",
-            "/themed-areas/",
-            "/entertainment/",
-            "/dining/",
-            "/accommodations/",
-            "/kids-clubs/",
-            "/spa-lounges-bar/",
-            "/concierge/",
-        ];
-        setIsColor(whitePaths.includes(pathname) ? "white" : "blue");
-    }, [pathname, setIsColor]);
+  useEffect(() => {
+    const whitePaths = [
+      "/",
+      "/themed-areas/",
+      "/entertainment/",
+      "/dining/",
+      "/accommodations/",
+      "/kids-clubs/",
+      "/spa-lounges-bar/",
+      "/concierge/",
+    ];
+    setIsColor(whitePaths.includes(pathname) ? "white" : "blue");
+  }, [pathname, setIsColor]);
 }
 
-export function useHeaderHeight(): number {
-    const { header } = useRefContext();
-    const [headerHeight, setHeaderHeight] = useState(0);
+export function useHeaderHeight() {
+  const { drawerButton } = useRefContext();
 
-    useEffect(() => {
-        function updateHeaderHeight() {
-            const rect = header.current?.getBoundingClientRect();
-            const height = rect ? (rect.height + rect.top * 2) * -1 : 0;
-            setHeaderHeight(height);
-        }
+  useEffect(() => {
+    function updateDrawerButtonHeight() {
+      const rect = drawerButton.current?.getBoundingClientRect();
+      const height = rect ? rect.height : 0;
 
-        updateHeaderHeight();
-        window.addEventListener("resize", updateHeaderHeight);
+      document.documentElement.style.setProperty(
+        "--header-height",
+        `${height}px`,
+      );
+    }
 
-        return () => {
-            window.removeEventListener("resize", updateHeaderHeight);
-            setHeaderHeight(0);
-        };
-    }, [header]);
+    updateDrawerButtonHeight();
+    window.addEventListener("resize", updateDrawerButtonHeight);
 
-    return headerHeight;
+    return () => {
+      window.removeEventListener("resize", updateDrawerButtonHeight);
+      document.documentElement.style.setProperty("--header-height", "0px");
+    };
+  }, [drawerButton]);
 }

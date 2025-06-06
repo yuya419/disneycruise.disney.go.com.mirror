@@ -6,679 +6,682 @@
 /* __10: 共通設定 */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin"as g;
+@use "@/assets/styles/_mixin" as g;
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .m-room-type {
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-    img {
-        display   : block;
-        width     : 100%;
-        height    : 100%;
-        object-fit: cover;
+  &-item {
+    border: 1px solid var(--theme_color_border);
+    border-radius: 0.7rem;
+
+    & + .m-room-type-item {
+      margin-top: 1.2rem;
     }
 
-    &-item {
-        border       : 1px solid var(--theme_color_border);
-        border-radius: 0.7rem;
+    // 客室タイプ
+    > .acdn {
+      transition: background-color 0.15s var(--customEasingOut);
 
-        &+.m-room-type-item {
-            margin-top: 1.2rem;
+      @include g.hover() {
+        background-color: rgba(0, 44, 116, 0.05);
+      }
+
+      &.isOpen {
+        background-color: var(--color_white);
+      }
+
+      > .acdn-toggle {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 4rem;
+        column-gap: 3rem;
+
+        .type-eyecatch {
+          flex-shrink: 0;
+          width: 20rem;
+          height: 13.3rem;
         }
 
-        // 客室タイプ
-        >.acdn {
-            transition: background-color 0.15s var(--customEasingOut);
+        .type-name {
+          .name {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 1.8rem;
+            line-height: calc(21 / 18);
+            color: var(--theme_color_main);
+          }
+
+          .length {
+            display: inline-block;
+            font-size: 1.2rem;
+            line-height: calc(9 / 12);
+            color: var(--theme_color_text);
+            background-color: var(--theme_color_bg_sub);
+            padding: 0.6rem;
+            border-radius: 0.4rem;
+            text-align: center;
+            flex-shrink: 0;
+          }
+
+          .text {
+            display: block;
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            line-height: 1.2;
+          }
+        }
+
+        .toggle-icon {
+          flex-shrink: 0;
+          display: block;
+          width: 1.9rem;
+          height: 1.9rem;
+          position: relative;
+          margin-left: auto;
+          border: 1px solid var(--theme_color_main);
+          background-color: var(--color_white);
+          border-radius: 50%;
+          transition: background-color 0.2s var(--customEasingOut);
+
+          &::before,
+          &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: 0.8rem;
+            height: 1px;
+            background-color: var(--theme_color_main);
+            transition:
+              background-color 0.2s var(--customEasingOut),
+              rotate 0.2s var(--customEasingOut);
+          }
+
+          &::after {
+            rotate: 90deg;
+          }
+        }
+
+        &[data-expanded="true"] {
+          .toggle-icon {
+            background-color: var(--theme_color_main);
+
+            &::before,
+            &::after {
+              background-color: var(--color_white);
+            }
+
+            &::after {
+              rotate: 0deg;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 部屋
+  .room-list {
+    padding: 0 4rem 4rem;
+
+    // アコーディオン
+    .acdn {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      column-gap: 2.5rem;
+      grid-template-areas:
+        "label toggle"
+        "content content";
+
+      &-label {
+        grid-area: label;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        column-gap: 2.5rem;
+      }
+
+      &-content {
+        grid-area: content;
+      }
+
+      &-toggle {
+        grid-area: toggle;
+        width: 8.6rem;
+        height: 3.7rem;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        grid-template-areas: "text icon";
+        grid-template-columns: repeat(2, auto);
+        column-gap: 1rem;
+        color: var(--theme_color_main);
+        border: 1px solid var(--theme_color_main);
+        border-radius: 0.4rem;
+        margin-block: auto;
+        transition:
+          color var(--t-out),
+          background-color var(--t-out),
+          border-color var(--t-out);
+
+        .open,
+        .close {
+          grid-area: text;
+          text-align: center;
+          font-size: 1.4rem;
+          transition: opacity 0.1s var(--customEasingOut);
+        }
+
+        .close {
+          opacity: 0;
+        }
+
+        .icon {
+          display: block;
+          width: 1rem;
+          height: 1rem;
+
+          .i-arw-t-tri {
+            display: block;
+            width: 100%;
+            height: 100%;
+            rotate: 180deg;
+            transition: rotate 0.2s var(--customEasingOut);
+          }
+        }
+
+        &[data-expanded="false"] {
+          @include g.hover() {
+            color: var(--color_white);
+            background-color: var(--theme_color_main);
+          }
+
+          .open {
+            opacity: 1;
+          }
+
+          .close {
+            opacity: 0;
+          }
+        }
+
+        &[data-expanded="true"] {
+          .open {
+            opacity: 0;
+          }
+
+          .close {
+            opacity: 1;
+          }
+
+          .i-arw-t-tri {
+            rotate: 0deg;
+          }
+        }
+      }
+    }
+
+    .room-item {
+      padding: 2.5rem;
+      border-radius: 0.7rem;
+      background-color: var(--theme_color_bg);
+
+      & + .room-item {
+        margin-top: 1.6rem;
+      }
+
+      .room-eyecatch {
+        flex-shrink: 0;
+        width: 12rem;
+        height: 8rem;
+      }
+
+      .room-name {
+        font-size: 1.5rem;
+        line-height: calc(24 / 15);
+      }
+
+      .room-content {
+        padding-top: 2.5rem;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 2.5rem;
+
+        .calendar {
+        }
+
+        .booking-form {
+          &__inner {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+          }
+
+          .info {
+            &-item {
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+
+              & + .info-item {
+                margin-top: 2.4rem;
+                padding-top: 2.4rem;
+                border-top: 1px solid #caccd9;
+              }
+
+              dt {
+                .m-headline {
+                  font-size: 1.4rem;
+                  line-height: 1;
+                  min-height: 1.6rem;
+                  padding-block: 0;
+                  padding-left: 0.7rem;
+                }
+              }
+            }
+
+            // クルーズ料金
+            .is-info-price {
+              > dd {
+                width: 100%;
+                margin-top: 2.4rem;
+
+                dl {
+                  display: grid;
+                  align-items: baseline;
+                  grid-template-columns: auto 1fr;
+                  column-gap: 1.8rem;
+
+                  dt {
+                    font-size: 1.4rem;
+                    line-height: calc(10 / 14);
+                  }
+                }
+              }
+
+              // 合計
+              .total {
+                margin-bottom: 2.4rem;
+
+                dt {
+                  font-weight: 700;
+                }
+
+                dd {
+                  font-size: 2.2rem;
+                  font-weight: 700;
+                  line-height: calc(16 / 22);
+                  color: #c52727;
+                  margin-left: -0.8rem;
+                }
+              }
+
+              // 大人, 子ども
+              .people {
+                & + .people {
+                  margin-top: 1.4rem;
+                }
+
+                dd {
+                  font-size: 1.4rem;
+                  line-height: calc(10 / 14);
+                  display: flex;
+                  align-items: baseline;
+
+                  .num {
+                    display: flex;
+                    align-items: baseline;
+                    height: 1rem;
+                    margin-left: 0.8rem;
+
+                    span {
+                      display: block;
+                      width: 0.9rem;
+                      height: 0.9rem;
+                      margin-right: 0.8rem;
+                      position: relative;
+
+                      &::before,
+                      &::after {
+                        content: "";
+                        width: 100%;
+                        height: 1px;
+                        position: absolute;
+                        inset: 0;
+                        margin: auto;
+                        background-color: #27283380;
+                      }
+
+                      &::before {
+                        rotate: 45deg;
+                      }
+
+                      &::after {
+                        rotate: -45deg;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            //出発日
+            //取消料発生日
+            .is-info-date,
+            .is-info-cancel {
+              dd {
+                font-size: 1.7rem;
+                font-weight: 700;
+                margin-left: auto;
+                line-height: calc(12 / 17);
+              }
+            }
+          }
+
+          .booking-button {
+            width: 100%;
+            height: 4.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 0.8rem;
+            border-radius: 0.7rem;
+            color: var(--color_white);
+            background-color: var(--theme_color_main);
+            font-size: 1.5rem;
+            margin-top: 3.5rem;
+            transition:
+              background-color 0.1s var(--customEasingOut),
+              color 0.1s var(--customEasingOut);
 
             @include g.hover() {
-                background-color: rgba(0, 44, 116, 0.05);
-            }
+              background-color: #b99e4f;
+              color: var(--color_white);
 
-            &.isOpen {
+              .icon {
                 background-color: var(--color_white);
+
+                .i-check {
+                  color: #b99e4f;
+                }
+              }
             }
 
-            >.acdn-toggle {
-                width      : 100%;
-                display    : flex;
-                align-items: center;
-                padding    : 4rem;
-                column-gap : 3rem;
+            .icon {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 1.9rem;
+              height: 1.9rem;
+              border-radius: 50%;
+              background-color: var(--theme_color_sub);
+              transition: background-color 0.1s var(--customEasingOut);
 
-                .type-eyecatch {
-                    flex-shrink: 0;
-                    width      : 20rem;
-                    height     : 13.3rem;
-                }
-
-                .type-name {
-                    .name {
-                        display    : flex;
-                        align-items: center;
-                        flex-wrap  : wrap;
-                        gap        : 1rem;
-                        font-size  : 1.8rem;
-                        line-height: calc(21/18);
-                        color      : var(--theme_color_main);
-                    }
-
-                    .length {
-                        display         : inline-block;
-                        font-size       : 1.2rem;
-                        line-height     : calc(9/12);
-                        color           : var(--theme_color_text);
-                        background-color: var(--theme_color_bg_sub);
-                        padding         : 0.6rem;
-                        border-radius   : 0.4rem;
-                        text-align      : center;
-                        flex-shrink     : 0;
-                    }
-
-                    .text {
-                        display    : block;
-                        font-size  : 1.4rem;
-                        margin-top : 2rem;
-                        line-height: 1.2;
-                    }
-                }
-
-                .toggle-icon {
-                    flex-shrink     : 0;
-                    display         : block;
-                    width           : 1.9rem;
-                    height          : 1.9rem;
-                    position        : relative;
-                    margin-left     : auto;
-                    border          : 1px solid var(--theme_color_main);
-                    background-color: var(--color_white);
-                    border-radius   : 50%;
-                    transition      : background-color 0.2s var(--customEasingOut);
-
-                    &::before,
-                    &::after {
-                        content         : "";
-                        position        : absolute;
-                        inset           : 0;
-                        margin          : auto;
-                        width           : 0.8rem;
-                        height          : 1px;
-                        background-color: var(--theme_color_main);
-                        transition      : background-color 0.2s var(--customEasingOut), rotate 0.2s var(--customEasingOut);
-                    }
-
-                    &::after {
-                        rotate: 90deg;
-                    }
-                }
-
-                &[data-expanded="true"] {
-
-                    .toggle-icon {
-                        background-color: var(--theme_color_main);
-
-                        &::before,
-                        &::after {
-                            background-color: var(--color_white);
-                        }
-
-                        &::after {
-                            rotate: 0deg;
-                        }
-                    }
-                }
+              .i-check {
+                display: block;
+                width: 70%;
+                aspect-ratio: 1;
+                color: var(--theme_color_main);
+                margin-top: 0.2rem;
+                transition: color 0.1s var(--customEasingOut);
+              }
             }
+          }
+
+          .attention {
+            margin-top: auto;
+
+            a {
+              font-size: 1.2rem;
+              text-decoration: none;
+              color: var(--theme_color_text);
+              width: fit-content;
+              display: flex;
+              align-items: center;
+              column-gap: 0.5rem;
+              margin-left: auto;
+            }
+
+            .icon {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 1.8rem;
+              height: 1.8rem;
+              border-radius: 50%;
+              background-color: var(--theme_color_main);
+
+              .i-question {
+                display: block;
+                width: 1rem;
+                height: 1rem;
+                color: var(--color_white);
+              }
+            }
+
+            .label {
+              line-height: 1.3;
+            }
+          }
+
+          .close-button {
+            display: none;
+          }
         }
+      }
     }
-
-    // 部屋
-    .room-list {
-        padding: 0 4rem 4rem;
-
-        // アコーディオン
-        .acdn {
-            display              : grid;
-            grid-template-columns: 1fr auto;
-            column-gap           : 2.5rem;
-            grid-template-areas  :
-                "label toggle"
-                "content content";
-
-            &-label {
-                grid-area  : label;
-                display    : flex;
-                width      : 100%;
-                align-items: center;
-                column-gap : 2.5rem;
-            }
-
-            &-content {
-                grid-area: content;
-            }
-
-            &-toggle {
-                grid-area            : toggle;
-                width                : 8.6rem;
-                height               : 3.7rem;
-                display              : grid;
-                align-items          : center;
-                justify-content      : center;
-                grid-template-areas  : "text icon";
-                grid-template-columns: repeat(2, auto);
-                column-gap           : 1rem;
-                color                : var(--theme_color_main);
-                border               : 1px solid var(--theme_color_main);
-                border-radius        : 0.4rem;
-                margin-block         : auto;
-                transition           : color var(--t-out), background-color var(--t-out), border-color var(--t-out);
-
-                .open,
-                .close {
-                    grid-area : text;
-                    text-align: center;
-                    font-size : 1.4rem;
-                    transition: opacity 0.1s var(--customEasingOut);
-                }
-
-                .close {
-                    opacity: 0;
-                }
-
-                .icon {
-                    display: block;
-                    width  : 1rem;
-                    height : 1rem;
-
-                    .i-arw-t-tri {
-                        display   : block;
-                        width     : 100%;
-                        height    : 100%;
-                        rotate    : 180deg;
-                        transition: rotate 0.2s var(--customEasingOut);
-                    }
-                }
-
-                &[data-expanded="false"] {
-
-                    @include g.hover() {
-                        color           : var(--color_white);
-                        background-color: var(--theme_color_main);
-                    }
-
-                    .open {
-                        opacity: 1;
-                    }
-
-                    .close {
-                        opacity: 0;
-                    }
-                }
-
-                &[data-expanded="true"] {
-                    .open {
-                        opacity: 0;
-                    }
-
-                    .close {
-                        opacity: 1;
-                    }
-
-                    .i-arw-t-tri {
-                        rotate: 0deg;
-                    }
-                }
-            }
-        }
-
-        .room-item {
-            padding         : 2.5rem;
-            border-radius   : 0.7rem;
-            background-color: var(--theme_color_bg);
-
-            &+.room-item {
-                margin-top: 1.6rem;
-            }
-
-            .room-eyecatch {
-                flex-shrink: 0;
-                width      : 12rem;
-                height     : 8rem;
-            }
-
-            .room-name {
-                font-size  : 1.5rem;
-                line-height: calc(24/15);
-            }
-
-            .room-content {
-                padding-top          : 2.5rem;
-                display              : grid;
-                grid-template-columns: auto 1fr;
-                column-gap           : 2.5rem;
-
-                .calendar {}
-
-                .booking-form {
-                    &__inner {
-                        display       : flex;
-                        height        : 100%;
-                        flex-direction: column;
-                    }
-
-                    .info {
-                        &-item {
-                            display    : flex;
-                            flex-wrap  : wrap;
-                            align-items: center;
-
-                            &+.info-item {
-                                margin-top : 2.4rem;
-                                padding-top: 2.4rem;
-                                border-top : 1px solid #CACCD9;
-                            }
-
-                            dt {
-                                .m-headline {
-                                    font-size    : 1.4rem;
-                                    line-height  : 1;
-                                    min-height   : 1.6rem;
-                                    padding-block: 0;
-                                    padding-left : 0.7rem;
-                                }
-                            }
-                        }
-
-                        // クルーズ料金
-                        .is-info-price {
-                            >dd {
-                                width     : 100%;
-                                margin-top: 2.4rem;
-
-                                dl {
-                                    display              : grid;
-                                    align-items          : baseline;
-                                    grid-template-columns: auto 1fr;
-                                    column-gap           : 1.8rem;
-
-                                    dt {
-                                        font-size  : 1.4rem;
-                                        line-height: calc(10/14);
-                                    }
-                                }
-                            }
-
-                            // 合計
-                            .total {
-                                margin-bottom: 2.4rem;
-
-                                dt {
-                                    font-weight: 700;
-                                }
-
-                                dd {
-                                    font-size  : 2.2rem;
-                                    font-weight: 700;
-                                    line-height: calc(16/22);
-                                    color      : #C52727;
-                                    margin-left: -0.8rem;
-                                }
-                            }
-
-                            // 大人, 子ども
-                            .people {
-                                &+.people {
-                                    margin-top: 1.4rem;
-                                }
-
-                                dd {
-                                    font-size  : 1.4rem;
-                                    line-height: calc(10/14);
-                                    display    : flex;
-                                    align-items: baseline;
-
-                                    .num {
-                                        display    : flex;
-                                        align-items: baseline;
-                                        height     : 1rem;
-                                        margin-left: 0.8rem;
-
-                                        span {
-                                            display     : block;
-                                            width       : 0.9rem;
-                                            height      : 0.9rem;
-                                            margin-right: 0.8rem;
-                                            position    : relative;
-
-                                            &::before,
-                                            &::after {
-                                                content         : "";
-                                                width           : 100%;
-                                                height          : 1px;
-                                                position        : absolute;
-                                                inset           : 0;
-                                                margin          : auto;
-                                                background-color: #27283380;
-                                            }
-
-                                            &::before {
-                                                rotate: 45deg;
-                                            }
-
-                                            &::after {
-                                                rotate: -45deg;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        //出発日
-                        //取消料発生日
-                        .is-info-date,
-                        .is-info-cancel {
-                            dd {
-                                font-size  : 1.7rem;
-                                font-weight: 700;
-                                margin-left: auto;
-                                line-height: calc(12/17);
-                            }
-                        }
-                    }
-
-                    .booking-button {
-                        width           : 100%;
-                        height          : 4.7rem;
-                        display         : flex;
-                        align-items     : center;
-                        justify-content : center;
-                        column-gap      : 0.8rem;
-                        border-radius   : 0.7rem;
-                        color           : var(--color_white);
-                        background-color: var(--theme_color_main);
-                        font-size       : 1.5rem;
-                        margin-top      : 3.5rem;
-                        transition      : background-color 0.1s var(--customEasingOut), color 0.1s var(--customEasingOut);
-
-                        @include g.hover() {
-                            background-color: #B99E4F;
-                            color           : var(--color_white);
-
-                            .icon {
-                                background-color: var(--color_white);
-
-                                .i-check {
-                                    color: #B99E4F;
-                                }
-                            }
-                        }
-
-                        .icon {
-                            display         : flex;
-                            align-items     : center;
-                            justify-content : center;
-                            width           : 1.9rem;
-                            height          : 1.9rem;
-                            border-radius   : 50%;
-                            background-color: var(--theme_color_sub);
-                            transition      : background-color 0.1s var(--customEasingOut);
-
-                            .i-check {
-                                display     : block;
-                                width       : 70%;
-                                aspect-ratio: 1;
-                                color       : var(--theme_color_main);
-                                margin-top  : 0.2rem;
-                                transition  : color 0.1s var(--customEasingOut);
-                            }
-                        }
-                    }
-
-                    .attention {
-                        margin-top: auto;
-
-                        a {
-                            font-size      : 1.2rem;
-                            text-decoration: none;
-                            color          : var(--theme_color_text);
-                            width          : fit-content;
-                            display        : flex;
-                            align-items    : center;
-                            column-gap     : 0.5rem;
-                            margin-left    : auto;
-                        }
-
-                        .icon {
-                            display         : flex;
-                            align-items     : center;
-                            justify-content : center;
-                            width           : 1.8rem;
-                            height          : 1.8rem;
-                            border-radius   : 50%;
-                            background-color: var(--theme_color_main);
-
-                            .i-question {
-                                display: block;
-                                width  : 1rem;
-                                height : 1rem;
-                                color  : var(--color_white);
-                            }
-                        }
-
-                        .label {
-                            line-height: 1.3;
-                        }
-                    }
-
-                    .close-button {
-                        display: none;
-                    }
-                }
-            }
-        }
-    }
+  }
 }
 
 // sp
 @include g.media(md) {
-    .m-room-type {
-        &-item {
-            border-radius: 0;
-            border-left  : none;
-            border-right : none;
-            border-bottom: 1px solid var(--theme_color_border);
-            width        : calc(100% + 50px);
-            margin-left  : -25px;
+  .m-room-type {
+    &-item {
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+      border-bottom: 1px solid var(--theme_color_border);
+      width: calc(100% + 50px);
+      margin-left: -25px;
 
-            &+.m-room-type-item {
-                margin-top: 0;
-                border-top: none;
+      & + .m-room-type-item {
+        margin-top: 0;
+        border-top: none;
+      }
+
+      // 客室タイプ
+      > .acdn {
+        > .acdn-toggle {
+          width: 100%;
+          padding: 2.2rem 2.5rem;
+          column-gap: 1.6rem;
+
+          .type-eyecatch {
+            width: 10rem;
+            height: 6.6rem;
+          }
+
+          .type-name {
+            .name {
+              font-size: 1.5rem;
             }
 
-            // 客室タイプ
-            >.acdn {
-                >.acdn-toggle {
-                    width     : 100%;
-                    padding   : 2.2rem 2.5rem;
-                    column-gap: 1.6rem;
-
-                    .type-eyecatch {
-                        width : 10rem;
-                        height: 6.6rem;
-                    }
-
-                    .type-name {
-
-                        .name {
-                            font-size: 1.5rem;
-                        }
-
-                        .text {
-                            font-size : 1.1rem;
-                            margin-top: 1.6rem;
-                        }
-                    }
-                }
+            .text {
+              font-size: 1.1rem;
+              margin-top: 1.6rem;
             }
+          }
         }
-
-        // 部屋
-        .room-list {
-            padding: 0 10px 2.2rem;
-
-            // アコーディオン
-            .acdn {
-                display: block;
-
-                &-label {
-                    column-gap: 1.6rem;
-                }
-
-                &-content {}
-
-                &-toggle {
-                    width     : 100%;
-                    position  : relative;
-                    margin-top: 1.6rem;
-
-                    .open,
-                    .close {
-                        font-size: 1.2rem;
-                    }
-
-                    .icon {
-                        position    : absolute;
-                        right       : 1.5rem;
-                        top         : 0;
-                        bottom      : 0;
-                        margin-block: auto;
-                    }
-                }
-            }
-
-            .room-item {
-                padding      : 1.6rem 2rem;
-                border-radius: 0.5rem;
-
-                .room-eyecatch {
-                    width : 11.2rem;
-                    height: 7.4rem;
-                }
-
-                .room-name {
-                    font-size  : 1.4rem;
-                    line-height: calc(20/14);
-                }
-
-                .room-content {
-                    padding-top: 1.6rem;
-                    display    : block;
-
-                    .calendar {
-                        width: 100%;
-                    }
-
-                    .booking-form {
-                        position        : fixed;
-                        inset           : 0;
-                        z-index         : 999;
-                        margin          : auto;
-                        width           : 32rem;
-                        height          : fit-content;
-                        background-color: var(--color_white);
-                        border-radius   : 0.5rem;
-                        padding         : 4.8rem 4rem;
-                        pointer-events  : none;
-                        opacity         : 0;
-                        transition      : opacity 0.3s var(--customEasingOut);
-
-                        &[data-open="true"] {
-                            opacity       : 1;
-                            pointer-events: all;
-                        }
-
-                        &__inner {
-                            display: block;
-                            height : auto;
-                        }
-
-                        .info {
-
-                            &-item {
-                                &+.info-item {
-                                    margin-top : 2rem;
-                                    padding-top: 2rem;
-                                }
-                            }
-
-                            // クルーズ料金
-                            .is-info-price {
-
-                                >dd {
-                                    margin-top: 2rem;
-                                }
-
-                                // 合計
-                                .total {
-                                    margin-bottom: 2rem;
-
-                                    dt {
-                                        font-weight: 700;
-                                    }
-                                }
-                            }
-                        }
-
-                        .booking-button {
-                            border-radius: 0.5rem;
-                            font-size    : 1.4rem;
-
-                            .icon {
-                                width : 1.6rem;
-                                height: 1.6rem;
-                            }
-                        }
-
-                        .attention {
-                            margin-top: 4.4rem;
-
-                            a {
-                                margin-inline: auto;
-                            }
-                        }
-
-                        .close-button {
-                            display         : block;
-                            position        : absolute;
-                            top             : 1rem;
-                            right           : 1rem;
-                            width           : 2.4rem;
-                            height          : 2.4rem;
-                            border-radius   : 50%;
-                            background-color: var(--theme_color_text);
-
-                            &::before,
-                            &::after {
-                                content         : "";
-                                width           : 1.3rem;
-                                height          : 1px;
-                                background-color: var(--color_white);
-                                position        : absolute;
-                                inset           : 0;
-                                margin          : auto;
-                            }
-
-                            &::before {
-                                rotate: 45deg;
-                            }
-
-                            &::after {
-                                rotate: -45deg;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+      }
     }
+
+    // 部屋
+    .room-list {
+      padding: 0 10px 2.2rem;
+
+      // アコーディオン
+      .acdn {
+        display: block;
+
+        &-label {
+          column-gap: 1.6rem;
+        }
+
+        &-content {
+        }
+
+        &-toggle {
+          width: 100%;
+          position: relative;
+          margin-top: 1.6rem;
+
+          .open,
+          .close {
+            font-size: 1.2rem;
+          }
+
+          .icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 0;
+            bottom: 0;
+            margin-block: auto;
+          }
+        }
+      }
+
+      .room-item {
+        padding: 1.6rem 2rem;
+        border-radius: 0.5rem;
+
+        .room-eyecatch {
+          width: 11.2rem;
+          height: 7.4rem;
+        }
+
+        .room-name {
+          font-size: 1.4rem;
+          line-height: calc(20 / 14);
+        }
+
+        .room-content {
+          padding-top: 1.6rem;
+          display: block;
+
+          .calendar {
+            width: 100%;
+          }
+
+          .booking-form {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            margin: auto;
+            width: 32rem;
+            height: fit-content;
+            background-color: var(--color_white);
+            border-radius: 0.5rem;
+            padding: 4.8rem 4rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s var(--customEasingOut);
+
+            &[data-open="true"] {
+              opacity: 1;
+              pointer-events: all;
+            }
+
+            &__inner {
+              display: block;
+              height: auto;
+            }
+
+            .info {
+              &-item {
+                & + .info-item {
+                  margin-top: 2rem;
+                  padding-top: 2rem;
+                }
+              }
+
+              // クルーズ料金
+              .is-info-price {
+                > dd {
+                  margin-top: 2rem;
+                }
+
+                // 合計
+                .total {
+                  margin-bottom: 2rem;
+
+                  dt {
+                    font-weight: 700;
+                  }
+                }
+              }
+            }
+
+            .booking-button {
+              border-radius: 0.5rem;
+              font-size: 1.4rem;
+
+              .icon {
+                width: 1.6rem;
+                height: 1.6rem;
+              }
+            }
+
+            .attention {
+              margin-top: 4.4rem;
+
+              a {
+                margin-inline: auto;
+              }
+            }
+
+            .close-button {
+              display: block;
+              position: absolute;
+              top: 1rem;
+              right: 1rem;
+              width: 2.4rem;
+              height: 2.4rem;
+              border-radius: 50%;
+              background-color: var(--theme_color_text);
+
+              &::before,
+              &::after {
+                content: "";
+                width: 1.3rem;
+                height: 1px;
+                background-color: var(--color_white);
+                position: absolute;
+                inset: 0;
+                margin: auto;
+              }
+
+              &::before {
+                rotate: 45deg;
+              }
+
+              &::after {
+                rotate: -45deg;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

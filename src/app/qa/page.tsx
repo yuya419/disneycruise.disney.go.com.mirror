@@ -10,9 +10,9 @@ import { Qa } from "@/layouts/page/page";
 export const metadata: Metadata = metaArray["qa"];
 
 export default function Page() {
-    return (
-        <div className="page">
-            <Qa />
-        </div>
-    );
+  return (
+    <div className="page">
+      <Qa />
+    </div>
+  );
 }

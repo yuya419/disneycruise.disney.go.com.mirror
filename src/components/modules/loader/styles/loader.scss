@@ -1,0 +1,75 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* loadingScreen */
+
+/* 目次 */
+/* __10: 共通設定 */
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@use "@/assets/styles/_mixin"as g;
+
+.loader {
+  position        : fixed;
+  top             : 0;
+  left            : 0;
+  width           : 100%;
+  height          : 100lvh;
+  z-index         : 9999;
+  display         : flex;
+  align-items     : center;
+  justify-content : center;
+  background-color: var(--color_white);
+  pointer-events  : none;
+  will-change     : mask-position;
+  mask-repeat     : no-repeat;
+  mask-image      : url("/ships/adventure/common/mask.webp");
+  mask-size       : 800% 300%;
+  mask-position   : 30% -30%;
+  visibility      : hidden;
+  transition      : mask-position 0.75s var(--customEasingOut);
+
+  &.isIn {
+    mask-position : 60% 77%;
+    visibility    : inherit;
+    pointer-events: all;
+    cursor        : wait;
+
+    &.isOut {
+      mask-position: 30% -30%;
+      scale        : -1 -1;
+      transition   : mask-position 1s var(--customEasingOut) 0.1s;
+    }
+  }
+}
+
+
+// sp
+@include g.media(md) {
+  .loader {
+    mask-image: url("/ships/adventure/common/mask-vert.webp");
+  }
+}
+
+.splash {
+  position        : fixed;
+  top             : 0;
+  left            : 0;
+  width           : 100%;
+  height          : 100dvh;
+  z-index         : 9999;
+  display         : flex;
+  align-items     : center;
+  justify-content : center;
+  background-color: var(--color_white);
+
+  svg {
+    color    : var(--theme_color_main);
+    width    : 30%;
+    min-width: 24.8rem;
+  }
+
+  &.isHidden {
+    transition: opacity 1s var(--customEasingOut);
+    opacity   : 0;
+  }
+}

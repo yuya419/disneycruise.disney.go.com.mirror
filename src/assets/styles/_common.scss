@@ -7,96 +7,95 @@
 /* __20: uline */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin"as g;
+@use "@/assets/styles/_mixin" as g;
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 main {
+  &.archive,
+  &.page,
+  &.single {
+    background-color: var(--color_white);
 
-    &.archive,
-    &.page,
-    &.single {
-        background-color: var(--color_white);
-
-        &:has(.arc-post) {
-            overflow: hidden;
-        }
+    &:has(.arc-post) {
+      overflow: hidden;
     }
+  }
 }
 
 .single,
 .page {
-    position        : relative;
-    z-index         : 2;
-    background-color: var(--color_white);
+  position: relative;
+  z-index: 2;
+  background-color: var(--color_white);
 
-    &:has(.booking-form[data-open="true"]),
-    &:has(.filterModal[data-open="true"]),
-    &:has(.room-modal[data-open="true"]) {
-        @include g.media(md) {
-            position: static;
-            z-index : unset;
-        }
+  &:has(.booking-form[data-open="true"]),
+  &:has(.filterModal[data-open="true"]),
+  &:has(.room-modal[data-open="true"]) {
+    @include g.media(md) {
+      position: static;
+      z-index: unset;
     }
+  }
 }
 
 .overlay {
-    position       : fixed;
-    z-index        : 99;
-    background     : rgba(0, 0, 0, 0.60);
-    backdrop-filter: blur(7px);
-    inset          : 0;
-    width          : 100%;
-    height         : 100dvh;
-    pointer-events : none;
-    opacity        : 0;
-    transition     : opacity 0.3s var(--customEasingOut);
+  position: fixed;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(7px);
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s var(--customEasingOut);
 
-    [data-state="modalOpen"] & {
-        opacity       : 1;
-        pointer-events: all;
-    }
+  [data-state="modalOpen"] & {
+    opacity: 1;
+    pointer-events: all;
+  }
 }
 
 /* __20: uline */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .uline,
 .uline-r {
-    text-decoration: none;
+  text-decoration: none;
 
-    .line {
-        background-image : linear-gradient(currentcolor, currentcolor);
-        background-repeat: no-repeat;
-        transition       : background-size 0.2s var(--customEasingOut);
-    }
+  .line {
+    background-image: linear-gradient(currentcolor, currentcolor);
+    background-repeat: no-repeat;
+    transition: background-size 0.2s var(--customEasingOut);
+  }
 }
 
 // hideen→show
 .uline {
-    @include g.hover {
-        .line {
-            background-size    : 100% 0.1rem;
-            background-position: bottom left;
-        }
-    }
-
+  @include g.hover {
     .line {
-        background-size    : 0% 0.1rem;
-        background-position: bottom right;
+      background-size: 100% 0.1rem;
+      background-position: bottom left;
     }
+  }
+
+  .line {
+    background-size: 0% 0.1rem;
+    background-position: bottom right;
+  }
 }
 
 // show→hidden
 .uline-r {
-    @include g.hover {
-        .line {
-            background-size    : 0% 0.1rem;
-            background-position: bottom right;
-        }
-    }
-
+  @include g.hover {
     .line {
-        background-size    : 100% 0.1rem;
-        background-position: bottom left;
+      background-size: 0% 0.1rem;
+      background-position: bottom right;
     }
+  }
+
+  .line {
+    background-size: 100% 0.1rem;
+    background-position: bottom left;
+  }
 }

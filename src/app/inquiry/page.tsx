@@ -10,16 +10,16 @@ import { Page as Inquiry } from "@/layouts/form/page";
 export const metadata: Metadata = metaArray["inquiry"];
 
 export default function Page() {
-    return (
-        <main className="page">
-            <Inquiry
-                slug="inquiry"
-                title={{
-                    ja: "お問い合わせ",
-                    en: "Contact",
-                }}
-                step="input"
-            />
-        </main>
-    );
+  return (
+    <main className="page">
+      <Inquiry
+        slug="inquiry"
+        title={{
+          ja: "お問い合わせ",
+          en: "Contact",
+        }}
+        step="input"
+      />
+    </main>
+  );
 }

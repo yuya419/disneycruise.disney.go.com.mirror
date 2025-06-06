@@ -11,169 +11,183 @@
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .requestButton {
-    width          : 8rem;
-    position       : fixed;
-    top            : 12.4rem;
-    right          : 0;
-    z-index        : 77;
+  width          : 8rem;
+  position       : fixed;
+  top            : 12.4rem;
+  right          : 0;
+  z-index        : 77;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  transition     : opacity 0.3s var(--customEasingOut);
+
+  .isButtonHidden & {
+    opacity       : 0;
+    pointer-events: none;
+  }
+
+  a {
+    width          : 4.2rem;
+    height         : 17.4rem;
     display        : flex;
+    flex-direction : column;
     align-items    : center;
-    justify-content: center;
+    padding-top    : 1.5rem;
+    border-radius  : 0.3rem;
+    text-decoration: none;
+    position       : relative;
+    transition     : background-color var(--t-out);
 
-    a {
-        width          : 4.2rem;
-        max-height     : 17.4rem;
-        display        : flex;
-        flex-direction : column;
-        align-items    : center;
-        row-gap        : 1.2rem;
-        padding        : 1.8rem 0 1.2rem;
-        border-radius  : 0.3rem;
-        text-decoration: none;
-        position       : relative;
-        transition     : background-color var(--t-out);
-
-        [data-head-color="white"] & {
-            background-color: var(--color_white);
-        }
-
-        [data-head-color="blue"] & {
-            background-color: var(--theme_color_main);
-        }
-
-        &::before {
-            content      : "";
-            width        : 1.4rem;
-            height       : 0.2rem;
-            position     : absolute;
-            top          : 0;
-            left         : 0;
-            right        : 0;
-            margin-inline: auto;
-            transition   : background-color var(--t-out);
-
-            [data-head-color="white"] & {
-                background-color: var(--theme_color_main);
-            }
-
-            [data-head-color="blue"] & {
-                background-color: var(--theme_color_sub);
-            }
-        }
-
-        @include g.buttonHover();
+    [data-head-color="white"] & {
+      background-color: var(--color_white);
     }
 
-    .label {
-        display       : block;
-        font-size     : 1.4rem;
-        writing-mode  : vertical-lr;
-        letter-spacing: 0.1em;
-        white-space   : nowrap;
-        transition    : color var(--t-out);
-
-        [data-head-color="white"] & {
-            color: var(--theme_color_main);
-        }
-
-        [data-head-color="blue"] & {
-            color: var(--color_white);
-        }
+    [data-head-color="blue"] & {
+      background-color: var(--theme_color_main);
     }
 
-    .divider {
-        display            : block;
-        width              : 1.8rem;
-        border-bottom-width: 1.5px;
-        border-bottom-style: dotted;
-        transition         : border-bottom-color var(--t-out);
+    &::before {
+      content      : "";
+      width        : 1.4rem;
+      height       : 0.2rem;
+      position     : absolute;
+      top          : 0;
+      left         : 0;
+      right        : 0;
+      margin-inline: auto;
+      transition   : background-color var(--t-out);
 
-        [data-head-color="white"] & {
-            border-bottom-color: var(--theme_color_main);
-        }
+      [data-head-color="white"] & {
+        background-color: var(--theme_color_main);
+      }
 
-        [data-head-color="blue"] & {
-            border-bottom-color: var(--color_white);
-        }
+      [data-head-color="blue"] & {
+        background-color: var(--theme_color_sub);
+      }
     }
 
-    .icon {
-        display: block;
-        width  : 1.3rem;
-        height : 1.3rem;
+    @include g.buttonHover();
+  }
 
-        .i-calendar {
-            transition: color var(--t-out);
+  .label {
+    display       : block;
+    font-size     : 1.4rem;
+    writing-mode  : vertical-lr;
+    letter-spacing: 0.15em;
+    white-space   : nowrap;
+    transition    : color var(--t-out);
 
-            [data-head-color="white"] & {
-                color: var(--theme_color_main);
-            }
-
-            [data-head-color="blue"] & {
-                color: var(--theme_color_sub);
-            }
-        }
+    [data-head-color="white"] & {
+      color: var(--theme_color_main);
     }
+
+    [data-head-color="blue"] & {
+      color: var(--color_white);
+    }
+  }
+
+  .divider {
+    display      : block;
+    flex-shrink  : 0;
+    width        : 2rem;
+    height       : 1.2px;
+    margin-inline: auto;
+    background-image: linear-gradient(to right,
+        var(--dot-color) 1.2px,
+        transparent 1.2px);
+    background-position: 0.9px;
+    background-size    : 2.5px 1.2px;
+    margin-top         : 0.9rem;
+
+    [data-head-color="white"] & {
+      --dot-color: rgb(0 45 116 / 60%);
+    }
+
+    [data-head-color="blue"] & {
+      --dot-color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  .icon {
+    display: block;
+    width  : 1.4rem;
+    height : 1.4rem;
+    margin : 1rem auto 0;
+
+    .i-calendar {
+      transition: color var(--t-out);
+
+      [data-head-color="white"] & {
+        color: var(--theme_color_main);
+      }
+
+      [data-head-color="blue"] & {
+        color: var(--theme_color_sub);
+      }
+    }
+  }
 }
 
 // sp
 @include g.media(md) {
-    .requestButton {
-        width : 7rem;
-        height: 7rem;
-        top   : inherit;
-        right : 1.3rem;
-        bottom: 1.3rem;
+  .requestButton {
+    width : 7rem;
+    height: 7rem;
+    top   : inherit;
+    right : 1.3rem;
+    bottom: 1.3rem;
 
-        a {
-            width          : 100%;
-            height         : 100%;
-            flex-direction : column-reverse;
-            justify-content: center;
-            row-gap        : 1rem;
-            padding        : 0;
-            border-radius  : 50%;
+    a {
+      width          : 100%;
+      height         : 100%;
+      flex-direction : column-reverse;
+      justify-content: center;
+      padding        : 0;
+      border-radius  : 50%;
 
-            [data-head-color="white"] &,
-            [data-head-color="blue"] & {
-                background-color: var(--theme_color_main);
-            }
+      [data-head-color="white"] &,
+      [data-head-color="blue"] & {
+        background-color: var(--theme_color_main);
+      }
 
-            &::before {
-                content: none;
-            }
-        }
-
-        .label {
-            font-size   : 1.2rem;
-            line-height : 1;
-            writing-mode: horizontal-tb;
-
-            [data-head-color="white"] &,
-            [data-head-color="blue"] & {
-                color: var(--color_white);
-            }
-
-            span {
-                display: none;
-            }
-        }
-
-        .divider {
-            display: none;
-        }
-
-        .icon {
-            width : 1.7rem;
-            height: 1.7rem;
-
-            .i-calendar {
-
-                [data-head-color="white"] &,
-                [data-head-color="blue"] & {
-                    color: var(--theme_color_sub);
-                }
-            }
-        }
+      &::before {
+        content: none;
+      }
     }
+
+    .label {
+      font-size     : 1.2rem;
+      line-height   : 1;
+      letter-spacing: 0;
+      writing-mode  : horizontal-tb;
+      margin-top    : 0.7rem;
+
+      [data-head-color="white"] &,
+      [data-head-color="blue"] & {
+        color: var(--color_white);
+      }
+
+      span {
+        display: none;
+      }
+    }
+
+    .divider {
+      display: none;
+    }
+
+    .icon {
+      width     : 1.8rem;
+      height    : 1.8rem;
+      margin-top: -0.4rem;
+
+      .i-calendar {
+
+        [data-head-color="white"] &,
+        [data-head-color="blue"] & {
+          color: var(--theme_color_sub);
+        }
+      }
+    }
+  }
 }

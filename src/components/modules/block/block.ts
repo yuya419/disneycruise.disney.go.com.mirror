@@ -11,11 +11,11 @@ import { Movie } from "./element/movie";
 import { Table } from "./element/table";
 
 export {
-    Img as BlockImg,
-    Headline as BlockHeadline,
-    Button as BlockButton,
-    TwoCol as BlockTwoCol,
-    Slider as BlockSlider,
-    Movie as BlockMovie,
-    Table as BlockTable,
-}
+  Img as BlockImg,
+  Headline as BlockHeadline,
+  Button as BlockButton,
+  TwoCol as BlockTwoCol,
+  Slider as BlockSlider,
+  Movie as BlockMovie,
+  Table as BlockTable,
+};

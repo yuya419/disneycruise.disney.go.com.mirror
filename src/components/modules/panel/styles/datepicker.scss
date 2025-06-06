@@ -6,86 +6,161 @@
 /* __10: 共通設定 */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin"as g;
+@use "@/assets/styles/_mixin" as g;
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .react-datepicker {
+  font-size: 1.4rem;
+  border: none;
+
+  &-wrapper {
+  }
+
+  &__header {
+    padding-bottom: 0;
+  }
+
+  &__month {
+    margin: 0;
+    padding: 0 1px 1px;
+    background-color: var(--theme_color_border);
+  }
+
+  &__current-month {
     font-size: 1.4rem;
-    border   : none;
+  }
 
-    &-wrapper {}
+  &__day {
+    width: calc(22rem / 7);
+    line-height: calc(22rem / 7);
+    margin: 1px;
+    background-color: var(--color_white);
 
-    &__header {
-        padding-bottom: 0;
+    &-names {
+      margin: 0;
+      white-space: inherit;
     }
 
-    &__month {
-        margin          : 0;
-        padding         : 0 1px 1px;
-        background-color: var(--theme_color_border);
+    &-name {
+      width: calc(22rem / 7);
+      line-height: calc(22rem / 10);
+      margin: 1px;
     }
 
-    &__current-month {
+    &--outside-month {
+      background-color: var(--color_white);
+      color: var(--color_white);
+      pointer-events: none;
+    }
+
+    &--today {
+      color: var(--color_white);
+      background-color: var(--theme_color_main);
+    }
+
+    &--selected {
+      color: var(--theme_color_text) !important;
+      background-color: var(--color_bg_beige) !important;
+      pointer-events: none;
+      cursor: inherit;
+    }
+
+    @include g.hover() {
+      color: var(--theme_color_text) !important;
+      background-color: rgb(240, 240, 240) !important;
+    }
+  }
+
+  &__navigation {
+    width: 21px;
+    height: 21px;
+    top: 8px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      background-color: var(--theme_color_main);
+      clip-path: polygon(0 20%, 0 80%, 50% 50%);
+    }
+
+    &--next {
+      right: 8px;
+    }
+
+    &--previous {
+      left: 8px;
+      scale: -1 1;
+    }
+
+    span {
+      display: none;
+    }
+  }
+
+  &__triangle {
+    display: none;
+  }
+
+  .selecter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+    padding-bottom: 0.8rem;
+
+    .select {
+      position: relative;
+
+      select {
+        all: unset;
+        user-select: none;
+        outline: revert;
+        -webkit-tap-highlight-color: transparent;
+        font-family: var(--noto-sans-jp);
+        box-sizing: border-box;
+        cursor: pointer;
+        appearance: none;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 2.6rem;
+        border: 1px solid var(--theme_color_border);
         font-size: 1.4rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        border-radius: 0.3rem;
+        pointer-events: all;
+
+        &::-ms-expand {
+          display: none;
+        }
+      }
+
+      .icon {
+        position: absolute;
+        right: 0.5rem;
+        top: 0;
+        bottom: 0;
+        width: 0.8rem;
+        height: 0.8rem;
+        margin-block: auto;
+        pointer-events: none;
+
+        .i-arw-t-tri {
+          display: block;
+          width: 100%;
+          height: 100%;
+          color: var(--theme_color_text);
+          scale: 1 -1;
+        }
+      }
     }
-
-    &__day {
-        width           : calc(22rem / 7);
-        line-height     : calc(22rem / 7);
-        margin          : 1px;
-        background-color: var(--color_white);
-
-        &-names {
-            margin     : 0;
-            white-space: inherit;
-        }
-
-        &-name {
-            width      : calc(22rem / 7);
-            line-height: calc(22rem / 10);
-            margin     : 1px;
-        }
-
-        &--outside-month {
-            background-color: var(--color_white);
-            color           : var(--color_white);
-            pointer-events  : none;
-        }
-    }
-
-    &__navigation {
-        width : 21px;
-        height: 21px;
-        top   : 8px;
-
-        &::before {
-            content         : "";
-            position        : absolute;
-            inset           : 0;
-            margin          : auto;
-            background-color: var(--theme_color_main);
-            clip-path       : polygon(0 20%, 0 80%, 50% 50%);
-        }
-
-        &--next {
-            right: 8px;
-        }
-
-        &--previous {
-            left : 8px;
-            scale: -1 1;
-        }
-
-        span {
-            display: none;
-        }
-    }
-
-    &__triangle {
-        display: none;
-    }
+  }
 }
 
 // sp
-@include g.media(md) {}
+@include g.media(md) {
+}

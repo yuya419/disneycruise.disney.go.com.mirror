@@ -14,14 +14,14 @@ import Adults from "./adults";
 import Concierge from "./concierge";
 
 export {
-    Hero,
-    Message,
-    Feature,
-    ThemedAreas,
-    Entertainment,
-    Dining,
-    Accommodations,
-    KidsClubs,
-    Adults,
-    Concierge
+  Hero,
+  Message,
+  Feature,
+  ThemedAreas,
+  Entertainment,
+  Dining,
+  Accommodations,
+  KidsClubs,
+  Adults,
+  Concierge,
 };

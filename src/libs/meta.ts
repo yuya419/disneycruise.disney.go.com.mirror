@@ -4,192 +4,308 @@
  */
 
 const siteInfo = {
-    siteName: "ディズニークルーズライン",
-    description: "サイトの説明文が入ります。",
-    url: "https://disneycruise.disney.go.com/ships/adventure/",
-}
+  pipe: "｜",
+  siteName: "ディズニークルーズライン",
+  description:
+    "ディズニー　アドベンチャー　シンガポール　トップページ。ディズニー・クルーズラインがシンガポールにやってきます。ワールドクラスのエンターテインメント、テーマ別のダイニング体験等を提供するディズニー・アドベンチャーでは、3泊〜5泊の航海をご用意しています。",
+  url: "https://disneycruise.disney.go.com/ships/adventure/",
+  images: [
+    {
+      url: "/ships/adventure/ogp.png",
+      width: 1200,
+      height: 630,
+    },
+  ],
+};
 
 const metaArray = {
-    "index": {
-        title: siteInfo.siteName,
-        description: siteInfo.description,
-        openGraph: {
-            title: siteInfo.siteName,
-            siteName: siteInfo.siteName,
-            description: siteInfo.description,
-            url: siteInfo.url,
-        },
+  index: {
+    title:
+      "ディズニー　アドベンチャー　シンガポール　トップページ" +
+      siteInfo.pipe +
+      siteInfo.siteName,
+    description: siteInfo.description,
+    openGraph: {
+      type: "website",
+      title: siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: siteInfo.url,
+      images: siteInfo.images,
+      description: siteInfo.description,
     },
-    "themed-areas": {
-        title: "客船紹介・7つのテーマエリア" + " | " + siteInfo.siteName,
-        description: "7つのテーマエリアを表示するページ",
-        openGraph: {
-            title: "客船紹介・7つのテーマエリア" + " | " + siteInfo.siteName,
-            siteName: siteInfo.siteName,
-            description: "7つのテーマエリアを表示するページ",
-            url: `${siteInfo.url}themed-areas/`,
-        },
+  },
+  "themed-areas": {
+    title: "7つのテーマエリア・客船紹介" + siteInfo.pipe + siteInfo.siteName,
+    description:
+      "ディズニー　アドベンチャー　シンガポール　7つのテーマエリア・客船紹介。船内の想像力豊かなテーマの7つのエリアを探索しながら、魔法のような冒険に出発します。各エリアには、ディズニー、マーベル、ピクサーの物語を壮大なスケールで再現した没入感あふれる体験が満載です。",
+    openGraph: {
+      type: "article",
+      title: "7つのテーマエリア・客船紹介" + siteInfo.pipe + siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: `${siteInfo.url}themed-areas/`,
+      images: siteInfo.images,
+      description:
+        "ディズニー　アドベンチャー　シンガポール　7つのテーマエリア・客船紹介。船内の想像力豊かなテーマの7つのエリアを探索しながら、魔法のような冒険に出発します。各エリアには、ディズニー、マーベル、ピクサーの物語を壮大なスケールで再現した没入感あふれる体験が満載です。",
     },
-    "entertainment": {
-        title: "エンターテイメント" + " | " + siteInfo.siteName,
-        description: "エンターテイメントを表示するページ",
-        openGraph: {
-            title: "エンターテイメント" + " | " + siteInfo.siteName,
-            siteName: siteInfo.siteName,
-            description: "エンターテイメントを表示するページ",
-            url: `${siteInfo.url}entertainment/`,
-        },
+  },
+  entertainment: {
+    title: "エンターテイメント" + siteInfo.pipe + siteInfo.siteName,
+    description:
+      "ディズニー　アドベンチャー　シンガポール　エンターテイメント。華やかなブロードウェイスタイルのショー、楽しいデッキパーティー、映画上映、ディズニー、ピクサー、マーベルのお気に入りの仲間たちとの忘れられない交流会など、ディズニーの魔法を体験してください。",
+    openGraph: {
+      type: "article",
+      title: "エンターテイメント" + siteInfo.pipe + siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: `${siteInfo.url}entertainment/`,
+      images: siteInfo.images,
+      description:
+        "ディズニー　アドベンチャー　シンガポール　エンターテイメント。華やかなブロードウェイスタイルのショー、楽しいデッキパーティー、映画上映、ディズニー、ピクサー、マーベルのお気に入りの仲間たちとの忘れられない交流会など、ディズニーの魔法を体験してください。",
     },
-    "dining": {
-        title: "ダイニング" + " | " + siteInfo.siteName,
-        description: "ダイニングを表示するページ",
-        openGraph: {
-            title: "ダイニング" + " | " + siteInfo.siteName,
-            siteName: siteInfo.siteName,
-            description: "ダイニングを表示するページ",
-            url: `${siteInfo.url}dining/`,
-        },
+  },
+  dining: {
+    title: "ダイニング" + siteInfo.pipe + siteInfo.siteName,
+    description:
+      "ディズニー　アドベンチャー　シンガポール　ダイニング。ゲストの航海中に、ディズニーならではの3つの異なるダイニング体験をお楽しみいただけます。",
+    openGraph: {
+      type: "article",
+      title: "ダイニング" + siteInfo.pipe + siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: `${siteInfo.url}dining/`,
+      images: siteInfo.images,
+      description:
+        "ディズニー　アドベンチャー　シンガポール　ダイニング。ゲストの航海中に、ディズニーならではの3つの異なるダイニング体験をお楽しみいただけます。",
     },
-    "accommodations": {
-        title: "客室案内・デッキプラン" + " | " + siteInfo.siteName,
-        description: "客室案内・デッキプランを表示するページ",
-        openGraph: {
-            title: "客室案内・デッキプラン" + " | " + siteInfo.siteName,
-            siteName: siteInfo.siteName,
-            description: "客室案内・デッキプランを表示するページ",
-            url: `${siteInfo.url}accommodations/`,
-        },
+  },
+  accommodations: {
+    title: "客室案内" + siteInfo.pipe + siteInfo.siteName,
+    description:
+      "ディズニー　アドベンチャー　シンガポール　客室案内。コンシェルジュ、ベランダ、オーシャンビュー、内側の4つのカテゴリーから、あなたにぴったりの素敵な客室をお選びいただけます。",
+    openGraph: {
+      type: "article",
+      title: "客室案内" + siteInfo.pipe + siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: `${siteInfo.url}accommodations/`,
+      images: siteInfo.images,
+      description:
+        "ディズニー　アドベンチャー　シンガポール　客室案内。コンシェルジュ、ベランダ、オーシャンビュー、内側の4つのカテゴリーから、あなたにぴったりの素敵な客室をお選びいただけます。",
     },
-    "kids-clubs": {
-        title: "キッズクラブ" + " | " + siteInfo.siteName,
-        description: "キッズクラブを表示するページ",
-        openGraph: {
-            title: "キッズクラブ" + " | " + siteInfo.siteName,
-            siteName: siteInfo.siteName,
-            description: "キッズクラブを表示するページ",
-            url: `${siteInfo.url}kids-clubs/`,
-        },
+  },
+  "kids-clubs": {
+    title: "キッズクラブ" + siteInfo.pipe + siteInfo.siteName,
+    description:
+      "ディズニー　アドベンチャー　シンガポール　キッズクラブ。3歳から10歳までのお子様は、大好きなディズニー、ピクサー、マーベルの物語にインスパイアされたテーマ空間で、愛されるキャラクターたちと触れ合いながら想像力を広げることができます。",
+    openGraph: {
+      type: "article",
+      title: "キッズクラブ" + siteInfo.pipe + siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: `${siteInfo.url}kids-clubs/`,
+      images: siteInfo.images,
+      description:
+        "ディズニー　アドベンチャー　シンガポール　キッズクラブ。3歳から10歳までのお子様は、大好きなディズニー、ピクサー、マーベルの物語にインスパイアされたテーマ空間で、愛されるキャラクターたちと触れ合いながら想像力を広げることができます。",
     },
-    "spa-lounges-bar": {
-        title: "スパ・ラウンジ・バー" + " | " + siteInfo.siteName,
-        description: "スパ・ラウンジ・バーを表示するページ",
-        openGraph: {
-            title: "スパ・ラウンジ・バー" + " | " + siteInfo.siteName,
-            siteName: siteInfo.siteName,
-            description: "スパ・ラウンジ・バーを表示するページ",
-            url: `${siteInfo.url}spa-lounges-bar/`,
-        },
+  },
+  "spa-lounges-bar": {
+    title: "大人のための施設" + siteInfo.pipe + siteInfo.siteName,
+    description:
+      "ディズニー　アドベンチャー　シンガポール　大人のための施設。スパ、サロン、フィットネスラウンジ、バッカニアバーなど。",
+    openGraph: {
+      type: "article",
+      title: "大人のための施設" + siteInfo.pipe + siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: `${siteInfo.url}spa-lounges-bar/`,
+      images: siteInfo.images,
+      description:
+        "ディズニー　アドベンチャー　シンガポール　大人のための施設。スパ、サロン、フィットネスラウンジ、バッカニアバーなど。",
     },
-    "concierge": {
-        title: "コンシェルジュ・スイート" + " | " + siteInfo.siteName,
-        description: "コンシェルジュ・スイートを表示するページ",
-        openGraph: {
-            title: "コンシェルジュ・スイート" + " | " + siteInfo.siteName,
-            siteName: siteInfo.siteName,
-            description: "コンシェルジュ・スイートを表示するページ",
-            url: `${siteInfo.url}concierge/`,
-        },
+  },
+  concierge: {
+    title: "コンシェルジュルーム" + siteInfo.pipe + siteInfo.siteName,
+    description:
+      "ディズニー　アドベンチャー　シンガポール　コンシェルジュルーム。コンシェルジュゲストとして、優先搭乗、専用コンシェルジュラウンジとサンデッキへの専用アクセス、専属チームによるおもてなしなどの特別な特典を受けられます",
+    openGraph: {
+      type: "article",
+      title: "コンシェルジュルーム" + siteInfo.pipe + siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: `${siteInfo.url}concierge/`,
+      images: siteInfo.images,
+      description:
+        "ディズニー　アドベンチャー　シンガポール　コンシェルジュルーム。コンシェルジュゲストとして、優先搭乗、専用コンシェルジュラウンジとサンデッキへの専用アクセス、専属チームによるおもてなしなどの特別な特典を受けられます",
     },
-    "qa": {
-        title: "よくあるご質問" + " | " + siteInfo.siteName,
-        description: "よくあるご質問を表示するページ",
-        openGraph: {
-            title: "よくあるご質問	" + " | " + siteInfo.siteName,
-            siteName: siteInfo.siteName,
-            description: "よくあるご質問を表示するページ",
-            url: `${siteInfo.url}qa/`,
-        },
+  },
+  list: {
+    title: "コース一覧" + siteInfo.pipe + siteInfo.siteName,
+    description:
+      "ディズニー　アドベンチャー　シンガポール　コース一覧。ワールドクラスのエンターテインメント、テーマ別のダイニング体験等を提供するディズニー・アドベンチャーでは、3泊〜5泊の航海をご用意しています。",
+    openGraph: {
+      type: "article",
+      title: "コース一覧" + siteInfo.pipe + siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: `${siteInfo.url}list/`,
+      images: siteInfo.images,
+      description:
+        "ディズニー　アドベンチャー　シンガポール　コース一覧。ワールドクラスのエンターテインメント、テーマ別のダイニング体験等を提供するディズニー・アドベンチャーでは、3泊〜5泊の航海をご用意しています。",
     },
-    "list": {
-        title: "コース一覧" + " | " + siteInfo.siteName,
-        description: "コース一覧を表示するページ",
-        openGraph: {
-            title: "コース一覧" + " | " + siteInfo.siteName,
-            siteName: siteInfo.siteName,
-            description: "コース一覧を表示するページ",
-            url: `${siteInfo.url}list/`,
-        },
+  },
+  "list-detail": {
+    title:
+      "コース一覧" +
+      siteInfo.pipe +
+      "詳細タイトル自動で入る" +
+      siteInfo.pipe +
+      siteInfo.siteName,
+    description: "記事冒頭分を自動で表示",
+    openGraph: {
+      type: "article",
+      title:
+        "コース一覧" +
+        siteInfo.pipe +
+        "詳細タイトル自動で入る" +
+        siteInfo.pipe +
+        siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: `${siteInfo.url}list/detail/`,
+      images: siteInfo.images,
+      description: "記事冒頭分を自動で表示",
     },
-    "list-detail": {
-        title: "シンガポール発着　3泊クルーズ" + " | " + siteInfo.siteName,
-        description: "コース詳細を表示するページ",
-        openGraph: {
-            title: "シンガポール発着　3泊クルーズ" + " | " + siteInfo.siteName,
-            siteName: siteInfo.siteName,
-            description: "コース詳細を表示するページ",
-            url: `${siteInfo.url}list/detail/`,
-        },
+  },
+  book: {
+    title: "予約" + siteInfo.pipe + siteInfo.siteName,
+    description:
+      "ディズニー　アドベンチャー　シンガポール　予約。ワールドクラスのエンターテインメント、テーマ別のダイニング体験等を提供するディズニー・アドベンチャーでは、3泊〜5泊の航海をご用意しています。",
+    openGraph: {
+      type: "article",
+      title: "予約" + siteInfo.pipe + siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: `${siteInfo.url}book/`,
+      images: siteInfo.images,
+      description:
+        "ディズニー　アドベンチャー　シンガポール　予約。ワールドクラスのエンターテインメント、テーマ別のダイニング体験等を提供するディズニー・アドベンチャーでは、3泊〜5泊の航海をご用意しています。",
     },
-    "feature": {
-        title: "特集一覧" + " | " + siteInfo.siteName,
-        description: "特集一覧を表示するページ",
-        openGraph: {
-            title: "特集一覧" + " | " + siteInfo.siteName,
-            siteName: siteInfo.siteName,
-            description: "特集一覧を表示するページ",
-            url: `${siteInfo.url}feature/`,
-        },
+  },
+  qa: {
+    title: "よくあるご質問" + siteInfo.pipe + siteInfo.siteName,
+    description:
+      "ディズニー　アドベンチャー　シンガポール　よくあるご質問。ディズニー・クルーズラインがシンガポールにやってきます。ワールドクラスのエンターテインメント、テーマ別のダイニング体験等を提供するディズニー・アドベンチャーでは、3泊〜5泊の航海をご用意しています。",
+    openGraph: {
+      type: "article",
+      title: "よくあるご質問	" + siteInfo.pipe + siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: `${siteInfo.url}qa/`,
+      images: siteInfo.images,
+      description:
+        "ディズニー　アドベンチャー　シンガポール　よくあるご質問。ディズニー・クルーズラインがシンガポールにやってきます。ワールドクラスのエンターテインメント、テーマ別のダイニング体験等を提供するディズニー・アドベンチャーでは、3泊〜5泊の航海をご用意しています。",
     },
-    "feature-detail": {
-        title: "特集詳細" + " | " + siteInfo.siteName,
-        description: "特集詳細を表示するページ",
-        openGraph: {
-            title: "特集詳細" + " | " + siteInfo.siteName,
-            siteName: siteInfo.siteName,
-            description: "特集詳細を表示するページ",
-            url: `${siteInfo.url}feature/detail/`,
-        },
+  },
+  inquiry: {
+    title: "お問い合わせ" + siteInfo.pipe + siteInfo.siteName,
+    description:
+      "ディズニー　アドベンチャー　シンガポール　お問い合わせ。ディズニー・クルーズラインがシンガポールにやってきます。ワールドクラスのエンターテインメント、テーマ別のダイニング体験等を提供するディズニー・アドベンチャーでは、3泊〜5泊の航海をご用意しています。",
+    openGraph: {
+      type: "article",
+      title: "お問い合わせ" + siteInfo.pipe + siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: `${siteInfo.url}inquiry/`,
+      images: siteInfo.images,
+      description:
+        "ディズニー　アドベンチャー　シンガポール　お問い合わせ。ディズニー・クルーズラインがシンガポールにやってきます。ワールドクラスのエンターテインメント、テーマ別のダイニング体験等を提供するディズニー・アドベンチャーでは、3泊〜5泊の航海をご用意しています。",
     },
-    "news": {
-        title: "新着情報一覧" + " | " + siteInfo.siteName,
-        description: "新着情報一覧を表示するページ",
-        openGraph: {
-            title: "新着情報一覧" + " | " + siteInfo.siteName,
-            siteName: siteInfo.siteName,
-            description: "新着情報一覧を表示するページ",
-            url: `${siteInfo.url}news/`,
-        },
+  },
+  mailmagazine: {
+    title: "メールマガジン登録" + siteInfo.pipe + siteInfo.siteName,
+    description:
+      "ディズニー　アドベンチャー　シンガポール　メールマガジン登録。ディズニー・クルーズラインがシンガポールにやってきます。ワールドクラスのエンターテインメント、テーマ別のダイニング体験等を提供するディズニー・アドベンチャーでは、3泊〜5泊の航海をご用意しています。",
+    openGraph: {
+      type: "article",
+      title: "メールマガジン登録" + siteInfo.pipe + siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: `${siteInfo.url}mailmagazine/`,
+      images: siteInfo.images,
+      description:
+        "ディズニー　アドベンチャー　シンガポール　メールマガジン登録。ディズニー・クルーズラインがシンガポールにやってきます。ワールドクラスのエンターテインメント、テーマ別のダイニング体験等を提供するディズニー・アドベンチャーでは、3泊〜5泊の航海をご用意しています。",
     },
-    "news-detail": {
-        title: "新着情報詳細" + " | " + siteInfo.siteName,
-        description: "新着情報詳細を表示するページ",
-        openGraph: {
-            title: "新着情報詳細" + " | " + siteInfo.siteName,
-            siteName: siteInfo.siteName,
-            description: "新着情報詳細を表示するページ",
-            url: `${siteInfo.url}news/detail/`,
-        },
+  },
+  feature: {
+    title: "特集記事一覧" + siteInfo.pipe + siteInfo.siteName,
+    description: "ディズニー　アドベンチャー　シンガポール　特集記事一覧。",
+    openGraph: {
+      type: "article",
+      title: "特集記事一覧" + siteInfo.pipe + siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: `${siteInfo.url}feature/`,
+      images: siteInfo.images,
+      description: "ディズニー　アドベンチャー　シンガポール　特集記事一覧。",
     },
-    "book": {
-        title: "予約申し込み" + " | " + siteInfo.siteName,
-        description: "予約申し込みを表示するページ",
-        openGraph: {
-            title: "予約申し込み" + " | " + siteInfo.siteName,
-            siteName: siteInfo.siteName,
-            description: "予約申し込みを表示するページ",
-            url: `${siteInfo.url}book/`,
-        },
+  },
+  "feature-detail": {
+    title:
+      "特集記事一覧" +
+      siteInfo.pipe +
+      "詳細タイトル自動で入る" +
+      siteInfo.pipe +
+      siteInfo.siteName,
+    description: "記事冒頭分を自動で表示",
+    openGraph: {
+      type: "article",
+      title:
+        "特集記事一覧" +
+        siteInfo.pipe +
+        "詳細タイトル自動で入る" +
+        siteInfo.pipe +
+        siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: `${siteInfo.url}feature/detail/`,
+      images: siteInfo.images,
+      description: "記事冒頭分を自動で表示",
     },
-    "inquiry": {
-        title: "お問い合わせ" + " | " + siteInfo.siteName,
-        description: "お問い合わせを表示するページ",
-        openGraph: {
-            title: "お問い合わせ" + " | " + siteInfo.siteName,
-            siteName: siteInfo.siteName,
-            description: "お問い合わせを表示するページ",
-            url: `${siteInfo.url}inquiry/`,
-        },
+  },
+  news: {
+    title: "お知らせ" + siteInfo.pipe + siteInfo.siteName,
+    description: "ディズニー　アドベンチャー　シンガポール　お知らせ。",
+    openGraph: {
+      type: "article",
+      title: "お知らせ" + siteInfo.pipe + siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: `${siteInfo.url}news/`,
+      images: siteInfo.images,
+      description: "ディズニー　アドベンチャー　シンガポール　お知らせ。",
     },
-    "mailmagazine": {
-        title: "メールマガジン登録" + " | " + siteInfo.siteName,
-        description: "メールマガジン登録を表示するページ",
-        openGraph: {
-            title: "メールマガジン登録" + " | " + siteInfo.siteName,
-            siteName: siteInfo.siteName,
-            description: "メールマガジン登録を表示するページ",
-            url: `${siteInfo.url}mailmagazine/`,
-        },
+  },
+  "news-detail": {
+    title:
+      "お知らせ一覧" +
+      siteInfo.pipe +
+      "詳細タイトル自動で入る" +
+      siteInfo.pipe +
+      siteInfo.siteName,
+    description: "記事冒頭分を自動で表示",
+    openGraph: {
+      type: "article",
+      title:
+        "お知らせ一覧" +
+        siteInfo.pipe +
+        "詳細タイトル自動で入る" +
+        siteInfo.pipe +
+        siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: `${siteInfo.url}news/detail/`,
+      images: siteInfo.images,
+      description: "記事冒頭分を自動で表示",
     },
-}
+  },
+  "404": {
+    title: "404 Not Found" + siteInfo.pipe + siteInfo.siteName,
+    description:
+      "ページが見つかりませんでした。URLが正しいか、ページが削除されていないかご確認ください。",
+    openGraph: {
+      type: "article",
+      title: "404 Not Found" + siteInfo.pipe + siteInfo.siteName,
+      siteName: siteInfo.siteName,
+      url: `${siteInfo.url}/`,
+      images: siteInfo.images,
+      description:
+        "ページが見つかりませんでした。URLが正しいか、ページが削除されていないかご確認ください。",
+    },
+  },
+};
 
 export default metaArray;

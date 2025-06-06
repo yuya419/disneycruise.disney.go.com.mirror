@@ -6,257 +6,263 @@
 /* __10: 共通設定 */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin"as g;
+@use "@/assets/styles/_mixin" as g;
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .c-filter {
-    &__form {
-        padding: 0 2rem 2rem;
+  &__form {
+    padding: 0 2rem 2rem;
 
-        .form-item {
-            &+.form-item {
-                margin-top: 2.4rem;
-            }
+    .form-item {
+      & + .form-item {
+        margin-top: 2.4rem;
+      }
 
-            .m-headline {
-                font-size    : 1.4rem;
-                line-height  : 1;
-                min-height   : 1.6rem;
-                padding-block: 0;
-            }
+      .m-headline {
+        font-size: 1.4rem;
+        line-height: 1;
+        min-height: 1.6rem;
+        padding-block: 0;
+      }
 
-            &__input {
-                margin-top: 0.9rem;
-            }
-        }
+      &__input {
+        margin-top: 0.9rem;
+      }
+    }
+  }
+
+  // 宿泊数
+  .is-item-stay {
+    .form-item__input {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 0.9rem;
     }
 
-    // 宿泊数
-    .is-item-stay {
-        .form-item__input {
-            display              : grid;
-            grid-template-columns: repeat(3, 1fr);
-            column-gap           : 0.9rem;
+    .input-item {
+      width: 100%;
+      height: 4.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color_white);
+      border-radius: 0.3rem;
+      cursor: pointer;
+      transition: filter var(--t-out);
+
+      @include g.hover() {
+        filter: brightness(0.9);
+      }
+
+      &:has(.input:checked) {
+        background-color: var(--theme_color_main);
+        color: var(--color_white);
+      }
+
+      .label {
+        font-size: 1.3rem;
+
+        span {
+          font-size: 2.2rem;
+          margin-right: 0.2rem;
         }
-
-        .input-item {
-            width           : 100%;
-            height          : 4.6rem;
-            display         : flex;
-            align-items     : center;
-            justify-content : center;
-            background-color: var(--color_white);
-            border-radius   : 0.3rem;
-            cursor          : pointer;
-            transition      : filter var(--t-out);
-
-            @include g.hover() {
-                filter: brightness(0.9);
-            }
-
-            &:has(.input:checked) {
-                background-color: var(--theme_color_main);
-                color           : var(--color_white);
-            }
-
-            .label {
-                font-size: 1.3rem;
-
-                span {
-                    font-size   : 2.2rem;
-                    margin-right: 0.2rem;
-                }
-            }
-        }
+      }
     }
+  }
 
-    // 出発日
-    .is-item-date {
-        .input-item {
-            position: relative;
-            cursor  : pointer;
+  // 出発日
+  .is-item-date {
+    .input-item {
+      position: relative;
+      cursor: pointer;
 
-            .react-datepicker {
-                &-wrapper {
-                    display: block;
-                }
-            }
-
-            .input {
-                width           : 100%;
-                height          : 4.6rem;
-                font-size       : 1.5rem;
-                padding-left    : 1rem;
-                color           : var(--theme_color_text);
-                background-color: var(--color_white);
-                border-radius   : 0.3rem;
-            }
-
-            .icon {
-                display        : flex;
-                align-items    : center;
-                justify-content: center;
-                position       : absolute;
-                width          : 3rem;
-                height         : 3rem;
-                right          : 0.9rem;
-                top            : 0;
-                bottom         : 0;
-                margin-block   : auto;
-                pointer-events : none;
-
-                svg {
-                    display: block;
-                    width  : 1.6rem;
-                    height : 1.6rem;
-                    color  : var(--theme_color_text);
-                }
-            }
+      .react-datepicker {
+        &-wrapper {
+          display: block;
         }
+      }
+
+      .input {
+        width: 100%;
+        height: 4.6rem;
+        font-size: 1.5rem;
+        padding-left: 1rem;
+        color: var(--theme_color_text);
+        background-color: var(--color_white);
+        border-radius: 0.3rem;
+      }
+
+      .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 3rem;
+        height: 3rem;
+        right: 0.9rem;
+        top: 0;
+        bottom: 0;
+        margin-block: auto;
+        pointer-events: none;
+
+        svg {
+          display: block;
+          width: 1.6rem;
+          height: 1.6rem;
+          color: var(--theme_color_text);
+        }
+      }
     }
+  }
 
-    // 人数
-    .is-item-people {
-        .input-item {
-            display              : grid;
-            grid-template-columns: repeat(2, 50%);
-            align-items          : center;
-            padding-block        : 1.4rem;
-            border-bottom        : 1px solid rgba(39, 40, 51, 0.1);
+  // 人数
+  .is-item-people {
+    .input-item {
+      display: grid;
+      grid-template-columns: repeat(2, 50%);
+      align-items: center;
+      padding-block: 1.4rem;
+      border-bottom: 1px solid rgba(39, 40, 51, 0.1);
 
-            &:first-child {
-                border-top: 1px solid rgba(39, 40, 51, 0.1);
-            }
+      &:first-child {
+        border-top: 1px solid rgba(39, 40, 51, 0.1);
+      }
 
-            dt {
-                font-size: 1.4rem;
+      dt {
+        font-size: 1.4rem;
 
-                span {
-                    font-size  : 1.2rem;
-                    margin-left: 1em;
-                    color      : rgba(39, 40, 51, 0.6);
-                }
-            }
+        span {
+          font-size: 1.2rem;
+          margin-left: 1em;
+          color: rgba(39, 40, 51, 0.6);
+        }
+      }
 
-            dd {
-                width          : 100%;
-                display        : flex;
-                justify-content: flex-end;
+      dd {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
 
-                .input {
-                    width          : 4.2rem;
-                    height         : 100%;
-                    display        : block;
-                    font-size      : 1.7rem;
-                    text-align     : center;
-                    text-align-last: center;
-                }
-
-                // プラス、マイナスボタン
-                button {
-                    flex-shrink     : 0;
-                    display         : block;
-                    width           : 2.7rem;
-                    height          : 2.7rem;
-                    background-color: var(--color_white);
-                    color           : var(--color_white);
-                    border-radius   : 100%;
-                    position        : relative;
-                    transition      : filter var(--t-out);
-
-                    @include g.hover() {
-                        filter: brightness(0.9);
-                    }
-
-                    &::before,
-                    &::after {
-                        position        : absolute;
-                        inset           : 0;
-                        margin          : auto;
-                        width           : 0.9rem;
-                        height          : 1px;
-                        background-color: var(--theme_color_text);
-                    }
-
-                    &::after {
-                        rotate: 90deg;
-                    }
-
-                    &.minus {
-                        &::before {
-                            content: "";
-                        }
-                    }
-
-                    &.plus {
-
-                        &::before,
-                        &::after {
-                            content: "";
-                        }
-                    }
-                }
-            }
+        .input {
+          width: 4.2rem;
+          height: 100%;
+          display: block;
+          font-size: 1.7rem;
+          text-align: center;
+          text-align-last: center;
         }
 
-        .attention {
-            margin-top: 1.1rem;
-
-            a {
-                font-size      : 1.2rem;
-                text-decoration: none;
-                color          : var(--theme_color_text);
-                width          : fit-content;
-                display        : flex;
-                align-items    : center;
-                column-gap     : 0.5rem;
-            }
-
-            .icon {
-                display         : flex;
-                align-items     : center;
-                justify-content : center;
-                width           : 1.8rem;
-                height          : 1.8rem;
-                border-radius   : 50%;
-                background-color: var(--theme_color_main);
-
-                .i-question {
-                    display: block;
-                    width  : 1rem;
-                    height : 1rem;
-                    color  : var(--color_white);
-                }
-            }
-
-            .label {
-                line-height: 1.3;
-            }
-        }
-    }
-
-    // 送信ボタン
-    .is-item-submit {
+        // プラス、マイナスボタン
         button {
-            width           : 100%;
-            height          : 4.7rem;
-            display         : flex;
-            align-items     : center;
-            justify-content : center;
-            border-radius   : 0.7rem;
-            color           : var(--color_white);
-            background-color: var(--theme_color_main);
-            font-size       : 1.5rem;
-            transition      : color var(--t-out), background-color var(--t-out);
+          flex-shrink: 0;
+          display: block;
+          width: 2.7rem;
+          height: 2.7rem;
+          background-color: var(--color_white);
+          color: var(--color_white);
+          border-radius: 100%;
+          position: relative;
+          transition: filter var(--t-out);
 
-            @include g.hover() {
-                background-color: #B99E4F;
-                color           : var(--color_white);
+          @include g.hover() {
+            filter: brightness(0.9);
+          }
+
+          &:disabled {
+            filter: opacity(0.5);
+          }
+
+          &::before,
+          &::after {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: 0.9rem;
+            height: 1px;
+            background-color: var(--theme_color_text);
+          }
+
+          &::after {
+            rotate: 90deg;
+          }
+
+          &.minus {
+            &::before {
+              content: "";
             }
+          }
+
+          &.plus {
+            &::before,
+            &::after {
+              content: "";
+            }
+          }
         }
+      }
     }
+
+    .attention {
+      margin-top: 1.1rem;
+
+      a {
+        font-size: 1.2rem;
+        text-decoration: none;
+        color: var(--theme_color_text);
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        column-gap: 0.5rem;
+      }
+
+      .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.8rem;
+        height: 1.8rem;
+        border-radius: 50%;
+        background-color: var(--theme_color_main);
+
+        .i-question {
+          display: block;
+          width: 1rem;
+          height: 1rem;
+          color: var(--color_white);
+        }
+      }
+
+      .label {
+        line-height: 1.3;
+      }
+    }
+  }
+
+  // 送信ボタン
+  .is-item-submit {
+    button {
+      width: 100%;
+      height: 4.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.7rem;
+      color: var(--color_white);
+      background-color: var(--theme_color_main);
+      font-size: 1.5rem;
+      transition:
+        color var(--t-out),
+        background-color var(--t-out);
+
+      @include g.hover() {
+        background-color: #b99e4f;
+        color: var(--color_white);
+      }
+    }
+  }
 }
 
 // sp
-@include g.media(md) {}
+@include g.media(md) {
+}

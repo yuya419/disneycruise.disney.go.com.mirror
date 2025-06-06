@@ -6,8 +6,4 @@ import { Book } from "./book";
 import { Inquiry } from "./inquiry";
 import { Mailmagazine } from "./mailmagazine";
 
-export {
-    Book,
-    Inquiry,
-    Mailmagazine,
-};
+export { Book, Inquiry, Mailmagazine };

@@ -6,33 +6,33 @@
 /* __10: 共通設定 */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin"as g;
+@use "@/assets/styles/_mixin" as g;
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .m-search-tags {
-    margin-block: auto;
-    display     : flex;
-    flex-wrap   : wrap;
-    gap         : 0.5rem;
+  margin-block: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 
-    .tag {
-        font-size       : 1.4rem;
-        line-height     : calc(10/14);
-        background-color: var(--color_bg_beige);
-        padding         : 0.9rem;
-        border-radius   : 0.4rem;
-    }
+  .tag {
+    font-size: 1.4rem;
+    line-height: calc(10 / 14);
+    background-color: var(--color_bg_beige);
+    padding: 0.9rem;
+    border-radius: 0.4rem;
+  }
 }
 
 // sp
 @include g.media(md) {
-    .m-search-tags {
-        margin-top: 1.6rem;
+  .m-search-tags {
+    margin-top: 1.6rem;
 
-        .tag {
-            font-size  : 1.2rem;
-            line-height: calc(10/12);
-        }
+    .tag {
+      font-size: 1.2rem;
+      line-height: calc(10 / 12);
     }
+  }
 }

@@ -10,9 +10,9 @@ import { Dining } from "@/layouts/page/page";
 export const metadata: Metadata = metaArray["dining"];
 
 export default function Page() {
-    return (
-        <div className="page">
-            <Dining />
-        </div>
-    );
+  return (
+    <div className="page">
+      <Dining />
+    </div>
+  );
 }

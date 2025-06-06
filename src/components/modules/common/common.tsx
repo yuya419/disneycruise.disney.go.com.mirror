@@ -2,14 +2,16 @@
  * @flile common.tsx
  * @description 共通コンポーネント
  */
-'use client';
+"use client";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import helper from "@/libs/helper";
 import { useRefContext } from "@/hooks/useRefContext";
+import { OnmHeadline01 } from "@/components/modules/headline/headline";
 import "./styles/common.scss";
 
 /**
@@ -19,70 +21,68 @@ import "./styles/common.scss";
  * @param props.images 画像の情報
  */
 const GallerySlider = (props: {
-    to: "left" | "right",
-    images: {
-        [key: string]: {
-            src: string,
-            alt: string,
-            w: number,
-            h: number,
-        }
-    }
+  to: "left" | "right";
+  images: {
+    [key: string]: {
+      src: string;
+      alt: string;
+      w: number;
+      h: number;
+    };
+  };
 }) => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { getImagePath } = helper();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { getImagePath } = helper();
 
-    useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
-        const ctx = gsap.context(() => {
-            const container = containerRef.current;
-            if (!container) return;
+    const ctx = gsap.context(() => {
+      const container = containerRef.current;
+      if (!container) return;
 
-            ScrollTrigger.create({
-                trigger: container,
-                start: "top bottom",
-                end: "bottom top",
-                onEnter: () => container.classList.add("isPlay"),
-                onLeave: () => container.classList.remove("isPlay"),
-                onEnterBack: () => container.classList.add("isPlay"),
-                onLeaveBack: () => container.classList.remove("isPlay"),
-            });
-        }, containerRef);
+      ScrollTrigger.create({
+        trigger: container,
+        start: "top bottom",
+        end: "bottom top",
+        onEnter: () => container.classList.add("isPlay"),
+        onLeave: () => container.classList.remove("isPlay"),
+        onEnterBack: () => container.classList.add("isPlay"),
+        onLeaveBack: () => container.classList.remove("isPlay"),
+      });
+    }, containerRef);
 
-        return () => ctx.revert();
-    }, []);
+    return () => ctx.revert();
+  }, []);
 
-    const gallerySliderList = () => {
-        return (
-            <div className="gallery-slider-list">
-                {
-                    Object.keys(props.images).map((key) => {
-                        return (
-                            <div key={key} className="gallery-slider-item">
-                                <Image
-                                    src={getImagePath(props.images[key].src)}
-                                    alt={props.images[key].alt}
-                                    width={props.images[key].w}
-                                    height={props.images[key].h}
-                                    priority
-                                />
-                            </div>
-                        );
-                    })
-                }
-            </div>
-        )
-    }
-
+  const gallerySliderList = () => {
     return (
-        <div className="gallery-slider" data-slide-to={props.to} ref={containerRef}>
-            {gallerySliderList()}
-            {gallerySliderList()}
-            {gallerySliderList()}
-        </div>
-    )
-}
+      <div className="gallery-slider-list">
+        {Object.keys(props.images).map((key) => {
+          return (
+            <div key={key} className="gallery-slider-item">
+              <Image
+                src={getImagePath(props.images[key].src)}
+                alt={props.images[key].alt}
+                width={props.images[key].w}
+                height={props.images[key].h}
+                priority
+              />
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
+  return (
+    <div className="gallery-slider" data-slide-to={props.to} ref={containerRef}>
+      {gallerySliderList()}
+      {gallerySliderList()}
+      {gallerySliderList()}
+    </div>
+  );
+};
 
 /**
  * @name GalleryParallax
@@ -90,78 +90,76 @@ const GallerySlider = (props: {
  * @param props.images 画像の情報
  */
 const GalleryParallax = (props: {
-    images: {
-        [key: string]: {
-            src: string,
-            alt: string,
-            w: number,
-            h: number,
-        }
-    }
+  images: {
+    [key: string]: {
+      src: string;
+      alt: string;
+      w: number;
+      h: number;
+    };
+  };
 }) => {
-    const pathname = usePathname();
-    const { getImagePath } = helper();
+  const pathname = usePathname();
+  const { getImagePath } = helper();
 
-    // 画像ごとにrefを作成
-    const itemRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  // 画像ごとにrefを作成
+  const itemRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
-    useEffect(() => {
-        const triggers: gsap.core.Tween[] = [];
-        const ctx = gsap.context(() => {
-            Object.keys(props.images).forEach((key) => {
-                const item = itemRefs.current[key];
-                if (!item) return;
+  useEffect(() => {
+    const triggers: gsap.core.Tween[] = [];
+    const ctx = gsap.context(() => {
+      Object.keys(props.images).forEach((key) => {
+        const item = itemRefs.current[key];
+        if (!item) return;
 
-                const tween = gsap.to(item, {
-                    y: () => {
-                        const windowHeight = window.innerHeight;
-                        const itemHeight = item.clientHeight;
-                        const scrollTriggerStart = (windowHeight - itemHeight) * -0.2;
-                        return scrollTriggerStart;
-                    },
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: item,
-                        start: "top bottom",
-                        end: "bottom top",
-                        scrub: 2,
-                        invalidateOnRefresh: true,
-                    },
-                });
-                triggers.push(tween);
-            });
+        const tween = gsap.to(item, {
+          y: () => {
+            const windowHeight = window.innerHeight;
+            const itemHeight = item.clientHeight;
+            const scrollTriggerStart = (windowHeight - itemHeight) * -0.2;
+            return scrollTriggerStart;
+          },
+          ease: "none",
+          scrollTrigger: {
+            trigger: item,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 2,
+            invalidateOnRefresh: true,
+          },
         });
+        triggers.push(tween);
+      });
+    });
 
-        return () => {
-            ctx.revert();
-            triggers.forEach(tween => tween.kill());
-        };
-    }, []);
+    return () => {
+      ctx.revert();
+      triggers.forEach((tween) => tween.kill());
+    };
+  }, []);
 
-    const galleryParallaxItems = () => {
-        return Object.keys(props.images).map((key) => (
-            <div
-                key={key}
-                className={`gallery-parallax-item is-item-${key}`}
-                ref={el => { itemRefs.current[key] = el; }}
-            >
-                <Image
-                    src={getImagePath(props.images[key].src)}
-                    alt={props.images[key].alt}
-                    width={props.images[key].w}
-                    height={props.images[key].h}
-                    priority
-                />
-            </div>
-        ));
-    }
+  const galleryParallaxItems = () => {
+    return Object.keys(props.images).map((key) => (
+      <div
+        key={key}
+        className={`gallery-parallax-item is-item-${key}`}
+        ref={(el) => {
+          itemRefs.current[key] = el;
+        }}
+      >
+        <Image
+          src={getImagePath(props.images[key].src)}
+          alt={props.images[key].alt}
+          width={props.images[key].w}
+          height={props.images[key].h}
+          priority
+        />
+      </div>
+    ));
+  };
 
-    return (
-        <div className="gallery-parallax">
-            {galleryParallaxItems()}
-        </div>
-    )
-}
+  return <div className="gallery-parallax">{galleryParallaxItems()}</div>;
+};
 
 /**
  * @name Bg
@@ -169,39 +167,88 @@ const GalleryParallax = (props: {
  * @param props.state 動画の再生状態
  */
 const Bg = () => {
-    const { getImagePath } = helper();
-    const pathname = usePathname();
-    const { hero, water, colorBlue, colorWhite } = useRefContext() as {
-        hero: React.RefObject<HTMLDivElement>;
-        water: React.RefObject<HTMLDivElement>;
-        colorBlue: React.RefObject<HTMLDivElement>;
-        colorWhite: React.RefObject<HTMLDivElement>;
-    };
+  const { getImagePath } = helper();
+  const pathname = usePathname();
+  const { hero, water, colorBlue, colorWhite } = useRefContext() as {
+    hero: React.RefObject<HTMLDivElement>;
+    water: React.RefObject<HTMLDivElement>;
+    colorBlue: React.RefObject<HTMLDivElement>;
+    colorWhite: React.RefObject<HTMLDivElement>;
+  };
 
-    return (
-        <div className="bg">
-            {pathname === "/" && (
-                <div className="video is-video-hero" ref={hero}>
-                    <video muted loop playsInline preload="metadata">
-                        <source src={getImagePath("movie/dcl_da_pc.webm")} type="video/webm" />
-                        <source src={getImagePath("movie/dcl_da_pc.mp4")} type="video/mp4" />
-                    </video>
-                </div>
-            )}
-            <div className={`video is-video-water ${pathname === "/" ? "is-set-mask" : ""}`} ref={water}>
-                <video muted loop playsInline preload="metadata">
-                    <source src={getImagePath("movie/water.webm")} type="video/webm" />
-                    <source src={getImagePath("movie/water.mp4")} type="video/mp4" />
-                </video>
-            </div>
-            <div className="color is-color-blue is-set-mask" ref={colorBlue}></div>
-            <div className="color is-color-white is-set-mask" ref={colorWhite}></div>
+  return (
+    <div className="bg">
+      {pathname === "/" && (
+        <div className="video is-video-hero" ref={hero}>
+          <video muted loop playsInline preload="metadata" className="video">
+            <source
+              src={getImagePath("movie/dcl_da_pc.webm")}
+              type="video/webm"
+            />
+            <source
+              src={getImagePath("movie/dcl_da_pc.mp4")}
+              type="video/mp4"
+            />
+          </video>
         </div>
-    )
-}
+      )}
+      <div
+        className={`video is-video-water ${pathname === "/" ? "is-set-mask" : ""}`}
+        ref={water}
+      >
+        <video muted loop playsInline preload="metadata" className="video">
+          <source src={getImagePath("movie/water.webm")} type="video/webm" />
+          <source src={getImagePath("movie/water.mp4")} type="video/mp4" />
+        </video>
+      </div>
+      <div className="color is-color-blue is-set-mask" ref={colorBlue}></div>
+      <div className="color is-color-white is-set-mask" ref={colorWhite}></div>
+    </div>
+  );
+};
 
-export {
-    GallerySlider,
-    GalleryParallax,
-    Bg,
-}
+const Deckplan = (props: { id: string }) => {
+  const { getImagePath } = helper();
+
+  return (
+    <section id={props.id} className="c-deckplan">
+      <OnmHeadline01 hlLevel="h2" jp="デッキプラン" en={`Deck Plan`} />
+      <div className="c-deckplan-block">
+        <div className="deck">
+          <div className="img">
+            <Image
+              src={getImagePath("page/accommodations/deck.jpg")}
+              alt="デッキプラン"
+              width={374}
+              height={194}
+            />
+          </div>
+          <div className="text">
+            <p>
+              ディズニーアドベンチャーの客室タイプとパブリックスペースの位置をご確認いただけます。
+            </p>
+            <div className="pdf-button">
+              <Link
+                href={
+                  "/page/accommodations/document/DCL-DA_Deck_Plan_V1_16_Oct.pdf"
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pdf-button-el"
+              >
+                <span className="label">デッキプラン</span>
+                <span className="icon">
+                  <svg className="i-pdf">
+                    <use xlinkHref="#i-pdf" />
+                  </svg>
+                </span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export { GallerySlider, GalleryParallax, Bg, Deckplan };

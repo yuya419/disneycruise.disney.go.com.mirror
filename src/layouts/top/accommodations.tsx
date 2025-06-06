@@ -17,8 +17,6 @@ export default function Accommodations() {
   const { getImagePath } = helper();
   const wrapRef = useRef<HTMLDivElement>(null);
 
-  const handleLinkClick = useHandleLinkClick();
-
   const rooms: Record<
     string,
     { name: string; en: string; desp: string; link: string; image: string }
@@ -58,6 +56,9 @@ export default function Accommodations() {
    * @description 客室詳細
    */
   const Detail = () => {
+
+    const handleLinkClick = useHandleLinkClick();
+
     const roomImages = Object.keys(rooms).map((key) => {
       return (
         <div

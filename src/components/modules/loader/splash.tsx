@@ -7,7 +7,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Logo_s } from "@/libs/symbol";
 import "./styles/loader.scss";
-import { set } from "date-fns";
 
 export function Splash() {
   const [isLoaded, setIsLoaded] = useState(false);

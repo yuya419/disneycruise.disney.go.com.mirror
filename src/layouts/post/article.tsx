@@ -9,6 +9,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/modules/buttons/button";
 import { arrow } from "@/components/modules/icons/icon";
+import { useHandleLinkClick } from "@/hooks/usePageTransition";
 import "./styles/article.scss";
 
 interface posts {
@@ -51,6 +52,7 @@ const Post = (props: {
   data?: boolean;
 }) => {
   const { posts, perPage = 5 } = props;
+  const handleLinkClick = useHandleLinkClick();
 
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -98,6 +100,7 @@ const Post = (props: {
           href={`/${props.type}/${posts[key].link}`}
           className="post-link uline"
           {...(props.data ? { "data-post": index + 1 } : {})}
+          onClick={(e) => handleLinkClick(e, `/${props.type}/${posts[key].link}`)}
         >
           <div className="post-content">
             {props.arrow && arrow({ bg: "white", color: "blue" })}
@@ -193,6 +196,8 @@ const Course = (props: {
   const { posts } = props;
   const Tag = props.hlLevel === "h2" ? "h2" : "h3";
 
+  const handleLinkClick = useHandleLinkClick();
+
   const postItems = Object.keys(posts).map((key) => {
     return (
       <article className="post-item" key={key}>
@@ -216,6 +221,7 @@ const Course = (props: {
         <Link
           href={"/list/" + posts[key].link}
           className="post-link-area"
+          onClick={(e) => handleLinkClick(e, "/list/" + posts[key].link)}
         ></Link>
       </article>
     );
@@ -245,6 +251,8 @@ const Feature = (props: {
   data?: boolean;
 }) => {
   const { posts } = props;
+  
+  const handleLinkClick = useHandleLinkClick();
 
   const postsRef = useRef<HTMLDivElement>(null);
 
@@ -259,6 +267,7 @@ const Feature = (props: {
           href={`/feature/${posts[key].link}`}
           className="post-link uline"
           {...(props.data ? { "data-post": index + 1 } : {})}
+          onClick={(e) => handleLinkClick(e, `/feature/${posts[key].link}`)}
         >
           <div className="post-content">
             {props.arrow && arrow({ bg: "white", color: "blue" })}

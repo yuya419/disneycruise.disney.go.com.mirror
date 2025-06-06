@@ -6,7 +6,7 @@
 import { NotoSansJP, PhilosopherFont } from "@/libs/font";
 import "@/assets/styles/style.scss";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { RefProvider } from "@/hooks/useRefContext";
 import Header from "@/components/utils/header";
@@ -17,19 +17,19 @@ import { Bg } from "@/components/modules/common/common";
 import { Symbol } from "@/libs/symbol";
 import { useHeadColor } from "@/hooks/useHead";
 import { useRefContext } from "@/hooks/useRefContext";
-import LoadingScreen from "@/components/modules/loading/loadingScreen";
+import { Loader } from "@/components/modules/loader/loader";
+import { Splash } from "@/components/modules/loader/splash";
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode }>) {
   const pathname = usePathname();
   const [isColor, setIsColor] = useState<"white" | "blue" | null>(null);
 
+  useEffect(() => {
+    document.body.dataset.headColor = isColor ?? "white";
+  }, [pathname, isColor]);
+
   return (
-    <html
-      lang="ja"
-      prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#"
-    >
+    <html lang="ja" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
       <head>
         {/* GTM script */}
         <script
@@ -46,25 +46,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
         />
       </head>
-      <body
-        className={`${NotoSansJP.variable} ${PhilosopherFont.variable}`}
-        data-head-color={isColor}
-      >
+      <body className={`${NotoSansJP.variable} ${PhilosopherFont.variable}`} data-head-color={isColor}>
         {/* GTM noscript */}
         <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-PNSBK2Z5"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          ></iframe>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PNSBK2Z5" height="0" width="0" style={{ display: "none", visibility: "hidden" }}></iframe>
         </noscript>
         <RefProvider>
-          {/* <LoadingScreen /> */}
           <Layout
             children={children}
             pathname={pathname}
-            isColor={isColor}
             setIsColor={setIsColor}
           />
         </RefProvider>
@@ -76,25 +66,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  * @name Layout
  * @description 共通レイアウト
  */
-function Layout({
-  children,
-  pathname,
-  isColor,
-  setIsColor,
-}: {
+function Layout({ children, pathname, setIsColor, }: {
   children: React.ReactNode;
   pathname: string;
-  isColor: "white" | "blue" | null;
   setIsColor: (color: "white" | "blue") => void;
 }) {
-  const { overlay } = useRefContext() as {
+  const { overlay, loader } = useRefContext() as {
     overlay: React.RefObject<HTMLDivElement>;
+    loader: React.RefObject<HTMLDivElement>;
   };
 
   useHeadColor(setIsColor);
 
+  useEffect(() => {
+    // ページ遷移後にvideo.videoがあれば再生
+    setTimeout(() => {
+      const videos = Array.from(document.querySelectorAll("video.video")) as HTMLVideoElement[];
+      videos.forEach((video) => {
+        video.play().catch(() => { });
+      });
+      loader.current?.classList.add("isOut");
+      setTimeout(() => {
+        loader.current?.classList.remove("isIn", "isOut");
+      }, 1000);
+    }, 100);
+  }, [pathname]);
+
   return (
     <>
+      <Splash />
       <Header />
       {children}
       <Footer />
@@ -105,6 +105,7 @@ function Layout({
       <Bg />
       <Symbol />
       <div className="overlay" ref={overlay}></div>
+      <Loader />
     </>
   );
 }

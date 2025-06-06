@@ -36,6 +36,7 @@ import "./styles/adults.scss";
 
 export default function Adults() {
   const [isOffset, setIsOffset] = useState<number>(0);
+  const currentRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const { getImagePath } = helper();
 
@@ -130,9 +131,7 @@ export default function Adults() {
       const scrollAnimation = () => {
         const ctx = gsap.context(() => {
           const propaty = {
-            current: container.querySelector(
-              ".relaxation-outline",
-            ) as HTMLElement,
+            current: container.querySelector(".relaxation-outline",) as HTMLElement,
             outlineItems: container.querySelectorAll(".outline-item"),
             bgItems: container.querySelectorAll(".relaxation-bg-item"),
             paginationItems: container.querySelectorAll(".balet"),
@@ -155,15 +154,11 @@ export default function Adults() {
             });
 
             // 3. current number
-            propaty.currentNumber.forEach((item) =>
-              item.classList.remove("isCurrent"),
-            );
+            propaty.currentNumber.forEach((item) => item.classList.remove("isCurrent"),);
             propaty.currentNumber[num - 1].classList.add("isCurrent");
 
             // 4. pagination
-            propaty.paginationItems.forEach((item) =>
-              item.classList.remove("isCurrent"),
-            );
+            propaty.paginationItems.forEach((item) => item.classList.remove("isCurrent"),);
             propaty.paginationItems[num - 1].classList.add("isCurrent");
           };
 
@@ -174,10 +169,14 @@ export default function Adults() {
                 start: "top 50%",
                 end: "bottom 50%",
                 invalidateOnRefresh: true,
-                onEnter: () =>
-                  setCurrent(parseInt(el.getAttribute("data-num") as string)),
-                onEnterBack: () =>
-                  setCurrent(parseInt(el.getAttribute("data-num") as string)),
+                onEnter: () => {
+                  setCurrent(parseInt(el.getAttribute("data-num") as string));
+                  currentRef.current?.setAttribute("data-current", `is-relaxation${el.getAttribute("data-num")}`);
+                },
+                onEnterBack: () => {
+                  setCurrent(parseInt(el.getAttribute("data-num") as string))
+                  currentRef.current?.setAttribute("data-current", `is-relaxation${el.getAttribute("data-num")}`);
+                },
               },
             });
           });
@@ -219,7 +218,7 @@ export default function Adults() {
         className="t-adults__relaxation"
         toggle={{ logo: false, color: "white" }}
       >
-        <div data-current={`is-relaxation0${selectedIndex + 1}`}>
+        <div data-current={`is-relaxation0${selectedIndex + 1}`} ref={currentRef}>
           <div className="relaxation" ref={containerRef}>
             <div className="relaxation-outline">
               <div className="outline">
@@ -233,7 +232,7 @@ export default function Adults() {
                       Relaxation
                     </span>
                     <span className="num" lang="en">
-                      <span>0</span>
+                      <span className="zero">0</span>
                       <span className="val isCurrent" data-num="1">
                         1
                       </span>
@@ -262,7 +261,7 @@ export default function Adults() {
                     <Scroll
                       to="outline01"
                       smooth={true}
-                      duration={500}
+                      duration={0}
                       offset={isOffset}
                       lang="en"
                       className="balet isCurrent"
@@ -273,7 +272,7 @@ export default function Adults() {
                     <Scroll
                       to="outline02"
                       smooth={true}
-                      duration={500}
+                      duration={0}
                       offset={isOffset}
                       lang="en"
                       className="balet"
@@ -284,7 +283,7 @@ export default function Adults() {
                     <Scroll
                       to="outline03"
                       smooth={true}
-                      duration={500}
+                      duration={0}
                       offset={isOffset}
                       lang="en"
                       className="balet"

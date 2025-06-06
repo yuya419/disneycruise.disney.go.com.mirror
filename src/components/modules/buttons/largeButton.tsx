@@ -2,8 +2,10 @@
  * @name Button
  * @description ボタン
  */
+"use client";
 import Link from "next/link";
 import { arrow } from "@/components/modules/icons/icon";
+import { useHandleLinkClick } from "@/hooks/usePageTransition";
 import "./styles/largeButton.scss";
 
 const LargeButton = (props: {
@@ -12,12 +14,15 @@ const LargeButton = (props: {
   link: string;
   blank?: boolean;
 }) => {
+  const handleLinkClick = useHandleLinkClick();
   return (
     <div className="large-button">
       <Link
         href={props.link}
         className="large-button-el"
         target={props.blank ? "_blank" : "_self"}
+        rel={props.blank ? "noopener noreferrer" : undefined}
+        onClick={(e) => handleLinkClick(e, props.link)}
       >
         <span className="en-label" lang="en">
           {props.enLabel}

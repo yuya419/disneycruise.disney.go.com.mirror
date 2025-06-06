@@ -2,8 +2,10 @@
  * @name Button
  * @description ボタン
  */
+"use client";
 import Link from "next/link";
 import { arrow } from "@/components/modules/icons/icon";
+import { useHandleLinkClick } from "@/hooks/usePageTransition";
 import "./styles/button.scss";
 
 const Button = (props: {
@@ -15,6 +17,7 @@ const Button = (props: {
   align?: "left" | "center" | "right";
   reverse?: boolean;
 }) => {
+  const handleLinkClick = useHandleLinkClick();
   return (
     <div
       className="button"
@@ -26,6 +29,8 @@ const Button = (props: {
         className="button-el"
         target={props.blank ? "_blank" : "_self"}
         data-type={props.type}
+        rel={props.blank ? "noopener noreferrer" : undefined}
+        onClick={(e) => handleLinkClick(e, props.link)}
       >
         <span className="label" lang={props.lang}>
           {props.label}

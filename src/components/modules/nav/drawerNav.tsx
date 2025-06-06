@@ -12,11 +12,52 @@ import CvNav from "@/components/modules/nav/cvNav";
 import SubNav from "@/components/modules/nav/subNav";
 import { useRefContext } from "@/hooks/useRefContext";
 import { useHeaderHeight } from "@/hooks/useHead";
+import { usePageTransition } from "@/hooks/usePageTransition";
 import "./styles/drawerNav.scss";
 
 interface DrawerNavProps {
   isOpenDefault?: boolean;
 }
+
+type LinkEvent = React.MouseEvent<HTMLAnchorElement> | React.TouchEvent<HTMLAnchorElement>;
+
+const useDrawerNavTransition = (closeDrawer: () => void, startTransition: (to: string) => void) => {
+  return (e: LinkEvent, to: string) => {
+    closeDrawer();
+
+    // TouchEventの場合はボタンや修飾キーは無視
+    if ("button" in e && (
+      e.ctrlKey ||
+      e.shiftKey ||
+      e.metaKey ||
+      e.button === 1
+    )) {
+      return;
+    }
+
+    const target = (e.currentTarget as HTMLAnchorElement).target;
+    const href = (e.currentTarget as HTMLAnchorElement).href;
+    const url = new URL(href);
+    const currentUrl = new URL(window.location.href);
+
+    // target="_blank"は通常遷移
+    if (target === "_blank") {
+      return;
+    }
+
+    // プロトコル・ホスト・パスが同じなら（パラメータやハッシュが違っても）return
+    if (
+      url.protocol === currentUrl.protocol &&
+      url.host === currentUrl.host &&
+      url.pathname === currentUrl.pathname
+    ) {
+      return;
+    }
+
+    e.preventDefault();
+    startTransition(to);
+  };
+};
 
 export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
   const { getImagePath } = helper();
@@ -31,6 +72,9 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
   const toggleDrawer = () => setIsOpen((prev) => !prev);
 
   const closeDrawer = () => setIsOpen(false);
+
+  const { startTransition } = usePageTransition();
+  const handleDrawerNavTransition = useDrawerNavTransition(closeDrawer, startTransition);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -69,7 +113,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
           <div className="drawerNav-inner">
             <div className="drawerNav-block">
               <p className="logo">
-                <Link href="/">
+                <Link href="/" onClick={e => handleDrawerNavTransition(e, "/")}>
                   <picture>
                     <source
                       srcSet={getImagePath("common/logo-sm.svg")}
@@ -98,7 +142,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                           <Link
                             href="/themed-areas/"
                             className="menu-item-link"
-                            onClick={closeDrawer}
+                            onClick={e => handleDrawerNavTransition(e, "/themed-areas/")}
                           >
                             <span className="en" lang="en">
                               7 Themed Areas
@@ -114,7 +158,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                               <Link
                                 href="/themed-areas/#area01"
                                 className="child-menu-item-link uline"
-                                onClick={closeDrawer}
+                                onClick={e => handleDrawerNavTransition(e, "/themed-areas/#area01")}
                               >
                                 <span className="line">
                                   ディズニーイマジネーションガーデン
@@ -125,7 +169,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                               <Link
                                 href="/themed-areas/#area02"
                                 className="child-menu-item-link uline"
-                                onClick={closeDrawer}
+                                onClick={e => handleDrawerNavTransition(e, "/themed-areas/#area02")}
                               >
                                 <span className="line">
                                   ディズニーディスカバリーリーフ
@@ -136,10 +180,10 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                               <Link
                                 href="/themed-areas/#area03"
                                 className="child-menu-item-link uline"
-                                onClick={closeDrawer}
+                                onClick={e => handleDrawerNavTransition(e, "/themed-areas/#area03")}
                               >
                                 <span className="line">
-                                  トイストーリープレイス​
+                                  トイストーリープレイス
                                 </span>
                               </Link>
                             </li>
@@ -147,10 +191,10 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                               <Link
                                 href="/themed-areas/#area04"
                                 className="child-menu-item-link uline"
-                                onClick={closeDrawer}
+                                onClick={e => handleDrawerNavTransition(e, "/themed-areas/#area04")}
                               >
                                 <span className="line">
-                                  マーベルランディング​​
+                                  マーベルランディング
                                 </span>
                               </Link>
                             </li>
@@ -158,10 +202,10 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                               <Link
                                 href="/themed-areas/#area05"
                                 className="child-menu-item-link uline"
-                                onClick={closeDrawer}
+                                onClick={e => handleDrawerNavTransition(e, "/themed-areas/#area05")}
                               >
                                 <span className="line">
-                                  ウェイファインダーベイ​
+                                  ウェイファインダーベイ
                                 </span>
                               </Link>
                             </li>
@@ -169,7 +213,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                               <Link
                                 href="/themed-areas/#area06"
                                 className="child-menu-item-link uline"
-                                onClick={closeDrawer}
+                                onClick={e => handleDrawerNavTransition(e, "/themed-areas/#area06")}
                               >
                                 <span className="line">
                                   サンフランソウキョウ・ストリート
@@ -180,7 +224,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                               <Link
                                 href="/themed-areas/#area07"
                                 className="child-menu-item-link uline"
-                                onClick={closeDrawer}
+                                onClick={e => handleDrawerNavTransition(e, "/themed-areas/#area07")}
                               >
                                 <span className="line">タウン・スクエア</span>
                               </Link>
@@ -196,7 +240,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                           <Link
                             href="/accommodations/"
                             className="menu-item-link"
-                            onClick={closeDrawer}
+                            onClick={e => handleDrawerNavTransition(e, "/accommodations/")}
                           >
                             <span className="en" lang="en">
                               Accommodations
@@ -210,7 +254,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                               <Link
                                 href="/accommodations/?type=room01"
                                 className="child-menu-item-link uline"
-                                onClick={closeDrawer}
+                                onClick={e => handleDrawerNavTransition(e, "/accommodations/?type=room01")}
                               >
                                 <span className="line">
                                   コンシェルジュ・スイート
@@ -221,7 +265,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                               <Link
                                 href="/accommodations/?type=room02"
                                 className="child-menu-item-link uline"
-                                onClick={closeDrawer}
+                                onClick={e => handleDrawerNavTransition(e, "/accommodations/?type=room02")}
                               >
                                 <span className="line">ベランダ客室</span>
                               </Link>
@@ -230,7 +274,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                               <Link
                                 href="/accommodations/?type=room03"
                                 className="child-menu-item-link uline"
-                                onClick={closeDrawer}
+                                onClick={e => handleDrawerNavTransition(e, "/accommodations/?type=room03")}
                               >
                                 <span className="line">
                                   オーシャンビュー客室
@@ -241,7 +285,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                               <Link
                                 href="/accommodations/?type=room04"
                                 className="child-menu-item-link uline"
-                                onClick={closeDrawer}
+                                onClick={e => handleDrawerNavTransition(e, "/accommodations/?type=room04")}
                               >
                                 <span className="line">内側​​​客室</span>
                               </Link>
@@ -255,7 +299,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                       <Link
                         href="/entertainment/"
                         className="menu-item-link"
-                        onClick={closeDrawer}
+                        onClick={e => handleDrawerNavTransition(e, "/entertainment/")}
                       >
                         <span className="en" lang="en">
                           Entertainment
@@ -267,7 +311,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                       <Link
                         href="/dining/"
                         className="menu-item-link"
-                        onClick={closeDrawer}
+                        onClick={e => handleDrawerNavTransition(e, "/dining/")}
                       >
                         <span className="en" lang="en">
                           Dining
@@ -279,7 +323,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                       <Link
                         href="/kids-clubs/"
                         className="menu-item-link"
-                        onClick={closeDrawer}
+                        onClick={e => handleDrawerNavTransition(e, "/kids-clubs/")}
                       >
                         <span className="en" lang="en">
                           Kids Clubs
@@ -293,7 +337,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                       <Link
                         href="/spa-lounges-bar/"
                         className="menu-item-link"
-                        onClick={closeDrawer}
+                        onClick={e => handleDrawerNavTransition(e, "/spa-lounges-bar/")}
                       >
                         <span className="en" lang="en">
                           Adults
@@ -305,7 +349,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                       <Link
                         href="/concierge/"
                         className="menu-item-link"
-                        onClick={closeDrawer}
+                        onClick={e => handleDrawerNavTransition(e, "/concierge/")}
                       >
                         <span className="en" lang="en">
                           Concierge
@@ -313,12 +357,6 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                         <span className="jp">コンシェルジュルーム</span>
                       </Link>
                     </li>
-                    {/* <li className="menu-item">
-                                            <Link href="/feature/" className="menu-item-link" onClick={closeDrawer}>
-                                                <span className="en" lang="en">Special Feature</span>
-                                                <span className="jp">特集記事</span>
-                                            </Link>
-                                        </li> */}
                     <li className="menu-item">
                       <Link
                         href="/page/accommodations/document/DCL-DA_Deck_Plan_V1_16_Oct.pdf"
@@ -335,7 +373,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                       <Link
                         href="/news/"
                         className="menu-item-link"
-                        onClick={closeDrawer}
+                        onClick={e => handleDrawerNavTransition(e, "/news/")}
                       >
                         <span className="en" lang="en">
                           News
@@ -347,7 +385,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
                       <Link
                         href="/qa/"
                         className="menu-item-link"
-                        onClick={closeDrawer}
+                        onClick={e => handleDrawerNavTransition(e, "/qa/")}
                       >
                         <span className="en" lang="en">
                           Faq
@@ -371,7 +409,7 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
           </div>
         </div>
         <div className="drawerNav-bg">
-          <video muted loop playsInline preload="atuo" ref={videoRef}>
+          <video muted loop playsInline preload="atuo" ref={videoRef} className="video">
             <source src={getImagePath("movie/water.webm")} type="video/webm" />
             <source src={getImagePath("movie/water.mp4")} type="video/mp4" />
           </video>

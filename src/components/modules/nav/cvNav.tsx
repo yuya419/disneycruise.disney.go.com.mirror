@@ -5,15 +5,17 @@
 "use client";
 import Link from "next/link";
 import { arrow } from "@/components/modules/icons/icon";
+import { useHandleLinkClick } from "@/hooks/usePageTransition";
 import "./styles/cvNav.scss";
 
 export default function CvNav() {
+  const handleLinkClick = useHandleLinkClick();
   return (
     <div className="cvNav">
       <nav className="nav">
         <ul className="nav-menu">
           <li className="menu-item is-reservation">
-            <Link href="/list/" className="menu-item-link">
+            <Link href="/list/" className="menu-item-link" onClick={(e) => handleLinkClick(e, "/list/")}>
               <span className="label">
                 <span className="en" lang="en">
                   Reservation
@@ -29,7 +31,7 @@ export default function CvNav() {
             </Link>
           </li>
           <li className="menu-item is-mail-magazine">
-            <Link href="/mailmagazine/" className="menu-item-link">
+            <Link href="/mailmagazine/" className="menu-item-link" onClick={(e) => handleLinkClick(e, "/mailmagazine/")}>
               <span className="label">
                 <span className="en" lang="en">
                   Mail Magazine
@@ -40,7 +42,7 @@ export default function CvNav() {
             </Link>
           </li>
           <li className="menu-item is-contact">
-            <Link href="/inquiry/" className="menu-item-link">
+            <Link href="/inquiry/" className="menu-item-link" onClick={(e) => handleLinkClick(e, "/inquiry/")}>
               <span className="label">
                 <span className="en" lang="en">
                   Contact

@@ -10,6 +10,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import ClassNames from "embla-carousel-class-names";
 import Autoplay from "embla-carousel-autoplay";
 import { arrow } from "@/components/modules/icons/icon";
+import { useHandleLinkClick } from "@/hooks/usePageTransition";
 import "./styles/pickup.scss";
 interface posts {
   posts: {
@@ -48,6 +49,8 @@ export function HeroNews(props: posts) {
   const firstPostKey = Object.keys(posts)[0];
   const firstPost = posts[firstPostKey];
 
+  const handleLinkClick = useHandleLinkClick();
+
   const Meta = () => {
     return (
       <div className="meta">
@@ -66,7 +69,7 @@ export function HeroNews(props: posts) {
   return (
     <div className="t-hero__pickup">
       <article className={"t-hero__pickup-item"}>
-        <Link href={firstPost.link} className={"t-hero__pickup-link"}>
+        <Link href={firstPost.link} className={"t-hero__pickup-link"} onClick={(e) => handleLinkClick(e, firstPost.link)}>
           <div className="link-inline">
             <Meta />
             <Meta />
@@ -93,6 +96,8 @@ export function Pickup(props: {
   posts: posts["posts"];
 }) {
   const { type, posts } = props;
+
+  const handleLinkClick = useHandleLinkClick();
 
   const autoplay = useRef(Autoplay({ delay: 3000, stopOnInteraction: false })); // Autoplayプラグインを設定
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -153,6 +158,7 @@ export function Pickup(props: {
         <Link
           href={"/" + props.type + "/" + posts[key].link}
           className="post-link uline"
+          onClick={(e) => handleLinkClick(e, "/" + props.type + "/" + posts[key].link)}
         >
           <div className="post-content">
             <div className="thumbnail">

@@ -10,11 +10,14 @@ import helper from "@/libs/helper";
 import Button from "@/components/modules/buttons/button";
 import LargeButton from "@/components/modules/buttons/largeButton";
 import { arrow } from "@/components/modules/icons/icon";
+import { useHandleLinkClick } from "@/hooks/usePageTransition";
 import "./styles/accommodations.scss";
 
 export default function Accommodations() {
   const { getImagePath } = helper();
   const wrapRef = useRef<HTMLDivElement>(null);
+
+  const handleLinkClick = useHandleLinkClick();
 
   const rooms: Record<
     string,
@@ -120,7 +123,7 @@ export default function Accommodations() {
               </div>
             </dd>
           </dl>
-          <Link href={rooms[key].link} className="room-link" />
+          <Link href={rooms[key].link} className="room-link" onClick={(e) => handleLinkClick(e, rooms[key].link)} />
         </div>
       );
     });

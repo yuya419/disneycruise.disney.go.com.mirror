@@ -7,12 +7,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo_s } from "@/libs/symbol";
 import { useRefContext } from "@/hooks/useRefContext";
+import { useHandleLinkClick } from "@/hooks/usePageTransition";
 import "./styles/header.scss";
 
 export default function Header() {
   const { header } = useRefContext() as {
     header: React.RefObject<HTMLElement>;
   };
+
+  const handleLinkClick = useHandleLinkClick();
 
   // パス
   const path = usePathname();
@@ -21,7 +24,7 @@ export default function Header() {
   return (
     <header className="header" ref={header}>
       <Tag className="h-logo">
-        <Link href="/">
+        <Link href="/" onClick={(e) => handleLinkClick(e, "/")}>
           <Logo_s />
           <span className="screen-reader-text">ディズニークルーズライン</span>
         </Link>

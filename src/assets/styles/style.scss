@@ -1,13 +1,13 @@
 @use "./reset";
-@use "./globals" as g;
+@use "./globals"as g;
 
 // html
 html {
-  font-size: 10px;
-  scroll-behavior: smooth;
-  overscroll-behavior-y: contain;
+  font-size                 : 10px;
+  scroll-behavior           : smooth;
+  overscroll-behavior-y     : contain;
   -webkit-overflow-scrolling: touch;
-  scroll-padding-top: var(--header-height);
+  scroll-padding-top        : var(--header-height);
 
   * {
     box-sizing: border-box;
@@ -25,6 +25,17 @@ html {
     @include g.isFixed();
   }
 
+  //ロード
+  &:has(.splash:not(.isHidden)) {
+    @include g.isFixed();
+    cursor: wait;
+  }
+
+  //画面遷移中
+  &:has(.loader.isIn) {
+    @include g.isFixed();
+  }
+
   // sp - html
   @include g.media(md) {
     scroll-padding-top: calc(var(--header-height) * 1.2);
@@ -33,21 +44,21 @@ html {
 
 // body
 body {
-  color: var(--theme_color_text);
-  font-family: var(--noto-sans-jp);
-  font-size: var(--font_size_base);
-  font-weight: var(--font_weight);
-  line-height: var(--line_height);
-  letter-spacing: var(--letter_spacing);
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color                      : var(--theme_color_text);
+  font-family                : var(--noto-sans-jp);
+  font-size                  : var(--font_size_base);
+  font-weight                : var(--font_weight);
+  line-height                : var(--line_height);
+  letter-spacing             : var(--letter_spacing);
+  -webkit-text-size-adjust   : 100%;
+  -webkit-font-smoothing     : antialiased;
+  -moz-osx-font-smoothing    : grayscale;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 main {
   position: relative;
-  z-index: 2;
+  z-index : 2;
 }
 
 // a

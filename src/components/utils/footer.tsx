@@ -2,6 +2,7 @@
  * @name footer.tsx
  * @description 共通フッター
  */
+"use client";
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -13,6 +14,7 @@ import SubNav from "@/components/modules/nav/subNav";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRefContext } from "@/hooks/useRefContext";
+import { useHandleLinkClick } from "@/hooks/usePageTransition";
 import "./styles/footer.scss";
 
 export default function Footer() {
@@ -20,6 +22,7 @@ export default function Footer() {
   const footerRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const { getImagePath } = helper();
+  const handleLinkClick = useHandleLinkClick();
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -41,16 +44,18 @@ export default function Footer() {
           scrub: true,
           invalidateOnRefresh: true,
           onEnter: () => {
+            document.body.classList.add("isButtonHidden");
             colorBlue.current?.classList.add("isShow");
             colorWhite.current?.classList.add("isShow");
           },
           onLeaveBack: () => {
+            document.body.classList.remove("isButtonHidden");
             colorBlue.current?.classList.remove("isShow");
             colorWhite.current?.classList.remove("isShow");
           },
         },
       });
-    }, triggerRef);
+    }, [trigger, footer]);
 
     return () => ctx.revert();
   };
@@ -61,6 +66,7 @@ export default function Footer() {
     // 高さ変動時にScrollTrigger.refresh()を呼ぶ
     let refreshTimeout: NodeJS.Timeout | null = null;
     let lastBodyHeight = document.body.offsetHeight;
+
     const refresh = () => {
       if (refreshTimeout) clearTimeout(refreshTimeout);
       refreshTimeout = setTimeout(() => {
@@ -68,10 +74,8 @@ export default function Footer() {
         if (newBodyHeight !== lastBodyHeight) {
           lastBodyHeight = newBodyHeight;
           ScrollTrigger.refresh();
-        } else {
-          // console.log("no height change, skip refresh");
         }
-      }, 100); // 100msディバウンス
+      }, 100);
     };
 
     let observer: MutationObserver | null = null;
@@ -90,10 +94,13 @@ export default function Footer() {
       gsap.killTweensOf(triggerRef.current);
       gsap.killTweensOf(footerRef.current);
       footerRef.current?.removeAttribute("style");
+      document.body.classList.remove("isButtonHidden");
       colorBlue.current?.classList.remove("isShow");
       colorWhite.current?.classList.remove("isShow");
-      window.removeEventListener("resize", refresh);
-      observer?.disconnect();
+      if (isPC) {
+        window.removeEventListener("resize", refresh);
+        observer?.disconnect();
+      }
       if (refreshTimeout) clearTimeout(refreshTimeout);
     };
   }, [pathname]);
@@ -149,7 +156,7 @@ export default function Footer() {
           </div>
           <div className="company">
             <p className="logo">
-              <Link href="/">
+              <Link href="/" onClick={(e) => handleLinkClick(e, "/")}>
                 <picture>
                   <source
                     srcSet={getImagePath("common/logo-sm-hrzn.svg")}

@@ -3,7 +3,7 @@
  * @description 7つのテーマ別エリア
  */
 "use client";
-import { useEffect, useState, useRef, useMemo, use } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import { Link as Scroll } from "react-scroll";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,6 +14,7 @@ import {
   GSAPToggleContainer,
   GSAPMaskToggle,
 } from "@/components/modules/gsap/container";
+import { useHandleLinkClick } from "@/hooks/usePageTransition";
 
 // array
 import { topThemedAreas } from "@/libs/array";
@@ -90,9 +91,10 @@ export default function ThemedAreas() {
    * @name generateElements
    * @description 各エリアの要素を生成する
    */
-  const generateElements = (
-    array: Record<string, { name: string; en: string; desp: string }>,
-  ) => {
+  const generateElements = (array: Record<string, { name: string; en: string; desp: string }>,) => {
+
+    const handleLinkClick = useHandleLinkClick();
+
     const outline = Object.keys(array).map((key) => (
       <div
         key={key}
@@ -130,6 +132,7 @@ export default function ThemedAreas() {
           <Link
             href={`/themed-areas/#area0${key}`}
             className="outline-link"
+            onClick={(e) => handleLinkClick(e, `/themed-areas/#area0${key}`)}
           ></Link>
         </div>
       </div>
@@ -197,10 +200,8 @@ export default function ThemedAreas() {
       breakpoints: { "(min-width: 1025px)": { active: false } },
     };
     const [emblaRef, emblaApi] = useEmblaCarousel(options, [ClassNames()]);
-    const { outline, bg, space } = useMemo(
-      () => generateElements(topThemedAreas),
-      [topThemedAreas],
-    );
+    // const { outline, bg, space } = useMemo(() => generateElements(topThemedAreas), [topThemedAreas],);
+    const { outline, bg, space } = generateElements(topThemedAreas);
 
     // dotButtonとprevNextButtonsのカスタムフックを使用
     const { selectedIndex, scrollSnaps, onDotButtonClick } =
@@ -211,6 +212,8 @@ export default function ThemedAreas() {
       onPrevButtonClick,
       onNextButtonClick,
     } = usePrevNextButtons(emblaApi);
+
+    const handleLinkClick = useHandleLinkClick();
 
     return (
       <GSAPToggleContainer
@@ -259,7 +262,7 @@ export default function ThemedAreas() {
                     key={key}
                     to={`area${key}`}
                     smooth={true}
-                    duration={500}
+                    duration={0}
                     offset={0}
                     lang="en"
                     className="balet"
@@ -313,10 +316,7 @@ export default function ThemedAreas() {
               </div>
               <div className="cv-buttons">
                 <div className="cv-button">
-                  <Link
-                    href="/themed-areas/"
-                    className="cv-button-el is-button-area"
-                  >
+                  <Link href="/themed-areas/" className="cv-button-el is-button-area" onClick={(e) => handleLinkClick(e, "/themed-areas/")}>
                     <span className="label">
                       <span className="en" lang="en">
                         Explore <br className="nopc" />
@@ -328,7 +328,7 @@ export default function ThemedAreas() {
                   </Link>
                 </div>
                 <div className="cv-button">
-                  <Link href="/list/" className="cv-button-el is-button-book">
+                  <Link href="/list/" className="cv-button-el is-button-book" onClick={(e) => handleLinkClick(e, "/list/")}>
                     <span className="label">
                       <span className="en" lang="en">
                         Reservation

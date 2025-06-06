@@ -6,56 +6,57 @@
 /* __10: 共通設定 */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin" as g;
+@use "@/assets/styles/_mixin"as g;
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .t-kids-clubs {
-  padding-top: 43.1rem;
+  // padding-top     : 43.1rem;
+  padding-top: max(43.1rem, calc(100vw / (1300 / 431)));
   background-color: var(--color_white);
-  overflow: hidden;
+  overflow        : hidden;
 
   .container {
-    width: calc(100% - 100px);
-    max-width: 120rem;
-    margin-inline: auto;
+    width           : calc(100% - 100px);
+    max-width       : 120rem;
+    margin-inline   : auto;
     background-color: var(--theme_color_bg_sub);
-    padding: max(18.8rem, calc(100vw / (1300 / 188))) 0 12.2rem;
-    position: relative;
+    padding         : max(18.8rem, calc(100vw / (1300 / 188))) 0 12.2rem;
+    position        : relative;
   }
 
   // &__circle-slider
   &__circle-slider {
-    position: absolute;
-    top: -25.1rem;
-    left: 0;
-    right: 0;
+    position     : absolute;
+    // top: -25.1rem;
+    top          : min(-25.1rem, calc(-100vw / (1300 / 251)));
+    left         : 0;
+    right        : 0;
     margin-inline: auto;
 
-    .circle-slider {
-    }
+    .circle-slider {}
 
     .circle-slide-list {
-      display: grid;
+      display            : grid;
       grid-template-areas: "slide";
-      width: max(52rem, calc(100vw / (1300 / 520)));
-      height: max(34.7rem, calc(100vw / (1300 / 347)));
-      margin-inline: auto;
-      transform-origin: center 225vw;
+      width              : max(52rem, calc(100vw / (1300 / 520)));
+      height             : max(34.7rem, calc(100vw / (1300 / 347)));
+      margin-inline      : auto;
+      transform-origin   : center 225vw;
     }
 
     .circle-slide-item {
-      grid-area: slide;
+      grid-area       : slide;
       transform-origin: center 225vw;
-      position: relative;
-      transition: rotate 0.45s cubic-bezier(0.55, -0.21, 0.34, 0.77);
+      position        : relative;
+      transition      : rotate 0.45s cubic-bezier(0.55, -0.21, 0.34, 0.77);
 
       &:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
         display: none;
       }
 
       &:nth-child(1) {
-        rotate: calc(-12deg * var(--val, 0.2));
+        rotate : calc(-12deg * var(--val, 0.2));
         z-index: 1;
       }
 
@@ -64,14 +65,14 @@
       }
 
       &:nth-child(3) {
-        rotate: calc(12deg * var(--val, 0.2));
+        rotate : calc(12deg * var(--val, 0.2));
         z-index: 1;
       }
 
       img {
-        display: block;
-        width: 100%;
-        height: 100%;
+        display   : block;
+        width     : 100%;
+        height    : 100%;
         object-fit: cover;
       }
     }
@@ -82,18 +83,18 @@
     text-align: center;
 
     p {
-      font-size: 4.3rem;
+      font-size     : 4.3rem;
       letter-spacing: 0.03em;
-      line-height: calc(28 / 43);
-      color: var(--theme_color_main);
+      line-height   : calc(28 / 43);
+      color         : var(--theme_color_main);
     }
 
     h2 {
-      font-size: 1.6rem;
+      font-size     : 1.6rem;
       letter-spacing: 0.03em;
-      line-height: calc(12 / 16);
-      color: var(--theme_color_sub);
-      margin-top: 2rem;
+      line-height   : calc(12 / 16);
+      color         : var(--theme_color_sub);
+      margin-top    : 2rem;
     }
   }
 
@@ -103,16 +104,16 @@
     text-align: center;
 
     h3 {
-      font-size: 2rem;
+      font-size     : 2rem;
       letter-spacing: 0.03em;
-      line-height: calc(34 / 20);
+      line-height   : calc(34 / 20);
       @include g.leadingTrim(calc(34 / 20));
     }
 
     p {
-      font-size: 1.5rem;
+      font-size     : 1.5rem;
       letter-spacing: 0.03em;
-      line-height: calc(29 / 15);
+      line-height   : calc(29 / 15);
       @include g.leadingTrim(calc(29 / 15));
       margin-top: 4rem;
     }
@@ -129,22 +130,22 @@
     padding-top: 19.7rem;
 
     .container {
-      width: calc(100% - 30px);
+      width    : calc(100% - 30px);
       max-width: inherit;
-      padding: 14rem 0 6rem;
+      padding  : 14rem 0 6rem;
     }
 
     // &__head
     &__head {
       p {
-        font-size: 3.4rem;
+        font-size  : 3.4rem;
         line-height: calc(22 / 34);
       }
 
       h2 {
-        font-size: 1.4rem;
+        font-size  : 1.4rem;
         line-height: calc(10 / 14);
-        margin-top: 1.6rem;
+        margin-top : 1.6rem;
       }
     }
 
@@ -169,19 +170,17 @@
       }
 
       .circle-slide-list {
-        width: 30rem;
-        height: 20rem;
+        width           : 30rem;
+        height          : 20rem;
         transform-origin: 50% 167rem;
-        will-change: rotate;
-        rotate: calc(
-          -12deg * var(--rotate, 5) + (var(--move, 0) * 1deg)
-        ); // 2,8 → 5リセット
+        will-change     : rotate;
+        rotate          : calc(-12deg * var(--rotate, 5) + (var(--move, 0) * 1deg)); // 2,8 → 5リセット
       }
 
       .circle-slide-item {
         transform-origin: 50% 167rem;
-        z-index: 1;
-        pointer-events: none;
+        z-index         : 1;
+        pointer-events  : none;
 
         &:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
           display: block;
@@ -200,13 +199,13 @@
       margin-top: 4.2rem;
 
       h3 {
-        font-size: 1.7rem;
+        font-size  : 1.7rem;
         line-height: calc(28 / 17);
         @include g.leadingTrim(calc(28 / 17));
       }
 
       p {
-        font-size: 1.4rem;
+        font-size  : 1.4rem;
         line-height: calc(26 / 14);
         @include g.leadingTrim(calc(26 / 14));
         margin-top: 3rem;

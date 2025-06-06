@@ -15,6 +15,7 @@ import {
   BlockMovie,
   BlockTable,
 } from "@/components/modules/block/block";
+import { useHandleLinkClick } from "@/hooks/usePageTransition";
 import "./styles/content.scss";
 
 interface post {
@@ -100,6 +101,9 @@ export default function Content(props: {
    * @description 記事のフッター部分
    */
   const EntryFooter = () => {
+
+    const handleLinkClick = useHandleLinkClick();
+
     const prevLink = prevnext.prev
       ? "/" + type + "/" + prevnext.prev + "/"
       : "";
@@ -110,7 +114,7 @@ export default function Content(props: {
     return (
       <div className="entry-footer">
         <div className="back-link">
-          <Link href={"/" + type + "/"} className="back-link-el uline">
+          <Link href={"/" + type + "/"} className="back-link-el uline" onClick={(e) => handleLinkClick(e, "/" + type + "/")}>
             <span className="icon">
               <svg className="i-index-2">
                 <use href="#i-index-2"></use>
@@ -128,6 +132,7 @@ export default function Content(props: {
               className="pager-link-el uline"
               data-type="prev"
               {...(prevnext.prev ? {} : { "aria-disabled": "true" })}
+              onClick={(e) => handleLinkClick(e, prevLink)}
             >
               {arrow({ bg: "blue", color: "white" })}
               <span className="label" lang="en">
@@ -141,6 +146,7 @@ export default function Content(props: {
               className="pager-link-el uline"
               data-type="next"
               {...(prevnext.next ? {} : { "aria-disabled": "true" })}
+              onClick={(e) => handleLinkClick(e, nextLink)}
             >
               {arrow({ bg: "blue", color: "white" })}
               <span className="label" lang="en">

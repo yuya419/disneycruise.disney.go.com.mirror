@@ -7,31 +7,31 @@
 /* __20: drawerButton */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin" as g;
+@use "@/assets/styles/_mixin"as g;
 
 /* __10: drawerNav */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .drawerNav {
-  width: 100%;
-  height: 100dvh;
-  position: fixed;
-  z-index: 88;
-  top: 0;
-  left: 0;
-  opacity: 0;
+  width         : 100%;
+  height        : 100dvh;
+  position      : fixed;
+  z-index       : 88;
+  top           : 0;
+  left          : 0;
+  opacity       : 0;
   pointer-events: none;
-  transition: opacity 0.5s var(--customEasingOut);
+  transition    : opacity 0.5s var(--customEasingOut);
 
   [data-state="navOpen"] & {
-    opacity: 1;
+    opacity       : 1;
     pointer-events: all;
   }
 
   &-scrollarea {
-    display: flex;
-    height: 100%;
-    overflow-y: auto;
-    scrollbar-width: none;
+    display           : flex;
+    height            : 100%;
+    overflow-y        : auto;
+    scrollbar-width   : none;
     -ms-overflow-style: none;
 
     &::-webkit-scrollbar {
@@ -40,55 +40,56 @@
   }
 
   &-inner {
-    width: 100%;
-    margin-block: auto;
-    display: grid;
-    align-items: center;
+    width                : 100%;
+    max-width            : 114rem;
+    margin               : auto;
+    display              : grid;
+    align-items          : center;
     grid-template-columns: auto 1fr;
-    column-gap: 10rem;
-    padding: 5.7rem 8rem;
+    column-gap           : 10rem;
+    padding-block        : 5.7rem;
   }
 
   &-block {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    height         : 100%;
+    display        : flex;
+    flex-direction : column;
     justify-content: center;
-    position: relative;
+    position       : relative;
   }
 
   &-bg {
     position: absolute;
-    inset: 0;
-    margin: auto;
-    z-index: -1;
+    inset   : 0;
+    margin  : auto;
+    z-index : -1;
 
     &::before,
     &::after {
-      content: "";
+      content : "";
       position: absolute;
-      inset: 0;
-      margin: auto;
+      inset   : 0;
+      margin  : auto;
     }
 
     &::before {
       background-color: #000846;
-      opacity: 0.7;
-      z-index: 2;
+      opacity         : 0.7;
+      z-index         : 2;
     }
 
     &::after {
       background-color: #0099b4;
-      opacity: 0.5;
-      z-index: 1;
+      opacity         : 0.5;
+      z-index         : 1;
     }
 
     video {
-      display: block;
-      width: 100%;
-      height: 100%;
+      display   : block;
+      width     : 100%;
+      height    : 100%;
       object-fit: cover;
-      display: none;
+      display   : none;
 
       [data-state="navOpen"] & {
         display: block;
@@ -98,7 +99,7 @@
 
   // .logo
   .logo {
-    width: 33rem;
+    width        : 33rem;
     margin-bottom: 1.6rem;
 
     a {
@@ -107,8 +108,8 @@
 
     img {
       display: block;
-      width: 100%;
-      height: 100%;
+      width  : 100%;
+      height : 100%;
     }
   }
 
@@ -122,11 +123,11 @@
       }
 
       .is-reservation {
-        width: calc(100vw / (1300 / 330));
+        width    : calc(100vw / (1300 / 330));
         max-width: 33rem;
 
         .menu-item-link {
-          height: 12.6rem;
+          height       : 12.6rem;
           padding-right: 2.5rem;
           border-radius: 0.6rem;
 
@@ -137,7 +138,7 @@
         }
 
         .label {
-          padding-left: 2.5rem;
+          padding-left     : 2.5rem;
           border-left-width: 2px;
 
           .en {
@@ -146,7 +147,7 @@
 
           .jp {
             font-size: 1.3rem;
-            margin: 1.4rem 0 0.2rem;
+            margin   : 1.4rem 0 0.2rem;
           }
         }
 
@@ -158,7 +159,7 @@
           }
 
           .i-calendar {
-            width: 1.6rem;
+            width : 1.6rem;
             height: 1.6rem;
           }
         }
@@ -172,7 +173,7 @@
           }
 
           .jp {
-            font-size: 1.2rem;
+            font-size : 1.2rem;
             margin-top: 1.2rem;
           }
         }
@@ -182,13 +183,13 @@
 
   // .mainNav
   .mainNav {
-    grid-area: mainNav;
+    grid-area : mainNav;
     margin-top: 2rem;
 
     .nav {
-      display: grid;
+      display              : grid;
       grid-template-columns: repeat(2, 1fr);
-      column-gap: 7rem;
+      column-gap           : 7rem;
 
       &-menu {
         .menu-item {
@@ -210,28 +211,29 @@
         }
 
         .menu-item-link {
-          width: 100%;
-          display: block;
+          width          : 100%;
+          display        : block;
           text-decoration: none;
-          line-height: 0.92125;
-          padding-block: 2.2rem;
+          line-height    : 0.92125;
+          padding-block  : 2.2rem;
 
           .en {
-            display: block;
-            font-size: 2.5rem;
-            color: var(--color_white);
+            display   : block;
+            font-size : 2.5rem;
+            color     : var(--color_white);
             transition: color var(--t-out);
           }
 
           .jp {
-            display: block;
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.7);
+            display   : block;
+            font-size : 1.3rem;
+            color     : rgba(255, 255, 255, 0.7);
             margin-top: 1.4rem;
             transition: color var(--t-out);
           }
 
           @include g.hover() {
+
             .en,
             .jp {
               color: var(--theme_color_sub);
@@ -243,34 +245,32 @@
 
     // .child-nav-menu
     .child-nav-menu {
-      padding-left: 2rem;
-      margin-bottom: 2.2rem;
-      background-repeat: repeat-y;
+      padding-left       : 2rem;
+      margin-bottom      : 2.2rem;
+      background-repeat  : repeat-y;
       background-position: left top;
-      background-size: 1.5px 4.5px;
-      background-image: linear-gradient(
-        to top,
-        rgba(255, 255, 255, 0.8) 1.5px,
-        #0000 1.5px
-      );
+      background-size    : 1.5px 4.5px;
+      background-image   : linear-gradient(to top,
+          rgba(255, 255, 255, 0.8) 1.5px,
+          #0000 1.5px);
 
       .child-menu-item-link {
-        display: block;
-        font-size: 1.5rem;
-        line-height: 0.715;
-        letter-spacing: 0.03em;
-        padding-block: 1rem;
+        display        : block;
+        font-size      : 1.5rem;
+        line-height    : 0.715;
+        letter-spacing : 0.03em;
+        padding-block  : 1rem;
         text-decoration: none;
-        color: var(--color_white);
+        color          : var(--color_white);
       }
     }
 
     // .acdn
     .acdn {
       &-content {
-        display: grid;
+        display           : grid;
         grid-template-rows: 0fr;
-        transition: grid-template-rows 0.2s ease-out;
+        transition        : grid-template-rows 0.2s ease-out;
 
         &[data-hidden="false"] {
           grid-template-rows: 1fr;
@@ -292,7 +292,7 @@
           @include g.hover() {
             .icon {
               background-color: var(--theme_color_sub);
-              border-color: var(--theme_color_sub);
+              border-color    : var(--theme_color_sub);
 
               &::before,
               &::after {
@@ -322,40 +322,40 @@
     // .toggle
     .toggle {
       &-label {
-        display: flex;
+        display    : flex;
         align-items: center;
       }
 
       &-icon {
         flex-shrink: 0;
-        display: block;
-        width: 40%;
-        position: relative;
+        display    : block;
+        width      : 40%;
+        position   : relative;
 
         .icon {
-          display: block;
-          width: 1.9rem;
-          height: 1.9rem;
-          position: absolute;
-          right: 0;
-          top: 0;
-          bottom: 0;
-          margin-block: auto;
+          display         : block;
+          width           : 1.9rem;
+          height          : 1.9rem;
+          position        : absolute;
+          right           : 0;
+          top             : 0;
+          bottom          : 0;
+          margin-block    : auto;
           background-color: transparent;
-          border: 1px solid var(--color_white);
-          border-radius: 50%;
-          transition: background-color var(--t-out);
+          border          : 1px solid var(--color_white);
+          border-radius   : 50%;
+          transition      : background-color var(--t-out);
 
           &::before,
           &::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            margin: auto;
-            width: 0.8rem;
-            height: 1px;
+            content         : "";
+            position        : absolute;
+            inset           : 0;
+            margin          : auto;
+            width           : 0.8rem;
+            height          : 1px;
             background-color: var(--color_white);
-            transition:
+            transition      :
               rotate var(--t-out),
               border-color var(--t-out);
           }
@@ -371,9 +371,9 @@
   // .subNav
   .subNav {
     position: absolute;
-    left: 0;
-    bottom: 0;
-    width: calc(100% + 5rem);
+    left    : 0;
+    bottom  : 0;
+    width   : calc(100% + 5rem);
 
     .nav {
       &-menu {
@@ -391,13 +391,12 @@
 // sp
 @include g.media(md) {
   .drawerNav {
-    &-scrollarea {
-    }
+    &-scrollarea {}
 
     &-inner {
-      display: flex;
+      display       : flex;
       flex-direction: column;
-      padding: 7.4rem 0;
+      padding       : 7.4rem 0;
     }
 
     &-block {
@@ -407,32 +406,32 @@
     // .logo
     .logo {
       position: absolute;
-      top: 2.2rem;
-      left: 1.5rem;
-      width: 24.8rem;
-      order: 1;
-      z-index: 2;
+      top     : 2.2rem;
+      left    : 1.5rem;
+      width   : 24.8rem;
+      order   : 1;
+      z-index : 2;
     }
 
     // .cvNav
     .cvNav {
-      width: 100%;
-      padding: 2.5rem;
+      width        : 100%;
+      padding      : 2.5rem;
       border-radius: 0;
-      order: 2;
+      order        : 2;
 
       .nav {
         &-menu {
-          display: grid;
+          display              : grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 2rem 0.7rem;
+          gap                  : 2rem 0.7rem;
         }
 
         .is-reservation {
-          width: 100%;
-          max-width: inherit;
+          width      : 100%;
+          max-width  : inherit;
           grid-column: 1/3;
-          grid-row: 1;
+          grid-row   : 1;
 
           .menu-item-link {
             height: 9rem;
@@ -445,7 +444,7 @@
 
             .jp {
               font-size: 1.3rem;
-              margin: 1.2rem 0 0.2rem;
+              margin   : 1.2rem 0 0.2rem;
             }
           }
 
@@ -462,11 +461,11 @@
 
           .menu-item-link {
             justify-content: center;
-            height: 6.4rem;
-            padding: 0;
-            text-align: center;
-            border: 1px solid var(--color_white);
-            border-radius: 0.5rem;
+            height         : 6.4rem;
+            padding        : 0;
+            text-align     : center;
+            border         : 1px solid var(--color_white);
+            border-radius  : 0.5rem;
           }
 
           .label {
@@ -475,7 +474,7 @@
             }
 
             .jp {
-              font-size: 1.2rem;
+              font-size : 1.2rem;
               margin-top: 1.1rem;
             }
           }
@@ -487,22 +486,22 @@
 
         .is-mail-magazine {
           grid-column: 1;
-          grid-row: 2;
+          grid-row   : 2;
         }
 
         .is-contact {
           grid-column: 2;
-          grid-row: 2;
+          grid-row   : 2;
         }
       }
     }
 
     // .mainNav
     .mainNav {
-      width: 100%;
-      padding: 0 3.5rem;
+      width       : 100%;
+      padding     : 0 3.5rem;
       margin-block: 1rem;
-      order: 3;
+      order       : 3;
 
       .nav {
         display: block;
@@ -515,7 +514,7 @@
           }
 
           .menu-item-link {
-            line-height: 0.92125;
+            line-height  : 0.92125;
             padding-block: 2.5rem !important;
 
             .en {
@@ -523,7 +522,7 @@
             }
 
             .jp {
-              font-size: 1.2rem;
+              font-size : 1.2rem;
               margin-top: 1.3rem;
             }
           }
@@ -532,12 +531,12 @@
 
       // .child-nav-menu
       .child-nav-menu {
-        margin-left: 1rem;
+        margin-left  : 1rem;
         margin-bottom: 2.5rem;
 
         .child-menu-item-link {
-          font-size: 1.4rem;
-          line-height: 1.05;
+          font-size    : 1.4rem;
+          line-height  : 1.05;
           padding-block: 1rem;
         }
       }
@@ -545,26 +544,26 @@
 
     // .subNav
     .subNav {
-      width: 100%;
-      position: static;
-      margin-top: 2.8rem;
+      width         : 100%;
+      position      : static;
+      margin-top    : 2.8rem;
       padding-inline: 3.5rem;
-      order: 5;
+      order         : 5;
     }
 
     // .accent
     .accent {
-      width: 100%;
-      display: grid;
+      width                : 100%;
+      display              : grid;
       grid-template-columns: auto 1fr auto;
-      align-items: center;
-      padding-inline: 1rem;
-      order: 4;
+      align-items          : center;
+      padding-inline       : 1rem;
+      order                : 4;
 
       .onm {
         display: block;
-        width: 2.5rem;
-        height: 1.8rem;
+        width  : 2.5rem;
+        height : 1.8rem;
 
         &.is-left {
           scale: -1 1;
@@ -572,7 +571,7 @@
       }
 
       .bar {
-        height: 1px;
+        height          : 1px;
         background-color: rgba(255, 255, 255, 0.25);
       }
     }
@@ -582,21 +581,20 @@
 /* __20: drawerButton */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .drawerButton {
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 99;
-  width: 8rem;
-  height: 9.8rem;
+  position           : fixed;
+  right              : 0;
+  top                : 0;
+  z-index            : 99;
+  width              : 8rem;
+  height             : 9.8rem;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  translate: 0 0;
-  transition:
-    border-bottom-color 0.3s var(--customEasingOut),
-    translate 0.3s var(--customEasingOut);
+  translate          : 0 0;
+  transition         : border-bottom-color 0.3s var(--customEasingOut), opacity 0.3s var(--customEasingOut);
 
-  .buttonHidden & {
-    translate: 100% 0;
+  .isButtonHidden & {
+    opacity       : 0;
+    pointer-events: none;
   }
 
   [data-head-color="white"] & {
@@ -614,40 +612,40 @@
   @include g.hover() {
     .icon {
       .i-menu {
-        transform: rotateZ(180deg);
+        transform : rotateZ(180deg);
         transition: transform 0.25s var(--customEasingOut);
       }
     }
   }
 
   &-inner {
-    width: 100%;
-    height: 100%;
-    display: flex;
+    width         : 100%;
+    height        : 100%;
+    display       : flex;
     flex-direction: column;
-    align-items: center;
-    padding-top: 1.7rem;
-    row-gap: 0.7rem;
+    align-items   : center;
+    padding-top   : 1.7rem;
+    row-gap       : 0.7rem;
   }
 
   .icon {
-    display: block;
-    width: 4.2rem;
-    height: 4.2rem;
+    display    : block;
+    width      : 4.2rem;
+    height     : 4.2rem;
     will-change: rotate;
-    transition:
+    transition :
       rotate 0.25s var(--customEasingOut),
       opacity 0.3s var(--customEasingOut);
 
     [data-state="navOpen"] & {
-      rotate: 180deg;
+      rotate : 180deg;
       opacity: 0;
     }
 
     .i-menu {
-      display: block;
-      width: 100%;
-      height: 100%;
+      display   : block;
+      width     : 100%;
+      height    : 100%;
       transition: rotate 0.25s var(--customEasingOut);
 
       [data-head-color="white"] & {
@@ -661,13 +659,13 @@
   }
 
   .text {
-    font-size: 1.3rem;
-    font-weight: 700;
+    font-size     : 1.3rem;
+    font-weight   : 700;
     letter-spacing: 0.03em;
-    line-height: 0.8;
-    overflow: hidden;
-    text-align: center;
-    transition:
+    line-height   : 0.8;
+    overflow      : hidden;
+    text-align    : center;
+    transition    :
       opacity 0.3s var(--customEasingOut),
       color 0.3s var(--customEasingOut);
 
@@ -685,14 +683,14 @@
   }
 
   .close {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    width: 5rem;
-    aspect-ratio: 1;
+    position        : absolute;
+    inset           : 0;
+    margin          : auto;
+    width           : 5rem;
+    aspect-ratio    : 1;
     background-color: var(--color_white);
-    clip-path: inset(100% round 50%);
-    transition: clip-path 0.3s var(--customEasingOut);
+    clip-path       : inset(100% round 50%);
+    transition      : clip-path 0.3s var(--customEasingOut);
 
     [data-state="navOpen"] & {
       clip-path: inset(0% round 50%);
@@ -700,12 +698,12 @@
 
     &::before,
     &::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      margin: auto;
-      width: 45%;
-      height: 1px;
+      content         : "";
+      position        : absolute;
+      inset           : 0;
+      margin          : auto;
+      width           : 45%;
+      height          : 1px;
       background-color: var(--theme_color_main);
     }
 
@@ -722,13 +720,13 @@
 // sp
 @include g.media(md) {
   .drawerButton {
-    width: 6.3rem;
-    height: 7.2rem;
-    right: 1rem;
-    border-bottom: none;
-    border-radius: 0 0 0.5rem 0.5rem;
+    width           : 6.3rem;
+    height          : 7.2rem;
+    right           : 1rem;
+    border-bottom   : none;
+    border-radius   : 0 0 0.5rem 0.5rem;
     background-color: var(--color_white);
-    transition: background-color 0.3s var(--customEasingOut);
+    transition      : background-color 0.3s var(--customEasingOut), opacity 0.3s var(--customEasingOut);
 
     .buttonHidden & {
       translate: 0 100%;
@@ -740,12 +738,12 @@
 
     &-inner {
       justify-content: center;
-      padding-top: 0;
-      row-gap: 0.6rem;
+      padding-top    : 0;
+      row-gap        : 0.6rem;
     }
 
     .icon {
-      width: 3.6rem;
+      width : 3.6rem;
       height: 3.6rem;
     }
 

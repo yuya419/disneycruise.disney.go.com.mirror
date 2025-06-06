@@ -62,7 +62,7 @@ export default function Hero() {
         </p>
       </div>
       <div className="t-hero__movie">
-        <video muted loop playsInline preload="metadata">
+        <video muted loop playsInline preload="metadata" className="video">
           <source
             src={getImagePath("movie/dcl_da_sp.webm")}
             type="video/webm"

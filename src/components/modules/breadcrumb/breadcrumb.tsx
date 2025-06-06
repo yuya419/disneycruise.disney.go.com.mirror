@@ -5,6 +5,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useHandleLinkClick } from "@/hooks/usePageTransition";
 import "./styles/breadcrumb.scss";
 
 type BreadcrumbItem = {
@@ -19,11 +20,13 @@ type BreadcrumbProps = {
 export default function Breadcrumb({ items }: BreadcrumbProps) {
   const pathname = usePathname();
 
+  const handleLinkClick = useHandleLinkClick();
+
   return (
     <nav className="m-breadcrumb">
       <ol>
         <li>
-          <Link href="/" className="uline">
+          <Link href="/" className="uline" onClick={(e) => handleLinkClick(e, "/")}>
             <span className="label line">TOP</span>
           </Link>
         </li>
@@ -34,7 +37,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
               {isActive ? (
                 <span className="label">{item.label}</span>
               ) : (
-                <Link href={item.href} className="uline">
+                <Link href={item.href} className="uline" onClick={(e) => handleLinkClick(e, item.href)}>
                   <span className="label line">{item.label}</span>
                 </Link>
               )}

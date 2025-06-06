@@ -33,7 +33,6 @@ export function GSAPToggleContainer({
   className,
   toggle,
 }: ContainerProps) {
-  const pathname = usePathname();
   const containerRef = useRef<HTMLDivElement>(null);
   const { hero, water } = useRefContext();
 
@@ -115,6 +114,7 @@ export function GSAPToggleContainer({
 }
 
 export function GSAPMaskToggle(props: { mask: "water" | "blue" | "white" }) {
+  const pathname = usePathname();
   const troggerRef = useRef<HTMLDivElement>(null);
   const { mask } = props;
   const { hero, water, colorBlue, colorWhite } = useRefContext();
@@ -167,9 +167,14 @@ export function GSAPMaskToggle(props: { mask: "water" | "blue" | "white" }) {
   };
 
   useEffect(() => {
-    const ctx = animation();
-    return () => ctx();
-  }, []);
+    animation();
+    return () => {
+      gsap.killTweensOf(troggerRef.current);
+      colorBlue.current?.classList.remove("isHide");
+      colorWhite.current?.classList.remove("isHide");
+      water.current?.classList.remove("isHide");
+    }
+  }, [pathname]);
 
   return <div className="mask-scroll-area" ref={troggerRef}></div>;
 }

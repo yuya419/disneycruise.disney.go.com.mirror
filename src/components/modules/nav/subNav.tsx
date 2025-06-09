@@ -12,7 +12,7 @@ export default function SubNav() {
         <ul className="nav-menu">
           <li className="menu-item">
             <Link
-              href="https://test.mikicruise.com/assets/data/DCL_CruiseContract.pdf"
+              href="https://mikicruise.com/assets/data/DCL_CruiseContract.pdf"
               target="_blank"
               className="menu-item-link uline-r"
             >

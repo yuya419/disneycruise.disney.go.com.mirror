@@ -77,7 +77,8 @@
   }
 
   &.isHidden {
-    transition: opacity 0.5s var(--customEasingOut);
-    opacity   : 0;
+    transition    : opacity 0.5s var(--customEasingOut);
+    opacity       : 0;
+    pointer-events: none;
   }
 }

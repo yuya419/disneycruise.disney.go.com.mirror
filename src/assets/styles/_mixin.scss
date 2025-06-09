@@ -2,8 +2,9 @@
 
 // ホバー
 @mixin hover {
+
   @media screen and (min-width: 1025px) and (hover: hover),
-    screen and (min-width: 1025px) and (pointer: fine) {
+  screen and (min-width: 1025px) and (pointer: fine) {
     &:hover {
       @content;
     }
@@ -12,11 +13,9 @@
 
 //固定化
 @mixin isFixed {
-  touch-action: none;
-  -webkit-overflow-scrolling: none;
-  overflow: hidden;
+  overflow           : hidden;
   overscroll-behavior: none;
-  scrollbar-gutter: stable;
+  scrollbar-gutter   : stable;
 }
 
 // スクリーンリーダーテキスト
@@ -24,10 +23,10 @@ $vi-screen-reader-text: "screen-reader-text";
 
 @if $vi-screen-reader-text {
   %#{$vi-screen-reader-text} {
-    clip: rect(1px, 1px, 1px, 1px);
+    clip    : rect(1px, 1px, 1px, 1px);
     position: absolute;
-    left: 0;
-    top: 0;
+    left    : 0;
+    top     : 0;
   }
 
   .#{$vi-screen-reader-text} {
@@ -37,21 +36,21 @@ $vi-screen-reader-text: "screen-reader-text";
 
 // ベースコンテナ
 @mixin container($padding: "true") {
-  width: calc(100% - 100px);
-  max-width: 106rem;
+  width        : calc(100% - 100px);
+  max-width    : 106rem;
   margin-inline: auto;
 
-  @if $padding== "true" {
-    padding-top: 8.2rem;
+  @if $padding=="true" {
+    padding-top   : 8.2rem;
     padding-bottom: 12rem;
   }
 
   @include media(md) {
-    width: calc(100% - 50px);
+    width    : calc(100% - 50px);
     max-width: inherit;
 
-    @if $padding== "true" {
-      padding-top: 10.4rem;
+    @if $padding=="true" {
+      padding-top   : 10.4rem;
       padding-bottom: 8rem;
     }
   }
@@ -59,35 +58,35 @@ $vi-screen-reader-text: "screen-reader-text";
 
 //リストタグ初期化
 @mixin listInit($type) {
-  @if $type== "ul" {
+  @if $type=="ul" {
     li {
       padding-left: 1.3em;
-      text-indent: -0.7em;
+      text-indent : -0.7em;
 
       &::before {
-        content: "";
-        display: inline-block;
-        width: 0.5rem;
-        height: 0.5rem;
+        content         : "";
+        display         : inline-block;
+        width           : 0.5rem;
+        height          : 0.5rem;
         background-color: var(--theme_color_main);
-        border-radius: 50%;
-        margin: 0 1rem 0.15em -0.5rem;
+        border-radius   : 50%;
+        margin          : 0 1rem 0.15em -0.5rem;
       }
     }
   }
 
-  @if $type== "ol" {
+  @if $type=="ol" {
     counter-reset: list-counter;
 
     li {
-      padding-left: 1.2em;
-      text-indent: -1.5em;
+      padding-left     : 1.2em;
+      text-indent      : -1.5em;
       counter-increment: list-counter;
 
       &::before {
-        content: counter(list-counter) ". ";
-        display: inline-block;
-        width: 1.5em;
+        content   : counter(list-counter) ". ";
+        display   : inline-block;
+        width     : 1.5em;
         text-align: right;
       }
     }
@@ -137,7 +136,7 @@ $vi-screen-reader-text: "screen-reader-text";
     }
 
     .icon {
-      > svg {
+      >svg {
         color: var(--color_white) !important;
       }
     }
@@ -147,12 +146,13 @@ $vi-screen-reader-text: "screen-reader-text";
 /* line-heightのハーフ・レディングを打ち消す */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 @mixin leadingTrim($lh) {
+
   &::before,
   &::after {
-    content: "";
-    display: block;
+    content    : "";
+    display    : block;
     inline-size: 0;
-    block-size: 1px;
+    block-size : 1px;
   }
 
   &::before {
@@ -206,15 +206,13 @@ $vi-screen-reader-text: "screen-reader-text";
 
 /* メディアクエリ */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-$breakpoints: (
-  "sm": 640px,
+$breakpoints: ("sm": 640px,
   "md": 1024px,
   "lg": 1600px,
   "xl": 1920px,
   "bs": 1300px,
 );
-$minmax: (
-  "min": min,
+$minmax: ("min": min,
   "max": max,
 );
 

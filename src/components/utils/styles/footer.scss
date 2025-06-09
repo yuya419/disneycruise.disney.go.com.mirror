@@ -6,50 +6,64 @@
 /* __10: 共通設定 */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin" as g;
+@use "@/assets/styles/_mixin"as g;
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .footer {
-  $h: min(99.8rem, calc(100lvh / (768 / 998)));
-  position: sticky;
-  z-index: 1;
-  bottom: 0;
-  will-change: transform;
-  transform: translateY(calc(-100% + #{$h}));
+  $h           : min(99.8rem, calc(100lvh / (768 / 998)));
+  position     : sticky;
+  z-index      : 1;
+  bottom       : 0;
+  will-change  : transform;
+  transform    : translateY(calc(-100% + #{$h}));
   margin-bottom: calc(#{$h} * -1);
 
   &-wrap {
     position: relative;
-    z-index: 1;
+    z-index : 1;
 
     &::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      margin: auto;
-      z-index: -1;
+      content         : "";
+      position        : absolute;
+      inset           : 0;
+      margin          : auto;
+      z-index         : 1;
       background-color: rgba($color: #000846, $alpha: 0.6);
     }
 
     .space {
-      display: block;
-      width: 100%;
-      height: #{$h};
-      margin-bottom: calc(#{$h} * -1);
+      display       : block;
+      width         : 100%;
+      height        : #{$h};
+      margin-bottom : calc(#{$h} * -1);
       pointer-events: none;
+    }
+
+    .video {
+      position  : fixed;
+      inset     : 0;
+      width     : 100%;
+      height    : 100lvh;
+      object-fit: cover;
+      z-index   : -1;
+      opacity   : 0;
+
+      .videoShow & {
+        opacity: 1;
+      }
     }
   }
 
   &-inner {
-    width: calc(100% - 100px);
-    max-width: 120rem;
-    margin-inline: auto;
-    padding-block: 12rem;
-    display: grid;
+    width                : calc(100% - 100px);
+    max-width            : 120rem;
+    margin-inline        : auto;
+    padding-block        : 12rem;
+    display              : grid;
     grid-template-columns: repeat(2, auto);
-    position: relative;
-    z-index: 3;
+    position             : relative;
+    z-index              : 3;
   }
 
   // .cvNav
@@ -65,7 +79,7 @@
   // .guideline
   .guideline {
     max-width: 58rem;
-    color: var(--color_white);
+    color    : var(--color_white);
 
     // &__miki-tourist
     &__miki-tourist {
@@ -74,24 +88,22 @@
 
     // &__image
     &__image {
-      margin-top: 4rem;
-      padding-top: 4rem;
-      background-repeat: repeat-X;
+      margin-top         : 4rem;
+      padding-top        : 4rem;
+      background-repeat  : repeat-X;
       background-position: left top;
-      background-size: 4.5px 1.5px;
-      background-image: linear-gradient(
-        to left,
-        rgba(255, 255, 255, 0.8) 1.5px,
-        #0000 1.5px
-      );
+      background-size    : 4.5px 1.5px;
+      background-image   : linear-gradient(to left,
+          rgba(255, 255, 255, 0.8) 1.5px,
+          #0000 1.5px);
     }
 
     p {
-      font-size: 1.2rem;
+      font-size  : 1.2rem;
       line-height: calc(18 / 12);
-      left: 0.03em;
+      left       : 0.03em;
 
-      & + p {
+      &+p {
         margin-top: 1.5rem;
       }
 
@@ -105,7 +117,7 @@
 
       a {
         text-decoration: none;
-        color: var(--color_white);
+        color          : var(--color_white);
       }
     }
 
@@ -116,7 +128,7 @@
 
   // .company
   .company {
-    margin-top: 3.6rem;
+    margin-top : 3.6rem;
     margin-left: auto;
 
     // .logo
@@ -129,8 +141,8 @@
 
       img {
         display: block;
-        width: 100%;
-        height: 100%;
+        width  : 100%;
+        height : 100%;
       }
     }
 
@@ -147,25 +159,25 @@
 
     // .copyright
     .copyright {
-      font-size: 1.2rem;
+      font-size     : 1.2rem;
       letter-spacing: 0.03em;
-      line-height: calc(20 / 12);
-      text-align: right;
-      color: var(--color_white);
-      margin-top: 2.7rem;
+      line-height   : calc(20 / 12);
+      text-align    : right;
+      color         : var(--color_white);
+      margin-top    : 2.7rem;
     }
   }
 
   // .accent
   .accent {
-    display: grid;
+    display              : grid;
     grid-template-columns: auto 1fr auto;
-    align-items: center;
+    align-items          : center;
 
     .onm {
       display: block;
-      width: 3rem;
-      height: 1.8rem;
+      width  : 3rem;
+      height : 1.8rem;
 
       &.is-left {
         scale: -1 1;
@@ -173,7 +185,7 @@
     }
 
     .bar {
-      height: 1px;
+      height          : 1px;
       background-color: rgba(255, 255, 255, 0.25);
     }
   }
@@ -182,32 +194,29 @@
 // sp
 @include g.media(md) {
   .footer {
-    position: static;
-    will-change: unset;
-    transform: translateY(0);
+    position     : relative;
+    will-change  : unset;
+    transform    : translateY(0);
     margin-bottom: 0;
 
     &-wrap {
-      position: relative;
-      z-index: 1;
-
       .space {
-        position: absolute;
-        top: 0;
-        height: 100vh;
+        position     : absolute;
+        top          : 0;
+        height       : 100vh;
         margin-bottom: 0;
       }
     }
 
     &-inner {
-      width: calc(100% - 20px);
-      max-width: inherit;
+      width        : calc(100% - 20px);
+      max-width    : inherit;
       padding-block: 5rem;
-      display: block;
+      display      : block;
     }
 
     .cvNav {
-      max-width: 32rem;
+      max-width    : 32rem;
       margin-inline: auto;
     }
 
@@ -220,15 +229,13 @@
       &__miki-tourist,
       &__image {
         max-width: 32rem;
-        margin: 2.8rem auto;
+        margin   : 2.8rem auto;
       }
 
-      &__miki-tourist {
-      }
+      &__miki-tourist {}
 
       // &__image
-      &__image {
-      }
+      &__image {}
 
       .accent {
         display: grid;
@@ -237,20 +244,20 @@
 
     // .company
     .company {
-      margin-top: 3.2rem;
+      margin-top : 3.2rem;
       margin-left: auto;
 
       // .logo
       .logo {
-        width: 18rem;
+        width        : 18rem;
         margin-inline: auto;
       }
 
       // .subNav
       .subNav {
-        margin-top: 3.5rem;
+        margin-top   : 3.5rem;
         margin-inline: auto;
-        width: 32rem;
+        width        : 32rem;
 
         .nav {
           .menu-item-link {
@@ -261,7 +268,7 @@
 
       // .copyright
       .copyright {
-        font-size: 1.1rem;
+        font-size : 1.1rem;
         text-align: center;
         margin-top: 3.5rem;
       }
@@ -270,7 +277,7 @@
     // .accent
     .accent {
       .onm {
-        width: 2.2rem;
+        width : 2.2rem;
         height: 1.4rem;
       }
     }

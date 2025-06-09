@@ -20,6 +20,7 @@
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.11.4",
     "gsap": "^3.12.7",
+    "lodash": "^4.17.21",
     "next": "15.2.2",
     "react": "^19.0.0",
     "react-datepicker": "^8.3.0",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
+    "@types/lodash": "^4.17.17",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

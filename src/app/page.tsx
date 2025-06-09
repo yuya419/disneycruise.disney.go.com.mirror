@@ -16,6 +16,7 @@ import {
   Adults,
   Concierge,
 } from "@/layouts/top/top";
+import { Bg } from "@/components/modules/common/common";
 
 // styles
 import "@/components/modules/slider/styles/slider.scss";
@@ -37,6 +38,7 @@ export default function Home() {
         <KidsClubs />
         <Adults />
         <Concierge />
+        <Bg />
       </main>
     </>
   );

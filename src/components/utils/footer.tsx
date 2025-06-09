@@ -13,21 +13,26 @@ import Sitemap from "@/components/modules/nav/sitemap";
 import SubNav from "@/components/modules/nav/subNav";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRefContext } from "@/hooks/useRefContext";
 import { useHandleLinkClick } from "@/hooks/usePageTransition";
+import { debounce } from "lodash";
 import "./styles/footer.scss";
 
 export default function Footer() {
   const triggerRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const pathname = usePathname();
   const { getImagePath } = helper();
   const handleLinkClick = useHandleLinkClick();
 
-  gsap.registerPlugin(ScrollTrigger);
+  let observer: MutationObserver | null = null;
+  let options = {
+    childList: true,
+    subtree: true,
+    attributes: true,
+  };
 
-  const { colorBlue, colorWhite } = useRefContext();
-
+  // アニメーション
   const scrollAnimation = () => {
     const trigger = triggerRef.current;
     const footer = footerRef.current;
@@ -44,64 +49,61 @@ export default function Footer() {
           scrub: true,
           invalidateOnRefresh: true,
           onEnter: () => {
-            document.body.classList.add("isButtonHidden");
-            colorBlue.current?.classList.add("isShow");
-            colorWhite.current?.classList.add("isShow");
+            videoRef.current?.play().catch((error) => {
+              console.warn("Video playback failed:", error);
+            });
+            document.body.classList.add("videoShow");
           },
           onLeaveBack: () => {
-            document.body.classList.remove("isButtonHidden");
-            colorBlue.current?.classList.remove("isShow");
-            colorWhite.current?.classList.remove("isShow");
+            videoRef.current?.pause();
+            document.body.classList.remove("videoShow");
           },
         },
       });
-    }, [trigger, footer]);
+      ScrollTrigger.create({
+        trigger: trigger,
+        start: "top top",
+        end: "top top",
+        invalidateOnRefresh: true,
+        onEnter: () => document.body.classList.add("isButtonHidden"),
+        onLeaveBack: () => document.body.classList.remove("isButtonHidden"),
+      });
+    }, triggerRef);
 
     return () => ctx.revert();
   };
 
   useEffect(() => {
-    scrollAnimation();
+    gsap.registerPlugin(ScrollTrigger);
 
-    // 高さ変動時にScrollTrigger.refresh()を呼ぶ
-    let refreshTimeout: NodeJS.Timeout | null = null;
+    const cleanup = scrollAnimation();
+
+    // リセット
+    // debounceで呼び出し頻度を制御
     let lastBodyHeight = document.body.offsetHeight;
+    const refresh = debounce(() => {
+      const newBodyHeight = document.body.offsetHeight;
+      if (newBodyHeight !== lastBodyHeight) {
+        lastBodyHeight = newBodyHeight;
+        ScrollTrigger.refresh();
+      }
+    }, 100);
 
-    const refresh = () => {
-      if (refreshTimeout) clearTimeout(refreshTimeout);
-      refreshTimeout = setTimeout(() => {
-        const newBodyHeight = document.body.offsetHeight;
-        if (newBodyHeight !== lastBodyHeight) {
-          lastBodyHeight = newBodyHeight;
-          ScrollTrigger.refresh();
-        }
-      }, 100);
-    };
-
-    let observer: MutationObserver | null = null;
-    const isPC = window.matchMedia("(min-width: 1025px)").matches;
-    if (isPC) {
-      window.addEventListener("resize", refresh);
-      observer = new MutationObserver(refresh);
-      observer.observe(document.body, {
-        childList: true,
-        subtree: true,
-        attributes: true,
-      });
-    }
+    window.addEventListener("resize", refresh);
+    observer = new MutationObserver(refresh);
+    observer.observe(document.body, { ...options });
 
     return () => {
+      // 追加: すべてのScrollTriggerをkill
+      ScrollTrigger.getAll().forEach(t => t.kill());
       gsap.killTweensOf(triggerRef.current);
       gsap.killTweensOf(footerRef.current);
       footerRef.current?.removeAttribute("style");
-      document.body.classList.remove("isButtonHidden");
-      colorBlue.current?.classList.remove("isShow");
-      colorWhite.current?.classList.remove("isShow");
-      if (isPC) {
-        window.removeEventListener("resize", refresh);
-        observer?.disconnect();
-      }
-      if (refreshTimeout) clearTimeout(refreshTimeout);
+      window.removeEventListener("resize", refresh);
+      observer?.disconnect();
+      refresh.cancel && refresh.cancel();
+      // 追加: gsap.contextのrevertも呼ぶ
+      cleanup && cleanup();
     };
   }, [pathname]);
 
@@ -179,6 +181,10 @@ export default function Footer() {
           </div>
         </div>
       </footer>
+      <video muted loop playsInline preload="metadata" className="video" ref={videoRef}>
+        <source src={getImagePath("movie/water.webm")} type="video/webm" />
+        <source src={getImagePath("movie/water.mp4")} type="video/mp4" />
+      </video>
     </div>
   );
 }

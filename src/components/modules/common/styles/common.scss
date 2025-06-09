@@ -8,13 +8,13 @@
 /* __30: deckplan */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin" as g;
+@use "@/assets/styles/_mixin"as g;
 
 /* __10: gallery-slider */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .gallery-slider {
   overflow: hidden;
-  display: flex;
+  display : flex;
 
   &.isPlay {
     .gallery-slider-list {
@@ -23,11 +23,11 @@
   }
 
   &-list {
-    display: flex;
-    flex-shrink: 0;
-    will-change: translate;
-    translate: 0 0;
-    animation: gallerySlider 20s linear infinite;
+    display             : flex;
+    flex-shrink         : 0;
+    will-change         : translate;
+    translate           : 0 0;
+    animation           : gallerySlider 20s linear infinite;
     animation-play-state: paused;
   }
 
@@ -35,21 +35,19 @@
     flex-shrink: 0;
 
     img {
-      display: block;
-      width: 100%;
-      height: 100%;
+      display   : block;
+      width     : 100%;
+      height    : 100%;
       object-fit: cover;
     }
   }
 
   &[data-slide-to="left"] {
-    .gallery-slider-list {
-    }
+    .gallery-slider-list {}
   }
 
   &[data-slide-to="right"] {
-    .gallery-slider-list {
-    }
+    .gallery-slider-list {}
   }
 
   @keyframes gallerySlider {
@@ -62,23 +60,24 @@
 /* __20: bg */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .bg {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100lvh;
-  z-index: -1;
+  position  : sticky;
+  bottom    : 0;
+  width     : 100%;
+  height    : 100lvh;
+  margin-top: -100lvh;
+  z-index   : -1;
 
   .color,
   .video {
-    width: 100%;
+    width : 100%;
     height: 100%;
-    top: 0;
-    left: 0;
+    top   : 0;
+    left  : 0;
 
     video {
-      display: block;
-      width: 100%;
-      height: 100%;
+      display   : block;
+      width     : 100%;
+      height    : 100%;
       object-fit: cover;
     }
   }
@@ -88,10 +87,10 @@
     z-index: 1;
 
     &::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      margin: auto;
+      content         : "";
+      position        : absolute;
+      inset           : 0;
+      margin          : auto;
       background-color: rgba($color: #000000, $alpha: 0.15);
     }
   }
@@ -99,47 +98,47 @@
   // 水
   .is-video-water {
     position: absolute;
-    z-index: 2;
+    z-index : 2;
 
     &::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      margin: auto;
+      content         : "";
+      position        : absolute;
+      inset           : 0;
+      margin          : auto;
       background-color: rgba($color: #0099b4, $alpha: 0.5);
     }
   }
 
   // 紺
   .is-color-blue {
-    position: absolute;
-    z-index: 3;
+    position        : absolute;
+    z-index         : 3;
     background-color: rgba($color: #000846, $alpha: 0.7);
   }
 
   // 白
   .is-color-white {
-    position: absolute;
-    z-index: 4;
+    position        : absolute;
+    z-index         : 4;
     background-color: var(--color_white);
   }
 
   // マスク
   .is-set-mask {
     --mask-position: 30% -30%;
-    will-change: mask-position;
-    mask-repeat: no-repeat;
-    mask-image: url("/ships/adventure/common/mask.webp");
-    mask-size: 800% 300%;
-    mask-position: var(--mask-position);
-    visibility: hidden;
+    will-change    : mask-position;
+    mask-repeat    : no-repeat;
+    mask-image     : url("/ships/adventure/common/mask.webp");
+    mask-size      : 800% 300%;
+    mask-position  : var(--mask-position);
+    visibility     : hidden;
 
     &.isHide {
       visibility: inherit;
     }
 
     &.isShow {
-      mask-size: 0;
+      mask-size : 0;
       visibility: inherit;
     }
   }
@@ -148,6 +147,7 @@
 // sp
 @include g.media(md) {
   .bg {
+
     // マスク
     .is-set-mask {
       mask-image: url("/ships/adventure/common/mask-vert.webp");
@@ -167,7 +167,7 @@
 /* __30: deckplan */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .c-deckplan {
-  & + section {
+  &+section {
     margin-top: 10rem;
   }
 
@@ -177,27 +177,27 @@
 
   // .deck
   .deck {
-    display: grid;
+    display              : grid;
     grid-template-columns: auto 1fr;
-    column-gap: 3.2rem;
+    column-gap           : 3.2rem;
 
     .img {
       width: 37.4rem;
 
       img {
         display: block;
-        width: 100%;
+        width  : 100%;
       }
     }
 
     .text {
       p {
-        --fz: 15;
-        --lh: 25;
-        font-size: calc(var(--fz) * 0.1rem);
+        --fz       : 15;
+        --lh       : 25;
+        font-size  : calc(var(--fz) * 0.1rem);
         line-height: calc(var(--lh) / var(--fz));
         @include g.leadingTrim(calc(var(--lh) / var(--fz)));
-        margin-top: 2.6rem;
+        margin-top    : 2.6rem;
         letter-spacing: var(--letter_spacing);
       }
 
@@ -205,35 +205,35 @@
         margin-top: 2.8rem;
 
         &-el {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          column-gap: 1.6rem;
-          width: 16.5rem;
-          height: 5.5rem;
+          display         : flex;
+          align-items     : center;
+          justify-content : center;
+          column-gap      : 1.6rem;
+          width           : 16.5rem;
+          height          : 5.5rem;
           background-color: var(--theme_color_main);
-          text-decoration: none;
-          border-radius: 0.7rem;
-          transition: background-color var(--t-out);
+          text-decoration : none;
+          border-radius   : 0.7rem;
+          transition      : background-color var(--t-out);
 
           @include g.buttonHover();
 
           .label {
-            color: var(--color_white);
-            font-size: 1.5rem;
+            color      : var(--color_white);
+            font-size  : 1.5rem;
             line-height: calc(11 / 15);
-            transition: color var(--t-out);
+            transition : color var(--t-out);
           }
 
           .icon {
-            width: 1.6rem;
+            width : 1.6rem;
             height: 2rem;
 
             .i-pdf {
-              display: block;
-              width: 100%;
-              height: 100%;
-              color: var(--color_white);
+              display   : block;
+              width     : 100%;
+              height    : 100%;
+              color     : var(--color_white);
               transition: color var(--t-out);
             }
           }
@@ -246,7 +246,7 @@
 // sp
 @include g.media(md) {
   .c-deckplan {
-    & + section {
+    &+section {
       margin-top: 7rem;
     }
 
@@ -264,8 +264,8 @@
 
       .text {
         p {
-          --fz: 14;
-          --lh: 24;
+          --fz      : 14;
+          --lh      : 24;
           margin-top: 2.4rem;
         }
 
@@ -273,13 +273,13 @@
           margin-top: 2.4rem;
 
           &-el {
-            column-gap: 2rem;
-            width: 15.2rem;
-            height: 5.2rem;
+            column-gap   : 2rem;
+            width        : 15.2rem;
+            height       : 5.2rem;
             border-radius: 0.5rem;
 
             .label {
-              font-size: 1.4rem;
+              font-size  : 1.4rem;
               line-height: calc(10 / 14);
             }
           }

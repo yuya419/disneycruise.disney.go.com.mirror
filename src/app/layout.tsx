@@ -13,7 +13,6 @@ import Header from "@/components/utils/header";
 import Footer from "@/components/utils/footer";
 import DrawerNav from "@/components/modules/nav/drawerNav";
 import RequestButton from "@/components/modules/buttons/requestButton";
-import { Bg } from "@/components/modules/common/common";
 import { Symbol } from "@/libs/symbol";
 import { useHeadColor } from "@/hooks/useHead";
 import { useRefContext } from "@/hooks/useRefContext";
@@ -26,6 +25,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
 
   useEffect(() => {
     document.body.dataset.headColor = isColor ?? "white";
+    document.body.classList.remove("isButtonHidden", "videoShow");
   }, [pathname, isColor]);
 
   return (
@@ -102,7 +102,6 @@ function Layout({ children, pathname, setIsColor, }: {
       {pathname !== "/book/" &&
         pathname !== "/book/confirm/" &&
         pathname !== "/book/complete/" && <RequestButton />}
-      <Bg />
       <Symbol />
       <div className="overlay" ref={overlay}></div>
       <Loader />

@@ -10,6 +10,7 @@ import "./styles/loader.scss";
 
 export function Splash() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isShow, setIsShow] = useState(false);
   const splashRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -57,6 +58,27 @@ export function Splash() {
       clearTimeout(failSafe);
     };
   }, []);
+
+
+  useEffect(() => {
+    // 初回訪問判定
+    if (!window.name.includes("visited")) {
+      window.name += "visited";
+      setIsShow(true);
+    } else {
+      setIsShow(false);
+      setIsLoaded(true); // すぐ非表示
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isShow && splashRef.current) {
+      splashRef.current.classList.add("isShow");
+      setTimeout(() => {
+        setIsLoaded(true);
+      }, 1000);
+    }
+  }, [isShow]);
 
   useEffect(() => {
     if (isLoaded && splashRef.current) {

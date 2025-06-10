@@ -18,7 +18,7 @@ export default function Feature() {
   const posts = useMemo(
     () => ({
       post01: {
-        link: "post01",
+        link: "detail",
         title: "演目が毎晩変わる！オリジナルシアター・ステージ・ショー",
         date: "2025.00.00",
         cat: {
@@ -33,7 +33,7 @@ export default function Feature() {
         },
       },
       post02: {
-        link: "post02",
+        link: "detail",
         title:
           "ピクサー映画『ウォーリー』の愛らしいロボットたちが贈る、愛と切なさが詰まった感動の物語",
         date: "2025.00.00",
@@ -48,7 +48,7 @@ export default function Feature() {
         },
       },
       post03: {
-        link: "post03",
+        link: "detail",
         title:
           "『ベイマックス』のヒロとベイマックスと一緒に、エネルギッシュなミュージカルエクササイズに参加しましょう！",
         date: "2025.00.00",
@@ -63,7 +63,7 @@ export default function Feature() {
         },
       },
       post04: {
-        link: "post04",
+        link: "detail",
         title: "夢と魔法がいっぱいの冒険航海、ディズニー・クルーズライン",
         date: "2025.00.00",
         cat: {

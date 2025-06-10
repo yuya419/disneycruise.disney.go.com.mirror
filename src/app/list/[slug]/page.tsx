@@ -12,7 +12,7 @@ import Aside from "@/layouts/aside/aside";
 const siteInfo = meta.siteInfo;
 
 const title = "シンガポール発着　3泊クルーズ";
-const description = `記事冒頭分を自動で表示`;
+const description = `ディズニー　アドベンチャー　シンガポール　コース一覧。ワールドクラスのエンターテインメント、テーマ別のダイニング体験等を提供するディズニー・アドベンチャーでは、3泊〜5泊の航海をご用意しています。`;
 
 // メタデータ
 export const metadata: Metadata = {

@@ -102,7 +102,7 @@ export default function Message() {
           </p>
         </div>
       </div>
-      <GallerySlider to="left" images={images} />
+      {/* <GallerySlider to="left" images={images} /> */}
       <GSAPMaskToggle mask={"water"} />
     </GSAPToggleContainer>
   );

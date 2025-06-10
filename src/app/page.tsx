@@ -30,7 +30,7 @@ export default function Home() {
       <main className="top">
         <Hero />
         <Message />
-        <Feature />
+        {/* <Feature /> */}
         <ThemedAreas />
         <Entertainment />
         <Dining />

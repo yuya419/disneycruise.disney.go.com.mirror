@@ -44,7 +44,7 @@ export default function Archive(props: {
       <Breadcrumb items={breadcrumbItems} />
       <Title type="onm" title={title} en={en} />
       <div className="l-post">
-        <Pickup type={type} posts={posts} />
+        <Pickup type={type} posts={posts} perPage={5}/>
         <Post
           type={type}
           posts={posts}

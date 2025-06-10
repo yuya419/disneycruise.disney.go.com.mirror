@@ -3,11 +3,11 @@
  * @description コンシェルジュを表示するページ
  */
 import type { Metadata } from "next";
-import metaArray from "@/libs/meta";
+import meta from "@/libs/meta";
 import { Concierge } from "@/layouts/page/page";
 
 // メタデータ
-export const metadata: Metadata = metaArray["concierge"];
+export const metadata: Metadata = meta.metaArray["concierge"];
 
 export default function Page() {
   return (

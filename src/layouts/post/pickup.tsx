@@ -94,8 +94,9 @@ export function HeroNews(props: posts) {
 export function Pickup(props: {
   type: "news" | "feature";
   posts: posts["posts"];
+  perPage?: number;
 }) {
-  const { type, posts } = props;
+  const { type, posts, perPage } = props;
 
   const handleLinkClick = useHandleLinkClick();
 
@@ -152,7 +153,11 @@ export function Pickup(props: {
     }
   }, [emblaApi, resetAutoplay]);
 
-  const postItems = Object.keys(posts).map((key) => {
+  // perPageの値に応じて表示する投稿数を制御
+  const postKeys = Object.keys(posts);
+  const limitedPostKeys = typeof perPage === "number" ? postKeys.slice(0, perPage) : postKeys;
+
+  const postItems = limitedPostKeys.map((key) => {
     return (
       <article className="post-item" key={key}>
         <Link

@@ -146,28 +146,6 @@ const metaArray = {
         "ディズニー　アドベンチャー　シンガポール　コース一覧。ワールドクラスのエンターテインメント、テーマ別のダイニング体験等を提供するディズニー・アドベンチャーでは、3泊〜5泊の航海をご用意しています。",
     },
   },
-  "list-detail": {
-    title:
-      "コース一覧" +
-      siteInfo.pipe +
-      "詳細タイトル自動で入る" +
-      siteInfo.pipe +
-      siteInfo.siteName,
-    description: "記事冒頭分を自動で表示",
-    openGraph: {
-      type: "article",
-      title:
-        "コース一覧" +
-        siteInfo.pipe +
-        "詳細タイトル自動で入る" +
-        siteInfo.pipe +
-        siteInfo.siteName,
-      siteName: siteInfo.siteName,
-      url: `${siteInfo.url}list/detail/`,
-      images: siteInfo.images,
-      description: "記事冒頭分を自動で表示",
-    },
-  },
   book: {
     title: "予約" + siteInfo.pipe + siteInfo.siteName,
     description:
@@ -236,28 +214,6 @@ const metaArray = {
       description: "ディズニー　アドベンチャー　シンガポール　特集記事一覧。",
     },
   },
-  "feature-detail": {
-    title:
-      "特集記事一覧" +
-      siteInfo.pipe +
-      "詳細タイトル自動で入る" +
-      siteInfo.pipe +
-      siteInfo.siteName,
-    description: "記事冒頭分を自動で表示",
-    openGraph: {
-      type: "article",
-      title:
-        "特集記事一覧" +
-        siteInfo.pipe +
-        "詳細タイトル自動で入る" +
-        siteInfo.pipe +
-        siteInfo.siteName,
-      siteName: siteInfo.siteName,
-      url: `${siteInfo.url}feature/detail/`,
-      images: siteInfo.images,
-      description: "記事冒頭分を自動で表示",
-    },
-  },
   news: {
     title: "お知らせ" + siteInfo.pipe + siteInfo.siteName,
     description: "ディズニー　アドベンチャー　シンガポール　お知らせ。",
@@ -268,28 +224,6 @@ const metaArray = {
       url: `${siteInfo.url}news/`,
       images: siteInfo.images,
       description: "ディズニー　アドベンチャー　シンガポール　お知らせ。",
-    },
-  },
-  "news-detail": {
-    title:
-      "お知らせ一覧" +
-      siteInfo.pipe +
-      "詳細タイトル自動で入る" +
-      siteInfo.pipe +
-      siteInfo.siteName,
-    description: "記事冒頭分を自動で表示",
-    openGraph: {
-      type: "article",
-      title:
-        "お知らせ一覧" +
-        siteInfo.pipe +
-        "詳細タイトル自動で入る" +
-        siteInfo.pipe +
-        siteInfo.siteName,
-      siteName: siteInfo.siteName,
-      url: `${siteInfo.url}news/detail/`,
-      images: siteInfo.images,
-      description: "記事冒頭分を自動で表示",
     },
   },
   "404": {
@@ -308,4 +242,4 @@ const metaArray = {
   },
 };
 
-export default metaArray;
+export default { metaArray, siteInfo };

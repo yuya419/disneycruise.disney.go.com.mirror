@@ -8,12 +8,13 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import helper from "@/libs/helper";
 import { AccordionType01 as Accordion } from "@/components/modules/acdn/acdn";
-import CvNav from "@/components/modules/nav/cvNav";
 import SubNav from "@/components/modules/nav/subNav";
 import { useRefContext } from "@/hooks/useRefContext";
 import { useHeaderHeight } from "@/hooks/useHead";
 import { usePageTransition } from "@/hooks/usePageTransition";
+import { arrow } from "@/components/modules/icons/icon";
 import "./styles/drawerNav.scss";
+import "./styles/cvNav.scss";
 
 interface DrawerNavProps {
   isOpenDefault?: boolean;
@@ -132,7 +133,50 @@ export default function DrawerNav({ isOpenDefault }: DrawerNavProps) {
               <SubNav />
             </div>
             <div className="drawerNav-block">
-              <CvNav />
+              <div className="cvNav">
+                <nav className="nav">
+                  <ul className="nav-menu">
+                    <li className="menu-item is-reservation">
+                      <Link href="/list/" className="menu-item-link" onClick={(e) => handleDrawerNavTransition(e, "/list/")}>
+                        <span className="label">
+                          <span className="en" lang="en">
+                            Reservation
+                          </span>
+                          <span className="jp">ご予約はこちら</span>
+                        </span>
+                        <span className="icon">
+                          <div className="divider"></div>
+                          <svg className="i-calendar">
+                            <use xlinkHref="#i-calendar" />
+                          </svg>
+                        </span>
+                      </Link>
+                    </li>
+                    <li className="menu-item is-mail-magazine">
+                      <Link href="/mailmagazine/" className="menu-item-link" onClick={(e) => handleDrawerNavTransition(e, "/mailmagazine/")}>
+                        <span className="label">
+                          <span className="en" lang="en">
+                            Mail Magazine
+                          </span>
+                          <span className="jp">メールマガジン登録</span>
+                        </span>
+                        {arrow({ bg: "white", color: "blue" })}
+                      </Link>
+                    </li>
+                    <li className="menu-item is-contact">
+                      <Link href="/inquiry/" className="menu-item-link" onClick={(e) => handleDrawerNavTransition(e, "/inquiry/")}>
+                        <span className="label">
+                          <span className="en" lang="en">
+                            Contact
+                          </span>
+                          <span className="jp">お問い合わせ</span>
+                        </span>
+                        {arrow({ bg: "white", color: "blue" })}
+                      </Link>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
               <div className="mainNav">
                 <nav className="nav">
                   <ul className="nav-menu">

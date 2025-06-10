@@ -4,12 +4,12 @@
  */
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import metaArray from "@/libs/meta";
+import meta from "@/libs/meta";
 import Archive from "@/layouts/post/archive";
 import { features } from "@/libs/array";
 
 // メタデータ
-export const metadata: Metadata = metaArray["feature"];
+export const metadata: Metadata = meta.metaArray["feature"];
 
 export default function Page() {
   return (

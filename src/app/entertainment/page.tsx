@@ -3,11 +3,11 @@
  * @description エンターテイメントを表示するページ
  */
 import type { Metadata } from "next";
-import metaArray from "@/libs/meta";
+import meta from "@/libs/meta";
 import { Entertainment } from "@/layouts/page/page";
 
 // メタデータ
-export const metadata: Metadata = metaArray["entertainment"];
+export const metadata: Metadata = meta.metaArray["entertainment"];
 
 export default function Page() {
   return (

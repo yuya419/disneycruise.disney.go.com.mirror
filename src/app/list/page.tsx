@@ -3,11 +3,11 @@
  * @description コース一覧を表示するページ
  */
 import type { Metadata } from "next";
-import metaArray from "@/libs/meta";
+import meta from "@/libs/meta";
 import { Archive } from "@/layouts/course/course";
 
 // メタデータ
-export const metadata: Metadata = metaArray["list"];
+export const metadata: Metadata = meta.metaArray["list"];
 
 export default function Page() {
   return (

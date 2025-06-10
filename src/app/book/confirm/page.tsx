@@ -3,11 +3,11 @@
  * @description 予約申し込み - 確認画面
  */
 import type { Metadata } from "next";
-import metaArray from "@/libs/meta";
+import meta from "@/libs/meta";
 import { Page as Book } from "@/layouts/form/page";
 
 // メタデータ
-export const metadata: Metadata = metaArray["book"];
+export const metadata: Metadata = meta.metaArray["book"];
 
 export default function Page() {
   return (

@@ -3,11 +3,11 @@
  * @description 404 Not Found
  */
 import type { Metadata } from "next";
-import metaArray from "@/libs/meta";
+import meta from "@/libs/meta";
 import { NotFound } from "@/layouts/page/page";
 
 // メタデータ
-export const metadata: Metadata = metaArray["404"];
+export const metadata: Metadata = meta.metaArray["404"];
 
 export default function Page() {
   return (

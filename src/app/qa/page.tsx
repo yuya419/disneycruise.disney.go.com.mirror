@@ -3,11 +3,11 @@
  * @description よくあるご質問ページ
  */
 import type { Metadata } from "next";
-import metaArray from "@/libs/meta";
+import meta from "@/libs/meta";
 import { Qa } from "@/layouts/page/page";
 
 // メタデータ
-export const metadata: Metadata = metaArray["qa"];
+export const metadata: Metadata = meta.metaArray["qa"];
 
 export default function Page() {
   return (

@@ -3,11 +3,11 @@
  * @description お問い合わせ - 送信完了
  */
 import type { Metadata } from "next";
-import metaArray from "@/libs/meta";
+import meta from "@/libs/meta";
 import { Page as Inquiry } from "@/layouts/form/page";
 
 // メタデータ
-export const metadata: Metadata = metaArray["inquiry"];
+export const metadata: Metadata = meta.metaArray["inquiry"];
 
 export default function Page() {
   return (

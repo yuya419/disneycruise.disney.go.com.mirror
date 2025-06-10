@@ -3,7 +3,7 @@
  * @description TOPページ
  */
 import type { Metadata } from "next";
-import metaArray from "@/libs/meta";
+import meta from "@/libs/meta";
 import {
   Hero,
   Message,
@@ -22,7 +22,7 @@ import { Bg } from "@/components/modules/common/common";
 import "@/components/modules/slider/styles/slider.scss";
 
 // メタデータ
-export const metadata: Metadata = metaArray["index"];
+export const metadata: Metadata = meta.metaArray["index"];
 
 export default function Home() {
   return (

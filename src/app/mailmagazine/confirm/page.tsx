@@ -3,11 +3,11 @@
  * @description メールマガジン登録 - 確認画面
  */
 import type { Metadata } from "next";
-import metaArray from "@/libs/meta";
+import meta from "@/libs/meta";
 import { Page as Mailmagazine } from "@/layouts/form/page";
 
 // メタデータ
-export const metadata: Metadata = metaArray["mailmagazine"];
+export const metadata: Metadata = meta.metaArray["mailmagazine"];
 
 export default function Page() {
   return (

@@ -26,46 +26,6 @@ export default function Filter() {
   return (
     <form className="c-filter" method="get">
       <div className="c-filter__form">
-        <div className="form-item is-item-stay">
-          <Headline design="01" hlLevel="p">
-            宿泊数
-          </Headline>
-          <div className="form-item__input">
-            <label className="input-item">
-              <input
-                type="checkbox"
-                name="stay[]"
-                value={3}
-                className="input"
-              />
-              <span className="label">
-                <span>3</span>泊
-              </span>
-            </label>
-            <label className="input-item">
-              <input
-                type="checkbox"
-                name="stay[]"
-                value={4}
-                className="input"
-              />
-              <span className="label">
-                <span>4</span>泊
-              </span>
-            </label>
-            <label className="input-item">
-              <input
-                type="checkbox"
-                name="stay[]"
-                value={5}
-                className="input"
-              />
-              <span className="label">
-                <span>5</span>泊
-              </span>
-            </label>
-          </div>
-        </div>
         <div className="form-item is-item-date">
           <Headline design="01" hlLevel="p">
             出発日

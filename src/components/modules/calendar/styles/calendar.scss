@@ -6,52 +6,53 @@
 /* __10: 共通設定 */
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-@use "@/assets/styles/_mixin" as g;
+@use "@/assets/styles/_mixin"as g;
 
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .m-calendar {
-  width: 41rem;
+  width           : 41rem;
   background-color: var(--color_white);
-  padding: 1.6rem;
+  padding         : 1.6rem;
 
   &__parts {
     position: relative;
-    display: grid;
+    display : grid;
     grid-template-areas:
       "tool"
       "calendar";
+    align-items: center;
   }
 
   // 年のセレクトボックス
   .parts__year-selector {
-    grid-area: tool;
-    width: calc(100% - 4.8rem - 3.2rem);
-    margin-inline: auto;
+    grid-area     : tool;
+    width         : calc(100% - 4.8rem - 3.2rem);
+    margin-inline : auto;
     pointer-events: none;
 
     .year-select {
       position: relative;
-      width: 7.7rem;
+      width   : 7.7rem;
 
       select {
-        all: unset;
-        user-select: none;
-        outline: revert;
+        all                        : unset;
+        user-select                : none;
+        outline                    : revert;
         -webkit-tap-highlight-color: transparent;
-        font-family: var(--noto-sans-jp);
-        box-sizing: border-box;
-        cursor: pointer;
-        appearance: none;
-        display: flex;
-        align-items: center;
-        width: 100%;
-        height: 2.6rem;
-        border: 1px solid var(--theme_color_border);
-        font-size: 1.4rem;
-        padding-left: 1rem;
-        border-radius: 0.3rem;
-        pointer-events: all;
+        font-family                : var(--noto-sans-jp);
+        box-sizing                 : border-box;
+        cursor                     : pointer;
+        appearance                 : none;
+        display                    : flex;
+        align-items                : center;
+        width                      : 100%;
+        height                     : 2.6rem;
+        border                     : 1px solid var(--theme_color_border);
+        font-size                  : 1.4rem;
+        padding-left               : 1rem;
+        border-radius              : 0.3rem;
+        pointer-events             : all;
 
         &::-ms-expand {
           display: none;
@@ -59,20 +60,20 @@
       }
 
       .icon {
-        position: absolute;
-        right: 1rem;
-        top: 0;
-        bottom: 0;
-        width: 0.8rem;
-        height: 0.8rem;
+        position    : absolute;
+        right       : 1rem;
+        top         : 0;
+        bottom      : 0;
+        width       : 0.8rem;
+        height      : 0.8rem;
         margin-block: auto;
 
         .i-arw-t-tri {
           display: block;
-          width: 100%;
-          height: 100%;
-          color: var(--theme_color_text);
-          scale: 1 -1;
+          width  : 100%;
+          height : 100%;
+          color  : var(--theme_color_text);
+          scale  : 1 -1;
         }
       }
     }
@@ -80,27 +81,43 @@
 
   // 月のタブセレクトボックス
   .parts__month-selector {
-    grid-area: tool;
-    width: calc(100% - 9.6em);
-    margin-inline: auto;
-    padding-left: 7.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    grid-area     : tool;
+    display       : flex;
+    align-items   : center;
+    overflow-x    : auto;
     pointer-events: none;
+    width         : 20.5rem;
+    margin-left   : auto;
+    margin-right  : 4rem;
+
+    scrollbar-width   : none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &:has(:nth-child(2)) {
+      --bar-size: calc(100% /2);
+    }
+
+    &:has(:nth-child(2)):has(:nth-child(3)) {
+      --bar-size: calc(100% /3);
+    }
 
     .month-button {
-      display: flex;
-      align-items: center;
-      text-align: center;
+      display        : flex;
+      align-items    : center;
+      text-align     : center;
       justify-content: center;
-      flex-basis: 100%;
-      font-size: 1.4rem;
-      color: var(--theme_color_main);
-      height: 2.6rem;
-      border-bottom: 1px solid #d5d7e6;
-      transition: border-color 0.1s var(--customEasingOut);
-      pointer-events: all;
+      flex-shrink    : 0;
+      flex-basis     : var(--bar-size, 100%);
+      font-size      : 1.4rem;
+      color          : var(--theme_color_main);
+      height         : 2.6rem;
+      border-bottom  : 1px solid #d5d7e6;
+      transition     : border-color 0.1s var(--customEasingOut);
+      pointer-events : all;
 
       @include g.hover() {
         border-bottom-color: var(--theme_color_main);
@@ -114,44 +131,44 @@
 
   // 前後の月を移動するボタン
   .parts__navigation {
-    grid-area: tool;
-    display: flex;
-    width: 100%;
-    align-items: center;
+    grid-area      : tool;
+    display        : flex;
+    width          : 100%;
+    align-items    : center;
     justify-content: space-between;
-    pointer-events: none;
+    pointer-events : none;
 
     .nav-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 2.4rem;
-      height: 2.4rem;
-      border-radius: 50%;
-      color: var(--color_white);
+      display         : flex;
+      align-items     : center;
+      justify-content : center;
+      width           : 2.4rem;
+      height          : 2.4rem;
+      border-radius   : 50%;
+      color           : var(--color_white);
       background-color: var(--theme_color_main);
-      pointer-events: all;
-      transition:
+      pointer-events  : all;
+      transition      :
         background-color 0.1s var(--customEasingOut),
         color 0.1s var(--customEasingOut);
 
       .i-arw-r {
         display: block;
-        width: 1rem;
-        height: 1rem;
+        width  : 1rem;
+        height : 1rem;
       }
 
       &:disabled {
         background-color: rgba(201, 201, 201, 0.13);
-        color: rgba(39, 40, 51, 0.3);
-        pointer-events: none;
+        color           : rgba(39, 40, 51, 0.3);
+        pointer-events  : none;
       }
     }
   }
 
   // カレンダー本体
   .parts__calendar {
-    grid-area: calendar;
+    grid-area : calendar;
     margin-top: 1.7rem;
 
     table {
@@ -159,26 +176,18 @@
 
       th,
       td {
-        --red: #c52727;
-        --blue: #4d87de;
-        color: var(--theme_color_text);
+        --red  : #c52727;
+        --blue : #4d87de;
+        color  : var(--theme_color_text);
         padding: 0;
-
-        &.isBlue {
-          color: var(--blue);
-        }
-
-        &.isRed {
-          color: var(--red);
-        }
       }
 
       thead {
         th {
-          color: currentColor;
-          font-size: 1.3rem;
-          text-align: center;
-          height: 2.2rem;
+          color         : currentColor;
+          font-size     : 1.3rem;
+          text-align    : center;
+          height        : 2.2rem;
           padding-bottom: 0.6rem;
 
           &:first-child {
@@ -193,55 +202,77 @@
 
       tbody {
         td {
-          font-weight: 700;
-          line-height: 1;
+          font-weight   : 700;
+          line-height   : 1;
           letter-spacing: 0;
-          text-align: center;
-          height: 7.4rem;
-          border: 1px solid var(--theme_color_border);
+          text-align    : center;
+          height        : 100%;
+          border        : 1px solid var(--theme_color_border);
 
           button {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            flex-direction: column;
-            justify-content: center;
-            padding-block: 1.15rem;
-            background-color: var(--color_white);
-            --i-color: #5d5e6b;
-            --p-color: #727272;
-            transition: background-color 0.1s var(--customEasingOut);
+            display         : flex;
+            width           : 100%;
+            height          : 7.4rem;
+            flex-direction  : column;
+            justify-content : center;
+            padding-block   : 0.65rem;
+            color           : var(--theme_color_text);
+            background-color: var(--bg-color, var(--color_white));
+            transition      : background-color 0.1s var(--customEasingOut);
+
+            &:disabled {
+              opacity: 1;
+            }
 
             @include g.hover() {
               background-color: var(--color_bg_beige);
             }
 
             .day {
-              display: block;
-              font-size: 1.5rem;
-              color: currentColor;
+              display   : block;
+              font-size : 1.5rem;
+              color     : currentColor;
               transition: color 0.1s var(--customEasingOut);
             }
 
             .avail {
               display: block;
-              width: 1rem;
-              height: 1rem;
-              margin: 0.7rem auto;
+              width  : 1rem;
+              height : 1rem;
+              margin : 0.5rem auto;
 
               .i-avail {
-                display: block;
-                width: 100%;
-                height: 100%;
-                color: var(--i-color);
+                display   : block;
+                width     : 100%;
+                height    : 100%;
                 transition: color 0.1s var(--customEasingOut);
               }
             }
 
+            .meta {
+              display        : flex;
+              flex-wrap      : wrap;
+              justify-content: center;
+              align-items    : center;
+              gap            : 0.25rem 0.5rem;
+            }
+
+            .stay {
+              width           : 2.2rem;
+              height          : 1.5rem;
+              display         : flex;
+              align-items     : center;
+              justify-content : center;
+              font-size       : 1rem;
+              color           : var(--color_white);
+              background-color: var(--stay-tag-color);
+              border-radius   : 0.2rem;
+              padding-bottom  : 0.1rem;
+            }
+
             .price {
-              display: block;
-              font-size: 1rem;
-              color: var(--p-color);
+              display   : block;
+              font-size : 1rem;
               transition: color 0.1s var(--customEasingOut);
             }
           }
@@ -250,9 +281,7 @@
           &.today {
             button {
               background-color: var(--theme_color_main);
-              color: var(--color_white);
-              --i-color: currentColor;
-              --p-color: currentColor;
+              color           : var(--color_white);
 
               @include g.hover() {
                 background-color: rgba(0, 8, 70, 0.6);
@@ -263,12 +292,12 @@
           // 過ぎた日付
           &.past,
           &.avail {
+            --stay-tag-color: rgba(39, 40, 51, 0.3) !important;
+
             button {
-              background-color: rgba(201, 201, 201, 0.13);
-              color: rgba(39, 40, 51, 0.3);
-              --i-color: currentColor;
-              --p-color: currentColor;
-              pointer-events: none;
+              background-color: rgba(201, 201, 201, 0.13) !important;
+              color           : rgba(39, 40, 51, 0.3) !important;
+              pointer-events  : none;
             }
 
             // .avail,
@@ -281,6 +310,21 @@
           &.hidden {
             background-color: rgba(201, 201, 201, 0.13);
           }
+
+          &.is-stay-3 {
+            --bg-color      : #EBF2FF;
+            --stay-tag-color: #5B99EA;
+          }
+
+          &.is-stay-4 {
+            --bg-color      : #E7F7E6;
+            --stay-tag-color: #77A374;
+          }
+
+          &.is-stay-5 {
+            --bg-color      : #FFF0EB;
+            --stay-tag-color: #EA7F5B;
+          }
         }
       }
     }
@@ -288,12 +332,13 @@
 
   // react-day-picker
   .rdp {
+
     &-root,
     &-months {
-      display: block;
-      width: 100%;
+      display  : block;
+      width    : 100%;
       max-width: inherit;
-      position: static;
+      position : static;
     }
 
     // mm-yyyy
@@ -307,30 +352,37 @@
 // sp
 @include g.media(md) {
   .m-calendar {
-    width: 100%;
+    width  : 100%;
+    padding: 1.6rem 0.5rem 0.5rem;
 
     // 年のセレクトボックス
     .parts__year-selector {
-      width: calc(100% - 3.8rem - 3.2rem);
+      width: calc(100% - 9.8rem);
 
       .year-select {
-        width: 7.2rem;
+        width: 7.7rem;
       }
     }
 
     // 月のタブセレクトボックス
     .parts__month-selector {
-      width: calc(100% - 8em);
-      padding-left: 7.2rem;
+      width       : 13.2rem;
+      margin-right: 5.4rem;
     }
 
     // 前後の月を移動するボタン
     .parts__navigation {
-      height: 2.6rem;
+      height        : 2.6rem;
+      padding-inline: 1.4rem;
 
       .nav-button {
-        width: 1.9rem;
+        width : 1.9rem;
         height: 1.9rem;
+
+        .i-arw-r {
+          width : 0.8rem;
+          height: 0.8rem;
+        }
       }
     }
 
@@ -340,8 +392,16 @@
         tbody {
           td {
             button {
+              padding-block: 0.5rem;
+
               .day {
                 font-size: 1.4rem;
+              }
+
+              .stay {
+                width    : 1.9rem;
+                height   : 1.3rem;
+                font-size: 0.9rem;
               }
 
               .price {

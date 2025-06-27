@@ -51,7 +51,6 @@ export default function Single() {
 
   // 検索クエリの型定義
   interface SearchQuery {
-    stay: { [key: number]: number };
     date: string;
     people: { adult: number; child: number };
   }
@@ -228,9 +227,6 @@ export default function Single() {
 
   // 検索クエリの設定
   post.searchQuery = {
-    stay: {
-      1: 3,
-    },
     date: "yyyy/mm/dd",
     people: {
       adult: 2,

@@ -6,7 +6,7 @@
 import Image from "next/image";
 import Breadcrumb from "@/components/modules/breadcrumb/breadcrumb";
 import Title from "@/layouts/title/title";
-import { Course as Post } from "@/layouts/post/article";
+import BookingCalendar from "@/components/modules/calendar/calendar";
 import "./styles/archive.scss";
 
 export default function Archive() {
@@ -15,35 +15,6 @@ export default function Archive() {
   const course = {
     title: "ディズニーアドベンチャー",
     eyecatch: "/ships/adventure/common/dummy/course-list-thumbnail.jpg",
-    posts: {
-      post01: {
-        link: "detail",
-        title: "シンガポール発着　3泊クルーズ",
-        thumbnail: {
-          src: "/ships/adventure/common/dummy/course-list-post-eyecatch.jpg",
-          w: 240,
-          h: 160,
-        },
-      },
-      post02: {
-        link: "detail",
-        title: "シンガポール発着　3泊クルーズ",
-        thumbnail: {
-          src: "/ships/adventure/common/dummy/course-list-post-eyecatch.jpg",
-          w: 240,
-          h: 160,
-        },
-      },
-      post03: {
-        link: "detail",
-        title: "シンガポール発着　3泊クルーズ",
-        thumbnail: {
-          src: "/ships/adventure/common/dummy/course-list-post-eyecatch.jpg",
-          w: 240,
-          h: 160,
-        },
-      },
-    },
   };
 
   return (
@@ -63,12 +34,15 @@ export default function Archive() {
               />
             </div>
             <div className="title">
-              <h2>{course.title}　コース一覧</h2>
-              <div className="length">{Object.keys(course.posts).length}件</div>
+              <h2>カレンダーから探す</h2>
             </div>
           </div>
           <div className="arc-course-post__content">
-            <Post posts={course.posts} hlLevel="h3" />
+            <div className="course-calendar">
+              <div className="calendar">
+                <BookingCalendar onDateClick={() => { }} />
+              </div>
+            </div>
           </div>
         </div>
       </section>

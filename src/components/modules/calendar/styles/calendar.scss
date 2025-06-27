@@ -81,15 +81,15 @@
 
   // 月のタブセレクトボックス
   .parts__month-selector {
-    grid-area     : tool;
-    display       : flex;
-    align-items   : center;
-    overflow-x    : auto;
-    pointer-events: none;
-    width         : 20.5rem;
-    margin-left   : auto;
-    margin-right  : 4rem;
-
+    grid-area         : tool;
+    display           : flex;
+    align-items       : center;
+    overflow-x        : auto;
+    pointer-events    : none;
+    width             : 20.5rem;
+    margin-left       : auto;
+    margin-right      : 4rem;
+    padding-bottom    : 0.1rem;
     scrollbar-width   : none;
     -ms-overflow-style: none;
 

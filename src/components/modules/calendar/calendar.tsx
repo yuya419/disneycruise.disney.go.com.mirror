@@ -54,7 +54,7 @@ export default function BookingCalendar({
         { date: "2025-06-27", avail: true, stay: 5, price: "$1,900〜" },
         { date: "2025-06-28", avail: true, stay: 3, price: "$1,900〜" },
         { date: "2025-06-29", avail: true, stay: 4, price: "$1,900〜" },
-        { date: "2025-06-30", avail: false, stay: 5, price: "$1,900〜" },
+        { date: "2025-06-30", avail: true, stay: 5, price: "$1,900〜" },
       ],
       7: [
         { date: "2025-07-01", avail: true, stay: 4, price: "$2,100〜" },

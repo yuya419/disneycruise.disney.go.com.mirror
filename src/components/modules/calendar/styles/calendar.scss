@@ -225,7 +225,8 @@
             }
 
             @include g.hover() {
-              background-color: var(--color_bg_beige);
+              background-color: var(--theme_color_main);
+              color           : var(--color_white);
             }
 
             .day {
@@ -280,12 +281,7 @@
           // 現在の日付
           &.today {
             button {
-              background-color: var(--theme_color_main);
-              color           : var(--color_white);
-
-              @include g.hover() {
-                background-color: rgba(0, 8, 70, 0.6);
-              }
+              border: 1px solid var(--theme_color_main);
             }
           }
 

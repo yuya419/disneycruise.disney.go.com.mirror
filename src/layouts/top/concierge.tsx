@@ -34,8 +34,8 @@ export default function Concierge() {
         ease: "none",
         scrollTrigger: {
           trigger: img,
-          start: "top bottom",
-          end: "bottom top",
+          start: "top top",
+          end: "150% top",
           scrub: true,
           invalidateOnRefresh: true,
         },

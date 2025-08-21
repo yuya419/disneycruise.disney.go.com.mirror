@@ -11,8 +11,7 @@
 /* __10: 共通設定 */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 .t-kids-clubs {
-  // padding-top     : 43.1rem;
-  padding-top: max(43.1rem, calc(100vw / (1300 / 431)));
+  padding-top     : max(39rem, calc(100vw / (1300 / 390)));
   background-color: var(--color_white);
   overflow        : hidden;
 
@@ -28,35 +27,25 @@
   // &__circle-slider
   &__circle-slider {
     position     : absolute;
-    // top: -25.1rem;
-    top          : min(-25.1rem, calc(-100vw / (1300 / 251)));
-    left         : 0;
+    width        : 100vw;
+    top          : min(-20rem, calc(-100vw / (1300 / 200)));
+    left         : calc(50% - 50cqw);
     right        : 0;
     margin-inline: auto;
 
-    .circle-slider {}
-
     .circle-slide-list {
-      display            : grid;
-      grid-template-areas: "slide";
-      width              : max(52rem, calc(100vw / (1300 / 520)));
-      height             : max(34.7rem, calc(100vw / (1300 / 347)));
-      margin-inline      : auto;
-      transform-origin   : center 225vw;
+      display              : grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap           : 1px;
+      width                : 100%;
     }
 
     .circle-slide-item {
-      grid-area       : slide;
-      transform-origin: center 225vw;
-      position        : relative;
-      transition      : rotate 0.45s cubic-bezier(0.55, -0.21, 0.34, 0.77);
-
-      &:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
-        display: none;
-      }
+      position  : relative;
+      transition: translate 0.45s cubic-bezier(0.55, -0.21, 0.34, 0.77);
 
       &:nth-child(1) {
-        rotate : calc(-12deg * var(--val, 0.2));
+        translate : calc(100% * var(--val, 0.8));
         z-index: 1;
       }
 
@@ -65,9 +54,10 @@
       }
 
       &:nth-child(3) {
-        rotate : calc(12deg * var(--val, 0.2));
+        translate : calc(-100% * var(--val, 0.8));
         z-index: 1;
       }
+
 
       img {
         display   : block;
@@ -122,12 +112,16 @@
       margin-top: 4rem;
     }
   }
+
+  .gallery-slider {
+    display: none;
+  }
 }
 
 // sp
 @include g.media(md) {
   .t-kids-clubs {
-    padding-top: 19.7rem;
+    padding-top: 24rem;
 
     .container {
       width    : calc(100% - 30px);
@@ -151,47 +145,7 @@
 
     // &__circle-slider
     &__circle-slider {
-      top: -11.6rem;
-
-      .circle-slider {
-        &.isSliding {
-          pointer-events: none;
-
-          .circle-slide-list {
-            transition: rotate 0.3s ease-in-out;
-          }
-        }
-
-        &.isReset {
-          .circle-slide-list {
-            transition: rotate 0s inherit;
-          }
-        }
-      }
-
-      .circle-slide-list {
-        width           : 30rem;
-        height          : 20rem;
-        transform-origin: 50% 167rem;
-        will-change     : rotate;
-        rotate          : calc(-12deg * var(--rotate, 5) + (var(--move, 0) * 1deg)); // 2,8 → 5リセット
-      }
-
-      .circle-slide-item {
-        transform-origin: 50% 167rem;
-        z-index         : 1;
-        pointer-events  : none;
-
-        &:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
-          display: block;
-        }
-
-        @for $i from 1 to 12 {
-          &:nth-child(#{$i}) {
-            rotate: calc(12deg * #{$i});
-          }
-        }
-      }
+      display: none;
     }
 
     // &__text
@@ -209,6 +163,20 @@
         line-height: calc(26 / 14);
         @include g.leadingTrim(calc(26 / 14));
         margin-top: 3rem;
+      }
+    }
+
+    .gallery-slider {
+      display   : flex;
+      position  : absolute;
+      width     : 100vw;
+      height    : 23.3rem;
+      top       : -16rem;
+      left      : calc(50% - 50cqw);
+      column-gap: 1px;
+
+      &-list {
+        column-gap: 1px;
       }
     }
   }

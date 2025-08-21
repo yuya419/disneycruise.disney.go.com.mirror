@@ -12,26 +12,26 @@ export default function Dining() {
     img01: {
       src: "top/dining/img01.jpg",
       alt: "",
-      w: 380,
-      h: 500,
+      w: 600,
+      h: 400,
     },
     img02: {
       src: "top/dining/img02.jpg",
       alt: "",
-      w: 380,
-      h: 500,
+      w: 711,
+      h: 400,
     },
     img03: {
       src: "top/dining/img03.jpg",
       alt: "",
-      w: 380,
-      h: 500,
+      w: 711,
+      h: 400,
     },
     img04: {
       src: "top/dining/img04.jpg",
       alt: "",
-      w: 380,
-      h: 500,
+      w: 640,
+      h: 400,
     },
   };
 
@@ -45,13 +45,19 @@ export default function Dining() {
     img02: {
       src: "top/dining/img02_sp.jpg",
       alt: "",
-      w: 350,
+      w: 414,
       h: 233,
     },
     img03: {
       src: "top/dining/img03_sp.jpg",
       alt: "",
-      w: 350,
+      w: 414,
+      h: 233,
+    },
+    img04: {
+      src: "top/dining/img04_sp.jpg",
+      alt: "",
+      w: 372,
       h: 233,
     },
   };

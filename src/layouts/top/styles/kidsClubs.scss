@@ -36,7 +36,7 @@
     .circle-slide-list {
       display              : grid;
       grid-template-columns: repeat(3, 1fr);
-      column-gap           : 1px;
+      column-gap           : 0.1rem;
       width                : 100%;
     }
 
@@ -173,10 +173,10 @@
       height    : 23.3rem;
       top       : -16rem;
       left      : calc(50% - 50cqw);
-      column-gap: 1px;
+      column-gap: 0.1rem;
 
       &-list {
-        column-gap: 1px;
+        column-gap: 0.1rem;
       }
     }
   }
